@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<meta charset="utf-8"> 
+<html>
+  <head>
+  	  <script src="./lib/js/jquery-1.11.0.min.js"></script>
+  	  <link rel="stylesheet" href="./lib/css/redmond/jquery-ui-1.10.4.custom.css">
+  	  <link rel="stylesheet" type="text/css" href="./lib/css/bootstrap.css">
+  	  <script src="./lib/js/bootstrap.js"></script>
+  	  <script src="./lib/js/jquery-ui-1.10.4.custom.js"></script>
+
+  	  <style>
+  		.container {
+  			background-color: grey;
+  			width: 800px;
+  		}
+  		.page-header {
+  			text-align: center;
+  		}
+  		#designs {
+  			height: 100%;
+  		}
+  		img {
+  			width: 100%;
+  			cursor: pointer;
+  		}
+  		#imagenesFormas {
+  			background-color: white;
+  			height: 100px;
+  			width: 100%;
+  			overflow-y: scroll;
+  		}
+  		#particiones {
+  			display: none;
+  		}
+  		#imagenesParticiones {
+  			background-color: white;
+  			height: 100px;
+  			width: 100%;
+  			overflow-y: scroll;
+  		}
+  		#colores {
+  			display: none;
+  		}
+  		#imagenesColores {
+  			background-color: white;
+  			height: 100px;
+  			width: 100%;
+  			overflow-y: scroll;
+  		}
+  		#previsualization {
+  			background-color: white;
+  			height: 200px;
+  			margin-top: 40px;
+  		}
+  	</style>
+
+  </head>
+  <body>
+
+		<button id="buttonPopUp" onclick="openPopUp()">Abrir el PopUp</button>
+		<div id="popUp" title="Crear forma">
+  			<div class="container">
+		  		<div id="centralTool">
+		  			<div class="row">
+			  			<div id="designs" class="col-md-3">
+			  				<h4>Formas</h4>
+			  				<div id="imagenesFormas">
+			  					<div id="base1" class="col-md-5">
+			  						<img src="./img/bases/Base 1.jpg" onClick="displayParticiones()">
+			  					</div>
+			  					<div id="base2" class="col-md-5">
+			  						<img src="./img/bases/Base 2.jpg">
+			  					</div>
+			  					<div id="base3" class="col-md-5">
+			  						<img src="./img/bases/Base 3.jpg">
+			  					</div>
+			  					<div id="base4" class="col-md-5">
+			  						<img src="./img/bases/Base 4.jpg">
+			  					</div>
+			  					<div id="base5" class="col-md-5">
+			  						<img src="./img/bases/Base 5.jpg">
+			  					</div>
+			  					<div id="base6" class="col-md-5">
+			  						<img src="./img/bases/Base 6.jpg">
+			  					</div>
+			  				</div>
+			  				<div id ="particiones">
+				  				<h4>Particiones</h4>
+				  				<div id="imagenesParticiones">
+				  					<div id="base1" class="col-md-5">
+				  						<img src="./img/particiones/base 1/Particion 1.jpg" onClick="displayColores()">
+				  					</div>
+				  					<div id="base1" class="col-md-5">
+				  						<img src="./img/particiones/base 1/Particion 2.jpg">
+				  					</div>
+				  					<div id="base1" class="col-md-5">
+				  						<img src="./img/particiones/base 1/Particion 3.jpg">
+				  					</div>
+				  				</div>
+				  			</div>
+				  			<div id="colores">
+				  				<h4>Colores</h4>
+				  				<div id="imagenesColores">
+				  					<div id="base1" class="col-md-5">
+				  						<img src="./img/bases/Base 1.jpg">
+				  					</div>
+				  					<div id="base1" class="col-md-5">
+				  						<img src="./img/bases/Base 1.jpg">
+				  					</div>
+				  					<div id="base1" class="col-md-5">
+				  						<img src="./img/bases/Base 1.jpg">
+				  					</div>
+				  				</div>
+				  			</div>
+			  			</div>
+			  			<div id="previsualization" class="col-md-8">
+			  				Hola
+			  			</div>
+			  		</div>
+
+		  		</div> 
+		  	</div>
+		</div>
+
+  </body>
+
+  <script>
+	$("#popUp").dialog({
+  		autoOpen: false,
+  		height: "auto",
+  		width: "auto",
+  		modal: true,
+  		buttons: {
+  			"Crear forma": function() {
+
+  			},
+  			"Cancelar": function() {
+  				$( this ).dialog( "close" );
+  			}
+  		}
+  	})
+
+  function openPopUp() {
+  	$("#popUp").dialog("open");
+  }
+
+  function displayParticiones() {
+  	$("#particiones").css("display", "block");
+  }
+
+  function displayColores() {
+  	$("#colores").css("display", "block");
+  }
+
+  </script>
+
+</html>
