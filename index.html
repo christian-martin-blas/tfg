@@ -19,10 +19,14 @@
   		#designs {
   			height: 100%;
   		}
-  		img {
+  		img.design {
   			width: 100%;
   			cursor: pointer;
   		}
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
   		#imagenesFormas {
   			background-color: white;
   			height: 100px;
@@ -46,11 +50,13 @@
   			height: 100px;
   			width: 100%;
   			overflow-y: scroll;
+        margin-bottom: 10px;
   		}
   		#previsualization {
   			background-color: white;
-  			height: 200px;
+  			height: 350px;
   			margin-top: 40px;
+        margin-bottom: 40px;
   		}
   	</style>
 
@@ -66,35 +72,35 @@
 			  				<h4>Formas</h4>
 			  				<div id="imagenesFormas">
 			  					<div id="base1" class="col-md-5">
-			  						<img src="./img/bases/Base 1.jpg" onClick="displayParticiones()">
+			  						<img src="./img/bases/Base 1.jpg" onClick="displayParticiones()" class="design">
 			  					</div>
 			  					<div id="base2" class="col-md-5">
-			  						<img src="./img/bases/Base 2.jpg">
+			  						<img src="./img/bases/Base 2.jpg" class="design">
 			  					</div>
 			  					<div id="base3" class="col-md-5">
-			  						<img src="./img/bases/Base 3.jpg">
+			  						<img src="./img/bases/Base 3.jpg" class="design">
 			  					</div>
 			  					<div id="base4" class="col-md-5">
-			  						<img src="./img/bases/Base 4.jpg">
+			  						<img src="./img/bases/Base 4.jpg" class="design">
 			  					</div>
 			  					<div id="base5" class="col-md-5">
-			  						<img src="./img/bases/Base 5.jpg">
+			  						<img src="./img/bases/Base 5.jpg" class="design">
 			  					</div>
 			  					<div id="base6" class="col-md-5">
-			  						<img src="./img/bases/Base 6.jpg">
+			  						<img src="./img/bases/Base 6.jpg" class="design">
 			  					</div>
 			  				</div>
 			  				<div id ="particiones">
 				  				<h4>Particiones</h4>
 				  				<div id="imagenesParticiones">
 				  					<div id="base1" class="col-md-5">
-				  						<img src="./img/particiones/base 1/Particion 1.jpg" onClick="displayColores()">
+				  						<img src="./img/particiones/base 1/Particion 1.jpg" onClick="displayColores()" class="design">
 				  					</div>
 				  					<div id="base1" class="col-md-5">
-				  						<img src="./img/particiones/base 1/Particion 2.jpg">
+				  						<img src="./img/particiones/base 1/Particion 2.jpg" class="design">
 				  					</div>
 				  					<div id="base1" class="col-md-5">
-				  						<img src="./img/particiones/base 1/Particion 3.jpg">
+				  						<img src="./img/particiones/base 1/Particion 3.jpg" class="design">
 				  					</div>
 				  				</div>
 				  			</div>
@@ -102,19 +108,19 @@
 				  				<h4>Colores</h4>
 				  				<div id="imagenesColores">
 				  					<div id="base1" class="col-md-5">
-				  						<img src="./img/bases/Base 1.jpg">
+				  						<img src="./img/bases/Base 1.jpg" class="design">
 				  					</div>
 				  					<div id="base1" class="col-md-5">
-				  						<img src="./img/bases/Base 1.jpg">
+				  						<img src="./img/bases/Base 1.jpg" class="design">
 				  					</div>
 				  					<div id="base1" class="col-md-5">
-				  						<img src="./img/bases/Base 1.jpg">
+				  						<img src="./img/bases/Base 1.jpg" class="design">
 				  					</div>
 				  				</div>
 				  			</div>
 			  			</div>
 			  			<div id="previsualization" class="col-md-8">
-			  				Hola
+			  				<img id="blank" src="./img/blank.jpg">
 			  			</div>
 			  		</div>
 
