@@ -33,7 +33,7 @@
   			width: 100%;
   			overflow-y: scroll;
   		}
-  		#particiones {
+  		.particiones {
   			display: none;
   		}
   		#imagenesParticiones {
@@ -42,7 +42,7 @@
   			width: 100%;
   			overflow-y: scroll;
   		}
-  		#colores {
+  		.colores {
   			display: none;
   		}
   		#imagenesColores {
@@ -71,59 +71,96 @@
 			  			<div id="designs" class="col-md-3">
 			  				<h4>Formas</h4>
 			  				<div id="imagenesFormas">
-			  					<div id="base1" class="col-md-5">
-			  						<img src="./img/bases/Base 1.jpg" onClick="displayParticiones()" class="design">
+			  					<div id="base1" class="col-md-5" onClick="displayParticiones(this)">
+			  						<img src="./img/bases/Base 1.jpg"  class="design">
 			  					</div>
-			  					<div id="base2" class="col-md-5">
+			  					<div id="base2" class="col-md-5" onClick="displayParticiones(this)">
 			  						<img src="./img/bases/Base 2.jpg" class="design">
 			  					</div>
-			  					<div id="base3" class="col-md-5">
+			  					<div id="base3" class="col-md-5" onClick="displayParticiones(this)">
 			  						<img src="./img/bases/Base 3.jpg" class="design">
 			  					</div>
-			  					<div id="base4" class="col-md-5">
+			  					<div id="base4" class="col-md-5" onClick="displayParticiones(this)">
 			  						<img src="./img/bases/Base 4.jpg" class="design">
 			  					</div>
-			  					<div id="base5" class="col-md-5">
+			  					<div id="base5" class="col-md-5" onClick="displayParticiones(this)">
 			  						<img src="./img/bases/Base 5.jpg" class="design">
 			  					</div>
-			  					<div id="base6" class="col-md-5">
+			  					<div id="base6" class="col-md-5" onClick="displayParticiones(this)">
 			  						<img src="./img/bases/Base 6.jpg" class="design">
 			  					</div>
 			  				</div>
-			  				<div id ="particiones">
+			  				<div id ="particiones1" class="particiones">
 				  				<h4>Particiones</h4>
 				  				<div id="imagenesParticiones">
-				  					<div id="base1" class="col-md-5">
-				  						<img src="./img/particiones/base 1/Particion 1.jpg" onClick="displayColores()" class="design">
+				  					<div id="particion1" class="col-md-5" onClick="displayColores(this)">
+				  						<img src="./img/particiones/base 1/Particion 1.jpg"  class="design">
 				  					</div>
-				  					<div id="base1" class="col-md-5">
-				  						<img src="./img/particiones/base 1/Particion 2.jpg" class="design">
+				  					<div id="particion2" class="col-md-5" onClick="displayColores(this)">
+				  						<img src="./img/particiones/base 1/Particion 2.jpg" onClick="displayColores()" class="design">
 				  					</div>
-				  					<div id="base1" class="col-md-5">
-				  						<img src="./img/particiones/base 1/Particion 3.jpg" class="design">
+				  					<div id="particion3" class="col-md-5" onClick="displayColores(this)">
+				  						<img src="./img/particiones/base 1/Particion 3.jpg" onClick="displayColores()" class="design">
 				  					</div>
 				  				</div>
 				  			</div>
-				  			<div id="colores">
+                <div id ="particiones2" class="particiones">
+                  <h4>Particiones</h4>
+                  <div id="imagenesParticiones">
+                    <div id="particion1" class="col-md-5" onClick="displayColores(this)">
+                      <img src="./img/particiones/base 2/Particion 1.jpg" onClick="displayColores()" class="design">
+                    </div>
+                    <div id="particion2" class="col-md-5" onClick="displayColores(this)">
+                      <img src="./img/particiones/base 2/Particion 2.jpg" onClick="displayColores()" class="design">
+                    </div>
+                    <div id="particion3" class="col-md-5" onClick="displayColores(this)">
+                      <img src="./img/particiones/base 2/Particion 3.jpg" onClick="displayColores()" class="design">
+                    </div>
+                  </div>
+                </div>
+				  			<div id="colores11" class="colores">
 				  				<h4>Colores</h4>
 				  				<div id="imagenesColores">
-				  					<div id="base1" class="col-md-5">
-				  						<img src="./img/bases/Base 1.jpg" class="design">
-				  					</div>
-				  					<div id="base1" class="col-md-5">
-				  						<img src="./img/bases/Base 1.jpg" class="design">
-				  					</div>
-				  					<div id="base1" class="col-md-5">
-				  						<img src="./img/bases/Base 1.jpg" class="design">
-				  					</div>
-				  				</div>
+                    <div id="color1" class="col-md-5" onClick="displayDesign(this)">
+                      <img src="./img/colores/base 1/particion 1/Color 1.jpg" class="design">
+                    </div>
+                    <div id="color2" class="col-md-5" onClick="displayDesign(this)">
+                      <img src="./img/colores/base 1/particion 1/Color 2.jpg" class="design">
+                    </div>
+                  </div>
 				  			</div>
-			  			</div>
+                <div id="colores12" class="colores">
+                  <h4>Colores</h4>
+                  <div id="imagenesColores">
+                    <div id="color1" class="col-md-5" onClick="displayDesign(this)">
+                      <img src="./img/colores/base 1/particion 2/Color 1.jpg" class="design">
+                    </div>
+                    <div id="color2" class="col-md-5" onClick="displayDesign(this)">
+                      <img src="./img/colores/base 1/particion 2/Color 2.jpg"class="design">
+                    </div>
+                  </div>
+                </div>
+                <div id="colores21" class="colores">
+                    <h4>Colores</h4>
+                    <div id="imagenesColores">
+                      <div id="color1" class="col-md-5" onClick="displayDesign(this)">
+                        <img src="./img/colores/base 2/particion 1/Color 1.jpg" class="design">
+                      </div>
+                    </div>
+                </div>
+                <div id="colores22" class="colores">
+                    <h4>Colores</h4>
+                    <div id="imagenesColores">
+                      <div id="color2" class="col-md-5" onClick="displayDesign(this)">
+                        <img src="./img/colores/base 2/particion 2/Color 2.jpg" class="design">
+                      </div>
+                    </div>
+                </div>
+              </div>
 			  			<div id="previsualization" class="col-md-8">
 			  				<img id="blank" src="./img/blank.jpg">
 			  			</div>
 			  		</div>
-
 		  		</div> 
 		  	</div>
 		</div>
@@ -131,6 +168,10 @@
   </body>
 
   <script>
+  var base = -1;
+  var particion = -1;
+  var color = -1;
+
 	$("#popUp").dialog({
   		autoOpen: false,
   		height: "auto",
@@ -150,12 +191,29 @@
   	$("#popUp").dialog("open");
   }
 
-  function displayParticiones() {
-  	$("#particiones").css("display", "block");
+  function displayParticiones(item) {
+    var id = item.id;
+    if(particion != -1) {
+      var colores = "#colores" + base + particion;
+      $(colores).css("display", "none");
+      particion = -1;
+    }
+    if(base != -1) {
+      var particiones = "#particiones" + base;
+      $(particiones).css("display", "none");
+      base = -1;
+    } 
+    base = item.id.substr(id.length - 1);
+    var particiones = "#particiones" + base;
+    $(particiones).css("display", "block");
   }
 
   function displayColores() {
-  	$("#colores").css("display", "block");
+  	$("#colores4").css("display", "block");
+  }
+
+  function displayDesign() {
+
   }
 
   </script>
