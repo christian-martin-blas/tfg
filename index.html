@@ -208,8 +208,18 @@
     $(particiones).css("display", "block");
   }
 
-  function displayColores() {
-  	$("#colores4").css("display", "block");
+  function displayColores(item) {
+  	///$("#colores4").css("display", "block");
+    console.log(item);
+    var id = item.id;
+    if(particion != -1) {
+      var colores = "#colores" + base + particion;
+      $(colores).css("display", "none");
+      particion = -1;
+    }
+    particion = item.id.substr(id.length - 1);
+    var colores = "#colores" + base + particion;
+    $(colores).css("display", "block");
   }
 
   function displayDesign() {
