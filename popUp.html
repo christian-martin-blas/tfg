@@ -1,107 +1,100 @@
-<!DOCTYPE HTML>
-<meta charset="utf-8"> 
-<html>
-  <head>
-  	<script src="./lib/js/jquery-1.11.0.min.js"></script>
-  	<script src="./lib/js/bootstrap.js"></script>
-  	<link rel="stylesheet" type="text/css" href="./lib/css/bootstrap.css">
-
-  	<style>
-  		.container {background-color: grey}
-  		.page-header {
-  			text-align: center;
-  		}
-  		#designs {
-  			height: 100%;
-  		}
-  		img {
-  			width: 100%
-  		}
-  		#formas {
-  			background-color: white;
-  			height: 200px;
-  			width: 100%;
-  			overflow: scroll;
-  		}
-  		#particiones {
-  			background-color: white;
-  			height: 200px;
-  			width: 100%;
-  			overflow: scroll;
-  		}
-  		#colores {
-  			background-color: white;
-  			height: 200px;
-  			width: 100%;
-  			overflow: scroll;
-  		}
-  		/*.centralTool{
-  			display: table
-  			with: 1000px;
-  		}
-  		.previsualization{
-  			display: table-column;
-  			width: 50%;
-  			background-color: white;
-  		}
-  		.designs{
-  			display: table-column;
-  			width: 50%;
-  		}*/
-  	</style>
-
-  </head>
-  <body>
-  	<div class="container">
-  		<div class="page-header">
-  			<h1 >Diseño previo</h1>
-  		</div>
-  		<div id="centralTool">
-  			<div class="row">
-	  			<div id="designs" class="col-md-3">
-	  				<h3>Formas</h3>
-	  				<div id="formas">
-	  					<div id="base1" class="col-md-5">
-	  						<img src="./img/bases/Base 1.jpg">
-	  					</div>
-	  					<div id="base2" class="col-md-5">
-	  						<img src="./img/bases/Base 2.jpg">
-	  					</div>
-	  					<div id="base3" class="col-md-5">
-	  						<img src="./img/bases/Base 3.jpg">
-	  					</div>
-	  					<div id="base4" class="col-md-5">
-	  						<img src="./img/bases/Base 4.jpg">
-	  					</div>
-	  					<div id="base5" class="col-md-5">
-	  						<img src="./img/bases/Base 5.jpg">
-	  					</div>
-	  					<div id="base6" class="col-md-5">
-	  						<img src="./img/bases/Base 6.jpg">
-	  					</div>
-	  				</div>
-	  				<h3>Particiones</h3>
-	  				<div id="particiones">
-	  					<div id="base1" class="col-md-5">
-	  						<img src="./img/bases/Base 1.jpg">
-	  					</div>
-	  				</div>
-	  				<h3>Colores</h3>
-	  				<div id="colores">
-	  					<div id="base1" class="col-md-5">
-	  						<img src="./img/bases/Base 1.jpg">
-	  					</div>
-	  				</div>
-
-	  			</div>
-	  			<div id="previsualization" class="col-md-8">
-	  				Hola
-	  			</div>
-	  		</div>
-
-  		</div> 
-  	</div>
-
-
-  </body>
-</html>
+<div id="popUp" title="Crear forma">
+  <div class="container">
+    <div id="centralTool">
+      <div class="row">
+        <div id="designs" class="col-md-3">
+          <h4>Formas</h4>
+          <div id="imagenesFormas">
+            <div id="base1" class="col-md-5" onClick="displayParticiones(this)">
+              <img src="./img/bases/Base 1.jpg"  class="design">
+            </div>
+            <div id="base2" class="col-md-5" onClick="displayParticiones(this)">
+              <img src="./img/bases/Base 2.jpg" class="design">
+            </div>
+            <div id="base3" class="col-md-5" onClick="displayParticiones(this)">
+              <img src="./img/bases/Base 3.jpg" class="design">
+            </div>
+            <div id="base4" class="col-md-5" onClick="displayParticiones(this)">
+              <img src="./img/bases/Base 4.jpg" class="design">
+            </div>
+            <div id="base5" class="col-md-5" onClick="displayParticiones(this)">
+              <img src="./img/bases/Base 5.jpg" class="design">
+            </div>
+            <div id="base6" class="col-md-5" onClick="displayParticiones(this)">
+              <img src="./img/bases/Base 6.jpg" class="design">
+            </div>
+          </div>
+          <div id ="particiones1" class="particiones">
+            <h4>Particiones</h4>
+            <div id="imagenesParticiones">
+              <div id="particion1" class="col-md-5" onClick="displayColores(this)">
+                <img src="./img/particiones/base 1/Particion 1.jpg"  class="design">
+              </div>
+              <div id="particion2" class="col-md-5" onClick="displayColores(this)">
+                <img src="./img/particiones/base 1/Particion 2.jpg" onClick="displayColores()" class="design">
+              </div>
+              <div id="particion3" class="col-md-5" onClick="displayColores(this)">
+                <img src="./img/particiones/base 1/Particion 3.jpg" onClick="displayColores()" class="design">
+              </div>
+            </div>
+          </div>
+          <div id ="particiones2" class="particiones">
+            <h4>Particiones</h4>
+            <div id="imagenesParticiones">
+              <div id="particion1" class="col-md-5" onClick="displayColores(this)">
+                <img src="./img/particiones/base 2/Particion 1.jpg" onClick="displayColores()" class="design">
+              </div>
+              <div id="particion2" class="col-md-5" onClick="displayColores(this)">
+                <img src="./img/particiones/base 2/Particion 2.jpg" onClick="displayColores()" class="design">
+              </div>
+              <div id="particion3" class="col-md-5" onClick="displayColores(this)">
+                <img src="./img/particiones/base 2/Particion 3.jpg" onClick="displayColores()" class="design">
+              </div>
+            </div>
+          </div>
+          <div id="colores11" class="colores">
+            <h4>Colores</h4>
+            <div id="imagenesColores">
+              <div id="color1" class="col-md-5">
+                <img src="./img/colores/base 1/particion 1/Color 1.jpg" class="design" onClick="displayDesign(this)">
+              </div>
+              <div id="color2" class="col-md-5">
+                <img src="./img/colores/base 1/particion 1/Color 2.jpg" class="design" onClick="displayDesign(this)">
+              </div>
+            </div>
+          </div>
+          <div id="colores12" class="colores">
+            <h4>Colores</h4>
+            <div id="imagenesColores">
+              <div id="color1" class="col-md-5"
+                <img src="./img/colores/base 1/particion 2/Color 1.jpg" class="design" onClick="displayDesign(this)">
+              </div>
+              <div id="color2" class="col-md-5">
+                <img src="./img/colores/base 1/particion 2/Color 2.jpg"class="design" onClick="displayDesign(this)">
+              </div>
+            </div>
+          </div>
+          <div id="colores21" class="colores">
+              <h4>Colores</h4>
+              <div id="imagenesColores">
+                <div id="color1" class="col-md-5">
+                  <img src="./img/colores/base 2/particion 1/Color 1.jpg" class="design" onClick="displayDesign(this)">
+                </div>
+              </div>
+          </div>
+          <div id="colores22" class="colores">
+              <h4>Colores</h4>
+              <div id="imagenesColores">
+                <div id="color2" class="col-md-5">
+                  <img src="./img/colores/base 2/particion 2/Color 2.jpg" class="design" onClick="displayDesign(this)">
+                </div>
+              </div>
+          </div>
+        </div>
+        <div id="previsualization" class="col-md-8">
+          <img id="blank">
+        </div>
+      </div>
+    </div> 
+  </div>
+</div>
