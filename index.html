@@ -58,6 +58,13 @@
   			margin-top: 40px;
         margin-bottom: 40px;
   		}
+      #blank {
+        position: absolute;
+        left: 50%;
+        top: 50%; 
+        margin-left: -110px;
+        margin-top: -110px;
+      }
   	</style>
 
   </head>
@@ -121,44 +128,44 @@
 				  			<div id="colores11" class="colores">
 				  				<h4>Colores</h4>
 				  				<div id="imagenesColores">
-                    <div id="color1" class="col-md-5" onClick="displayDesign(this)">
-                      <img src="./img/colores/base 1/particion 1/Color 1.jpg" class="design">
+                    <div id="color1" class="col-md-5">
+                      <img src="./img/colores/base 1/particion 1/Color 1.jpg" class="design" onClick="displayDesign(this)">
                     </div>
-                    <div id="color2" class="col-md-5" onClick="displayDesign(this)">
-                      <img src="./img/colores/base 1/particion 1/Color 2.jpg" class="design">
+                    <div id="color2" class="col-md-5">
+                      <img src="./img/colores/base 1/particion 1/Color 2.jpg" class="design" onClick="displayDesign(this)">
                     </div>
                   </div>
 				  			</div>
                 <div id="colores12" class="colores">
                   <h4>Colores</h4>
                   <div id="imagenesColores">
-                    <div id="color1" class="col-md-5" onClick="displayDesign(this)">
-                      <img src="./img/colores/base 1/particion 2/Color 1.jpg" class="design">
+                    <div id="color1" class="col-md-5"
+                      <img src="./img/colores/base 1/particion 2/Color 1.jpg" class="design" onClick="displayDesign(this)">
                     </div>
-                    <div id="color2" class="col-md-5" onClick="displayDesign(this)">
-                      <img src="./img/colores/base 1/particion 2/Color 2.jpg"class="design">
+                    <div id="color2" class="col-md-5">
+                      <img src="./img/colores/base 1/particion 2/Color 2.jpg"class="design" onClick="displayDesign(this)">
                     </div>
                   </div>
                 </div>
                 <div id="colores21" class="colores">
                     <h4>Colores</h4>
                     <div id="imagenesColores">
-                      <div id="color1" class="col-md-5" onClick="displayDesign(this)">
-                        <img src="./img/colores/base 2/particion 1/Color 1.jpg" class="design">
+                      <div id="color1" class="col-md-5">
+                        <img src="./img/colores/base 2/particion 1/Color 1.jpg" class="design" onClick="displayDesign(this)">
                       </div>
                     </div>
                 </div>
                 <div id="colores22" class="colores">
                     <h4>Colores</h4>
                     <div id="imagenesColores">
-                      <div id="color2" class="col-md-5" onClick="displayDesign(this)">
-                        <img src="./img/colores/base 2/particion 2/Color 2.jpg" class="design">
+                      <div id="color2" class="col-md-5">
+                        <img src="./img/colores/base 2/particion 2/Color 2.jpg" class="design" onClick="displayDesign(this)">
                       </div>
                     </div>
                 </div>
               </div>
 			  			<div id="previsualization" class="col-md-8">
-			  				<img id="blank" src="./img/blank.jpg">
+			  				<img id="blank" src="./img/blank.jpg" align="middle">
 			  			</div>
 			  		</div>
 		  		</div> 
@@ -209,8 +216,6 @@
   }
 
   function displayColores(item) {
-  	///$("#colores4").css("display", "block");
-    console.log(item);
     var id = item.id;
     if(particion != -1) {
       var colores = "#colores" + base + particion;
@@ -222,8 +227,8 @@
     $(colores).css("display", "block");
   }
 
-  function displayDesign() {
-
+  function displayDesign(item) {
+    $("#blank").attr("src", item.src);
   }
 
   </script>
