@@ -65,18 +65,44 @@
         margin-left: -110px;
         margin-top: -110px;
       }
+      #accordion {
+        padding: 10px;
+        margin-top: 100px;
+        width: 300px;
+        height: 220px;
+        font-size: 12px;
+      }
   	</style>
 
   </head>
   <body>
 
     <div id="mainTool">
-		  <button id="buttonPopUp" onclick="openPopUp()">Abrir el PopUp</button>
-    
+
+      <div class="col-md-3">
+        <div id="accordion">
+          <h3>Imágenes Animales</h3>
+          <div>
+            
+          </div>
+          <h3>Imágenes Articiales</h3>
+          <div>
+            
+          </div>
+          <h3>Imágenes Humanas</h3>
+          <div>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-7">
+        <button id="buttonPopUp" onclick="openPopUp()">Nuevo Escudo</button>
+        <button id="buttonPopUp" onclick="openPopUp()">Guardar Escudo</button>
+        <button id="buttonPopUp" onclick="openPopUp()">Cargar Escudo</button>
+      </div>
 
     </div>
-
-
 
 		<div id="popUp" title="Crear forma">	
 		</div>
@@ -143,6 +169,13 @@
   function displayDesign(item) {
     $("#blank").attr("src", item.src);
   }
+
+  $(function() {
+    $( "#accordion" ).accordion({
+      heightStyle: "content"
+    });
+  });
+
 
   </script>
 
