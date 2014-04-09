@@ -5,8 +5,12 @@
   	  <script src="./lib/js/jquery-1.11.0.min.js"></script>
   	  <link rel="stylesheet" href="./lib/css/redmond/jquery-ui-1.10.4.custom.css">
   	  <link rel="stylesheet" type="text/css" href="./lib/css/bootstrap.css">
+      <link rel="stylesheet" type="text/css" href="./lib/css/jquery.simplecolorpicker.css">
+      <link rel="stylesheet" type="text/css" href="./lib/css/jquery.simplecolorpicker-glyphicons.css">
+
   	  <script src="./lib/js/bootstrap.js"></script>
   	  <script src="./lib/js/jquery-ui-1.10.4.custom.js"></script>
+      <script src="./lib/js/jquery.simplecolorpicker.js"></script>
 
   	  <style>
   		.container {
@@ -110,13 +114,11 @@
   </body>
 
   <script>
-  var base = -1;
-  var particion = -1;
-  var color = -1;
 
   $(function(){
     $ ("#popUp").load("popUp.html");
   });
+
 
 	$("#popUp").dialog({
   		autoOpen: false,
@@ -137,45 +139,12 @@
   	$("#popUp").dialog("open");
   }
 
-  function displayParticiones(item) {
-    var id = item.id;
-    if(particion != -1) {
-      var colores = "#colores" + base + particion;
-      $(colores).css("display", "none");
-      particion = -1;
-    }
-    if(base != -1) {
-      var particiones = "#particiones" + base;
-      $(particiones).css("display", "none");
-      base = -1;
-    } 
-    base = item.id.substr(id.length - 1);
-    var particiones = "#particiones" + base;
-    $(particiones).css("display", "block");
-  }
-
-  function displayColores(item) {
-    var id = item.id;
-    if(particion != -1) {
-      var colores = "#colores" + base + particion;
-      $(colores).css("display", "none");
-      particion = -1;
-    }
-    particion = item.id.substr(id.length - 1);
-    var colores = "#colores" + base + particion;
-    $(colores).css("display", "block");
-  }
-
-  function displayDesign(item) {
-    $("#blank").attr("src", item.src);
-  }
 
   $(function() {
     $( "#accordion" ).accordion({
       heightStyle: "content"
     });
   });
-
 
   </script>
 
