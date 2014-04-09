@@ -178,12 +178,21 @@
     }
     particion = item.id.substr(id.length - 2);
     //var colores = "#colores" + base + particion;
-    if(particion >= 10 && particion < 20) $("#colorParticion1").css("display", "block");
-    else if(particion >= 20 && particion < 30) $("#colorParticion2").css("display", "block");
-    else if(particion >= 30 && particion < 40) $("#colorParticion3").css("display", "block");
-    else if(particion >= 40 && particion < 50) $("#colorParticion4").css("display", "block");
-
-
+    if(particion >= 10 && particion < 20) {
+      $("#colorParticion1").css("display", "block");
+      $("#colorParticion2").css("display", "block");
+    } 
+    else if(particion >= 20 && particion < 30) {
+      $("#colorParticion1").css("display", "block");
+      $("#colorParticion2").css("display", "block");
+      $("#colorParticion3").css("display", "block");
+    }
+    else if(particion >= 30 && particion < 40) {
+      $("#colorParticion1").css("display", "block");
+      $("#colorParticion2").css("display", "block");
+      $("#colorParticion3").css("display", "block");
+      $("#colorParticion4").css("display", "block");
+    }
     
   }
 
