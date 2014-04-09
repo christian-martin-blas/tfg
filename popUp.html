@@ -27,13 +27,13 @@
           <div id ="particiones1" class="particiones">
             <h4>Particiones</h4>
             <div id="imagenesParticiones">
-              <div id="particion1" class="col-md-5" onClick="displayColores(this)">
+              <div id="particion11" class="col-md-5" onClick="displayColores(this)">
                 <img src="./img/particiones/base 1/Particion 1.jpg"  class="design">
               </div>
-              <div id="particion2" class="col-md-5" onClick="displayColores(this)">
+              <div id="particion12" class="col-md-5" onClick="displayColores(this)">
                 <img src="./img/particiones/base 1/Particion 2.jpg" onClick="displayColores()" class="design">
               </div>
-              <div id="particion3" class="col-md-5" onClick="displayColores(this)">
+              <div id="particion13" class="col-md-5" onClick="displayColores(this)">
                 <img src="./img/particiones/base 1/Particion 3.jpg" onClick="displayColores()" class="design">
               </div>
             </div>
@@ -41,13 +41,13 @@
           <div id ="particiones2" class="particiones">
             <h4>Particiones</h4>
             <div id="imagenesParticiones">
-              <div id="particion1" class="col-md-5" onClick="displayColores(this)">
+              <div id="particion11" class="col-md-5" onClick="displayColores(this)">
                 <img src="./img/particiones/base 2/Particion 1.jpg" onClick="displayColores()" class="design">
               </div>
-              <div id="particion2" class="col-md-5" onClick="displayColores(this)">
+              <div id="particion12" class="col-md-5" onClick="displayColores(this)">
                 <img src="./img/particiones/base 2/Particion 2.jpg" onClick="displayColores()" class="design">
               </div>
-              <div id="particion3" class="col-md-5" onClick="displayColores(this)">
+              <div id="particion13" class="col-md-5" onClick="displayColores(this)">
                 <img src="./img/particiones/base 2/Particion 3.jpg" onClick="displayColores()" class="design">
               </div>
             </div>
@@ -176,9 +176,15 @@
       $(colores).css("display", "none");
       particion = -1;
     }
-    particion = item.id.substr(id.length - 1);
-    var colores = "#colores" + base + particion;
-    $(colores).css("display", "block");
+    particion = item.id.substr(id.length - 2);
+    //var colores = "#colores" + base + particion;
+    if(particion >= 10 && particion < 20) $("#colorParticion1").css("display", "block");
+    else if(particion >= 20 && particion < 30) $("#colorParticion2").css("display", "block");
+    else if(particion >= 30 && particion < 40) $("#colorParticion3").css("display", "block");
+    else if(particion >= 40 && particion < 50) $("#colorParticion4").css("display", "block");
+
+
+    
   }
 
   function displayDesign(item) {
