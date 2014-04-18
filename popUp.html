@@ -55,51 +55,62 @@
 
           <div id="colorParticion1">
             Partición 1:
-            <select name="colorpicker-picker-shortlist">
-              <option value="#">Sin Color</option>
-              <option value="#7bd148">Green</option>
-              <option value="#5484ed">Bold blue</option>
-              <option value="#a4bdfc">Blue</option>
-              <option value="#46d6db">Turquoise</option>
-              <option value="#7ae7bf">Light green</option>
-              <option value="#51b749">Bold green</option>
-
+            <select id="particion1" name="colorpicker-picker-shortlist" onchange="if (this.selectedIndex) displayDesign(this);">
+              <option value="#808080">Sin Color</option>
+              <option value="#FCDD09">Oro(Amarillo)</option>
+              <option value="#BFAF3F">Oro</option>
+              <option value="#F5F5F5">Plata(Blanco)</option>
+              <option value="#C2C1BD">Plata</option>
+              <option value="#008AF0">Azur</option>
+              <option value="#FF2611">Gules</option>
+              <option value="#07C143">Sinople</option>
+              <option value="#000000">Sable</option>
+              <option value="#EF61C6">Púrpura</option>
             </select>
           </div>
           <div id="colorParticion2">
             Partición 2:
-            <select name="colorpicker-picker-shortlist">
-              <option value="#">Sin Color</option>
-              <option value="#7bd148">Green</option>
-              <option value="#5484ed">Bold blue</option>
-              <option value="#a4bdfc">Blue</option>
-              <option value="#46d6db">Turquoise</option>
-              <option value="#7ae7bf">Light green</option>
-              <option value="#51b749">Bold green</option>
+            <select id="particion2" name="colorpicker-picker-shortlist" onchange="if (this.selectedIndex) displayDesign(this);">
+              <option value="#808080">Sin Color</option>
+              <option value="#FCDD09">Oro(Amarillo)</option>
+              <option value="#BFAF3F">Oro</option>
+              <option value="#F5F5F5">Plata(Blanco)</option>
+              <option value="#C2C1BD">Plata</option>
+              <option value="#008AF0">Azur</option>
+              <option value="#FF2611">Gules</option>
+              <option value="#07C143">Sinople</option>
+              <option value="#000000">Sable</option>
+              <option value="#EF61C6">Púrpura</option>
             </select>
           </div>
           <div id="colorParticion3">
             Partición 3:
-            <select name="colorpicker-picker-shortlist">
-              <option value="#">Sin Color</option>
-              <option value="#7bd148">Green</option>
-              <option value="#5484ed">Bold blue</option>
-              <option value="#a4bdfc">Blue</option>
-              <option value="#46d6db">Turquoise</option>
-              <option value="#7ae7bf">Light green</option>
-              <option value="#51b749">Bold green</option>
+            <select id="particion3" name="colorpicker-picker-shortlist" onchange="if (this.selectedIndex) displayDesign(this);">
+              <option value="#808080">Sin Color</option>
+              <option value="#FCDD09">Oro(Amarillo)</option>
+              <option value="#BFAF3F">Oro</option>
+              <option value="#F5F5F5">Plata(Blanco)</option>
+              <option value="#C2C1BD">Plata</option>
+              <option value="#008AF0">Azur</option>
+              <option value="#FF2611">Gules</option>
+              <option value="#07C143">Sinople</option>
+              <option value="#000000">Sable</option>
+              <option value="#EF61C6">Púrpura</option>
             </select>
           </div>
           <div id="colorParticion4">
             Partición 4:
-            <select name="colorpicker-picker-shortlist">
-              <option value="#">Sin Color</option>
-              <option value="#7bd148">Green</option>
-              <option value="#5484ed">Bold blue</option>
-              <option value="#a4bdfc">Blue</option>
-              <option value="#46d6db">Turquoise</option>
-              <option value="#7ae7bf">Light green</option>
-              <option value="#51b749">Bold green</option>
+            <select id="particion4" name="colorpicker-picker-shortlist" onchange="if (this.selectedIndex) displayDesign(this);">
+              <option value="#808080">Sin Color</option>
+              <option value="#FCDD09">Oro(Amarillo)</option>
+              <option value="#BFAF3F">Oro</option>
+              <option value="#F5F5F5">Plata(Blanco)</option>
+              <option value="#C2C1BD">Plata</option>
+              <option value="#008AF0">Azur</option>
+              <option value="#FF2611">Gules</option>
+              <option value="#07C143">Sinople</option>
+              <option value="#000000">Sable</option>
+              <option value="#EF61C6">Púrpura</option>
             </select>
           </div>
           <!--<div id="colores11" class="colores">
@@ -152,7 +163,8 @@
 <script>
   var base = -1;
   var particion = -1;
-  var color = -1;
+  var color1Activado, color2Activado, color3Activado, color4Activado = false;
+  var color1Valor, color2Valor, color3Valor, color4Valor = "none";
 
 
   $('select[name="colorpicker-picker-shortlist"]').simplecolorpicker({picker: true, theme: 'glyphicons'});
@@ -176,6 +188,8 @@
 
   function displayColores(item) {
     var id = item.id;
+    var src = item.children[0].src;
+    $("#blank").attr("src", src);
     if(particion != -1) {
       var colores = "#colores" + base + particion;
       $(colores).css("display", "none");
@@ -186,22 +200,57 @@
     if(particion >= 10 && particion < 20) {
       $("#colorParticion1").css("display", "block");
       $("#colorParticion2").css("display", "block");
+      color1Activado = true;
+      color2Activado = true;
     } 
     else if(particion >= 20 && particion < 30) {
       $("#colorParticion1").css("display", "block");
       $("#colorParticion2").css("display", "block");
       $("#colorParticion3").css("display", "block");
+      color1Activado = true;
+      color2Activado = true;
+      color3Activado = true;
     }
     else if(particion >= 30 && particion < 40) {
       $("#colorParticion1").css("display", "block");
       $("#colorParticion2").css("display", "block");
       $("#colorParticion3").css("display", "block");
       $("#colorParticion4").css("display", "block");
+      color1Activado = true;
+      color2Activado = true;
+      color3Activado = true;
+      color4Activado = true;
     }
     
   }
 
   function displayDesign(item) {
-    $("#blank").attr("src", item.src);
+    var id = item.id;
+    if(id == "particion1") {
+      color1Valor = item.value;
+      if(color2Activado) {
+        if(color2Valor != "none") {
+          if(color3Activado) {
+            if(color3Valor != "none") {
+              if(color4Activado) {
+                if(color4Valor != "none") $("#blank").attr("src", src);
+              }
+              else $("#blank").attr("src", src);
+            }
+          }
+          else $("#blank").attr("src", src);
+        }
+      }
+      else $("#blank").attr("src", src);
+    }
+    else if(id == "particion2") {
+      color2Valor = item.value;
+    }
+    else if(id == "particion3") {
+      color3Valor = item.value;
+    }
+    else if(id == "particion4") {
+      color4Valor = item.value;
+    }
   }
 </script>
