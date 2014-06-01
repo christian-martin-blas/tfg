@@ -153,9 +153,8 @@
           </div>-->
         </div>
         <div id="previsualization" class="col-md-8">
-          <figure class="tint"> 
-            <img id="blank" src="./img/particiones/base 1/Parte 1.1.png" onload="getPixels(this)" onClick="changeColor()">
-          </figure>
+          <img id="back" src="./img/bases/Base 1.png" >
+          <img id="blank" src="./img/particiones/base 1/Particion 1.png" onload="getPixels(this)" onClick="changeColor(0)">
         </div>
       </div>
     </div> 
@@ -169,6 +168,7 @@
   var color1Valor, color2Valor, color3Valor, color4Valor = "none";
 
   var blank = document.getElementById("blank");
+  var back = document.getElementById("back");
   var canvas = document.createElement("canvas");
   var ctx = canvas.getContext("2d");
   var originalPixels = null;
@@ -185,12 +185,12 @@
       img.onload = null;
   }
 
-  function changeColor()  {
+  function changeColor(r)  {
       if(!originalPixels) return; // Check if image has loaded
       var newColor = {
-        R: 150,
+        R: r,
         G: 0,
-        B: 0,
+        B: 256,
       };
 
       for(var I = 0, L = originalPixels.data.length; I < L; I += 4)
