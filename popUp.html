@@ -56,10 +56,9 @@
           <div id="colorParticion1">
             Partición 1:
             <select id="particion1" name="colorpicker-picker-shortlist"  onchange="changeColor(this);">
-              <option id="noColorPart1" value="#808080">Sin Color</option>
+              <option value="#F5F5F5">Plata(Blanco)</option>
               <option value="#FCDD09" >Oro(Amarillo)</option>
               <option value="#BFAF3F">Oro</option>
-              <option value="#F5F5F5">Plata(Blanco)</option>
               <option value="#C2C1BD">Plata</option>
               <option value="#008AF0">Azur</option>
               <option value="#FF2611">Gules</option>
@@ -71,10 +70,9 @@
           <div id="colorParticion2">
             Partición 2:
             <select id="particion2" name="colorpicker-picker-shortlist" onchange="changeColor(this);">
-              <option id="noColorPart2" value="#808080">Sin Color</option>
+              <option value="#F5F5F5">Plata(Blanco)</option>
               <option value="#FCDD09">Oro(Amarillo)</option>
               <option value="#BFAF3F">Oro</option>
-              <option value="#F5F5F5">Plata(Blanco)</option>
               <option value="#C2C1BD">Plata</option>
               <option value="#008AF0">Azur</option>
               <option value="#FF2611">Gules</option>
@@ -86,10 +84,9 @@
           <div id="colorParticion3">
             Partición 3:
             <select id="particion3" name="colorpicker-picker-shortlist" onchange="changeColor(this);">
-              <option id="noColorPart3" value="#808080">Sin Color</option>
+              <option value="#F5F5F5">Plata(Blanco)</option>
               <option value="#FCDD09">Oro(Amarillo)</option>
               <option value="#BFAF3F">Oro</option>
-              <option value="#F5F5F5">Plata(Blanco)</option>
               <option value="#C2C1BD">Plata</option>
               <option value="#008AF0">Azur</option>
               <option value="#FF2611">Gules</option>
@@ -101,10 +98,9 @@
           <div id="colorParticion4">
             Partición 4:
             <select id="particion4" name="colorpicker-picker-shortlist" onchange="changeColor(this);">
-              <option id="noColorPart4" value="#808080">Sin Color</option>
+              <option value="#F5F5F5">Plata(Blanco)</option>
               <option value="#FCDD09">Oro(Amarillo)</option>
               <option value="#BFAF3F">Oro</option>
-              <option value="#F5F5F5">Plata(Blanco)</option>
               <option value="#C2C1BD">Plata</option>
               <option value="#008AF0">Azur</option>
               <option value="#FF2611">Gules</option>
@@ -131,10 +127,9 @@
 
 <script>
 
-var selector =  " <option id='noColorPart1' value='#808080'>Sin Color</option>" +
+var selector =  " <option value='#F5F5F5'>Plata(Blanco)</option> " +
                 " <option value='#FCDD09'>Oro(Amarillo)</option> " +
                 " <option value='#BFAF3F'>Oro</option> " +
-                " <option value='#F5F5F5'>Plata(Blanco)</option> " +
                 " <option value='#C2C1BD'>Plata</option> " +
                 " <option value='#008AF0'>Azur</option> " +
                 " <option value='#FF2611'>Gules</option> " +
@@ -222,7 +217,6 @@ var srcBack = null;
   }
 
 
-//TODO: Cambiar para que cambie el color de la partición elegida
   function changeColor(select)  {
     //Compruebo que las imagenes se han cargado
     if(select.id == 'particion1' && !originalPixelsBack) return;
