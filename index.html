@@ -63,13 +63,6 @@
   			margin-top: 40px;
         margin-bottom: 40px;
   		}
-      #blank {
-        position: absolute;
-        left: 50%;
-        top: 50%; 
-        margin-left: -110px;
-        margin-top: -110px;
-      }
       #back {
         position: absolute;
         left: 50%;
@@ -121,6 +114,14 @@
         padding: 5px;
         display: none;
       }
+      #workspace {
+        width: 533px;
+        height: 350px;
+        margin-top: 20px;
+        background-color: white;
+        border-style: solid;
+        border-width: 5px;
+      }
   	</style>
 
   </head>
@@ -149,6 +150,7 @@
         <button id="buttonPopUp" onclick="openPopUp()">Nuevo Escudo</button>
         <button id="buttonPopUp" onclick="openPopUp()">Guardar Escudo</button>
         <button id="buttonPopUp" onclick="openPopUp()">Cargar Escudo</button>
+        <img id="workspace"></img>
       </div>
 
     </div>

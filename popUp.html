@@ -224,6 +224,7 @@ var srcBack = null;
       B: hexToB(select.value),
     };
     if(select.id == 'particion1') {
+      console.log(originalPixelsBack);
       for(var I = 0, L = originalPixelsBack.data.length; I < L; I += 4)
       {
         if(currentPixelsBack.data[I + 3] > 0) // If it's not a transparent pixel
@@ -237,6 +238,7 @@ var srcBack = null;
       backImg.src = canvas.toDataURL("image/png");
     } 
     if(select.id == 'particion2') {
+      console.log(originalPixelsPart1);
       for(var I = 0, L = originalPixelsPart1.data.length; I < L; I += 4)
       {
         if(currentPixelsPart1.data[I + 3] > 0) // If it's not a transparent pixel
@@ -317,7 +319,6 @@ var srcBack = null;
   function displayColores(item) {
     var id = item.id;
     var src = item.children[0].src;
-    //$("#blank").attr("src", src);
     //Reset de los colores
     if(particion != -1) {
       $("#back").attr("src", srcBack);
@@ -333,7 +334,9 @@ var srcBack = null;
       $("#colorParticion1").css("display", "block");
       $("#colorParticion2").css("display", "block");
       getPixels(backImg);
-      getPixels(part1Img);
+      $("#part1").on('load', function(){
+        getPixels(part1Img);
+      });
     }
     else  {
       var srcPart1 = src.substr(0, src.length - 5) + "6.png";
@@ -347,9 +350,15 @@ var srcBack = null;
       $("#colorParticion3").css("display", "block");
       $("#colorParticion4").css("display", "block");
       getPixels(backImg);
-      getPixels(part1Img);
-      getPixels(part2Img);
-      getPixels(part3Img);
+      $("#part1").on('load', function(){
+        getPixels(part1Img);
+      });
+      $("#part2").on('load', function(){
+        getPixels(part2Img);
+      });
+      $("#part3").on('load', function(){
+        getPixels(part3Img);
+      });
     }
     
   }
