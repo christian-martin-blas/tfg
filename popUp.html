@@ -111,10 +111,6 @@
           </div>
         </div>
         <div id="previsualization" class="col-md-8">
-          <!--img id="back" src="./img/bases/Base 1.png" >
-          <img id="blank" src="./img/particiones/base 1/Particion 1.png" onload="getPixels(this)" onClick="changeColor(0)"-->
-          <!--img id="particion2" src="./img/particiones/base 1/Particion 1.png" onload="getPixels(this)" onClick="changeColor(0)">
-          <img id="particion3" src="./img/particiones/base 1/Particion 1.png" onload="getPixels(this)" onClick="changeColor(0)"-->
           <img id="back">
           <img id="part1">
           <img id="part2">
@@ -143,8 +139,6 @@ var srcBack = null;
 //Variables para cargar imágenes
   var base = -1;
   var particion = -1;
-  var color1Activado, color2Activado, color3Activado, color4Activado = false;
-  var color1Valor, color2Valor, color3Valor, color4Valor = "none";
 
 //Variables de las imagenes
   var backImg = document.getElementById("back");
@@ -332,6 +326,7 @@ var srcBack = null;
     }
     particion = item.id.substr(id.length - 1);
     //var colores = "#colores" + base + particion;
+
     if(particion < 5) {
       var srcPart1 = src.substr(0, src.length - 4) + ".png";
       $("#part1").attr("src", srcPart1);
@@ -339,8 +334,6 @@ var srcBack = null;
       $("#colorParticion2").css("display", "block");
       getPixels(backImg);
       getPixels(part1Img);
-      color1Activado = true;
-      color2Activado = true;
     }
     else  {
       var srcPart1 = src.substr(0, src.length - 5) + "6.png";
@@ -357,43 +350,8 @@ var srcBack = null;
       getPixels(part1Img);
       getPixels(part2Img);
       getPixels(part3Img);
-      color1Activado = true;
-      color2Activado = true;
-      color3Activado = true;
-      color4Activado = true;
     }
     
-  }
-
-
-  function displayDesign(item) {
-    var id = item.id;
-    if(id == "particion1") {
-      color1Valor = item.value;
-      if(color2Activado) {
-        if(color2Valor != "none") {
-          if(color3Activado) {
-            if(color3Valor != "none") {
-              if(color4Activado) {
-                if(color4Valor != "none") $("#blank").attr("src", src);
-              }
-              else $("#blank").attr("src", src);
-            }
-          }
-          else $("#blank").attr("src", src);
-        }
-      }
-      else $("#blank").attr("src", src);
-    }
-    else if(id == "particion2") {
-      color2Valor = item.value;
-    }
-    else if(id == "particion3") {
-      color3Valor = item.value;
-    }
-    else if(id == "particion4") {
-      color4Valor = item.value;
-    }
   }
 
 //Funciones para cambiar de hexadecimal a RGB
@@ -402,44 +360,4 @@ var srcBack = null;
   function hexToB(h) {return parseInt((cutHex(h)).substring(4,6),16)}
   function cutHex(h) {return (h.charAt(0)=="#") ? h.substring(1,7):h}
 
-
-  /*function displayColores(item) {
-    console.log(item.children[0].src);
-    var id = item.id;
-    var src = item.children[0].src;
-    //$("#blank").attr("src", src);
-    $("#part1").attr("src", src);
-    if(particion != -1) {
-      var colores = "#colores" + base + particion;
-      $(colores).css("display", "none");
-      particion = -1;
-    }
-    particion = item.id.substr(id.length - 2);
-    //var colores = "#colores" + base + particion;
-    if(particion >= 10 && particion < 20) {
-      $("#colorParticion1").css("display", "block");
-      $("#colorParticion2").css("display", "block");
-      color1Activado = true;
-      color2Activado = true;
-    } 
-    else if(particion >= 20 && particion < 30) {
-      $("#colorParticion1").css("display", "block");
-      $("#colorParticion2").css("display", "block");
-      $("#colorParticion3").css("display", "block");
-      color1Activado = true;
-      color2Activado = true;
-      color3Activado = true;
-    }
-    else if(particion >= 30 && particion < 40) {
-      $("#colorParticion1").css("display", "block");
-      $("#colorParticion2").css("display", "block");
-      $("#colorParticion3").css("display", "block");
-      $("#colorParticion4").css("display", "block");
-      color1Activado = true;
-      color2Activado = true;
-      color3Activado = true;
-      color4Activado = true;
-    }
-    
-  }*/
 </script>
