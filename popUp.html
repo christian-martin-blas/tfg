@@ -28,13 +28,16 @@
             <h4>Particiones</h4>
             <div id="imagenesParticiones">
               <div id="particion11" class="col-md-5" onClick="displayColores(this)">
-                <img src="./img/particiones/base 1/Particion 1.jpg" class="design">
+                <img src="./img/particiones/base 1/Particion 1.png" class="design">
               </div>
               <div id="particion12" class="col-md-5" onClick="displayColores(this)">
                 <img src="./img/particiones/base 1/Particion 2.jpg" class="design">
               </div>
               <div id="particion13" class="col-md-5" onClick="displayColores(this)">
                 <img src="./img/particiones/base 1/Particion 3.jpg" class="design">
+              </div>
+              <div id="particion14" class="col-md-5" onClick="displayColores(this)">
+                <img src="./img/particiones/base 1/Particion 4.jpg" class="design">
               </div>
             </div>
           </div>
@@ -185,17 +188,21 @@ var srcBack = null;
   }
 
   function resetColor() { 
+    console.log("Part: " + particion);
     var elem1 = document.getElementById("colorParticion1").children[0];
     var elem2 = document.getElementById("colorParticion1").children[1];
     elem1.parentNode.removeChild(elem1);
     elem2.parentNode.removeChild(elem2);
-    elem1 = document.getElementById("colorParticion2").children[0];
-    elem2 = document.getElementById("colorParticion2").children[1];
-    elem1.parentNode.removeChild(elem1);
-    elem2.parentNode.removeChild(elem2);
     $('#colorParticion1').append("<select id='particion1' name='colorpicker-picker-shortlist'  onchange='changeColor(this);''>" + selector + "</select>");
-    $('#colorParticion2').append("<select id='particion2' name='colorpicker-picker-shortlist'  onchange='changeColor(this);''>" + selector + "</select>");
-    if (particion >= 5) {
+    
+    if(particion > 1 && particion < 5) {
+      elem1 = document.getElementById("colorParticion2").children[0];
+      elem2 = document.getElementById("colorParticion2").children[1];
+      elem1.parentNode.removeChild(elem1);
+      elem2.parentNode.removeChild(elem2);
+      $('#colorParticion2').append("<select id='particion2' name='colorpicker-picker-shortlist'  onchange='changeColor(this);''>" + selector + "</select>");
+    }
+    else if (particion >= 5) {
       elem1 = document.getElementById("colorParticion3").children[0];
       elem2 = document.getElementById("colorParticion3").children[1];
       elem1.parentNode.removeChild(elem1);
@@ -224,7 +231,6 @@ var srcBack = null;
       B: hexToB(select.value),
     };
     if(select.id == 'particion1') {
-      console.log(originalPixelsBack);
       for(var I = 0, L = originalPixelsBack.data.length; I < L; I += 4)
       {
         if(currentPixelsBack.data[I + 3] > 0) // If it's not a transparent pixel
@@ -238,7 +244,6 @@ var srcBack = null;
       backImg.src = canvas.toDataURL("image/png");
     } 
     if(select.id == 'particion2') {
-      console.log(originalPixelsPart1);
       for(var I = 0, L = originalPixelsPart1.data.length; I < L; I += 4)
       {
         if(currentPixelsPart1.data[I + 3] > 0) // If it's not a transparent pixel
@@ -290,12 +295,11 @@ var srcBack = null;
     $("#back").attr("src", src);
     //Limpieza de colores y particiones
     if(particion != -1) {
-      if(particion != 5) {
-        $("#colorParticion1").css("display", "none");
+      $("#colorParticion1").css("display", "none");
+      if(particion > 1 && particion != 5) {
         $("#colorParticion2").css("display", "none");
       }
       else {
-        $("#colorParticion1").css("display", "none");
         $("#colorParticion2").css("display", "none");
         $("#colorParticion3").css("display", "none");
         $("#colorParticion4").css("display", "none");
@@ -322,17 +326,26 @@ var srcBack = null;
     //Reset de los colores
     if(particion != -1) {
       $("#back").attr("src", srcBack);
-      resetColor(particion);      
+      resetColor();      
       particion = -1;
     }
     particion = item.id.substr(id.length - 1);
     //var colores = "#colores" + base + particion;
 
-    if(particion < 5) {
+    if(particion == 1) {
+      $("#colorParticion1").css("display", "block");
+      $("#colorParticion2").css("display", "none");
+      $("#colorParticion3").css("display", "none");
+      $("#colorParticion4").css("display", "none");
+      getPixels(backImg);
+    }
+    else if(particion < 5) {
       var srcPart1 = src.substr(0, src.length - 4) + ".png";
       $("#part1").attr("src", srcPart1);
       $("#colorParticion1").css("display", "block");
       $("#colorParticion2").css("display", "block");
+      $("#colorParticion3").css("display", "none");
+      $("#colorParticion4").css("display", "none");
       getPixels(backImg);
       $("#part1").on('load', function(){
         getPixels(part1Img);
