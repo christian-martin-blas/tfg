@@ -307,7 +307,6 @@ var srcBack = null;
       $("#part1").attr("src", "");
       $("#part2").attr("src", "");
       $("#part3").attr("src", "");
-      $("#part4").attr("src", "");
       particion = -1;
     }
     if(base != -1) {
@@ -326,6 +325,9 @@ var srcBack = null;
     //Reset de los colores
     if(particion != -1) {
       $("#back").attr("src", srcBack);
+      $("#part1").attr("src", "");
+      $("#part2").attr("src", "");
+      $("#part3").attr("src", "");
       resetColor();      
       particion = -1;
     }

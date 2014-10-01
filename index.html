@@ -13,6 +13,9 @@
       <script src="./lib/js/jquery.simplecolorpicker.js"></script>
 
   	  <style>
+      html {
+        max-width: 1500px;
+      }
   		.container {
   			background-color: grey;
   			width: 800px;
@@ -179,7 +182,24 @@
   			"Cancelar": function() {
   				$( this ).dialog( "close" );
   			}
-  		}
+  		},
+      close: function( event, ui ) {
+        $("#back").attr("src", "");
+        $("#part1").attr("src", "");
+        $("#part2").attr("src", "");
+        $("#part3").attr("src", "");
+        $("#particiones1").css("display", "none");
+        $("#particiones2").css("display", "none");
+        $("#particiones3").css("display", "none");
+        $("#particiones4").css("display", "none");
+        $("#particiones5").css("display", "none");
+        $("#particiones6").css("display", "none");
+        resetColor();
+        $("#colorParticion1").css("display", "none");
+        $("#colorParticion2").css("display", "none");
+        $("#colorParticion3").css("display", "none");
+        $("#colorParticion4").css("display", "none");
+      }
   	})
 
   function openPopUp() {
