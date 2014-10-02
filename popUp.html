@@ -290,10 +290,11 @@ var particion = -1;
     var src = item.children[0].src;
     srcBack = src;
     $("#back").attr("src", src);
+    getPixels(backImg);
     //Limpieza de colores y particiones
     if(particion != -1) {
       $("#colorParticion1").css("display", "none");
-      if(particion > 1 && particion != 5) {
+      if(particion > 1 && particion != 6) {
         $("#colorParticion2").css("display", "none");
       }
       else {
@@ -338,7 +339,7 @@ var particion = -1;
       $("#colorParticion4").css("display", "none");
       getPixels(backImg);
     }
-    else if(particion < 5) {
+    else if(particion < 6) {
       var srcPart1 = src.substr(0, src.length - 4) + ".png";
       $("#part1").attr("src", srcPart1);
       $("#colorParticion1").css("display", "block");
