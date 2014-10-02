@@ -134,6 +134,7 @@
       img.figures {
         height: 100px;
         padding: 5px;
+        cursor: pointer;
       }
   	</style>
 
@@ -147,16 +148,16 @@
           <h3>Imágenes Animales</h3>
           <div id="animales">
             <div id="animal1" class="col-md-5">
-              <img id="aguila" src="./img/animales/aguila.png" class="figures"/>
+              <img id="aguila" src="./img/animales/aguila.png" class="figures" onClick="addImage(this)"/>
             </div>
             <div id="animal2" class="col-md-5">
-              <img id="cabrapie" src="./img/animales/cabrapie.png" class="figures"/>
+              <img id="cabrapie" src="./img/animales/cabrapie.png" class="figures" onClick="addImage(this)"/>
             </div>
             <div id="animal3" class="col-md-5">
-              <img id="halcon" src="./img/animales/halcon.png" class="figures"/>
+              <img id="halcon" src="./img/animales/halcon.png" class="figures" onClick="addImage(this)"/>
             </div>
             <div id="animal4" class="col-md-5">
-              <img id="leon" src="./img/animales/leon.png" class="figures"/>
+              <img id="leon" src="./img/animales/leon.png" class="figures" onClick="addImage(this)"/>
             </div>
             
           </div>
@@ -191,6 +192,8 @@
   //Variables para canvas
   var canvas = document.createElement("canvas");
   var ctx = canvas.getContext("2d");
+
+  var workspace = document.getElementById("workspace");
 
   $(function(){
     $ ("#popUp").load("popUp.html");
@@ -256,6 +259,16 @@
 
     });
   });
+
+  function addImage(item) {
+    console.log(item);
+    var oImg=document.createElement("img");
+    oImg.setAttribute('src', item.src);
+    /*oImg.setAttribute('alt', 'na');
+    oImg.setAttribute('height', '1px');
+    oImg.setAttribute('width', '1px');*/
+    workspace.appendChild(oImg);
+  }
 
   </script>
 
