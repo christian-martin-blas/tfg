@@ -125,6 +125,20 @@
         border-style: solid;
         border-width: 5px;
       }
+      #shield {
+        /*width: 219px;
+        height: 242px;
+        position: absolute;
+        left: 50%;
+        top: 50%; 
+        margin-left: -260px;
+        margin-top: -100px;*/
+
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+      }
   	</style>
 
   </head>
@@ -153,7 +167,9 @@
         <button id="buttonPopUp" onclick="openPopUp()">Nuevo Escudo</button>
         <button id="buttonPopUp" onclick="openPopUp()">Guardar Escudo</button>
         <button id="buttonPopUp" onclick="openPopUp()">Cargar Escudo</button>
-        <img id="workspace"></img>
+        <div id="workspace">
+          <img id="shield"/>
+        </div>
       </div>
 
     </div>
@@ -164,6 +180,9 @@
   </body>
 
   <script>
+  //Variables para canvas
+  var canvas = document.createElement("canvas");
+  var ctx = canvas.getContext("2d");
 
   $(function(){
     $ ("#popUp").load("popUp.html");
@@ -177,7 +196,24 @@
   		modal: true,
   		buttons: {
   			"Crear forma": function() {
-
+          console.log(particion);
+          if(particion == 1) {
+            ctx.drawImage(backImg, 0, 0);
+            shield.src = canvas.toDataURL("image/png");
+          }
+          else if(particion < 6) {
+            ctx.drawImage(backImg, 0, 0);
+            ctx.drawImage(part1Img, 0, 0);
+            shield.src = canvas.toDataURL("image/png");
+          }
+          else if(particion == 6) {
+            ctx.drawImage(backImg, 0, 0);
+            ctx.drawImage(part1Img, 0, 0);
+            ctx.drawImage(part2Img, 0, 0);
+            ctx.drawImage(part3Img, 0, 0);
+            shield.src = canvas.toDataURL("image/png");
+          }
+          $( this ).dialog( "close" );
   			},
   			"Cancelar": function() {
   				$( this ).dialog( "close" );

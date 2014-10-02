@@ -140,17 +140,14 @@ var selector =  " <option value='#F5F5F5'>Plata(Blanco)</option> " +
 var srcBack = null;
 
 //Variables para cargar imágenes
-  var base = -1;
-  var particion = -1;
+var base = -1;
+var particion = -1;
 
 //Variables de las imagenes
   var backImg = document.getElementById("back");
   var part1Img = document.getElementById("part1");
   var part2Img = document.getElementById("part2");
   var part3Img = document.getElementById("part3");
-
-  var canvas = document.createElement("canvas");
-  var ctx = canvas.getContext("2d");
 
 //Variables para el cambio de color
   var originalPixelsBack = null;
@@ -195,14 +192,14 @@ var srcBack = null;
     elem2.parentNode.removeChild(elem2);
     $('#colorParticion1').append("<select id='particion1' name='colorpicker-picker-shortlist'  onchange='changeColor(this);''>" + selector + "</select>");
     
-    if(particion > 1 && particion < 5) {
+    if(particion > 1 && particion < 6) {
       elem1 = document.getElementById("colorParticion2").children[0];
       elem2 = document.getElementById("colorParticion2").children[1];
       elem1.parentNode.removeChild(elem1);
       elem2.parentNode.removeChild(elem2);
       $('#colorParticion2').append("<select id='particion2' name='colorpicker-picker-shortlist'  onchange='changeColor(this);''>" + selector + "</select>");
     }
-    else if (particion >= 5) {
+    else if (particion >= 6) {
       elem1 = document.getElementById("colorParticion3").children[0];
       elem2 = document.getElementById("colorParticion3").children[1];
       elem1.parentNode.removeChild(elem1);
