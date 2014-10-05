@@ -190,6 +190,16 @@
 
   </body>
 
+  <div id="dialogConfirm" title="¿Deseas borrar el diseño actual?">
+    <p>
+      <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Se borrará completamente el diseño actual del escudo. 
+    </p>
+    <b>
+      ¿Estás seguro que deseas borrar el diseño?
+    </b>
+
+  </div>
+
   <script>
   //Variables para canvas
   var canvas = document.createElement("canvas");
@@ -212,29 +222,29 @@
           var c = document.getElementById("mainCanvas");
           var mainCtx = c.getContext("2d");          
           if(particion == 1 || particion == -1) {
-            mainCtx.drawImage(backImg, 0, 0);
+            mainCtx.drawImage(backImg, 150, 50);
             var src = c.toDataURL("image/png");
             fabric.Image.fromURL(src, function(img) {
-              mainCanvas.add(img.set({ left: 150, top: 50, selectable: false, hasControls: false, evented: false}));
+              mainCanvas.add(img.set({ left: 0, top: 0, selectable: false, hasControls: false, evented: false}));
             });
           }
           else if(particion < 6) {
-            mainCtx.drawImage(backImg, 0, 0);
-            mainCtx.drawImage(part1Img, 0, 0);
+            mainCtx.drawImage(backImg, 150, 50);
+            mainCtx.drawImage(part1Img, 150, 50);
             var src = c.toDataURL("image/png");
             console.log(src);
             fabric.Image.fromURL(src, function(img) {
-              mainCanvas.add(img.set({ left: 150, top: 50, selectable: false, hasControls: false, evented: false}));
+              mainCanvas.add(img.set({ left: 0, top: 0, selectable: false, hasControls: false, evented: false}));
             });
           }
           else if(particion == 6) {
-            mainCtx.drawImage(backImg, 0, 0);
-            mainCtx.drawImage(part1Img, 0, 0);
-            mainCtx.drawImage(part2Img, 0, 0);
-            mainCtx.drawImage(part3Img, 0, 0);
+            mainCtx.drawImage(backImg, 150, 50);
+            mainCtx.drawImage(part1Img, 150, 50);
+            mainCtx.drawImage(part2Img, 150, 50);
+            mainCtx.drawImage(part3Img, 150, 50);
             var src = c.toDataURL("image/png");
             fabric.Image.fromURL(src, function(img) {
-              mainCanvas.add(img.set({ left: 150, top: 50, selectable: false, hasControls: false, evented: false}));
+              mainCanvas.add(img.set({ left: 0, top: 0, selectable: false, hasControls: false, evented: false}));
             });
           }
           $( this ).dialog( "close" );
@@ -262,11 +272,34 @@
       }
   	})
 
+
+    $( "#dialogConfirm" ).dialog({
+      autoOpen: false,
+      resizable: true,
+      height: "auto",
+      width: "auto",
+      modal: true,
+      buttons: {
+        "Aceptar": function() {
+           while(mainCanvas.item(0) != undefined) {
+            mainCanvas.remove(mainCanvas.item(0));
+          }
+          $( this ).dialog( "close" );
+          $("#popUp").dialog("open");
+        },
+        "Cancelar": function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+
+
   function openPopUp() {
-    while(mainCanvas.item(0) != undefined) {
-      mainCanvas.remove(mainCanvas.item(0));
+    if(mainCanvas.item(0) != undefined) {
+      $("#dialogConfirm").dialog("open");
     }
-  	$("#popUp").dialog("open");
+  	else 
+      $("#popUp").dialog("open");
   }
 
 
@@ -277,7 +310,6 @@
   });
 
   function addImage(item) {
-    console.log(item);
     var imgElement = document.getElementById(item.id);
     var imgInstance = new fabric.Image(imgElement, {
       left: 150,
