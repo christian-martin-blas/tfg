@@ -11,6 +11,7 @@
   	  <script src="./lib/js/bootstrap.js"></script>
   	  <script src="./lib/js/jquery-ui-1.10.4.custom.js"></script>
       <script src="./lib/js/jquery.simplecolorpicker.js"></script>
+      <script src="./lib/js/fabric.js"></script>
 
   	  <style>
       html {
@@ -177,7 +178,8 @@
         <button id="buttonPopUp" onclick="openPopUp()">Guardar Escudo</button>
         <button id="buttonPopUp" onclick="openPopUp()">Cargar Escudo</button>
         <div id="workspace">
-          <img id="shield"/>
+          <canvas id="mainCanvas" width="523" height="340">
+          </canvas>
         </div>
       </div>
 
@@ -207,21 +209,23 @@
   		modal: true,
   		buttons: {
   			"Crear forma": function() {
+          var c = document.getElementById("mainCanvas");
+          var mainCtx = c.getContext("2d");
           console.log(particion);
-          if(particion == 1) {
-            ctx.drawImage(backImg, 0, 0);
-            shield.src = canvas.toDataURL("image/png");
+          if(particion == 1 || particion == -1) {
+            mainCtx.drawImage(backImg, 150, 50);
+            //shield.src = canvas.toDataURL("image/png");
           }
           else if(particion < 6) {
-            ctx.drawImage(backImg, 0, 0);
-            ctx.drawImage(part1Img, 0, 0);
+            mainCtx.drawImage(backImg, 150, 50);
+            mainCtx.drawImage(part1Img,150, 50);
             shield.src = canvas.toDataURL("image/png");
           }
           else if(particion == 6) {
-            ctx.drawImage(backImg, 0, 0);
-            ctx.drawImage(part1Img, 0, 0);
-            ctx.drawImage(part2Img, 0, 0);
-            ctx.drawImage(part3Img, 0, 0);
+            mainCtx.drawImage(backImg, 150, 50);
+            mainCtx.drawImage(part1Img, 150, 50);
+            mainCtx.drawImage(part2Img, 150, 50);
+            mainCtx.drawImage(part3Img, 150, 50);
             shield.src = canvas.toDataURL("image/png");
           }
           $( this ).dialog( "close" );
@@ -262,12 +266,15 @@
 
   function addImage(item) {
     console.log(item);
-    var oImg=document.createElement("img");
-    oImg.setAttribute('src', item.src);
-    /*oImg.setAttribute('alt', 'na');
-    oImg.setAttribute('height', '1px');
-    oImg.setAttribute('width', '1px');*/
-    workspace.appendChild(oImg);
+    var canvas = new fabric.Canvas('mainCanvas');
+    var imgElement = document.getElementById(item.id);
+    var imgInstance = new fabric.Image(imgElement, {
+      left: 100,
+      top: 100,
+      angle: 30,
+      opacity: 0.85
+    });
+    canvas.add(imgInstance);
   }
 
   </script>
