@@ -263,6 +263,9 @@
   	})
 
   function openPopUp() {
+    while(mainCanvas.item(0) != undefined) {
+      mainCanvas.remove(mainCanvas.item(0));
+    }
   	$("#popUp").dialog("open");
   }
 
