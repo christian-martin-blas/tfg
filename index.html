@@ -194,7 +194,7 @@
   //Variables para canvas
   var canvas = document.createElement("canvas");
   var ctx = canvas.getContext("2d");
-
+  var mainCanvas = new fabric.Canvas('mainCanvas');
   var workspace = document.getElementById("workspace");
 
   $(function(){
@@ -210,23 +210,32 @@
   		buttons: {
   			"Crear forma": function() {
           var c = document.getElementById("mainCanvas");
-          var mainCtx = c.getContext("2d");
-          console.log(particion);
+          var mainCtx = c.getContext("2d");          
           if(particion == 1 || particion == -1) {
-            mainCtx.drawImage(backImg, 150, 50);
-            //shield.src = canvas.toDataURL("image/png");
+            mainCtx.drawImage(backImg, 0, 0);
+            var src = c.toDataURL("image/png");
+            fabric.Image.fromURL(src, function(img) {
+              mainCanvas.add(img.set({ left: 150, top: 50, selectable: false, hasControls: false, evented: false}));
+            });
           }
           else if(particion < 6) {
-            mainCtx.drawImage(backImg, 150, 50);
-            mainCtx.drawImage(part1Img,150, 50);
-            shield.src = canvas.toDataURL("image/png");
+            mainCtx.drawImage(backImg, 0, 0);
+            mainCtx.drawImage(part1Img, 0, 0);
+            var src = c.toDataURL("image/png");
+            console.log(src);
+            fabric.Image.fromURL(src, function(img) {
+              mainCanvas.add(img.set({ left: 150, top: 50, selectable: false, hasControls: false, evented: false}));
+            });
           }
           else if(particion == 6) {
-            mainCtx.drawImage(backImg, 150, 50);
-            mainCtx.drawImage(part1Img, 150, 50);
-            mainCtx.drawImage(part2Img, 150, 50);
-            mainCtx.drawImage(part3Img, 150, 50);
-            shield.src = canvas.toDataURL("image/png");
+            mainCtx.drawImage(backImg, 0, 0);
+            mainCtx.drawImage(part1Img, 0, 0);
+            mainCtx.drawImage(part2Img, 0, 0);
+            mainCtx.drawImage(part3Img, 0, 0);
+            var src = c.toDataURL("image/png");
+            fabric.Image.fromURL(src, function(img) {
+              mainCanvas.add(img.set({ left: 150, top: 50, selectable: false, hasControls: false, evented: false}));
+            });
           }
           $( this ).dialog( "close" );
   			},
@@ -266,15 +275,12 @@
 
   function addImage(item) {
     console.log(item);
-    var canvas = new fabric.Canvas('mainCanvas');
     var imgElement = document.getElementById(item.id);
     var imgInstance = new fabric.Image(imgElement, {
-      left: 100,
-      top: 100,
-      angle: 30,
-      opacity: 0.85
+      left: 150,
+      top: 50
     });
-    canvas.add(imgInstance);
+    mainCanvas.add(imgInstance);
   }
 
   </script>
