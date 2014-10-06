@@ -112,12 +112,11 @@
         display: none;
       }
       #workspace {
-        width: 533px;
+        width: 800px;
         height: 350px;
         margin-top: 20px;
         background-color: white;
-        border-style: solid;
-        border-width: 5px;
+        display: inline-block;
       }
       #shield {
         display: block;
@@ -137,6 +136,41 @@
         padding: 5px;
         cursor: pointer;
       }
+      .controls { 
+        float: left;
+        background: #EAF5FE; 
+        padding-bottom: 15px; 
+        padding-left: 15px; 
+        padding-right: 15px; 
+        border-right: 5px solid #333333; 
+        border-top: 5px solid #333333; 
+        border-bottom: 5px solid #333333; 
+        height: 350px 
+      }
+      #mainCanvas {
+        border-style: solid;
+        border-width: 5px;
+      }
+      .canvas-container {
+        float: left;
+      }
+      .icons {
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
+      }
+      .button {
+        float: left;
+        background: #77AEFF; 
+        margin-left: 2px;
+        margin-right: 2px;
+        margin-bottom: 30px;
+        border-bottom: 2px solid;
+        border-left: 2px solid;
+        border-right: 2px solid;
+      }
+
+
   	</style>
 
   </head>
@@ -168,7 +202,6 @@
           </div>
           <h3>Imágenes Humanas</h3>
           <div id="humanas">
-            
           </div>
         </div>
       </div>
@@ -178,8 +211,33 @@
         <button id="buttonPopUp" onclick="openPopUp()">Guardar Escudo</button>
         <button id="buttonPopUp" onclick="openPopUp()">Cargar Escudo</button>
         <div id="workspace">
-          <canvas id="mainCanvas" width="523" height="340">
+          <canvas id="mainCanvas" width="530" height="350">
           </canvas>
+          <div class="controls">
+              <div id="icons">
+                <div id="delete" class="button" title="Borrar elemento">
+                  <img id="cross" src="./img/icons/crossIcon.png" class="icons" onClick="deleteImage()"/>
+                </div>
+                <div id="up" class="button" title="Subir elemento">
+                  <img id="arrowUp" src="./img/icons/arrowUp.png" class="icons" onClick="upImage()"/>
+                </div>
+                <div id="down" class="button" title="Bajar elemento">
+                  <img id="arrowDown" src="./img/icons/arrowDown.png" class="icons" onClick="downImage()"/>
+                </div>
+              </div>
+              <p>
+                <label><span>Angle:</span> <input type="range" id="angle-control" value="0" min="-90" max="90"></label>
+              </p>
+              <p>
+                <label><span>Left:</span> <input type="range" id="left-control" value="150" min="0" max="300"></label>
+              </p>
+              <p>
+                <label><span>Top:</span> <input type="range" id="top-control" value="150" min="0" max="300"></label>
+              </p>
+              <p>
+                <label><span>Scale:</span> <input type="range" id="scale-control" value="1" min="0.1" max="3" step="0.1"></label>
+              </p>
+          </div>
         </div>
       </div>
 
@@ -316,6 +374,14 @@
       top: 50
     });
     mainCanvas.add(imgInstance);
+    console.log(mainCanvas.get)
+  }
+
+  function deleteImage() {
+    var activeObject = mainCanvas.getActiveObject();
+    if (activeObject) {
+      mainCanvas.remove(activeObject);
+    }
   }
 
   </script>
