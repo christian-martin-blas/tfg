@@ -219,10 +219,10 @@
                   <img id="cross" src="./img/icons/crossIcon.png" class="icons" onClick="deleteImage()"/>
                 </div>
                 <div id="up" class="button" title="Subir elemento">
-                  <img id="arrowUp" src="./img/icons/arrowUp.png" class="icons" onClick="upImage()"/>
+                  <img id="arrowUp" src="./img/icons/arrowUp.png" class="icons" onClick="bringForward()"/>
                 </div>
                 <div id="down" class="button" title="Bajar elemento">
-                  <img id="arrowDown" src="./img/icons/arrowDown.png" class="icons" onClick="downImage()"/>
+                  <img id="arrowDown" src="./img/icons/arrowDown.png" class="icons" onClick="sendBackwards()"/>
                 </div>
               </div>
               <p>
@@ -382,6 +382,62 @@
       mainCanvas.remove(activeObject);
     }
   }
+
+  function bringForward() {
+    var activeObject = mainCanvas.getActiveObject();
+    if (activeObject) {
+      mainCanvas.bringForward(activeObject);
+    }
+  }
+
+  function sendBackwards() {
+     var activeObject = mainCanvas.getActiveObject();
+    if (activeObject) {
+      mainCanvas.sendBackwards(activeObject);
+    }
+  }
+
+  var angleControl = $('angle-control');
+  angleControl.onchange = function() {
+    var activeObject = mainCanvas.getActiveObject();
+    activeObject.setAngle(parseInt(this.value, 10)).setCoords();
+    mainCanvas.renderAll();
+  };
+
+  var scaleControl = $('scale-control');
+  scaleControl.onchange = function() {
+    var activeObject = mainCanvas.getActiveObject();
+    activeObject.scale(parseFloat(this.value)).setCoords();
+    mainCanvas.renderAll();
+  };
+
+  var topControl = $('top-control');
+  topControl.onchange = function() {
+    var activeObject = mainCanvas.getActiveObject();
+    activeObject.setTop(parseInt(this.value, 10)).setCoords();
+    mainCanvas.renderAll();
+  };
+
+  var leftControl = $('left-control');
+  leftControl.onchange = function() {
+    var activeObject = mainCanvas.getActiveObject();
+    activeObject.setLeft(parseInt(this.value, 10)).setCoords();
+    mainCanvas.renderAll();
+  };
+
+  function updateControls() {
+    var activeObject = mainCanvas.getActiveObject();
+    scaleControl.value = activeObject.getScaleX();
+    angleControl.value = activeObject.getAngle();
+    leftControl.value = activeObject.getLeft();
+    topControl.value = activeObject.getTop();
+  }
+  mainCanvas.on({
+    'object:moving': updateControls,
+    'object:scaling': updateControls,
+    'object:resizing': updateControls,
+    'object:rotating': updateControls
+  });
 
   </script>
 
