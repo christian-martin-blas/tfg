@@ -226,16 +226,16 @@
                 </div>
               </div>
               <p>
-                <label><span>Ángulo:</span> <input type="range" id="angle-control" value="0" min="-180" max="180" onChange="updateAngle(this)"></label>
+                <label><span>Ángulo:</span> <input type="number" id="angle-control" value="0" min="-180" max="180" onChange="updateAngle(this)"></label>
               </p>
               <p>
-                <label><span>Horizontal:</span> <input type="range" id="left-control" value="150" min="0" max="530" onChange="updateLeft(this)"></label>
+                <label><span>Horizontal:</span> <input type="number" id="left-control" value="150" min="0" max="530" onChange="updateLeft(this)"></label>
               </p>
               <p>
-                <label><span>Vertical:</span> <input type="range" id="top-control" value="150" min="0" max="350" onChange="updateTop(this)"></label>
+                <label><span>Vertical:</span> <input type="number" id="top-control" value="150" min="0" max="350" onChange="updateTop(this)"></label>
               </p>
               <p>
-                <label><span>Escalar:</span> <input type="range" id="scale-control" value="1" min="0.1" max="3" step="0.1" onChange="updateScale(this)"></label>
+                <label><span>Escalar:</span> <input type="number" id="scale-control" value="1" min="0.1" max="3" step="0.1" onChange="updateScale(this)"></label>
               </p>
               <p>
                 <label>
@@ -444,13 +444,15 @@
   };
 
   function updateControls() {
-    var scaleControl = $("scale-control");
+    var scaleControl = document.getElementById("scale-control");
+    var angleControl = document.getElementById("angle-control");
+    var leftControl = document.getElementById("left-control");
+    var topControl = document.getElementById("top-control");
     var activeObject = mainCanvas.getActiveObject();
-    scaleControl.value = activeObject.getScaleX();
-    //$("scale-control").val(activeObject.getScaleX());
-    $("angle-control").val(activeObject.getAngle());
-    $("left-control").val(activeObject.getLeft());
-    $("top-control").val(activeObject.getTop());
+    scaleControl.setAttribute("value",activeObject.getScaleX());
+    angleControl.setAttribute("value",activeObject.getAngle());
+    leftControl.setAttribute("value",activeObject.getLeft());
+    topControl.setAttribute("value",activeObject.getTop());
   }
   mainCanvas.on({
     'object:moving': updateControls,
