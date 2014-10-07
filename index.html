@@ -226,18 +226,22 @@
                 </div>
               </div>
               <p>
-                <label><span>Ángulo:</span> <input type="range" id="angle-control" value="0" min="-90" max="90"></label>
+                <label><span>Ángulo:</span> <input type="range" id="angle-control" value="0" min="-90" max="90" onChange="updateAngle(this)"></label>
               </p>
               <p>
-                <label><span>Horizontal:</span> <input type="range" id="left-control" value="150" min="0" max="300"></label>
+                <label><span>Horizontal:</span> <input type="range" id="left-control" value="150" min="0" max="300" onChange="updateLeft(this)"></label>
               </p>
               <p>
-                <label><span>Vertical:</span> <input type="range" id="top-control" value="150" min="0" max="300"></label>
+                <label><span>Vertical:</span> <input type="range" id="top-control" value="150" min="0" max="300" onChange="updateTop(this)"></label>
               </p>
               <p>
-                <label><span>Escala:</span> <input type="range" id="scale-control" value="1" min="0.1" max="3" step="0.1"></label>
+                <label><span>Escalar:</span> <input type="range" id="scale-control" value="1" min="0.1" max="3" step="0.1" onChange="updateScale(this)"></label>
               </p>
-              <button type="button" onClick="mirrorImage()">Invertir imagen</button>
+              <p>
+                <label>
+                  <button type="button" onClick="mirrorImage()">Invertir imagen</button>
+                </label>
+              </p>
           </div>
         </div>
       </div>
@@ -268,6 +272,11 @@
 
   $(function(){
     $ ("#popUp").load("popUp.html");
+  });
+
+  $(function(){
+    
+
   });
 
 
@@ -400,46 +409,43 @@
 
   function mirrorImage() {
     var activeObject = mainCanvas.getActiveObject();
+    console.log($('angle-control'));
     if (activeObject) {
       activeObject.set('flipX', true);
       mainCanvas.renderAll();
     }
   }
 
-  var angleControl = $('angle-control');
-  angleControl.onchange = function() {
+  function updateAngle(item) {
     var activeObject = mainCanvas.getActiveObject();
-    activeObject.setAngle(parseInt(this.value, 10)).setCoords();
+    activeObject.setAngle(parseInt(item.value, 10)).setCoords();
     mainCanvas.renderAll();
   };
 
-  var scaleControl = $('scale-control');
-  scaleControl.onchange = function() {
+  function updateScale(item) {
     var activeObject = mainCanvas.getActiveObject();
-    activeObject.scale(parseFloat(this.value)).setCoords();
+    activeObject.scale(parseFloat(item.value)).setCoords();
     mainCanvas.renderAll();
   };
 
-  var topControl = $('top-control');
-  topControl.onchange = function() {
+  function updateTop(item) {
     var activeObject = mainCanvas.getActiveObject();
-    activeObject.setTop(parseInt(this.value, 10)).setCoords();
+    activeObject.setTop(parseInt(item.value, 10)).setCoords();
     mainCanvas.renderAll();
   };
 
-  var leftControl = $('left-control');
-  leftControl.onchange = function() {
+  function updateLeft(item) {
     var activeObject = mainCanvas.getActiveObject();
-    activeObject.setLeft(parseInt(this.value, 10)).setCoords();
+    activeObject.setLeft(parseInt(item.value, 10)).setCoords();
     mainCanvas.renderAll();
   };
 
   function updateControls() {
     var activeObject = mainCanvas.getActiveObject();
-    scaleControl.value = activeObject.getScaleX();
-    angleControl.value = activeObject.getAngle();
-    leftControl.value = activeObject.getLeft();
-    topControl.value = activeObject.getTop();
+    $("scale-control").value = activeObject.getScaleX();
+    $("angle-control").value = activeObject.getAngle();
+    $("left-control").value = activeObject.getLeft();
+    $("top-control").value = activeObject.getTop();
   }
   mainCanvas.on({
     'object:moving': updateControls,
@@ -447,7 +453,6 @@
     'object:resizing': updateControls,
     'object:rotating': updateControls
   });
-
   </script>
 
 </html>
