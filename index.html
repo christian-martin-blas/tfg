@@ -226,13 +226,13 @@
                 </div>
               </div>
               <p>
-                <label><span>Ángulo:</span> <input type="range" id="angle-control" value="0" min="-90" max="90" onChange="updateAngle(this)"></label>
+                <label><span>Ángulo:</span> <input type="range" id="angle-control" value="0" min="-180" max="180" onChange="updateAngle(this)"></label>
               </p>
               <p>
-                <label><span>Horizontal:</span> <input type="range" id="left-control" value="150" min="0" max="300" onChange="updateLeft(this)"></label>
+                <label><span>Horizontal:</span> <input type="range" id="left-control" value="150" min="0" max="530" onChange="updateLeft(this)"></label>
               </p>
               <p>
-                <label><span>Vertical:</span> <input type="range" id="top-control" value="150" min="0" max="300" onChange="updateTop(this)"></label>
+                <label><span>Vertical:</span> <input type="range" id="top-control" value="150" min="0" max="350" onChange="updateTop(this)"></label>
               </p>
               <p>
                 <label><span>Escalar:</span> <input type="range" id="scale-control" value="1" min="0.1" max="3" step="0.1" onChange="updateScale(this)"></label>
@@ -268,6 +268,10 @@
   var canvas = document.createElement("canvas");
   var ctx = canvas.getContext("2d");
   var mainCanvas = new fabric.Canvas('mainCanvas');
+  fabric.Object.prototype.transparentCorners = false;
+  fabric.Object.prototype.cornerSize = 8;
+  fabric.Object.prototype.borderColor = 'black';
+  fabric.Object.prototype.cornerColor= 'black';
   var workspace = document.getElementById("workspace");
 
   $(function(){
@@ -409,7 +413,6 @@
 
   function mirrorImage() {
     var activeObject = mainCanvas.getActiveObject();
-    console.log($('angle-control'));
     if (activeObject) {
       activeObject.set('flipX', true);
       mainCanvas.renderAll();
@@ -441,11 +444,13 @@
   };
 
   function updateControls() {
+    var scaleControl = $("scale-control");
     var activeObject = mainCanvas.getActiveObject();
-    $("scale-control").value = activeObject.getScaleX();
-    $("angle-control").value = activeObject.getAngle();
-    $("left-control").value = activeObject.getLeft();
-    $("top-control").value = activeObject.getTop();
+    scaleControl.value = activeObject.getScaleX();
+    //$("scale-control").val(activeObject.getScaleX());
+    $("angle-control").val(activeObject.getAngle());
+    $("left-control").val(activeObject.getLeft());
+    $("top-control").val(activeObject.getTop());
   }
   mainCanvas.on({
     'object:moving': updateControls,
