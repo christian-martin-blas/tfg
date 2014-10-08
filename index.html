@@ -421,7 +421,8 @@
 
   function updateAngle(item) {
     var activeObject = mainCanvas.getActiveObject();
-    activeObject.setAngle(parseInt(item.value, 10)).setCoords();
+    if(activeObject.getAngle() > 360) activeObject.setAngle(parseInt(item.value + 360, 10)).setCoords();
+    else activeObject.setAngle(parseInt(item.value, 10)).setCoords();
     mainCanvas.renderAll();
   };
 
@@ -450,7 +451,8 @@
     var topControl = document.getElementById("top-control");
     var activeObject = mainCanvas.getActiveObject();
     scaleControl.setAttribute("value",activeObject.getScaleX().toFixed(2));
-    angleControl.setAttribute("value",activeObject.getAngle().toFixed());
+    if(activeObject.getAngle() > 360) angleControl.setAttribute("value",activeObject.getAngle().toFixed()-360);
+    else angleControl.setAttribute("value",activeObject.getAngle().toFixed());
     leftControl.setAttribute("value",activeObject.getLeft().toFixed(0));
     topControl.setAttribute("value",activeObject.getTop().toFixed(0));
   }
