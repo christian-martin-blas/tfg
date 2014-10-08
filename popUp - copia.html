@@ -6,52 +6,52 @@
           <h4>Formas</h4>
           <div id="imagenesFormas">
             <div id="base1" class="col-md-5" onClick="displayParticiones(this)">
-              <img src="./img/bases/Base Apuntado.png"  class="design">
+              <img src="./img/bases/Base 1.png"  class="design">
             </div>
             <div id="base2" class="col-md-5" onClick="displayParticiones(this)">
-              <img src="./img/bases/Base Semicircular.png" class="design">
+              <img src="./img/bases/Base 2.png" class="design">
             </div>
             <div id="base3" class="col-md-5" onClick="displayParticiones(this)">
-              <img src="./img/bases/Base Frances.png" class="design">
+              <img src="./img/bases/Base 3.png" class="design">
             </div>
             <div id="base4" class="col-md-5" onClick="displayParticiones(this)">
-              <img src="./img/bases/Base Ingles.png" class="design">
+              <img src="./img/bases/Base 4.png" class="design">
             </div>
             <div id="base5" class="col-md-5" onClick="displayParticiones(this)">
-              <img src="./img/bases/Base Aleman.png" class="design">
+              <img src="./img/bases/Base 5.png" class="design">
             </div>
             <div id="base6" class="col-md-5" onClick="displayParticiones(this)">
-              <img src="./img/bases/Base Italiano.png" class="design">
+              <img src="./img/bases/Base 6.png" class="design">
             </div>
           </div>
           <div id ="particiones1" class="particiones">
             <h4>Particiones</h4>
             <div id="imagenesParticiones">
-              <div id="particionVacio1" class="col-md-5" onClick="displayColores(this)">
-                <img src="./img/particiones/base apuntado/Vacio.png" class="design">
+              <div id="particion11" class="col-md-5" onClick="displayColores(this)">
+                <img src="./img/particiones/base 1/Particion 1.png" class="design">
               </div>
-              <div id="particionPartido" class="col-md-5" onClick="displayColores(this)">
-                <img src="./img/particiones/base apuntado/Partido.jpg" class="design">
+              <div id="particion12" class="col-md-5" onClick="displayColores(this)">
+                <img src="./img/particiones/base 1/Particion 2.jpg" class="design">
               </div>
-              <div id="particionCortado" class="col-md-5" onClick="displayColores(this)">
-                <img src="./img/particiones/base apuntado/Cortado.jpg" class="design">
+              <div id="particion13" class="col-md-5" onClick="displayColores(this)">
+                <img src="./img/particiones/base 1/Particion 3.jpg" class="design">
               </div>
-              <div id="particionTronchado" class="col-md-5" onClick="displayColores(this)">
-                <img src="./img/particiones/base apuntado/Tronchado.jpg" class="design">
+              <div id="particion14" class="col-md-5" onClick="displayColores(this)">
+                <img src="./img/particiones/base 1/Particion 4.jpg" class="design">
               </div>
             </div>
           </div>
           <div id ="particiones2" class="particiones">
             <h4>Particiones</h4>
             <div id="imagenesParticiones">
-              <div id="particionPartido" class="col-md-5" onClick="displayColores(this)">
-                <img src="./img/particiones/base semicircular/Partido.jpg" class="design">
+              <div id="particion21" class="col-md-5" onClick="displayColores(this)">
+                <img src="./img/particiones/base 2/Particion 1.jpg" class="design">
               </div>
-              <div id="particionCortado" class="col-md-5" onClick="displayColores(this)">
-                <img src="./img/particiones/base semicircular/Cortado.jpg" class="design">
+              <div id="particion22" class="col-md-5" onClick="displayColores(this)">
+                <img src="./img/particiones/base 2/Particion 2.jpg" class="design">
               </div>
-              <div id="particionTronchado" class="col-md-5" onClick="displayColores(this)">
-                <img src="./img/particiones/base semicircular/Tronchado.jpg" class="design">
+              <div id="particion23" class="col-md-5" onClick="displayColores(this)">
+                <img src="./img/particiones/base 2/Particion 3.jpg" class="design">
               </div>
             </div>
           </div>
@@ -177,7 +177,7 @@ var particion = -1;
       originalPixelsPart2 = ctx.getImageData(0, 0, img.width, img.height);
       currentPixelsPart2 = ctx.getImageData(0, 0, img.width, img.height);
     }
-    else if(img.id == "part3") {
+     else if(img.id == "part3") {
       originalPixelsPart3 = ctx.getImageData(0, 0, img.width, img.height);
       currentPixelsPart3 = ctx.getImageData(0, 0, img.width, img.height);
     }
@@ -191,30 +191,14 @@ var particion = -1;
     elem2.parentNode.removeChild(elem2);
     $('#colorParticion1').append("<select id='particion1' name='colorpicker-picker-shortlist'  onchange='changeColor(this);''>" + selector + "</select>");
     
-    if(particion == 2) {
+    if(particion > 1 && particion < 6) {
       elem1 = document.getElementById("colorParticion2").children[0];
       elem2 = document.getElementById("colorParticion2").children[1];
       elem1.parentNode.removeChild(elem1);
       elem2.parentNode.removeChild(elem2);
       $('#colorParticion2').append("<select id='particion2' name='colorpicker-picker-shortlist'  onchange='changeColor(this);''>" + selector + "</select>");
     }
-    else if (particion == 3) {
-      elem1 = document.getElementById("colorParticion2").children[0];
-      elem2 = document.getElementById("colorParticion2").children[1];
-      elem1.parentNode.removeChild(elem1);
-      elem2.parentNode.removeChild(elem2);
-      elem1 = document.getElementById("colorParticion3").children[0];
-      elem2 = document.getElementById("colorParticion3").children[1];
-      elem1.parentNode.removeChild(elem1);
-      elem2.parentNode.removeChild(elem2);
-      $('#colorParticion2').append("<select id='particion2' name='colorpicker-picker-shortlist'  onchange='changeColor(this);''>" + selector + "</select>");
-      $('#colorParticion3').append("<select id='particion3' name='colorpicker-picker-shortlist'  onchange='changeColor(this);''>" + selector + "</select>");
-    }
-    else if (particion == 4) {
-      elem1 = document.getElementById("colorParticion2").children[0];
-      elem2 = document.getElementById("colorParticion2").children[1];
-      elem1.parentNode.removeChild(elem1);
-      elem2.parentNode.removeChild(elem2);
+    else if (particion >= 6) {
       elem1 = document.getElementById("colorParticion3").children[0];
       elem2 = document.getElementById("colorParticion3").children[1];
       elem1.parentNode.removeChild(elem1);
@@ -223,7 +207,6 @@ var particion = -1;
       elem2 = document.getElementById("colorParticion4").children[1];
       elem1.parentNode.removeChild(elem1);
       elem2.parentNode.removeChild(elem2);
-      $('#colorParticion2').append("<select id='particion2' name='colorpicker-picker-shortlist'  onchange='changeColor(this);''>" + selector + "</select>");
       $('#colorParticion3').append("<select id='particion3' name='colorpicker-picker-shortlist'  onchange='changeColor(this);''>" + selector + "</select>");
       $('#colorParticion4').append("<select id='particion4' name='colorpicker-picker-shortlist'  onchange='changeColor(this);''>" + selector + "</select>");
     }
@@ -310,14 +293,10 @@ var particion = -1;
     //Limpieza de colores y particiones
     if(particion != -1) {
       $("#colorParticion1").css("display", "none");
-      if(particion == 2) {
+      if(particion > 1 && particion != 6) {
         $("#colorParticion2").css("display", "none");
       }
-      else if(particion == 3) {
-        $("#colorParticion2").css("display", "none");
-        $("#colorParticion3").css("display", "none");
-      }
-      else if(particion == 4) {
+      else {
         $("#colorParticion2").css("display", "none");
         $("#colorParticion3").css("display", "none");
         $("#colorParticion4").css("display", "none");
@@ -325,7 +304,6 @@ var particion = -1;
       $("#part1").attr("src", "");
       $("#part2").attr("src", "");
       $("#part3").attr("src", "");
-      resetColor();
       particion = -1;
     }
     if(base != -1) {
@@ -342,7 +320,6 @@ var particion = -1;
     var id = item.id;
     var src = item.children[0].src;
     //Reset de los colores
-    console.log(particion);
     if(particion != -1) {
       $("#back").attr("src", srcBack);
       $("#part1").attr("src", "");
@@ -351,8 +328,7 @@ var particion = -1;
       resetColor();      
       particion = -1;
     }
-    if($.isNumeric(item.id.substr(id.length - 1))) particion = item.id.substr(id.length - 1);
-    else particion = 2; 
+    particion = item.id.substr(id.length - 1);
     //var colores = "#colores" + base + particion;
 
     if(particion == 1) {
@@ -362,7 +338,7 @@ var particion = -1;
       $("#colorParticion4").css("display", "none");
       getPixels(backImg);
     }
-    else if(particion == 2) {
+    else if(particion < 6) {
       var srcPart1 = src.substr(0, src.length - 4) + ".png";
       $("#part1").attr("src", srcPart1);
       $("#colorParticion1").css("display", "block");
@@ -372,21 +348,6 @@ var particion = -1;
       getPixels(backImg);
       $("#part1").on('load', function(){
         getPixels(part1Img);
-      });
-    }
-    else if(particion == 3) {
-      var srcPart1 = src.substr(0, src.length - 4) + ".png";
-      $("#part1").attr("src", srcPart1);
-      $("#colorParticion1").css("display", "block");
-      $("#colorParticion2").css("display", "block");
-      $("#colorParticion3").css("display", "block");
-      $("#colorParticion4").css("display", "none");
-      getPixels(backImg);
-      $("#part1").on('load', function(){
-        getPixels(part1Img);
-      });
-      $("#part2").on('load', function(){
-        getPixels(part2Img);
       });
     }
     else  {
