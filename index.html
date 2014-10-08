@@ -449,10 +449,10 @@
     var leftControl = document.getElementById("left-control");
     var topControl = document.getElementById("top-control");
     var activeObject = mainCanvas.getActiveObject();
-    scaleControl.setAttribute("value",activeObject.getScaleX());
-    angleControl.setAttribute("value",activeObject.getAngle());
-    leftControl.setAttribute("value",activeObject.getLeft());
-    topControl.setAttribute("value",activeObject.getTop());
+    scaleControl.setAttribute("value",activeObject.getScaleX().toFixed(2));
+    angleControl.setAttribute("value",activeObject.getAngle().toFixed());
+    leftControl.setAttribute("value",activeObject.getLeft().toFixed(0));
+    topControl.setAttribute("value",activeObject.getTop().toFixed(0));
   }
   mainCanvas.on({
     'object:moving': updateControls,
