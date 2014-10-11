@@ -282,7 +282,7 @@
                   <img id="arrowDown" src="./img/icons/arrowDown.png" class="icons" onClick="sendBackwards()"/>
                 </div>
                 <div id="clone" class="button" title="Copiar elemento">
-                  <img id="copy" src="./img/icons/copy.png" class="icons" onClick="cloneElement()"/>
+                  <img id="copy" src="./img/icons/copyIcon.png" class="icons" onClick="cloneElement()"/>
                 </div>
               </div>
               <p>
@@ -473,7 +473,8 @@
   function mirrorImage() {
     var activeObject = mainCanvas.getActiveObject();
     if (activeObject) {
-      activeObject.set('flipX', true);
+      if(!activeObject.getFlipX()) activeObject.set('flipX', true);
+      else activeObject.set('flipX', false);
       mainCanvas.renderAll();
     }
   }
