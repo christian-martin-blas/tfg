@@ -176,8 +176,9 @@
         background-color: #F2F9FF;
       }
       #fileUploadDiv {
-        border: 1px;
-        border-style: solid;
+        border-style: groove;
+        width: 325px;
+        margin-left: 10px;
       }
       #progress_bar {
         margin: 10px 0;
@@ -197,6 +198,18 @@
         background-color: #99ccff;
         height: auto;
         width: 0;
+      }
+      #files {
+        font-size: 13px;
+        margin: 5px;
+      }
+      #abortUpload {
+        font-size: 13px;
+        margin: 5px;
+        display: none;
+      }
+      #uploadButtons {
+        padding: 5px;
       }
 
   	</style>
@@ -255,10 +268,12 @@
           </div>
 
           <div id="fileUploadDiv">
-            <h4>Cargar una imagen decorativa</h4>
-            <input type="file" id="files" name="file" />
-              <button onclick="abortRead();">Cancelar la subida</button>
+            <div id="uploadButtons">
+              <h4>Cargar una imagen decorativa</h4>
+              <input type="file" id="files" name="file" />
+              <button id="abortUpload" onclick="abortRead();">Cancelar la subida</button>
               <div id="progress_bar"><div class="percent">0%</div></div>
+            </div>
           </div>
       </div>
       </div>
@@ -585,6 +600,7 @@
       }
         
       // Reset progress indicator on new file selection.
+      $("#abortUpload").css("display","block");
       progress.style.width = '0%';
       progress.textContent = '0%';
 
@@ -608,6 +624,7 @@
            progress.style.width = '100%';
           progress.textContent = '100%';
           setTimeout("document.getElementById('progress_bar').className='';", 2000);
+          setTimeout("$('#abortUpload').css('display','none')", 2000);
         };
       })(f);
 
