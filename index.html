@@ -255,8 +255,9 @@
           </div>
 
           <div id="fileUploadDiv">
+            <h4>Cargar una imagen decorativa</h4>
             <input type="file" id="files" name="file" />
-              <button onclick="abortRead();">Cancel read</button>
+              <button onclick="abortRead();">Cancelar la subida</button>
               <div id="progress_bar"><div class="percent">0%</div></div>
           </div>
       </div>
@@ -279,6 +280,9 @@
                 </div>
                 <div id="down" class="button" title="Bajar elemento">
                   <img id="arrowDown" src="./img/icons/arrowDown.png" class="icons" onClick="sendBackwards()"/>
+                </div>
+                <div id="clone" class="button" title="Copiar elemento">
+                  <img id="copy" src="./img/icons/copy.png" class="icons" onClick="cloneElement()"/>
                 </div>
               </div>
               <p>
@@ -470,6 +474,17 @@
     var activeObject = mainCanvas.getActiveObject();
     if (activeObject) {
       activeObject.set('flipX', true);
+      mainCanvas.renderAll();
+    }
+  }
+
+  function cloneElement() {
+    var activeObject = mainCanvas.getActiveObject();
+    if (activeObject) {
+      var newObject = fabric.util.object.clone(activeObject); 
+      newObject.set("top", activeObject.getTop()+50);
+      newObject.set("left", activeObject.getLeft()+50);
+      mainCanvas.add(newObject);
       mainCanvas.renderAll();
     }
   }
