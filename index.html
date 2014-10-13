@@ -282,6 +282,7 @@
         <button id="buttonPopUp" onclick="openPopUp()">Nuevo Escudo</button>
         <button id="buttonPopUp" onclick="openPopUp()">Guardar Escudo</button>
         <button id="buttonPopUp" onclick="openPopUp()">Cargar Escudo</button>
+        <button id="buttonAdmin" onclick="openAdminTool()">Cargar Bases de Escudos</button>
         <div id="workspace">
           <canvas id="mainCanvas" width="530" height="350">
           </canvas>
@@ -355,7 +356,7 @@
   var progress = document.querySelector('.percent');
 
   $(function(){
-    $ ("#popUp").load("popUpAdmin.html");
+    $ ("#popUp").load("popUp.html");
   });
 
 
@@ -556,6 +557,10 @@
     'object:resizing': updateControls,
     'object:rotating': updateControls
   });
+
+  function openAdminTool() {
+    window.location.href= document.URL + "adminTool.php";
+  }
 
   function abortRead() {
     reader.abort();
