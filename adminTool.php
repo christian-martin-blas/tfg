@@ -215,8 +215,8 @@
       td {
         padding: 6px;
       }
-      #buttons {
-        margin-left: 230px;
+      #buttonSubmit {
+        margin-left: 330px;
         margin-top: 20px;
       }
       #previsualization {
@@ -227,10 +227,11 @@
         margin-left: 70px;
         float: left;
         border: 5px solid #333333;
+        position: relative;
       }
       #previsualizationMiniature {
         height: 64px;
-        width: 72px;
+        width: 64px;
         float: right;
         border: 3px solid #333333;
       }
@@ -251,7 +252,7 @@
           <table>
             <tr>
               <td>
-                <b>Nombre Base:</b>
+                <b>Nombre de la Base:</b>
               </td>
               <td>
                 <input type="text" id="nombreBase" name="nombreBase" />
@@ -306,8 +307,7 @@
               </td>
             </tr>
           </table>
-          <div id="buttons">
-            <button id="buttonPrevisualization" onclick="previsualization()">Previsualizar</button>
+          <div id="buttonSubmit">
             <input type="submit" id="buttonUpload" value="Subir las imágenes"/>
           </div>
       </form>
@@ -335,20 +335,16 @@
 
 
   <script>
-  //Variables para canvas
-  var canvas = document.createElement("canvas");
-  var ctx = canvas.getContext("2d");
-  var mainCanvas = new fabric.Canvas('mainCanvas');
-  fabric.Object.prototype.transparentCorners = false;
-  fabric.Object.prototype.cornerSize = 8;
-  fabric.Object.prototype.borderColor = 'black';
-  fabric.Object.prototype.cornerColor= 'black';
-  var workspace = document.getElementById("workspace");
+  //Variables de imágenes
+  var back = document.getElementById("back");
+  var miniature = document.getElementById("miniature");
+  var part1 = document.getElementById("part1");
+  var part2 = document.getElementById("part2");
+  var part3 = document.getElementById("part3");
+  var part4 = document.getElementById("part4");
 
-  //Variables para subir imagenes y para la barra de carga
+  //Variables para subir imagenes
   var reader;
-  var progress = document.querySelector('.percent');
-
 
   function openAdminTool() {
     window.location.href= document.URL + "adminTool.php";
@@ -373,20 +369,7 @@
     };
   }
 
-  function updateProgress(evt) {
-    // evt is an ProgressEvent.
-    if (evt.lengthComputable) {
-      var percentLoaded = Math.round((evt.loaded / evt.total) * 100);
-      // Increase the progress bar length.
-      if (percentLoaded < 100) {
-        progress.style.width = percentLoaded + '%';
-        progress.textContent = percentLoaded + '%';
-      }
-    }
-  }
-
-  function handleFileSelect(evt) {
-
+  function handleFileSelect(evt, item) {
     var files = evt.target.files; // FileList object
     // Loop through the FileList and render image files as canvas image
     for (var i = 0, f; f = files[i]; i++) {
@@ -395,33 +378,28 @@
       if (!f.type.match('image.*')) {
         continue;
       }
-        
-      // Reset progress indicator on new file selection.
-      $("#abortUpload").css("display","block");
-      progress.style.width = '0%';
-      progress.textContent = '0%';
 
       reader = new FileReader();
       reader.onerror = errorHandler;
-      reader.onprogress = updateProgress;
-      reader.onabort = function(e) {
-        alert('File read cancelled');
-      };
-      reader.onloadstart = function(e) {
-        document.getElementById('progress_bar').className = 'loading';
-      };
        // Closure to capture the file information.
       reader.onload = (function(theFile) {
         return function(e) {
           // Render thumbnail.
           var src = e.target.result;
-          fabric.Image.fromURL(src, function(img) {
+          var name = item.name;
+          if(name == "fileBase") back.src = src;
+          else if(name == "fileMiniatura") miniature.src = src;
+          else if(name == "fileParticion1") part1.src = src;
+          else if(name == "fileParticion2") part2.src = src;
+          else if(name == "fileParticion3") part3.src = src;
+          else if(name == "fileParticion4") part4.src = src;
+          /*fabric.Image.fromURL(src, function(img) {
               mainCanvas.add(img.set({ left: 0, top: 0}));
             });
            progress.style.width = '100%';
           progress.textContent = '100%';
           setTimeout("document.getElementById('progress_bar').className='';", 2000);
-          setTimeout("$('#abortUpload').css('display','none')", 2000);
+          setTimeout("$('#abortUpload').css('display','none')", 2000);*/
         };
       })(f);
 
@@ -430,12 +408,24 @@
     }
   }
 
-  document.getElementById('fileBase').addEventListener('change', handleFileSelect, false);
-  document.getElementById('fileMiniatura').addEventListener('change', handleFileSelect, false);
-  document.getElementById('fileParticion1').addEventListener('change', handleFileSelect, false);
-  document.getElementById('fileParticion2').addEventListener('change', handleFileSelect, false);
-  document.getElementById('fileParticion3').addEventListener('change', handleFileSelect, false);
-  document.getElementById('fileParticion4').addEventListener('change', handleFileSelect, false);
+  document.getElementById('fileBase').addEventListener('change', function() {
+    handleFileSelect(window.event, this);
+  }, false);
+  document.getElementById('fileMiniatura').addEventListener('change', function() {
+    handleFileSelect(window.event, this);
+  }, false);
+  document.getElementById('fileParticion1').addEventListener('change', function() {
+    handleFileSelect(window.event, this);
+  }, false);
+  document.getElementById('fileParticion2').addEventListener('change', function() {
+    handleFileSelect(window.event, this);
+  }, false);
+  document.getElementById('fileParticion3').addEventListener('change', function() {
+    handleFileSelect(window.event, this);
+  }, false);
+  document.getElementById('fileParticion4').addEventListener('change', function() {
+    handleFileSelect(window.event, this);
+  }, false);
 
   </script>
 
