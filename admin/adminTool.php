@@ -2,69 +2,31 @@
 <meta charset="utf-8"> 
 <html>
   <head>
-  	  <script src="./lib/js/jquery-1.11.0.min.js"></script>
-  	  <link rel="stylesheet" href="./lib/css/redmond/jquery-ui-1.10.4.custom.css">
-  	  <link rel="stylesheet" type="text/css" href="./lib/css/bootstrap.css">
-      <link rel="stylesheet" type="text/css" href="./lib/css/jquery.simplecolorpicker.css">
-      <link rel="stylesheet" type="text/css" href="./lib/css/jquery.simplecolorpicker-glyphicons.css">
+  	  <script src="../lib/js/jquery-1.11.0.min.js"></script>
+  	  <link rel="stylesheet" href="../lib/css/redmond/jquery-ui-1.10.4.custom.css">
+  	  <link rel="stylesheet" type="text/css" href="../lib/css/bootstrap.css">
+      <link rel="stylesheet" type="text/css" href="../lib/css/jquery.simplecolorpicker.css">
+      <link rel="stylesheet" type="text/css" href="../lib/css/jquery.simplecolorpicker-glyphicons.css">
 
-  	  <script src="./lib/js/bootstrap.js"></script>
-  	  <script src="./lib/js/jquery-ui-1.10.4.custom.js"></script>
-      <script src="./lib/js/jquery.simplecolorpicker.js"></script>
-      <script src="./lib/js/fabric.js"></script>
-      <script src="./lib/js/jquery.ui.widget.js"></script>
-      <script src="./lib/js/jquery.iframe-transport.js"></script>
-      <script src="./lib/js/jquery.fileupload.js"></script>
+  	  <script src="../lib/js/bootstrap.js"></script>
+  	  <script src="../lib/js/jquery-ui-1.10.4.custom.js"></script>
+      <script src="../lib/js/jquery.simplecolorpicker.js"></script>
+      <script src="../lib/js/fabric.js"></script>
+      <script src="../lib/js/jquery.ui.widget.js"></script>
+      <script src="../lib/js/jquery.iframe-transport.js"></script>
+      <script src="../lib/js/jquery.fileupload.js"></script>
 
   	  <style>
       html {
         max-width: 1500px;
       }
-  		.container {
-  			background-color: grey;
-  			width: 800px;
-  		}
   		.page-header {
   			text-align: center;
-  		}
-  		#designs {
-  			height: 100%;
-  		}
-  		img.design {
-  			width: 100%;
-  			cursor: pointer;
-        padding-bottom: 5px;
   		}
       img {
         max-width: 100%;
         max-height: 100%;
       }
-  		#imagenesFormas {
-  			background-color: white;
-  			height: 100px;
-  			width: 100%;
-  			overflow-y: scroll;
-  		}
-  		.particiones {
-  			display: none;
-  		}
-  		#imagenesParticiones {
-  			background-color: white;
-  			height: 100px;
-  			width: 100%;
-  			overflow-y: scroll;
-  		}
-  		.colores {
-  			display: none;
-  		}
-  		#imagenesColores {
-  			background-color: white;
-  			height: 100px;
-  			width: 100%;
-  			overflow-y: scroll;
-        margin-bottom: 10px;
-  		}
-  		
       #back {
         position: absolute;
         left: 50%;
@@ -93,64 +55,12 @@
         margin-left: -110px;
         margin-top: -110px;
       }
-      #colorParticion1 {
-        padding: 5px;
-        display: none;
-      }
-      #colorParticion2 {
-        padding: 5px;
-        display: none;
-      }
-      #colorParticion3 {
-        padding: 5px;
-        display: none;
-      }
-      #colorParticion4 {
-        padding: 5px;
-        display: none;
-      }
-      #workspace {
-        width: 800px;
-        height: 350px;
-        margin-top: 150px;
-        background-color: white;
-        display: inline-block;
-      }
-      #shield {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 50px;
-      }
-      #accordion {
-        padding: 10px;
-        margin-top: 100px;
-        width: 100%;
-        height: 100%;
-        font-size: 12px;
-      }
-      img.figures {
-        height: 100px;
-        padding: 5px;
-        cursor: pointer;
-      }
-      .controls { 
-        float: left;
-        background: #EAF5FE; 
-        padding-bottom: 15px; 
-        padding-left: 15px; 
-        padding-right: 15px; 
-        border-right: 5px solid #333333; 
-        border-top: 5px solid #333333; 
-        border-bottom: 5px solid #333333; 
-        height: 350px 
-      }
-      #mainCanvas {
-        border-style: solid;
-        border-width: 5px;
-      }
-      .canvas-container {
-        float: left;
+      #part4 {
+        position: absolute;
+        left: 50%;
+        top: 50%; 
+        margin-left: -110px;
+        margin-top: -110px;
       }
       .icons {
         height: 30px;
@@ -167,50 +77,9 @@
         border-left: 2px solid;
         border-right: 2px solid;
       }
-      #images {
-        background-color: #F2F9FF;
-      }
-      #fileUploadDiv {
-        border-style: groove;
-        width: 325px;
-        margin-left: 10px;
-      }
-      #progress_bar {
-        margin: 10px 0;
-        padding: 3px;
-        border: 1px solid #000;
-        font-size: 14px;
-        clear: both;
-        opacity: 0;
-        -moz-transition: opacity 1s linear;
-        -o-transition: opacity 1s linear;
-        -webkit-transition: opacity 1s linear;
-      }
-      #progress_bar.loading {
-        opacity: 1.0;
-      }
-      #progress_bar .percent {
-        background-color: #99ccff;
-        height: auto;
-        width: 0;
-      }
-      #files {
-        font-size: 13px;
-        margin: 5px;
-      }
-      #abortUpload {
-        font-size: 13px;
-        margin: 5px;
-        display: none;
-      }
-      #uploadButtons {
-        padding: 5px;
-      }
-
-      /*----------------------------------------------------------------------------------------------------------------------------------------*/
 
       #uploadFiles {
-        margin-top: 250px;
+        margin-top: 120px;
       }
       td {
         padding: 6px;
@@ -239,6 +108,15 @@
         margin-top: 300px;
         margin-left: 645px;
       }
+      #linkMainPage {
+        font-size: 18px;
+      }
+      #warning {
+        margin: 8px;
+        border: solid 2px;
+        background-color: #C9DDE0;
+        padding: 5px;
+      }
 
   	</style>
 
@@ -248,7 +126,17 @@
     <div id="adminTool">
 
       <div class="col-md-4">
-        <form id="uploadFiles">
+        <a id="linkMainPage" href="/tfg">Editor de escudos</a>
+        <form id="uploadFiles" enctype="multipart/form-data" action="uploader.php" method="POST">
+          <div id="warning">
+            <h4>Atención:</h4>
+            <ul>
+              <li>El orden en que se añadan las particiones es importante.</li>
+              <li>Si tiene más de una partición el escudo, hay que añadir el número de partición al final del nombre de la imagen.
+                <br>
+              <b>Ejemplo:</b> particionCuadrada1.png </li>
+            </ul>
+          </div>
           <table>
             <tr>
               <td>
@@ -314,7 +202,6 @@
       </div>
 
       <div class="col-md-6">
-
         <div id="previsualization">
           <img id="back">
           <img id="part1">
@@ -324,7 +211,6 @@
         </div>
         <h4 id="miniaturaTitulo">Miniatura:</h4>
         <div id="previsualizationMiniature">
-
           <img id="miniature">
         </div>
       </div>
@@ -348,10 +234,6 @@
 
   function openAdminTool() {
     window.location.href= document.URL + "adminTool.php";
-  }
-
-  function abortRead() {
-    reader.abort();
   }
 
   function errorHandler(evt) {
