@@ -1,3 +1,46 @@
+<?php
+  include './ChromePhp.php';   
+
+  function addBases() {
+    $num_base = 7;
+    $dir    = './img/admin/bases';
+    $files = scandir($dir);
+    foreach ($files as &$file) {
+      if($file != '.' && $file != '..') {
+        echo("<div id=" . "'base" . $num_base . "' class='col-md-5' onClick='displayParticiones(this)''>");
+        echo("<img src='./img/bases/" . $file . "' class='design'>");
+        echo("</div>");
+        $num_base = $num_base + 1;
+      }
+    }
+  }
+
+  function addParticiones() {
+    //Añade las particiones para una base añadida por el admin
+    $num_particion = 7;
+    echo("<div id ='particiones" . $num_particion . "' class='particiones'>");
+    echo("<h4>Particiones</h4>");
+    echo("<div id='imagenesParticiones'>");
+    $dir    = './img/admin/particiones';
+    $files = scandir($dir);
+    foreach ($files as &$file) {
+      if($file != '.' && $file != '..') {
+        $deep_files = scandir($dir . "/" . $file);
+        /*echo("<div id=" . "'base" . $num_base . "' class='col-md-5' onClick='displayParticiones(this)''>");
+        echo("<img src='./img/bases/" . $file . "' class='design'>");
+        echo("</div>");
+        $num_base = $num_base + 1;*/
+      }
+    }
+    echo("</div>");
+    echo("</div>");
+  }
+
+  function addParticionesBaseCreada() {
+    //Aqui se añadiran las particiones añadidas por el admin para una base ya creada.
+  }
+?>
+
 <div id="popUp" title="Crear forma">
   <div class="container">
     <div id="centralTool">
@@ -23,6 +66,9 @@
             <div id="base6" class="col-md-5" onClick="displayParticiones(this)">
               <img src="./img/bases/Base Italiano.png" class="design">
             </div>
+            <?php
+              addBases();
+            ?>
           </div>
           <div id ="particiones1" class="particiones">
             <h4>Particiones</h4>
@@ -39,6 +85,9 @@
               <div id="particionTronchado" class="col-md-5" onClick="displayColores(this)">
                 <img src="./img/particiones/base apuntado/Tronchado.jpg" class="design">
               </div>
+              <?php
+                addParticionesBaseCreada();
+              ?>
             </div>
           </div>
           <div id ="particiones2" class="particiones">
@@ -53,9 +102,14 @@
               <div id="particionTronchado" class="col-md-5" onClick="displayColores(this)">
                 <img src="./img/particiones/base semicircular/Tronchado.jpg" class="design">
               </div>
+              <?php
+                addParticionesBaseCreada();
+              ?>
             </div>
           </div>
-
+          <?php
+            addParticiones();
+          ?>
           <div id="colorParticion1">
             Partición 1:
             <select id="particion1" name="colorpicker-picker-shortlist"  onchange="changeColor(this);">
@@ -123,6 +177,8 @@
     </div> 
   </div>
 </div>
+
+
 
 <script>
 

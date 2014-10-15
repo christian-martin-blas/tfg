@@ -356,7 +356,8 @@
   var progress = document.querySelector('.percent');
 
   $(function(){
-    $ ("#popUp").load("popUp.html");
+    $ ("#popUp").load("popUp.php");
+    loadImagesAdmin();
   });
 
 
@@ -639,6 +640,13 @@
   }
 
   document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+  function loadImagesAdmin() {
+    var http = new XMLHttpRequest();
+    http.open('HEAD', "/tfg", false);
+    http.send();
+    //console.log(http.status!=404);
+  }
 
   </script>
 
