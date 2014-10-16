@@ -31,7 +31,7 @@
         foreach ($deep_files as &$deep_file) {
           if($deep_file != '.' && $deep_file != '..') {
             $particion_name = substr($deep_file, 0, -4);
-            echo("<div id='particion" . $particion_name . "' class='col-md-5' onClick='displayColores(this)'>");
+            echo("<div id='particion" . $particion_name . "' class='col-md-5' onClick='displayColoresAdmin(this)'>");
             echo("<img src='" . $deep_dir  . "/" . $deep_file . "' class='design'>");
             echo("</div>");
             $num_particion = $num_particion + 1;
@@ -458,6 +458,85 @@ var part3Img = document.getElementById("part3");
       var srcPart1 = src.substr(0, src.length - 5) + "6.png";
       var srcPart2 = src.substr(0, src.length - 5) + "7.png";
       var srcPart3 = src.substr(0, src.length - 5) + "8.png";
+      $("#part1").attr("src", srcPart1);
+      $("#part2").attr("src", srcPart2);
+      $("#part3").attr("src", srcPart3);
+      $("#colorParticion1").css("display", "block");
+      $("#colorParticion2").css("display", "block");
+      $("#colorParticion3").css("display", "block");
+      $("#colorParticion4").css("display", "block");
+      getPixels(backImg);
+      $("#part1").on('load', function(){
+        getPixels(part1Img);
+      });
+      $("#part2").on('load', function(){
+        getPixels(part2Img);
+      });
+      $("#part3").on('load', function(){
+        getPixels(part3Img);
+      });
+    }    
+  }
+
+  function displayColoresAdmin(item) {
+    var id = item.id;
+    var src = item.children[0].src;
+    //Reset de los colores
+    if(particion != -1) {
+      $("#back").attr("src", srcBack);
+      $("#part1").attr("src", "");
+      $("#part2").attr("src", "");
+      $("#part3").attr("src", "");
+      resetColor();      
+      particion = -1;
+    }
+    if($.isNumeric(item.id.substr(id.length - 1))) particion = item.id.substr(id.length - 1);
+    else particion = 2; 
+    //var colores = "#colores" + base + particion;
+
+    if(particion == 1) {
+      $("#colorParticion1").css("display", "block");
+      $("#colorParticion2").css("display", "none");
+      $("#colorParticion3").css("display", "none");
+      $("#colorParticion4").css("display", "none");
+      getPixels(backImg);
+    }
+    else if(particion == 2) {
+      var srcPart1 = src.substr(0, src.length - 4) + ".png";
+      srcPart1 = srcPart1.replace("miniaturas","particiones");
+      $("#part1").attr("src", srcPart1);
+      $("#colorParticion1").css("display", "block");
+      $("#colorParticion2").css("display", "block");
+      $("#colorParticion3").css("display", "none");
+      $("#colorParticion4").css("display", "none");
+      getPixels(backImg);
+      $("#part1").on('load', function(){
+        getPixels(part1Img);
+      });
+    }
+    else if(particion == 3) {
+      var srcPart1 = src.substr(0, src.length - 4) + ".png";
+      srcPart1 = srcPart1.replace("miniaturas","particiones");
+      $("#part1").attr("src", srcPart1);
+      $("#colorParticion1").css("display", "block");
+      $("#colorParticion2").css("display", "block");
+      $("#colorParticion3").css("display", "block");
+      $("#colorParticion4").css("display", "none");
+      getPixels(backImg);
+      $("#part1").on('load', function(){
+        getPixels(part1Img);
+      });
+      $("#part2").on('load', function(){
+        getPixels(part2Img);
+      });
+    }
+    else  {
+      var srcPart1 = src.substr(0, src.length - 5) + "6.png";
+      srcPart1 = srcPart1.replace("miniaturas","particiones");
+      var srcPart2 = src.substr(0, src.length - 5) + "7.png";
+      srcPart2 = srcPart2.replace("miniaturas","particiones");
+      var srcPart3 = src.substr(0, src.length - 5) + "8.png";
+      srcPart3 = srcPart3.replace("miniaturas","particiones");
       $("#part1").attr("src", srcPart1);
       $("#part2").attr("src", srcPart2);
       $("#part3").attr("src", srcPart3);
