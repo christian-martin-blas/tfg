@@ -31,7 +31,7 @@
         foreach ($deep_files as &$deep_file) {
           if($deep_file != '.' && $deep_file != '..') {
             $particion_name = substr($deep_file, 0, -4);
-            echo("<div id='particion" . $particion_name . "' class='col-md-5' onClick='displayColoresAdmin(this)'>");
+            echo("<div id='particion" . $particion_name . "' class='col-md-5' onClick='displayColores(this)'>");
             echo("<img src='" . $deep_dir  . "/" . $deep_file . "' class='design'>");
             echo("</div>");
             $num_particion = $num_particion + 1;
@@ -82,16 +82,16 @@
             <h4>Particiones</h4>
             <div id="imagenesParticiones">
               <div id="particionVacio1" class="col-md-5" onClick="displayColores(this)">
-                <img src="./img/particiones/base apuntado/Vacio.png" class="design">
+                <img src="./img/miniaturas/apuntado/Vacio.png" class="design">
               </div>
               <div id="particionPartido" class="col-md-5" onClick="displayColores(this)">
-                <img src="./img/particiones/base apuntado/Partido.jpg" class="design">
+                <img src="./img/miniaturas/apuntado/Partido.jpg" class="design">
               </div>
               <div id="particionCortado" class="col-md-5" onClick="displayColores(this)">
-                <img src="./img/particiones/base apuntado/Cortado.jpg" class="design">
+                <img src="./img/miniaturas/apuntado/Cortado.jpg" class="design">
               </div>
               <div id="particionTronchado" class="col-md-5" onClick="displayColores(this)">
-                <img src="./img/particiones/base apuntado/Tronchado.jpg" class="design">
+                <img src="./img/miniaturas/apuntado/Tronchado.jpg" class="design">
               </div>
               <?php
                 addParticionesBaseCreada();
@@ -102,13 +102,13 @@
             <h4>Particiones</h4>
             <div id="imagenesParticiones">
               <div id="particionPartido" class="col-md-5" onClick="displayColores(this)">
-                <img src="./img/particiones/base semicircular/Partido.jpg" class="design">
+                <img src="./img/miniaturas/semicircular/Partido.jpg" class="design">
               </div>
               <div id="particionCortado" class="col-md-5" onClick="displayColores(this)">
-                <img src="./img/particiones/base semicircular/Cortado.jpg" class="design">
+                <img src="./img/miniaturas/semicircular/Cortado.jpg" class="design">
               </div>
               <div id="particionTronchado" class="col-md-5" onClick="displayColores(this)">
-                <img src="./img/particiones/base semicircular/Tronchado.jpg" class="design">
+                <img src="./img/miniaturas/semicircular/Tronchado.jpg" class="design">
               </div>
               <?php
                 addParticionesBaseCreada();
@@ -366,7 +366,6 @@ var part3Img = document.getElementById("part3");
 
   $('select[name="colorpicker-picker-shortlist"]').simplecolorpicker({picker: true, theme: 'glyphicons'});
 
-
   function displayParticiones(item) {
     var id = item.id;
     var src = item.children[0].src;
@@ -405,80 +404,6 @@ var part3Img = document.getElementById("part3");
   }
 
   function displayColores(item) {
-    var id = item.id;
-    var src = item.children[0].src;
-    //Reset de los colores
-    if(particion != -1) {
-      $("#back").attr("src", srcBack);
-      $("#part1").attr("src", "");
-      $("#part2").attr("src", "");
-      $("#part3").attr("src", "");
-      resetColor();      
-      particion = -1;
-    }
-    if($.isNumeric(item.id.substr(id.length - 1))) particion = item.id.substr(id.length - 1);
-    else particion = 2; 
-    //var colores = "#colores" + base + particion;
-
-    if(particion == 1) {
-      $("#colorParticion1").css("display", "block");
-      $("#colorParticion2").css("display", "none");
-      $("#colorParticion3").css("display", "none");
-      $("#colorParticion4").css("display", "none");
-      getPixels(backImg);
-    }
-    else if(particion == 2) {
-      var srcPart1 = src.substr(0, src.length - 4) + ".png";
-      $("#part1").attr("src", srcPart1);
-      $("#colorParticion1").css("display", "block");
-      $("#colorParticion2").css("display", "block");
-      $("#colorParticion3").css("display", "none");
-      $("#colorParticion4").css("display", "none");
-      getPixels(backImg);
-      $("#part1").on('load', function(){
-        getPixels(part1Img);
-      });
-    }
-    else if(particion == 3) {
-      var srcPart1 = src.substr(0, src.length - 4) + ".png";
-      $("#part1").attr("src", srcPart1);
-      $("#colorParticion1").css("display", "block");
-      $("#colorParticion2").css("display", "block");
-      $("#colorParticion3").css("display", "block");
-      $("#colorParticion4").css("display", "none");
-      getPixels(backImg);
-      $("#part1").on('load', function(){
-        getPixels(part1Img);
-      });
-      $("#part2").on('load', function(){
-        getPixels(part2Img);
-      });
-    }
-    else  {
-      var srcPart1 = src.substr(0, src.length - 5) + "6.png";
-      var srcPart2 = src.substr(0, src.length - 5) + "7.png";
-      var srcPart3 = src.substr(0, src.length - 5) + "8.png";
-      $("#part1").attr("src", srcPart1);
-      $("#part2").attr("src", srcPart2);
-      $("#part3").attr("src", srcPart3);
-      $("#colorParticion1").css("display", "block");
-      $("#colorParticion2").css("display", "block");
-      $("#colorParticion3").css("display", "block");
-      $("#colorParticion4").css("display", "block");
-      getPixels(backImg);
-      $("#part1").on('load', function(){
-        getPixels(part1Img);
-      });
-      $("#part2").on('load', function(){
-        getPixels(part2Img);
-      });
-      $("#part3").on('load', function(){
-        getPixels(part3Img);
-      });
-    }    
-  }
-
-  function displayColoresAdmin(item) {
     var id = item.id;
     var src = item.children[0].src;
     //Reset de los colores
