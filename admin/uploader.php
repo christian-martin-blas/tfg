@@ -25,6 +25,8 @@
 	else {
 		//Caso en que se suben las particiones de una base existente
 	}
+	header('Location: /tfg/admin/adminTool.php');
+	exit;
 
 	function uploadImage($target_path, $file) {
 		$tmp_path = $target_path . "/" . basename($_FILES[$file]['name']);
