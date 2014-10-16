@@ -8,7 +8,7 @@
     foreach ($files as &$file) {
       if($file != '.' && $file != '..') {
         echo("<div id=" . "'base" . $num_base . "' class='col-md-5' onClick='displayParticiones(this)''>");
-        echo("<img src='./img/bases/" . $file . "' class='design'>");
+        echo("<img src='" . $dir . "/" . $file . "' class='design'>");
         echo("</div>");
         $num_base = $num_base + 1;
       }
@@ -18,22 +18,30 @@
   function addParticiones() {
     //Añade las particiones para una base añadida por el admin
     $num_particion = 7;
-    echo("<div id ='particiones" . $num_particion . "' class='particiones'>");
-    echo("<h4>Particiones</h4>");
-    echo("<div id='imagenesParticiones'>");
-    $dir    = './img/admin/particiones';
+    
+    $dir    = './img/admin/miniaturas';
     $files = scandir($dir);
     foreach ($files as &$file) {
       if($file != '.' && $file != '..') {
-        $deep_files = scandir($dir . "/" . $file);
-        /*echo("<div id=" . "'base" . $num_base . "' class='col-md-5' onClick='displayParticiones(this)''>");
-        echo("<img src='./img/bases/" . $file . "' class='design'>");
+        echo("<div id ='particiones" . $num_particion . "' class='particiones'>");
+        echo("<h4>Particiones</h4>");
+        echo("<div id='imagenesParticiones'>");
+        $deep_dir = $dir . "/" . $file;
+        $deep_files = scandir($deep_dir);
+        foreach ($deep_files as &$deep_file) {
+          if($deep_file != '.' && $deep_file != '..') {
+            $particion_name = substr($deep_file, 0, -4);
+            echo("<div id='particion" . $particion_name . "' class='col-md-5' onClick='displayColores(this)'>");
+            echo("<img src='" . $deep_dir  . "/" . $deep_file . "' class='design'>");
+            echo("</div>");
+            $num_particion = $num_particion + 1;
+          }
+        }
         echo("</div>");
-        $num_base = $num_base + 1;*/
+        echo("</div>");
       }
     }
-    echo("</div>");
-    echo("</div>");
+    
   }
 
   function addParticionesBaseCreada() {
