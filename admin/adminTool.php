@@ -335,18 +335,11 @@
           var src = e.target.result;
           var name = item.name;
           if(name == "fileBase") back.src = src;
-          else if(name == "fileMiniatura") miniature.src = src;
-          else if(name == "fileParticion1") part1.src = src;
-          else if(name == "fileParticion2") part2.src = src;
-          else if(name == "fileParticion3") part3.src = src;
-          else if(name == "fileParticion4") part4.src = src;
-          /*fabric.Image.fromURL(src, function(img) {
-              mainCanvas.add(img.set({ left: 0, top: 0}));
-            });
-           progress.style.width = '100%';
-          progress.textContent = '100%';
-          setTimeout("document.getElementById('progress_bar').className='';", 2000);
-          setTimeout("$('#abortUpload').css('display','none')", 2000);*/
+          else if(name == "fileMiniatura" || name == "fileMiniaturaSelect") miniature.src = src;
+          else if(name == "fileParticion1" || name == "fileParticion1Select") part1.src = src;
+          else if(name == "fileParticion2" || name == "fileParticion2Select") part2.src = src;
+          else if(name == "fileParticion3" || name == "fileParticion3Select") part3.src = src;
+          else if(name == "fileParticion4" || name == "fileParticion4Select") part4.src = src;
         };
       })(f);
 
