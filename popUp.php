@@ -2,28 +2,25 @@
   include './ChromePhp.php';   
 
   function addBases() {
-    $num_base = 7;
     $dir    = './img/admin/bases';
     $files = scandir($dir);
     foreach ($files as &$file) {
       if($file != '.' && $file != '..') {
-        echo("<div id=" . "'base" . $num_base . "' class='col-md-5' onClick='displayParticiones(this)''>");
+        $base_name = substr($file, 0, -4);
+        echo("<div id=" . "'base" . $base_name . "' class='col-md-5' onClick='displayParticiones(this)''>");
         echo("<img src='" . $dir . "/" . $file . "' class='design'>");
         echo("</div>");
-        $num_base = $num_base + 1;
       }
     }
   }
 
   function addParticiones() {
-    //Añade las particiones para una base añadida por el admin
-    $num_particion = 7;
-    
+    //Añade las particiones para una base añadida por el admin    
     $dir    = './img/admin/miniaturas';
     $files = scandir($dir);
     foreach ($files as &$file) {
       if($file != '.' && $file != '..') {
-        echo("<div id ='particiones" . $num_particion . "' class='particiones'>");
+        echo("<div id ='particiones" . $file . "' class='particiones'>");
         echo("<h4>Particiones</h4>");
         echo("<div id='imagenesParticiones'>");
         $deep_dir = $dir . "/" . $file;
@@ -34,7 +31,6 @@
             echo("<div id='particion" . $particion_name . "' class='col-md-5' onClick='displayColores(this)'>");
             echo("<img src='" . $deep_dir  . "/" . $deep_file . "' class='design'>");
             echo("</div>");
-            $num_particion = $num_particion + 1;
           }
         }
         echo("</div>");
@@ -56,59 +52,59 @@
         <div id="designs" class="col-md-3">
           <h4>Formas</h4>
           <div id="imagenesFormas">
-            <div id="base1" class="col-md-5" onClick="displayParticiones(this)">
+            <div id="baseApuntado" class="col-md-5" onClick="displayParticiones(this)">
               <img src="./img/bases/Base Apuntado.png"  class="design">
             </div>
-            <div id="base2" class="col-md-5" onClick="displayParticiones(this)">
+            <div id="baseSemicircular" class="col-md-5" onClick="displayParticiones(this)">
               <img src="./img/bases/Base Semicircular.png" class="design">
             </div>
-            <div id="base3" class="col-md-5" onClick="displayParticiones(this)">
+            <div id="baseFrances" class="col-md-5" onClick="displayParticiones(this)">
               <img src="./img/bases/Base Frances.png" class="design">
             </div>
-            <div id="base4" class="col-md-5" onClick="displayParticiones(this)">
+            <div id="baseIngles" class="col-md-5" onClick="displayParticiones(this)">
               <img src="./img/bases/Base Ingles.png" class="design">
             </div>
-            <div id="base5" class="col-md-5" onClick="displayParticiones(this)">
+            <div id="baseAleman" class="col-md-5" onClick="displayParticiones(this)">
               <img src="./img/bases/Base Aleman.png" class="design">
             </div>
-            <div id="base6" class="col-md-5" onClick="displayParticiones(this)">
+            <div id="baseItaliano" class="col-md-5" onClick="displayParticiones(this)">
               <img src="./img/bases/Base Italiano.png" class="design">
             </div>
             <?php
               addBases();
             ?>
           </div>
-          <div id ="particiones1" class="particiones">
+          <div id ="particionesApuntado" class="particiones">
             <h4>Particiones</h4>
             <div id="imagenesParticiones">
-              <div id="particionVacio1" class="col-md-5" onClick="displayColores(this)">
-                <img src="./img/miniaturas/apuntado/Vacio.png" class="design">
+              <div id="particionVacio" class="col-md-5" onClick="displayColores(this)">
+                <img src="./img/miniaturas/Apuntado/Vacio1.png" class="design">
               </div>
               <div id="particionPartido" class="col-md-5" onClick="displayColores(this)">
-                <img src="./img/miniaturas/apuntado/Partido.jpg" class="design">
+                <img src="./img/miniaturas/Apuntado/Partido.jpg" class="design">
               </div>
               <div id="particionCortado" class="col-md-5" onClick="displayColores(this)">
-                <img src="./img/miniaturas/apuntado/Cortado.jpg" class="design">
+                <img src="./img/miniaturas/Apuntado/Cortado.jpg" class="design">
               </div>
               <div id="particionTronchado" class="col-md-5" onClick="displayColores(this)">
-                <img src="./img/miniaturas/apuntado/Tronchado.jpg" class="design">
+                <img src="./img/miniaturas/Apuntado/Tronchado.jpg" class="design">
               </div>
               <?php
                 addParticionesBaseCreada();
               ?>
             </div>
           </div>
-          <div id ="particiones2" class="particiones">
+          <div id ="particionesSemicircular" class="particiones">
             <h4>Particiones</h4>
             <div id="imagenesParticiones">
               <div id="particionPartido" class="col-md-5" onClick="displayColores(this)">
-                <img src="./img/miniaturas/semicircular/Partido.jpg" class="design">
+                <img src="./img/miniaturas/Semicircular/Partido.jpg" class="design">
               </div>
               <div id="particionCortado" class="col-md-5" onClick="displayColores(this)">
-                <img src="./img/miniaturas/semicircular/Cortado.jpg" class="design">
+                <img src="./img/miniaturas/Semicircular/Cortado.jpg" class="design">
               </div>
               <div id="particionTronchado" class="col-md-5" onClick="displayColores(this)">
-                <img src="./img/miniaturas/semicircular/Tronchado.jpg" class="design">
+                <img src="./img/miniaturas/Semicircular/Tronchado.jpg" class="design">
               </div>
               <?php
                 addParticionesBaseCreada();
@@ -398,7 +394,7 @@ var part3Img = document.getElementById("part3");
       $(particiones).css("display", "none");
       base = -1;
     } 
-    base = item.id.substr(id.length - 1);
+    base = item.id.substr(4, id.length);
     var particiones = "#particiones" + base;
     $(particiones).css("display", "block");
   }
@@ -415,7 +411,8 @@ var part3Img = document.getElementById("part3");
       resetColor();      
       particion = -1;
     }
-    if($.isNumeric(item.id.substr(id.length - 1))) particion = item.id.substr(id.length - 1);
+    var childSrc = item.firstElementChild.src;
+    if($.isNumeric(childSrc.substr(childSrc.length - 5, 1))) particion = childSrc.substr(childSrc.length - 5, 1);
     else particion = 2; 
     //var colores = "#colores" + base + particion;
 
@@ -456,11 +453,11 @@ var part3Img = document.getElementById("part3");
       });
     }
     else  {
-      var srcPart1 = src.substr(0, src.length - 5) + "6.png";
+      var srcPart1 = src.substr(0, src.length - 5) + "1.png";
       srcPart1 = srcPart1.replace("miniaturas","particiones");
-      var srcPart2 = src.substr(0, src.length - 5) + "7.png";
+      var srcPart2 = src.substr(0, src.length - 5) + "2.png";
       srcPart2 = srcPart2.replace("miniaturas","particiones");
-      var srcPart3 = src.substr(0, src.length - 5) + "8.png";
+      var srcPart3 = src.substr(0, src.length - 5) + "3.png";
       srcPart3 = srcPart3.replace("miniaturas","particiones");
       $("#part1").attr("src", srcPart1);
       $("#part2").attr("src", srcPart2);
