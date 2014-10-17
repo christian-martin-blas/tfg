@@ -151,7 +151,7 @@
                 <b>Nombre de la Base:</b>
               </td>
               <td>
-                <select name="nombreBaseSelect">
+                <select name="nombreBaseSelect" onchange="showBase(this)">
                   <option value="Aleman">Aleman</option>
                   <option value="Apuntado">Apuntado</option>
                   <option value="Frances">Frances</option>
@@ -383,6 +383,11 @@
       $('#base').css('display','none');
       $('#sinBase').css('display','block');
     }
+  }
+
+  function showBase(item) {
+    var src = "/tfg/img/bases/Base " + item.value + ".png";
+    back.src = src;
   }
 
   </script>
