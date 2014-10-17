@@ -40,8 +40,18 @@
     
   }
 
-  function addParticionesBaseCreada() {
+  function addParticionesBaseCreada($base) {
     //Aqui se añadiran las particiones añadidas por el admin para una base ya creada.
+    $dir = './img/admin/particiones/' . $base;
+    $files = scandir($dir);
+    foreach ($files as &$file) {
+      if($file != '.' && $file != '..') {
+        $particion_name = substr($file, 0, -4);
+        echo("<div id='particion" . $particion_name . "' class='col-md-5' onClick='displayColores(this)''>");
+        echo("<img src='" . $dir . "/" . $file . "' class='design'>");
+        echo("</div>");
+      }
+    }
   }
 ?>
 
@@ -90,7 +100,7 @@
                 <img src="./img/miniaturas/Apuntado/Tronchado.jpg" class="design">
               </div>
               <?php
-                addParticionesBaseCreada();
+                addParticionesBaseCreada("Apuntado");
               ?>
             </div>
           </div>
@@ -107,7 +117,7 @@
                 <img src="./img/miniaturas/Semicircular/Tronchado.jpg" class="design">
               </div>
               <?php
-                addParticionesBaseCreada();
+                addParticionesBaseCreada("Semicirular");
               ?>
             </div>
           </div>
