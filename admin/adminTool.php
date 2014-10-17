@@ -133,7 +133,16 @@
 
       <div class="col-md-4">
         <a id="linkMainPage" href="/tfg">Editor de escudos</a>
+
         <form id="uploadFiles" enctype="multipart/form-data" action="uploader.php" method="POST">
+          <?php
+            include '../ChromePhp.php';
+
+            if(isset($_GET['success']))
+            {
+              echo("<h3 style='text-align: center'>Se han cargado las imágenes correctamente.</h3>");
+            }
+          ?>
           <div id="warning">
             <h4>Atención:</h4>
             <ul>

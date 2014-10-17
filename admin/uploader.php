@@ -6,8 +6,8 @@
 <?php
 	include '../ChromePhp.php';
 
-	//ChromePhp::log($_POST['nombreBase']);
-
+	//ChromePhp::log("hola");
+	$success = true;
 	$target_path = "../img/admin";
 	if($_FILES['fileBase']['name'] != "") {
 	//Caso en que se sube una base y unas particiiones desde 0
@@ -36,8 +36,15 @@
 		if($_FILES['fileParticion3Select']['name'] != "") uploadImage($path_particiones, "fileParticion3Select");
 		if($_FILES['fileParticion4Select']['name'] != "") uploadImage($path_particiones, "fileParticion4Select");
 	}
-	header('Location: /tfg/admin/adminTool.php');
+
+	if($success) {
+		header('Location: /tfg/admin/adminTool.php?success');
+	}
+	else header('Location: /tfg/admin/adminTool.php');
+	
 	exit;
+	
+	
 
 	function uploadImage($target_path, $file) {
 		$tmp_path = $target_path . "/" . basename($_FILES[$file]['name']);
@@ -46,8 +53,10 @@
 		    " se ha subido.";
 		} else{
 		    echo "Ha habido un error subiendo las imágenes.";
+		    $success = false;
 		}
 	}
+	
 ?>
 </body>
 </html>
