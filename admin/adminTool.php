@@ -117,6 +117,12 @@
         background-color: #C9DDE0;
         padding: 5px;
       }
+      #base {
+        display: none;
+      }
+      #sinBase {
+        display: none;
+      }
 
   	</style>
 
@@ -137,7 +143,66 @@
               <b>Ejemplo:</b> particionCuadrada1.png </li>
             </ul>
           </div>
-          <table>
+          <input type="radio" name="base" value="base" onclick="showTable(this)">Subiré base y particiones<br>
+          <input type="radio" name="base" value="sinBase" onclick="showTable(this)">Subiré particiones
+          <table id="sinBase">
+            <tr>
+              <td>
+                <b>Nombre de la Base:</b>
+              </td>
+              <td>
+                <select name="nombreBaseSelect">
+                  <option value="Aleman">Aleman</option>
+                  <option value="Apuntado">Apuntado</option>
+                  <option value="Frances">Frances</option>
+                  <option value="Ingles">Ingles</option>
+                  <option value="Italiano">Italiano</option>
+                  <option value="Semicircular">Semicircular</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Miniatura de la Base:</b>
+              </td>
+              <td>
+                <input type="file" id="fileMiniatura" name="fileMiniaturaSelect" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Partición 1:</b>
+              </td>
+              <td>
+                <input type="file" id="fileParticion1" name="fileParticion1Select" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Partición 2:</b>
+              </td>
+              <td>
+                <input type="file" id="fileParticion2" name="fileParticion2Select" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Partición 3:</b>
+              </td>
+              <td>
+                <input type="file" id="fileParticion3" name="fileParticion3Select" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Partición 4:</b>
+              </td>
+              <td>
+                <input type="file" id="fileParticion4" name="fileParticion4Select" />
+              </td>
+            </tr>
+          </table>
+          <table id="base">
             <tr>
               <td>
                 <b>Nombre de la Base:</b>
@@ -308,6 +373,17 @@
   document.getElementById('fileParticion4').addEventListener('change', function() {
     handleFileSelect(window.event, this);
   }, false);
+
+  function showTable(item) {
+    if(item.value == "base") {
+      $('#base').css('display','block');
+      $('#sinBase').css('display','none');
+    }
+    else {
+      $('#base').css('display','none');
+      $('#sinBase').css('display','block');
+    }
+  }
 
   </script>
 
