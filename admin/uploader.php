@@ -7,6 +7,7 @@
 	include '../ChromePhp.php';
 
 	//ChromePhp::log("hola");
+	validateForm();
 	$success = true;
 	$target_path = "../img/admin";
 	if($_FILES['fileBase']['name'] != "") {
@@ -40,11 +41,10 @@
 	if($success) {
 		header('Location: /tfg/admin/adminTool.php?success');
 	}
-	else header('Location: /tfg/admin/adminTool.php');
+	else header('Location: /tfg/admin/adminTool.php?error');
 	
 	exit;
-	
-	
+
 
 	function uploadImage($target_path, $file) {
 		$tmp_path = $target_path . "/" . basename($_FILES[$file]['name']);
@@ -55,6 +55,10 @@
 		    echo "Ha habido un error subiendo las imágenes.";
 		    $success = false;
 		}
+	}
+
+	function validateForm() {
+		header('Location: /tfg/admin/adminTool.php?error');
 	}
 	
 ?>

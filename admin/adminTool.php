@@ -79,7 +79,7 @@
       }
 
       #uploadFiles {
-        margin-top: 120px;
+        margin-top: 50px;
       }
       td {
         padding: 6px;
@@ -149,7 +149,15 @@
               <li>El orden en que se añadan las particiones es importante.</li>
               <li>Si tiene más de una partición el escudo, hay que añadir el número de partición al final del nombre de la imagen.
                 <br>
-              <b>Ejemplo:</b> particionCuadrada1.png </li>
+              <b>Ejemplo:</b> Cuadrada2.png </li>
+              <li>Si se sube sólo la base del escudo, hay que añadir el número 1 en el nombre de la miniatura.
+              <br>
+              <b>Ejemplo:</b> Vacio1.png </li>
+              <li>
+                Si se suben imágenes que tengan más de 1 partición, hay que añadir el número de particiones al final del nombre de la miniatura.
+                <br>
+                <b>Ejemplo:</b> Si subiremos un escudo partido en 4 trozos, el nombre será: Cuartelado4.png
+              </li>
             </ul>
           </div>
           <input type="radio" name="base" value="base" onclick="showTable(this)">Subiré base y particiones<br>
@@ -175,7 +183,7 @@
                 <b>Miniatura de la Base:</b>
               </td>
               <td>
-                <input type="file" id="fileMiniatura" name="fileMiniaturaSelect" />
+                <input type="file" id="fileMiniaturaSelect" name="fileMiniaturaSelect"/>
               </td>
             </tr>
             <tr>
@@ -183,7 +191,7 @@
                 <b>Partición 1:</b>
               </td>
               <td>
-                <input type="file" id="fileParticion1" name="fileParticion1Select" />
+                <input type="file" id="fileParticion1Select" name="fileParticion1Select"/>
               </td>
             </tr>
             <tr>
@@ -191,7 +199,7 @@
                 <b>Partición 2:</b>
               </td>
               <td>
-                <input type="file" id="fileParticion2" name="fileParticion2Select" />
+                <input type="file" id="fileParticion2Select" name="fileParticion2Select" />
               </td>
             </tr>
             <tr>
@@ -199,7 +207,7 @@
                 <b>Partición 3:</b>
               </td>
               <td>
-                <input type="file" id="fileParticion3" name="fileParticion3Select" />
+                <input type="file" id="fileParticion3Select" name="fileParticion3Select" />
               </td>
             </tr>
             <tr>
@@ -207,7 +215,7 @@
                 <b>Partición 4:</b>
               </td>
               <td>
-                <input type="file" id="fileParticion4" name="fileParticion4Select" />
+                <input type="file" id="fileParticion4Select" name="fileParticion4Select" />
               </td>
             </tr>
           </table>
@@ -373,6 +381,21 @@
     handleFileSelect(window.event, this);
   }, false);
   document.getElementById('fileParticion4').addEventListener('change', function() {
+    handleFileSelect(window.event, this);
+  }, false);
+  document.getElementById('fileMiniaturaSelect').addEventListener('change', function() {
+    handleFileSelect(window.event, this);
+  }, false);
+  document.getElementById('fileParticion1Select').addEventListener('change', function() {
+    handleFileSelect(window.event, this);
+  }, false);
+  document.getElementById('fileParticion2Select').addEventListener('change', function() {
+    handleFileSelect(window.event, this);
+  }, false);
+  document.getElementById('fileParticion3Select').addEventListener('change', function() {
+    handleFileSelect(window.event, this);
+  }, false);
+  document.getElementById('fileParticion4Select').addEventListener('change', function() {
     handleFileSelect(window.event, this);
   }, false);
 
