@@ -225,7 +225,7 @@
                 <b>Nombre de la Base:</b>
               </td>
               <td>
-                <input type="text" id="nombreBase" name="nombreBase" />
+                <input type="text" id="nombreBase" name="nombreBase"/>
               </td>
             </tr>
             <tr>
@@ -233,7 +233,7 @@
                 <b>Base:</b>
               </td>
               <td>
-                <input type="file" id="fileBase" name="fileBase" />
+                <input type="file" id="fileBase" name="fileBase"/>
               </td>
             </tr>
             <tr>
@@ -241,7 +241,7 @@
                 <b>Miniatura de la Base:</b>
               </td>
               <td>
-                <input type="file" id="fileMiniatura" name="fileMiniatura" />
+                <input type="file" id="fileMiniatura" name="fileMiniatura"/>
               </td>
             </tr>
             <tr>
@@ -403,10 +403,20 @@
     if(item.value == "base") {
       $('#base').css('display','block');
       $('#sinBase').css('display','none');
+      document.getElementById("nombreBase").required = true;
+      document.getElementById("fileBase").required = true;
+      document.getElementById("fileMiniatura").required = true;
+      document.getElementById("fileMiniaturaSelect").required = false;
+      document.getElementById("fileParticion1Select").required = false;
     }
     else {
       $('#base').css('display','none');
       $('#sinBase').css('display','block');
+      document.getElementById("nombreBase").required = false;
+      document.getElementById("fileBase").required = false;
+      document.getElementById("fileMiniatura").required = false;
+      document.getElementById("fileMiniaturaSelect").required = true;
+      document.getElementById("fileParticion1Select").required = true;
     }
   }
 
