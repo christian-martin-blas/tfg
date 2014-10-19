@@ -61,7 +61,7 @@
 ?>
 
 <div id="popUp" title="Crear forma">
-  <div class="container">
+  <div id="container" class="container">
     <div id="centralTool">
       <div class="row">
         <div id="designs" class="col-md-3">

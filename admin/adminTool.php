@@ -183,7 +183,7 @@
                 <b>Miniatura de la Base:</b>
               </td>
               <td>
-                <input type="file" id="fileMiniaturaSelect" name="fileMiniaturaSelect"/>
+                <input type="file" id="fileMiniaturaSelect" name="fileMiniaturaSelect" accept="image/png"/>
               </td>
             </tr>
             <tr>
@@ -191,7 +191,7 @@
                 <b>Partición 1:</b>
               </td>
               <td>
-                <input type="file" id="fileParticion1Select" name="fileParticion1Select"/>
+                <input type="file" id="fileParticion1Select" name="fileParticion1Select" accept="image/png"/>
               </td>
             </tr>
             <tr>
@@ -199,7 +199,7 @@
                 <b>Partición 2:</b>
               </td>
               <td>
-                <input type="file" id="fileParticion2Select" name="fileParticion2Select" />
+                <input type="file" id="fileParticion2Select" name="fileParticion2Select" accept="image/png"/>
               </td>
             </tr>
             <tr>
@@ -207,7 +207,7 @@
                 <b>Partición 3:</b>
               </td>
               <td>
-                <input type="file" id="fileParticion3Select" name="fileParticion3Select" />
+                <input type="file" id="fileParticion3Select" name="fileParticion3Select" accept="image/png"/>
               </td>
             </tr>
             <tr>
@@ -215,7 +215,7 @@
                 <b>Partición 4:</b>
               </td>
               <td>
-                <input type="file" id="fileParticion4Select" name="fileParticion4Select" />
+                <input type="file" id="fileParticion4Select" name="fileParticion4Select" accept="image/png"/>
               </td>
             </tr>
           </table>
@@ -233,7 +233,7 @@
                 <b>Base:</b>
               </td>
               <td>
-                <input type="file" id="fileBase" name="fileBase"/>
+                <input type="file" id="fileBase" name="fileBase" accept="image/png"/>
               </td>
             </tr>
             <tr>
@@ -241,7 +241,7 @@
                 <b>Miniatura de la Base:</b>
               </td>
               <td>
-                <input type="file" id="fileMiniatura" name="fileMiniatura"/>
+                <input type="file" id="fileMiniatura" name="fileMiniatura" accept="image/png"/>
               </td>
             </tr>
             <tr>
@@ -249,7 +249,7 @@
                 <b>Partición 1:</b>
               </td>
               <td>
-                <input type="file" id="fileParticion1" name="fileParticion1" />
+                <input type="file" id="fileParticion1" name="fileParticion1" accept="image/png"/>
               </td>
             </tr>
             <tr>
@@ -257,7 +257,7 @@
                 <b>Partición 2:</b>
               </td>
               <td>
-                <input type="file" id="fileParticion2" name="fileParticion2" />
+                <input type="file" id="fileParticion2" name="fileParticion2" accept="image/png"/>
               </td>
             </tr>
             <tr>
@@ -265,7 +265,7 @@
                 <b>Partición 3:</b>
               </td>
               <td>
-                <input type="file" id="fileParticion3" name="fileParticion3" />
+                <input type="file" id="fileParticion3" name="fileParticion3" accept="image/png"/>
               </td>
             </tr>
             <tr>
@@ -273,7 +273,7 @@
                 <b>Partición 4:</b>
               </td>
               <td>
-                <input type="file" id="fileParticion4" name="fileParticion4" />
+                <input type="file" id="fileParticion4" name="fileParticion4" accept="image/png"/>
               </td>
             </tr>
           </table>
