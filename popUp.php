@@ -42,14 +42,19 @@
 
   function addParticionesBaseCreada($base) {
     //Aqui se añadiran las particiones añadidas por el admin para una base ya creada.
-    $dir = './img/admin/particiones/' . $base;
+    $dir = './img/admin/miniaturas';
     $files = scandir($dir);
     foreach ($files as &$file) {
-      if($file != '.' && $file != '..') {
-        $particion_name = substr($file, 0, -4);
-        echo("<div id='particion" . $particion_name . "' class='col-md-5' onClick='displayColores(this)''>");
-        echo("<img src='" . $dir . "/" . $file . "' class='design'>");
-        echo("</div>");
+      if($file != '.' && $file != '..' && $file == $base) {
+        $deep_files = scandir($dir . "/" . $base);
+        foreach ($deep_files as $deep_file) {
+          if($deep_file != '.' && $deep_file != '..') {
+            $particion_name = substr($deep_file, 0, -4);
+            echo("<div id='particion" . $particion_name . "' class='col-md-5' onClick='displayColores(this)''>");
+            echo("<img src='" . $dir . "/" . $base . "/" . $deep_file . "' class='design'>");
+            echo("</div>");
+          }
+        }
       }
     }
   }
@@ -168,6 +173,20 @@
           </div>
           <div id="colorParticion4">
             Partición 4:
+            <select id="particion4" name="colorpicker-picker-shortlist" onchange="changeColor(this);">
+              <option value="#F5F5F5">Plata(Blanco)</option>
+              <option value="#FCDD09">Oro(Amarillo)</option>
+              <option value="#BFAF3F">Oro</option>
+              <option value="#C2C1BD">Plata</option>
+              <option value="#008AF0">Azur</option>
+              <option value="#FF2611">Gules</option>
+              <option value="#07C143">Sinople</option>
+              <option value="#000000">Sable</option>
+              <option value="#EF61C6">Púrpura</option>
+            </select>
+          </div>
+          <div id="colorParticion5">
+            Partición 5:
             <select id="particion4" name="colorpicker-picker-shortlist" onchange="changeColor(this);">
               <option value="#F5F5F5">Plata(Blanco)</option>
               <option value="#FCDD09">Oro(Amarillo)</option>
