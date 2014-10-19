@@ -187,7 +187,7 @@
           </div>
           <div id="colorParticion5">
             Partición 5:
-            <select id="particion4" name="colorpicker-picker-shortlist" onchange="changeColor(this);">
+            <select id="particion5" name="colorpicker-picker-shortlist" onchange="changeColor(this);">
               <option value="#F5F5F5">Plata(Blanco)</option>
               <option value="#FCDD09">Oro(Amarillo)</option>
               <option value="#BFAF3F">Oro</option>
@@ -205,6 +205,7 @@
           <img id="part1">
           <img id="part2">
           <img id="part3">
+          <img id="part4">
         </div>
       </div>
     </div> 
@@ -237,6 +238,7 @@ var backImg = document.getElementById("back");
 var part1Img = document.getElementById("part1");
 var part2Img = document.getElementById("part2");
 var part3Img = document.getElementById("part3");
+var part4Img = document.getElementById("part4");
 
 
 //Variables para el cambio de color
@@ -248,6 +250,8 @@ var part3Img = document.getElementById("part3");
   var currentPixelsPart2 = null;
   var originalPixelsPart3 = null;
   var currentPixelsPart3 = null;
+  var originalPixelsPart4 = null;
+  var currentPixelsPart4 = null;
 
 
   function getPixels(img)  {
@@ -271,6 +275,10 @@ var part3Img = document.getElementById("part3");
     else if(img.id == "part3") {
       originalPixelsPart3 = ctx.getImageData(0, 0, img.width, img.height);
       currentPixelsPart3 = ctx.getImageData(0, 0, img.width, img.height);
+    }
+    else if(img.id == "part4") {
+      originalPixelsPart4 = ctx.getImageData(0, 0, img.width, img.height);
+      currentPixelsPart4 = ctx.getImageData(0, 0, img.width, img.height);
     }
     img.onload = null;
   }
@@ -317,6 +325,28 @@ var part3Img = document.getElementById("part3");
       $('#colorParticion2').append("<select id='particion2' name='colorpicker-picker-shortlist'  onchange='changeColor(this);''>" + selector + "</select>");
       $('#colorParticion3').append("<select id='particion3' name='colorpicker-picker-shortlist'  onchange='changeColor(this);''>" + selector + "</select>");
       $('#colorParticion4').append("<select id='particion4' name='colorpicker-picker-shortlist'  onchange='changeColor(this);''>" + selector + "</select>");
+    }
+    else if (particion == 5) {
+      elem1 = document.getElementById("colorParticion2").children[0];
+      elem2 = document.getElementById("colorParticion2").children[1];
+      elem1.parentNode.removeChild(elem1);
+      elem2.parentNode.removeChild(elem2);
+      elem1 = document.getElementById("colorParticion3").children[0];
+      elem2 = document.getElementById("colorParticion3").children[1];
+      elem1.parentNode.removeChild(elem1);
+      elem2.parentNode.removeChild(elem2);
+      elem1 = document.getElementById("colorParticion4").children[0];
+      elem2 = document.getElementById("colorParticion4").children[1];
+      elem1.parentNode.removeChild(elem1);
+      elem2.parentNode.removeChild(elem2);
+      elem1 = document.getElementById("colorParticion5").children[0];
+      elem2 = document.getElementById("colorParticion5").children[1];
+      elem1.parentNode.removeChild(elem1);
+      elem2.parentNode.removeChild(elem2);
+      $('#colorParticion2').append("<select id='particion2' name='colorpicker-picker-shortlist'  onchange='changeColor(this);''>" + selector + "</select>");
+      $('#colorParticion3').append("<select id='particion3' name='colorpicker-picker-shortlist'  onchange='changeColor(this);''>" + selector + "</select>");
+      $('#colorParticion4').append("<select id='particion4' name='colorpicker-picker-shortlist'  onchange='changeColor(this);''>" + selector + "</select>");
+      $('#colorParticion5').append("<select id='particion5' name='colorpicker-picker-shortlist'  onchange='changeColor(this);''>" + selector + "</select>");
     }
     $('select[name="colorpicker-picker-shortlist"]').simplecolorpicker({picker: true, theme: 'glyphicons'});
   }
@@ -386,6 +416,19 @@ var part3Img = document.getElementById("part3");
       ctx.putImageData(currentPixelsPart3, 0, 0);
       part3Img.src = canvas.toDataURL("image/png");
     } 
+    if(select.id == 'particion5') {
+      for(var I = 0, L = originalPixelsPart4.data.length; I < L; I += 4)
+      {
+        if(currentPixelsPart4.data[I + 3] > 0) // If it's not a transparent pixel
+        {
+            currentPixelsPart4.data[I] = originalPixelsPart4.data[I] / 255 * newColor.R;
+            currentPixelsPart4.data[I + 1] = originalPixelsPart4.data[I + 1] / 255 * newColor.G;
+            currentPixelsPart4.data[I + 2] = originalPixelsPart4.data[I + 2] / 255 * newColor.B;
+        }
+      }
+      ctx.putImageData(currentPixelsPart4, 0, 0);
+      part4Img.src = canvas.toDataURL("image/png");
+    } 
   }
 
 
@@ -412,9 +455,16 @@ var part3Img = document.getElementById("part3");
         $("#colorParticion3").css("display", "none");
         $("#colorParticion4").css("display", "none");
       }
+      else if(particion == 5) {
+        $("#colorParticion2").css("display", "none");
+        $("#colorParticion3").css("display", "none");
+        $("#colorParticion4").css("display", "none");
+        $("#colorParticion5").css("display", "none");
+      }
       $("#part1").attr("src", "");
       $("#part2").attr("src", "");
       $("#part3").attr("src", "");
+      $("#part4").attr("src", "");
       resetColor();
       particion = -1;
     }
@@ -437,6 +487,7 @@ var part3Img = document.getElementById("part3");
       $("#part1").attr("src", "");
       $("#part2").attr("src", "");
       $("#part3").attr("src", "");
+      $("#part4").attr("src", "");
       resetColor();      
       particion = -1;
     }
@@ -450,6 +501,7 @@ var part3Img = document.getElementById("part3");
       $("#colorParticion2").css("display", "none");
       $("#colorParticion3").css("display", "none");
       $("#colorParticion4").css("display", "none");
+      $("#colorParticion5").css("display", "none");
       getPixels(backImg);
     }
     else if(particion == 2) {
@@ -460,19 +512,23 @@ var part3Img = document.getElementById("part3");
       $("#colorParticion2").css("display", "block");
       $("#colorParticion3").css("display", "none");
       $("#colorParticion4").css("display", "none");
+      $("#colorParticion5").css("display", "none");
       getPixels(backImg);
       $("#part1").on('load', function(){
         getPixels(part1Img);
       });
     }
     else if(particion == 3) {
-      var srcPart1 = src.substr(0, src.length - 4) + ".png";
+      var srcPart1 = src.substr(0, src.length - 5) + "1.png";
       srcPart1 = srcPart1.replace("miniaturas","particiones");
+      var srcPart2 = src.substr(0, src.length - 5) + "2.png";
+      srcPart2 = srcPart2.replace("miniaturas","particiones");
       $("#part1").attr("src", srcPart1);
       $("#colorParticion1").css("display", "block");
       $("#colorParticion2").css("display", "block");
       $("#colorParticion3").css("display", "block");
       $("#colorParticion4").css("display", "none");
+      $("#colorParticion5").css("display", "none");
       getPixels(backImg);
       $("#part1").on('load', function(){
         getPixels(part1Img);
@@ -481,20 +537,19 @@ var part3Img = document.getElementById("part3");
         getPixels(part2Img);
       });
     }
-    else  {
-      var srcPart1 = src.substr(0, src.length - 5) + "1.png";
+    else if(particion == 4) {
+      var srcPart1 = src.substr(0, src.length - 4) + ".png";
       srcPart1 = srcPart1.replace("miniaturas","particiones");
       var srcPart2 = src.substr(0, src.length - 5) + "2.png";
       srcPart2 = srcPart2.replace("miniaturas","particiones");
       var srcPart3 = src.substr(0, src.length - 5) + "3.png";
       srcPart3 = srcPart3.replace("miniaturas","particiones");
       $("#part1").attr("src", srcPart1);
-      $("#part2").attr("src", srcPart2);
-      $("#part3").attr("src", srcPart3);
       $("#colorParticion1").css("display", "block");
       $("#colorParticion2").css("display", "block");
       $("#colorParticion3").css("display", "block");
       $("#colorParticion4").css("display", "block");
+      $("#colorParticion5").css("display", "none");
       getPixels(backImg);
       $("#part1").on('load', function(){
         getPixels(part1Img);
@@ -504,6 +559,37 @@ var part3Img = document.getElementById("part3");
       });
       $("#part3").on('load', function(){
         getPixels(part3Img);
+      });
+    }
+    else  {
+      var srcPart1 = src.substr(0, src.length - 5) + "1.png";
+      srcPart1 = srcPart1.replace("miniaturas","particiones");
+      var srcPart2 = src.substr(0, src.length - 5) + "2.png";
+      srcPart2 = srcPart2.replace("miniaturas","particiones");
+      var srcPart3 = src.substr(0, src.length - 5) + "3.png";
+      srcPart3 = srcPart3.replace("miniaturas","particiones");
+      var srcPart4 = src.substr(0, src.length - 5) + "4.png";
+      srcPart4 = srcPart4.replace("miniaturas","particiones");
+      $("#part1").attr("src", srcPart1);
+      $("#part2").attr("src", srcPart2);
+      $("#part3").attr("src", srcPart3);
+      $("#colorParticion1").css("display", "block");
+      $("#colorParticion2").css("display", "block");
+      $("#colorParticion3").css("display", "block");
+      $("#colorParticion4").css("display", "block");
+      $("#colorParticion5").css("display", "block");
+      getPixels(backImg);
+      $("#part1").on('load', function(){
+        getPixels(part1Img);
+      });
+      $("#part2").on('load', function(){
+        getPixels(part2Img);
+      });
+      $("#part3").on('load', function(){
+        getPixels(part3Img);
+      });
+       $("#part4").on('load', function(){
+        getPixels(part4Img);
       });
     }    
   }

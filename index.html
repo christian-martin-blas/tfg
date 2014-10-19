@@ -381,7 +381,7 @@
               mainCanvas.add(img.set({ left: 0, top: 0, selectable: false, hasControls: false, evented: false}));
             });
           }
-          else if(particion < 6) {
+          else if(particion == 2) {
             mainCtx.drawImage(backImg, 150, 50);
             mainCtx.drawImage(part1Img, 150, 50);
             var src = c.toDataURL("image/png");
@@ -389,11 +389,22 @@
               mainCanvas.add(img.set({ left: 0, top: 0, selectable: false, hasControls: false, evented: false}));
             });
           }
-          else if(particion == 6) {
+          else if(particion == 3) {
             mainCtx.drawImage(backImg, 150, 50);
             mainCtx.drawImage(part1Img, 150, 50);
             mainCtx.drawImage(part2Img, 150, 50);
             mainCtx.drawImage(part3Img, 150, 50);
+            var src = c.toDataURL("image/png");
+            fabric.Image.fromURL(src, function(img) {
+              mainCanvas.add(img.set({ left: 0, top: 0, selectable: false, hasControls: false, evented: false}));
+            });
+          }
+          else if(particion == 4) {
+            mainCtx.drawImage(backImg, 150, 50);
+            mainCtx.drawImage(part1Img, 150, 50);
+            mainCtx.drawImage(part2Img, 150, 50);
+            mainCtx.drawImage(part3Img, 150, 50);
+            mainCtx.drawImage(part4Img, 150, 50);
             var src = c.toDataURL("image/png");
             fabric.Image.fromURL(src, function(img) {
               mainCanvas.add(img.set({ left: 0, top: 0, selectable: false, hasControls: false, evented: false}));
@@ -410,17 +421,19 @@
         $("#part1").attr("src", "");
         $("#part2").attr("src", "");
         $("#part3").attr("src", "");
-        $("#particiones1").css("display", "none");
-        $("#particiones2").css("display", "none");
-        $("#particiones3").css("display", "none");
-        $("#particiones4").css("display", "none");
-        $("#particiones5").css("display", "none");
-        $("#particiones6").css("display", "none");
+        $("#part4").attr("src", "");
+        $("#particionesApuntado").css("display", "none");
+        $("#particionesSemicircular").css("display", "none");
+        $("#particionesAleman").css("display", "none");
+        $("#particionesIngles").css("display", "none");
+        $("#particionesItaliano").css("display", "none");
+        $("#particionesFrances").css("display", "none");
         resetColor();
         $("#colorParticion1").css("display", "none");
         $("#colorParticion2").css("display", "none");
         $("#colorParticion3").css("display", "none");
         $("#colorParticion4").css("display", "none");
+        $("#colorParticion5").css("display", "none");
       }
   	})
 
@@ -644,13 +657,6 @@
   }
 
   document.getElementById('files').addEventListener('change', handleFileSelect, false);
-
-  function loadImagesAdmin() {
-    var http = new XMLHttpRequest();
-    http.open('HEAD', "/tfg", false);
-    http.send();
-    //console.log(http.status!=404);
-  }
 
   </script>
 
