@@ -2,27 +2,27 @@
 <meta charset="utf-8"> 
 <html>
   <head>
-  	  <script src="../lib/js/jquery-1.11.0.min.js"></script>
-  	  <link rel="stylesheet" href="../lib/css/redmond/jquery-ui-1.10.4.custom.css">
-  	  <link rel="stylesheet" type="text/css" href="../lib/css/bootstrap.css">
+      <script src="../lib/js/jquery-1.11.0.min.js"></script>
+      <link rel="stylesheet" href="../lib/css/redmond/jquery-ui-1.10.4.custom.css">
+      <link rel="stylesheet" type="text/css" href="../lib/css/bootstrap.css">
       <link rel="stylesheet" type="text/css" href="../lib/css/jquery.simplecolorpicker.css">
       <link rel="stylesheet" type="text/css" href="../lib/css/jquery.simplecolorpicker-glyphicons.css">
 
-  	  <script src="../lib/js/bootstrap.js"></script>
-  	  <script src="../lib/js/jquery-ui-1.10.4.custom.js"></script>
+      <script src="../lib/js/bootstrap.js"></script>
+      <script src="../lib/js/jquery-ui-1.10.4.custom.js"></script>
       <script src="../lib/js/jquery.simplecolorpicker.js"></script>
       <script src="../lib/js/fabric.js"></script>
       <script src="../lib/js/jquery.ui.widget.js"></script>
       <script src="../lib/js/jquery.iframe-transport.js"></script>
       <script src="../lib/js/jquery.fileupload.js"></script>
 
-  	  <style>
+      <style>
       html {
         max-width: 1500px;
       }
-  		.page-header {
-  			text-align: center;
-  		}
+      .page-header {
+        text-align: center;
+      }
       img {
         max-width: 100%;
         max-height: 100%;
@@ -98,12 +98,6 @@
         border: 5px solid #333333;
         position: relative;
       }
-      #previsualizationMiniature {
-        height: 64px;
-        width: 64px;
-        float: right;
-        border: 3px solid #333333;
-      }
       #miniaturaTitulo {
         margin-top: 300px;
         margin-left: 645px;
@@ -123,8 +117,15 @@
       #sinBase {
         display: none;
       }
+      #borrarElementos {
+        margin: 8px;
+        float: right;
+      }
+      #miniatura {
+        display: none;
+      }
 
-  	</style>
+    </style>
 
   </head>
   <body>
@@ -134,7 +135,7 @@
       <div class="col-md-4">
         <a id="linkMainPage" href="/tfg">Editor de escudos</a>
 
-        <form id="uploadFiles" enctype="multipart/form-data" action="uploader.php" method="POST">
+        <form id="uploadFiles" enctype="multipart/form-data" action="uploader.php" method="POST" onsubmit="generarMiniatura()">
           <?php
             include '../ChromePhp.php';
 
@@ -147,17 +148,6 @@
             <h4>Atención:</h4>
             <ul>
               <li>El orden en que se añadan las particiones es importante.</li>
-              <li>Si tiene más de una partición el escudo, hay que añadir el número de partición al final del nombre de la imagen.
-                <br>
-              <b>Ejemplo:</b> Cuadrada2.png </li>
-              <li>Si se sube sólo la base del escudo, hay que añadir el número 1 en el nombre de la miniatura.
-              <br>
-              <b>Ejemplo:</b> Vacio1.png </li>
-              <li>
-                Si se suben imágenes que tengan más de 1 partición, hay que añadir el número de particiones al final del nombre de la miniatura.
-                <br>
-                <b>Ejemplo:</b> Si subiremos un escudo partido en 4 trozos, el nombre será: Cuartelado4.png
-              </li>
             </ul>
           </div>
           <input type="radio" name="base" value="base" onclick="showTable(this)">Subiré base y particiones<br>
@@ -168,7 +158,8 @@
                 <b>Nombre de la Base:</b>
               </td>
               <td>
-                <select name="nombreBaseSelect" onchange="showBase(this)">
+                <select id="nombreBaseSelect" name="nombreBaseSelect" onchange="showBase(this)" required>
+                  <option value=""></option>
                   <option value="Aleman">Aleman</option>
                   <option value="Apuntado">Apuntado</option>
                   <option value="Frances">Frances</option>
@@ -180,10 +171,10 @@
             </tr>
             <tr>
               <td>
-                <b>Miniatura de la Base:</b>
+                <b>Nombre de la partición:</b>
               </td>
               <td>
-                <input type="file" id="fileMiniaturaSelect" name="fileMiniaturaSelect" accept="image/png"/>
+                <input type="text" id="nombreParticionSelect" name="nombreParticionSelect"/>             
               </td>
             </tr>
             <tr>
@@ -238,10 +229,10 @@
             </tr>
             <tr>
               <td>
-                <b>Miniatura de la Base:</b>
+                <b>Nombre de la partición:</b>
               </td>
               <td>
-                <input type="file" id="fileMiniatura" name="fileMiniatura" accept="image/png"/>
+                <input type="text" id="nombreParticion" name="nombreParticion"/>
               </td>
             </tr>
             <tr>
@@ -280,7 +271,9 @@
           <div id="buttonSubmit">
             <input type="submit" id="buttonUpload" value="Subir las imágenes"/>
           </div>
+          <input type="text" id="miniatura" name="miniatura"/>    
       </form>
+        <button id="borrarElementos" onclick="borrarElementos()">Borrar imágenes</button>
       </div>
 
       <div class="col-md-6">
@@ -290,10 +283,6 @@
           <img id="part2">
           <img id="part3">
           <img id="part4">
-        </div>
-        <h4 id="miniaturaTitulo">Miniatura:</h4>
-        <div id="previsualizationMiniature">
-          <img id="miniature">
         </div>
       </div>
 
@@ -305,7 +294,7 @@
   <script>
   //Variables de imágenes
   var back = document.getElementById("back");
-  var miniature = document.getElementById("miniature");
+  var miniatura = document.getElementById("miniatura");
   var part1 = document.getElementById("part1");
   var part2 = document.getElementById("part2");
   var part3 = document.getElementById("part3");
@@ -348,16 +337,25 @@
        // Closure to capture the file information.
       reader.onload = (function(theFile) {
         return function(e) {
-          // Render thumbnail.
           var src = e.target.result;
           var name = item.name;
-          if(name == "fileBase") back.src = src;
-          else if(name == "fileMiniatura" || name == "fileMiniaturaSelect") miniature.src = src;
-          else if(name == "fileParticion1" || name == "fileParticion1Select") part1.src = src;
-          else if(name == "fileParticion2" || name == "fileParticion2Select") part2.src = src;
-          else if(name == "fileParticion3" || name == "fileParticion3Select") part3.src = src;
-          else if(name == "fileParticion4" || name == "fileParticion4Select") part4.src = src;
-        };
+          var imgElement;
+          if(name == "fileBase") {
+            back.src = src;
+          } 
+          else if(name == "fileParticion1" || name == "fileParticion1Select") {
+            part1.src = src;
+          }
+          else if(name == "fileParticion2" || name == "fileParticion2Select") {
+            part2.src = src;
+          }
+          else if(name == "fileParticion3" || name == "fileParticion3Select") {
+            part3.src = src;
+          }
+          else if(name == "fileParticion4" || name == "fileParticion4Select") {
+            part4.src = src;
+          }
+      }
       })(f);
 
       // Read in the image file as a data URL.
@@ -366,9 +364,6 @@
   }
 
   document.getElementById('fileBase').addEventListener('change', function() {
-    handleFileSelect(window.event, this);
-  }, false);
-  document.getElementById('fileMiniatura').addEventListener('change', function() {
     handleFileSelect(window.event, this);
   }, false);
   document.getElementById('fileParticion1').addEventListener('change', function() {
@@ -381,9 +376,6 @@
     handleFileSelect(window.event, this);
   }, false);
   document.getElementById('fileParticion4').addEventListener('change', function() {
-    handleFileSelect(window.event, this);
-  }, false);
-  document.getElementById('fileMiniaturaSelect').addEventListener('change', function() {
     handleFileSelect(window.event, this);
   }, false);
   document.getElementById('fileParticion1Select').addEventListener('change', function() {
@@ -405,8 +397,9 @@
       $('#sinBase').css('display','none');
       document.getElementById("nombreBase").required = true;
       document.getElementById("fileBase").required = true;
-      document.getElementById("fileMiniatura").required = true;
-      document.getElementById("fileMiniaturaSelect").required = false;
+      document.getElementById("nombreParticion").required = true;
+      document.getElementById("nombreBaseSelect").required = false;
+      document.getElementById("nombreParticionSelect").required = false;
       document.getElementById("fileParticion1Select").required = false;
     }
     else {
@@ -414,16 +407,52 @@
       $('#sinBase').css('display','block');
       document.getElementById("nombreBase").required = false;
       document.getElementById("fileBase").required = false;
-      document.getElementById("fileMiniatura").required = false;
-      document.getElementById("fileMiniaturaSelect").required = true;
+      document.getElementById("nombreParticion").required = false;
+      document.getElementById("nombreBaseSelect").required = true;
+      document.getElementById("nombreParticionSelect").required = true;
       document.getElementById("fileParticion1Select").required = true;
     }
   }
 
   function showBase(item) {
-    var src = "/tfg/img/bases/Base " + item.value + ".png";
-    back.src = src;
+    if(item.value != "") {
+      var src = "/tfg/img/bases/Base " + item.value + ".png";
+      back.src = src;
+    }
+    else back.src = "";
   }
+
+  function borrarElementos() {
+    $("#back").attr("src","");
+    $("#part1").attr("src","");
+    $("#part2").attr("src","");
+    $("#part3").attr("src","");
+    $("#part4").attr("src","");
+    $("#fileBase").replaceWith($("#fileBase").val('').clone(true));
+    $("#fileParticion1").replaceWith($("#fileParticion1").val('').clone(true));
+    $("#fileParticion2").replaceWith($("#fileParticion2").val('').clone(true));
+    $("#fileParticion3").replaceWith($("#fileParticion3").val('').clone(true));
+    $("#fileParticion4").replaceWith($("#fileParticion4").val('').clone(true));
+    $("#fileParticion1Select").replaceWith($("#fileParticion1Select").val('').clone(true));
+    $("#fileParticion2Select").replaceWith($("#fileParticion2Select").val('').clone(true));
+    $("#fileParticion3Select").replaceWith($("#fileParticion3Select").val('').clone(true));
+    $("#fileParticion4Select").replaceWith($("#fileParticion4Select").val('').clone(true));
+
+  }
+
+  function generarMiniatura() {
+    var canvas = document.createElement("canvas");
+    canvas.setAttribute("width","250");
+    canvas.setAttribute("height","250");
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(back, 0, 0, 219, 242);
+    ctx.drawImage(part1, 0, 0, 219, 242);
+    ctx.drawImage(part2, 0, 0);
+    ctx.drawImage(part3, 0, 0);
+    ctx.drawImage(part4, 0, 0);
+    miniatura.value = canvas.toDataURL("image/png").substr(22);
+  }
+
 
   </script>
 
