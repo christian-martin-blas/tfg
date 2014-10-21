@@ -303,8 +303,6 @@
   //Variables para subir imagenes
   var reader;
 
-  addOnChangeToFiles();
-
   function openAdminTool() {
     window.location.href= document.URL + "adminTool.php";
   }
@@ -356,35 +354,33 @@
     }
   }
 
-  function addOnChangeToFiles() {
-    document.getElementById('fileBase').addEventListener('change', function() {
-      handleFileSelect(window.event, this);
-    }, false);
-    document.getElementById('fileParticion1').addEventListener('change', function() {
-      handleFileSelect(window.event, this);
-    }, false);
-    document.getElementById('fileParticion2').addEventListener('change', function() {
-      handleFileSelect(window.event, this);
-    }, false);
-    document.getElementById('fileParticion3').addEventListener('change', function() {
-      handleFileSelect(window.event, this);
-    }, false);
-    document.getElementById('fileParticion4').addEventListener('change', function() {
-      handleFileSelect(window.event, this);
-    }, false);
-    document.getElementById('fileParticion1Select').addEventListener('change', function() {
-      handleFileSelect(window.event, this);
-    }, false);
-    document.getElementById('fileParticion2Select').addEventListener('change', function() {
-      handleFileSelect(window.event, this);
-    }, false);
-    document.getElementById('fileParticion3Select').addEventListener('change', function() {
-      handleFileSelect(window.event, this);
-    }, false);
-    document.getElementById('fileParticion4Select').addEventListener('change', function() {
-      handleFileSelect(window.event, this);
-    }, false);
-  }
+  document.getElementById('fileBase').addEventListener('change', function() {
+    handleFileSelect(window.event, this);
+  }, false);
+  document.getElementById('fileParticion1').addEventListener('change', function() {
+    handleFileSelect(window.event, this);
+  }, false);
+  document.getElementById('fileParticion2').addEventListener('change', function() {
+    handleFileSelect(window.event, this);
+  }, false);
+  document.getElementById('fileParticion3').addEventListener('change', function() {
+    handleFileSelect(window.event, this);
+  }, false);
+  document.getElementById('fileParticion4').addEventListener('change', function() {
+    handleFileSelect(window.event, this);
+  }, false);
+  document.getElementById('fileParticion1Select').addEventListener('change', function() {
+    handleFileSelect(window.event, this);
+  }, false);
+  document.getElementById('fileParticion2Select').addEventListener('change', function() {
+    handleFileSelect(window.event, this);
+  }, false);
+  document.getElementById('fileParticion3Select').addEventListener('change', function() {
+    handleFileSelect(window.event, this);
+  }, false);
+  document.getElementById('fileParticion4Select').addEventListener('change', function() {
+    handleFileSelect(window.event, this);
+  }, false);
 
   function showTable(item) {
     if(item.value == "base") {
@@ -424,20 +420,20 @@
     $("#part2").attr("src","");
     $("#part3").attr("src","");
     $("#part4").attr("src","");
-    if($("#fileBase").val() != "") $("#fileBase").replaceWith($("#fileBase").val('').clone(true));
-    if($("#fileParticion1").val() != "") $("#fileParticion1").replaceWith($("#fileParticion1").val('').clone(true));
-    if($("#fileParticion2").val() != "") $("#fileParticion2").replaceWith($("#fileParticion2").val('').clone(true));
-    if($("#fileParticion3").val() != "") $("#fileParticion3").replaceWith($("#fileParticion3").val('').clone(true));
-    if($("#fileParticion4").val() != "") $("#fileParticion4").replaceWith($("#fileParticion4").val('').clone(true));
-    if($("#fileParticion1Select").val() != "") $("#fileParticion1Select").replaceWith($("#fileParticion1Select").val('').clone(true));
-    if($("#fileParticion2Select").val() != "") $("#fileParticion2Select").replaceWith($("#fileParticion2Select").val('').clone(true));
-    if($("#fileParticion3Select").val() != "") $("#fileParticion3Select").replaceWith($("#fileParticion3Select").val('').clone(true));
-    if($("#fileParticion4Select").val() != "") $("#fileParticion4Select").replaceWith($("#fileParticion4Select").val('').clone(true));
+    $("#fileBase").replaceWith($("#fileBase").val('').clone(true));
+    $("#fileParticion1").replaceWith($("#fileParticion1").val('').clone(true));
+    $("#fileParticion2").replaceWith($("#fileParticion2").val('').clone(true));
+    $("#fileParticion3").replaceWith($("#fileParticion3").val('').clone(true));
+    $("#fileParticion4").replaceWith($("#fileParticion4").val('').clone(true));
+    $("#fileParticion1Select").replaceWith($("#fileParticion1Select").val('').clone(true));
+    $("#fileParticion2Select").replaceWith($("#fileParticion2Select").val('').clone(true));
+    $("#fileParticion3Select").replaceWith($("#fileParticion3Select").val('').clone(true));
+    $("#fileParticion4Select").replaceWith($("#fileParticion4Select").val('').clone(true));
     $("#nombreBase").val("");
     $("#nombreBaseSelect").val("");
     $("#nombreParticion").val("");
     $("#nombreParticionSelect").val("");
-    addOnChangeToFiles();
+
   }
 
   function generarMiniatura() {
