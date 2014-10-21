@@ -7,7 +7,7 @@
 	include '../ChromePhp.php';
 
 	//ChromePhp::log("hola");
-	//validateForm();
+	validateForm();
 	$success = true;
 	$target_path = "../img/admin";
 	if($_POST['nombreParticion']) $particion_name = $_POST['nombreParticion'];
@@ -54,7 +54,7 @@
 	if($success) {
 		header('Location: /tfg/admin/adminTool.php?success');
 	}
-	else header('Location: /tfg/admin/adminTool.php?error');
+	else header('Location: /tfg/admin/adminTool.php?error=1');
 	
 	exit;
 
@@ -72,7 +72,23 @@
 	}
 
 	function validateForm() {
-		header('Location: /tfg/admin/adminTool.php?error');
+		$error = 0;
+		if($_FILES['fileParticion1']['name'] == "") {
+			if($_FILES['fileParticion2']['name'] != "" || $_FILES['fileParticion3']['name'] != "" || $_FILES['fileParticion4']['name'] != "") $error = 1;
+		}
+		else if($_FILES['fileParticion2']['name'] == "") {
+			if($_FILES['fileParticion3']['name'] != "" || $_FILES['fileParticion4']['name'] != "") $error = 1;
+		}
+		else if($_FILES['fileParticion3']['name'] == "") {
+			if($_FILES['fileParticion4']['name'] != "") $error = 1;
+		}
+		if($_FILES['fileParticion2Select']['name'] == "") {
+			if($_FILES['fileParticion3Select']['name'] != "" || $_FILES['fileParticion4Select']['name'] != "") $error = 1;
+		}
+		else if($_FILES['fileParticion3Select']['name'] == "") {
+			if($_FILES['fileParticion4Select']['name'] != "") $error = 1;
+		}
+		if($error != 0) header('Location: /tfg/admin/adminTool.php?error'. "=" . $error);
 	}
 	
 ?>

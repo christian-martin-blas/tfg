@@ -143,6 +143,10 @@
             {
               echo("<h3 style='text-align: center'>Se han cargado las imágenes correctamente.</h3>");
             }
+            else if(isset($_GET['error'])) {
+              //Se ha subido una particion sin subir otra antes.
+              if($error == 1) echo("<h3 style='text-align: center'>Te has olvidado subir alguna de las particiones.</h3>");
+            }
           ?>
           <div id="warning">
             <h4>Atención:</h4>
@@ -303,11 +307,8 @@
   //Variables para subir imagenes
   var reader;
 
+  //Añadimos el evento onChange para que cargue las previsualizaciones de las imagenes
   addOnChangeToFiles();
-
-  function openAdminTool() {
-    window.location.href= document.URL + "adminTool.php";
-  }
 
   function errorHandler(evt) {
     switch(evt.target.error.code) {
