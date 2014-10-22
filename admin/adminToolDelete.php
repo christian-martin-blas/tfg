@@ -97,9 +97,6 @@
         border: 5px solid #333333;
         position: relative;
       }
-      #linkMainPage {
-        font-size: 18px;
-      }
       #base {
         display: none;
       }
@@ -162,11 +159,9 @@
         }
       }        
     ?>
-
     <div id="adminTool">
 
       <div class="col-md-4">
-        <a id="linkMainPage" href="/tfg">Editor de escudos</a>
 
         <form id="deleteFiles" enctype="multipart/form-data" action="remover.php" method="POST" onsubmit="guardarSrc()">
           <?php
@@ -246,6 +241,15 @@
       </div>
 
       <div class="col-md-6">
+        <ul class="nav nav-pills">
+          <li class="active">
+            <a href="/tfg">Home</a>
+          </li>
+          <li><a href="/tfg/admin/adminToolUpload.php">Cargar Bases</a></li>
+          <li><a href="/tfg/admin/adminToolDelete.php">Eliminar Bases</a></li>
+          <li><a href="/tfg/admin/adminToolUploadDecorative.php">Cargar Decoraciones</a></li>
+          <li><a href="/tfg/admin/adminToolDeleteDecorative.php">Eliminar Decoraciones</a></li>
+        </ul>
         <div id="previsualization">
           <img id="back">
           <img id="part1">

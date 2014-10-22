@@ -225,6 +225,12 @@
       #formDiv {
         margin-top: 40px;
       }
+      #leftMenu {
+        margin-left: 250px;
+      }
+      #buttons {
+        margin-top: 10px;
+      }
 
   	</style>
 
@@ -233,7 +239,7 @@
 
     <div id="mainTool">
 
-      <div class="col-md-3">
+      <div id="leftMenu" class="col-md-3">
         <div id="images">
           <div id="accordion">
             <h3>Imágenes Animales</h3>
@@ -254,7 +260,18 @@
             </div>
             <h3>Imágenes Artificiales</h3>
             <div id="artificiales">
-              
+              <div id="artificial1" class="col-md-5">
+                <img id="baculo" src="./img/artificiales/baculo.png" class="figures" onClick="addImage(this)"/>
+              </div>
+              <div id="artificial2" class="col-md-5">
+                <img id="balanza" src="./img/artificiales/balanza.png" class="figures" onClick="addImage(this)"/>
+              </div>
+              <div id="artificial3" class="col-md-5">
+                <img id="castillo" src="./img/artificiales/castillo.png" class="figures" onClick="addImage(this)"/>
+              </div>
+              <div id="artificial4" class="col-md-5">
+                <img id="espada" src="./img/artificiales/espada.png" class="figures" onClick="addImage(this)"/>
+              </div>
             </div>
             <h3>Imágenes Naturales</h3>
             <div id="humanas">
@@ -293,11 +310,20 @@
       </div>
 
       <div class="col-md-7">
-        <button id="buttonPopUp" onclick="openPopUp('open')">Nuevo Escudo</button>
-        <button id="buttonPopUp" onclick="openPopUp('save')">Guardar Escudo</button>
-        <button id="buttonPopUp" onclick="openPopUp('load')">Cargar Escudo</button>
-        <button id="buttonAdmin" onclick="openAdminToolUpload()">Cargar Bases de Escudos</button>
-        <button id="buttonAdmin" onclick="openAdminToolDelete()">Eliminar Bases de Escudos</button>
+        <ul class="nav nav-pills">
+          <li class="active">
+            <a href="/tfg">Home</a>
+          </li>
+          <li><a href="/tfg/admin/adminToolUpload.php">Cargar Bases</a></li>
+          <li><a href="/tfg/admin/adminToolDelete.php">Eliminar Bases</a></li>
+          <li><a href="/tfg/admin/adminToolUploadDecorative.php">Cargar Decoraciones</a></li>
+          <li><a href="/tfg/admin/adminToolDeleteDecorative.php">Eliminar Decoraciones</a></li>
+        </ul>
+        <div id="buttons">
+          <button id="buttonPopUp" onclick="openPopUp('open')">Nuevo Escudo</button>
+          <button id="buttonPopUp" onclick="openPopUp('save')">Guardar Escudo</button>
+          <button id="buttonPopUp" onclick="openPopUp('load')">Cargar Escudo</button>
+        </div>
         <div id="workspace">
           <canvas id="mainCanvas" width="530" height="350">
           </canvas>
