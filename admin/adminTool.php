@@ -130,6 +130,20 @@
   </head>
   <body>
 
+    <?php
+      function addOptions() {
+        //Añade al select las bases creadas por el admin
+        $dir    = '../img/admin/bases';
+        $files = scandir($dir);
+        foreach ($files as &$file) {
+          if($file != '.' && $file != '..') {
+            $base_name = substr($file, 0, -4);
+            echo("<option value='" . $base_name . "'>" . $base_name . "</option>");
+          }
+        }
+      }
+    ?>
+
     <div id="adminTool">
 
       <div class="col-md-4">
@@ -137,7 +151,6 @@
 
         <form id="uploadFiles" enctype="multipart/form-data" action="uploader.php" method="POST" onsubmit="generarMiniatura()">
           <?php
-            include '../ChromePhp.php';
 
             if(isset($_GET['success']))
             {
@@ -172,6 +185,9 @@
                   <option value="Ingles">Ingles</option>
                   <option value="Italiano">Italiano</option>
                   <option value="Semicircular">Semicircular</option>
+                  <?php
+                    addOptions();
+                  ?>
                 </select>
               </td>
             </tr>
@@ -346,8 +362,10 @@
           var src = e.target.result;
           var name = item.name;
           if(name == "fileBase") back.src = src;
-          else if(name == "fileMiniatura" || name == "fileMiniaturaSelect") miniature.src = src;
-          else if(name == "fileParticion1" || name == "fileParticion1Select") part1.src = src;
+          else if(name == "fileParticion1" || name == "fileParticion1Select") {
+            part1.src = src;
+            if(name == "fileParticion1") document.getElementById("nombreParticion").required = true;
+          }
           else if(name == "fileParticion2" || name == "fileParticion2Select") part2.src = src;
           else if(name == "fileParticion3" || name == "fileParticion3Select") part3.src = src;
           else if(name == "fileParticion4" || name == "fileParticion4Select") part4.src = src;
@@ -395,7 +413,7 @@
       $('#sinBase').css('display','none');
       document.getElementById("nombreBase").required = true;
       document.getElementById("fileBase").required = true;
-      document.getElementById("nombreParticion").required = true;
+      document.getElementById("nombreParticion").required = false;
       document.getElementById("nombreBaseSelect").required = false;
       document.getElementById("nombreParticionSelect").required = false;
       document.getElementById("fileParticion1Select").required = false;
@@ -415,7 +433,9 @@
 
   function showBase(item) {
     if(item.value != "") {
-      var src = "/tfg/img/bases/Base " + item.value + ".png";
+      if(item.value != "Aleman" && item.value != "Apuntado" && item.value != "Frances" && item.value != "Ingles" 
+        && item.value != "Italiano" && item.value != "Semicircular") var src = "/tfg/img/admin/bases/" + item.value + ".png";
+      else var src = "/tfg/img/bases/" + item.value + ".png";
       back.src = src;
     }
     else back.src = "";
@@ -440,6 +460,7 @@
     $("#nombreBaseSelect").val("");
     $("#nombreParticion").val("");
     $("#nombreParticionSelect").val("");
+    document.getElementById("nombreParticion").required = false;
     addOnChangeToFiles();
   }
 

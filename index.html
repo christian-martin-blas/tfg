@@ -493,7 +493,7 @@
 
   function openPopUp(popUp) {
     if(mainCanvas.item(0) != undefined) {
-      if(popUp == "open" && popUp == "load") $("#dialogConfirm").dialog("open");
+      if(popUp == "open" || popUp == "load") $("#dialogConfirm").dialog("open");
       else {
         var c = document.getElementById("mainCanvas");
         var mainCtx = c.getContext("2d");
