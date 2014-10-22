@@ -79,7 +79,7 @@
       }
 
       #deleteFiles {
-        margin-top: 50px;
+        margin-top: 250px;
       }
       td {
         padding: 6px;
@@ -106,6 +106,15 @@
       #particion {
         display: none;
       }
+      #src {
+        display: none;
+      }
+      #imgName {
+        display: none;
+      }
+      #imgNameBase {
+        display: none;
+      }
 
     </style>
 
@@ -113,27 +122,25 @@
   <body>
 
     <?php
+
       function addOptions() {
         //Añade al select las bases creadas por el admin
         $dir    = '../img/admin/bases';
         $files = scandir($dir);
         foreach ($files as &$file) {
           if($file != '.' && $file != '..') {
-            $base_name = substr($file, 0, -4);
-            echo("<option value='" . $base_name . "'>" . $base_name . "</option>");
+            if(substr($file, -4) == ".png") {
+              //Nos aseguramos que sea una imagen png
+              $base_name = substr($file, 0, -4);
+              echo("<option value='" . $base_name . "'>" . $base_name . "</option>");
+            }
           }
         }
       }
 
       function addSelects() {
-        //Añade los selects con las particiones de cada base    
-        $dir    = '../img/admin/miniaturas';
-        addParticiones($dir);
-        $dir    = '../img/miniaturas';
-        addParticiones($dir);
-      }
-
-      function addParticiones($dir) {
+        //Añade los selects con las particiones de cada base 
+        $dir = '../img/admin/miniaturas';   
         $files = scandir($dir);
         foreach ($files as &$file) {
           if($file != '.' && $file != '..') {
@@ -143,14 +150,17 @@
             $deep_files = scandir($deep_dir);
             foreach ($deep_files as &$deep_file) {
               if($deep_file != '.' && $deep_file != '..') {
-                $particion_name = substr($deep_file, 0, -4);
-                echo("<option value='" . $particion_name . "'>" . $particion_name . "</option>");
+                if(substr($deep_file, -4) == ".png") {
+                  //Nos aseguramos que sea una imagen png
+                  $particion_name = substr($deep_file, 0, -4);
+                  echo("<option value='" . $particion_name . "'>" . $particion_name . "</option>");
+                }
               }
             }
           }
           echo("</select>");
         }
-      }
+      }        
     ?>
 
     <div id="adminTool">
@@ -158,7 +168,7 @@
       <div class="col-md-4">
         <a id="linkMainPage" href="/tfg">Editor de escudos</a>
 
-        <form id="deleteFiles" enctype="multipart/form-data" action="remover.php" method="POST" onsubmit="generarMiniatura()">
+        <form id="deleteFiles" enctype="multipart/form-data" action="remover.php" method="POST" onsubmit="guardarSrc()">
           <?php
 
             if(isset($_GET['success']))
@@ -229,6 +239,9 @@
           <div id="buttonSubmit">
             <input type="submit" id="buttonUpload" value="Eliminar las imágenes"/>
           </div>
+          <input type="text" id="src" name="src"/>   
+          <input type="text" id="imgName" name="imgName"/>   
+           <input type="text" id="imgNameBase" name="imgNameBase"/>   
         </form>
       </div>
 
@@ -260,6 +273,7 @@
       $('#particion').css('display','none');
       document.getElementById("nombreBase").required = true;
       document.getElementById("nombreBaseParticion").required = false;
+      if(antSelect != "") document.getElementById(antSelect).required = false;
     }
     else {
       $('#base').css('display','none');
@@ -297,9 +311,7 @@
 
   function showParticion(item) {
     if(item.value != "") {
-      if(item.id != "Aleman" && item.id != "Apuntado" && item.id != "Frances" && item.id != "Ingles" 
-        && item.id != "Italiano" && item.id != "Semicircular") var src = "/tfg/img/admin/miniaturas/" + item.id + "/" + item.value + ".png";
-      else var src = "/tfg/img/miniaturas/" + item.id + "/" + item.value + ".png";
+      var src = "/tfg/img/admin/miniaturas/" + item.id + "/" + item.value + ".png";
       back.src = src;
     }
   }
@@ -309,6 +321,19 @@
     $("#nombreBase").val("");
     $("#nombreBaseParticion").val("");
     $("#nombreParticion").val("");
+  }
+
+  function guardarSrc() {
+    //Guardo las variables que necesito para saber que borrar
+    $("#src").val(back.src);
+    if($("#nombreBase").val() != "") {
+      $("#imgName").val($("#nombreBase").val());
+    }
+    else if($("#nombreBaseParticion").val() != "") {
+      var nombreBase = $("#nombreBaseParticion").val();
+      $("#imgNameBase").val($("#nombreBaseParticion").val());
+      $("#imgName").val($("#" + nombreBase).val());
+    }
   }
 
   </script>
