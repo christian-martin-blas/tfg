@@ -96,13 +96,13 @@
                 <img src="./img/miniaturas/Apuntado/Vacio1.png" class="design">
               </div>
               <div id="particionPartido" class="col-md-5" onClick="displayColores(this)">
-                <img src="./img/miniaturas/Apuntado/Partido2.jpg" class="design">
+                <img src="./img/miniaturas/Apuntado/Partido2.png" class="design">
               </div>
               <div id="particionCortado" class="col-md-5" onClick="displayColores(this)">
-                <img src="./img/miniaturas/Apuntado/Cortado2.jpg" class="design">
+                <img src="./img/miniaturas/Apuntado/Cortado2.png" class="design">
               </div>
               <div id="particionTronchado" class="col-md-5" onClick="displayColores(this)">
-                <img src="./img/miniaturas/Apuntado/Tronchado2.jpg" class="design">
+                <img src="./img/miniaturas/Apuntado/Tronchado2.png" class="design">
               </div>
               <?php
                 addParticionesBaseCreada("Apuntado");
@@ -113,13 +113,13 @@
             <h4>Particiones</h4>
             <div id="imagenesParticiones">
               <div id="particionPartido" class="col-md-5" onClick="displayColores(this)">
-                <img src="./img/miniaturas/Semicircular/Partido2.jpg" class="design">
+                <img src="./img/miniaturas/Semicircular/Partido2.png" class="design">
               </div>
               <div id="particionCortado" class="col-md-5" onClick="displayColores(this)">
-                <img src="./img/miniaturas/Semicircular/Cortado2.jpg" class="design">
+                <img src="./img/miniaturas/Semicircular/Cortado2.png" class="design">
               </div>
               <div id="particionTronchado" class="col-md-5" onClick="displayColores(this)">
-                <img src="./img/miniaturas/Semicircular/Tronchado2.jpg" class="design">
+                <img src="./img/miniaturas/Semicircular/Tronchado2.png" class="design">
               </div>
               <?php
                 addParticionesBaseCreada("Semicirular");

@@ -98,10 +98,6 @@
         border: 5px solid #333333;
         position: relative;
       }
-      #miniaturaTitulo {
-        margin-top: 300px;
-        margin-left: 645px;
-      }
       #linkMainPage {
         font-size: 18px;
       }
@@ -177,12 +173,12 @@
                 <b>Nombre de la Base:</b>
               </td>
               <td>
-                <select id="nombreBaseSelect" name="nombreBaseSelect" onchange="showBase(this)" required>
+                <select id="nombreBaseSelect" name="nombreBaseSelect" onchange="showBase(this)">
                   <option value=""></option>
                   <option value="Aleman">Aleman</option>
                   <option value="Apuntado">Apuntado</option>
                   <option value="Frances">Frances</option>
-                  <option value="Ingles">Ingles</option>
+                  <option value="Ingles">Inglés</option>
                   <option value="Italiano">Italiano</option>
                   <option value="Semicircular">Semicircular</option>
                   <?php
@@ -238,7 +234,7 @@
                 <b>Nombre de la Base:</b>
               </td>
               <td>
-                <input type="text" id="nombreBase" name="nombreBase"/>
+                <input type="text" id="nombreBase" name="nombreBase" required/>
               </td>
             </tr>
             <tr>

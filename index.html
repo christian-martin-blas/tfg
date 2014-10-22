@@ -296,7 +296,8 @@
         <button id="buttonPopUp" onclick="openPopUp('open')">Nuevo Escudo</button>
         <button id="buttonPopUp" onclick="openPopUp('save')">Guardar Escudo</button>
         <button id="buttonPopUp" onclick="openPopUp('load')">Cargar Escudo</button>
-        <button id="buttonAdmin" onclick="openAdminTool()">Cargar Bases de Escudos</button>
+        <button id="buttonAdmin" onclick="openAdminToolUpload()">Cargar Bases de Escudos</button>
+        <button id="buttonAdmin" onclick="openAdminToolDelete()">Eliminar Bases de Escudos</button>
         <div id="workspace">
           <canvas id="mainCanvas" width="530" height="350">
           </canvas>
@@ -618,8 +619,12 @@
     'object:rotating': updateControls
   });
 
-  function openAdminTool() {
-    window.location.href= document.URL + "admin/adminTool.php";
+  function openAdminToolUpload() {
+    window.location.href= document.URL + "admin/adminToolUpload.php";
+  }
+
+  function openAdminToolDelete() {
+    window.location.href= document.URL + "admin/adminToolDelete.php";
   }
 
   function abortRead() {
