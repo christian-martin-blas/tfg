@@ -50,6 +50,9 @@
         margin: 8px;
         float: right;
       }
+      #leftMenu {
+        margin-left: 150px;
+      }
 
     </style>
 
@@ -72,7 +75,7 @@
 
     <div id="adminTool">
 
-      <div class="col-md-4">
+      <div id="leftMenu" class="col-md-4">
 
         <form id="uploadFiles" enctype="multipart/form-data" action="uploaderDecorative.php" method="POST" onsubmit="saveSrc()">
           <?php

@@ -112,6 +112,9 @@
       #imgNameBase {
         display: none;
       }
+      #leftMenu {
+        margin-left: 150px;
+      }
 
     </style>
 
@@ -161,7 +164,7 @@
     ?>
     <div id="adminTool">
 
-      <div class="col-md-4">
+      <div id="leftMenu" class="col-md-4">
 
         <form id="deleteFiles" enctype="multipart/form-data" action="remover.php" method="POST" onsubmit="guardarSrc()">
           <?php

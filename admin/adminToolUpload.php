@@ -117,6 +117,9 @@
       #miniatura {
         display: none;
       }
+      #leftMenu {
+        margin-left: 150px;
+      }
 
     </style>
 
@@ -139,7 +142,7 @@
 
     <div id="adminTool">
 
-      <div class="col-md-4">
+      <div id="leftMenu" class="col-md-4">
 
         <form id="uploadFiles" enctype="multipart/form-data" action="uploader.php" method="POST" onsubmit="generarMiniatura()">
           <?php
