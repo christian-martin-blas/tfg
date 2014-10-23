@@ -38,7 +38,7 @@
 	
 	
 
-	header('Location: /tfg/admin/adminToolDelete.php');
+	header('Location: /tfg/admin/adminToolDelete.php?success');
 	exit;
 
 	function removeFiles($dir) {

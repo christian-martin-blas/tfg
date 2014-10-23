@@ -168,7 +168,13 @@
 
             if(isset($_GET['success']))
             {
-              echo("<h3 style='text-align: center'>Se han eliminado las imágenes correctamente.</h3>");
+              echo("<h3 style='text-align: center'>Se han cargado las imágenes correctamente.</h3>");
+            }
+            else if(isset($_GET['error'])) {
+              $error = $_GET['error'];
+              //Se ha subido una particion sin subir otra antes.
+              if($error == 1) echo("<h3 style='text-align: center'>Te has saltado el orden al subir las particiones.</h3>");
+              if($error == 2) echo("<h3 style='text-align: center'>Ha habido un fallo subiendo las imágenes.</h3>");
             }
           ?>
           <input type="radio" name="base" value="base" onclick="showTable(this)">Eliminaré base y particiones<br>

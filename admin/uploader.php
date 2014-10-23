@@ -93,12 +93,17 @@
 	function uploadImage($target_path, $file, $name) {
 		if($name != "") $tmp_path = $target_path . "/" . $name;
 		else $tmp_path = $target_path . "/" . basename($_FILES[$file]['name']);
-		if(move_uploaded_file($_FILES[$file]['tmp_name'], $tmp_path)) {
-		    echo "El fichero ".  $name. 
-		    " se ha subido.";
-		} else{
-		    echo "Ha habido un error subiendo las imágenes.";
-		    $errorCode = 2;
+		if(!file_exists($tmp_path)) {
+			if(move_uploaded_file($_FILES[$file]['tmp_name'], $tmp_path)) {
+			    echo "El fichero ".  $name. 
+			    " se ha subido.";
+			} else{
+			    echo "Ha habido un error subiendo las imágenes.";
+			    $GLOBALS['errorCode'] = 2;
+			}
+		}
+		else {
+			$GLOBALS['errorCode'] = 3;
 		}
 	}
 
