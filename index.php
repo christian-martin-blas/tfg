@@ -149,6 +149,8 @@
         height: 100px;
         padding: 5px;
         cursor: pointer;
+        display:block;
+        margin:auto;
       }
       .controls { 
         float: left;
