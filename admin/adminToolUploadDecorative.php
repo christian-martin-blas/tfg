@@ -25,11 +25,9 @@
         position: absolute;
         left: 50%;
         top: 50%; 
-        /*margin-left: -110px;
-        margin-top: -110px;*/
       }
       #uploadFiles {
-        margin-top: 120px;
+        margin-top: 300px;
       }
       td {
         padding: 6px;
@@ -42,7 +40,7 @@
         background-color: #C2C1BD;
         height: 500px;
         width: 700px;
-        margin-top: 200px;
+        margin-top: 100px;
         margin-left: 70px;
         float: left;
         border: 5px solid #333333;
@@ -93,7 +91,7 @@
           <table>
             <tr>
               <td>
-                <b>Nombre de la Base:</b>
+                <b>Grupo de la decoración:</b>
               </td>
               <td>
                 <select id="decorativeGroup" name="decorativeGroup" required>

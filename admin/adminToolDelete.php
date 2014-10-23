@@ -91,7 +91,7 @@
       #previsualization {
         height: 350px;
         width: 533px;
-        margin-top: 200px;
+        margin-top: 100px;
         margin-left: 70px;
         float: left;
         border: 5px solid #333333;
@@ -230,7 +230,7 @@
           </div>
           <input type="text" id="src" name="src"/>   
           <input type="text" id="imgName" name="imgName"/>   
-           <input type="text" id="imgNameBase" name="imgNameBase"/>   
+          <input type="text" id="imgNameBase" name="imgNameBase"/>   
         </form>
       </div>
 
