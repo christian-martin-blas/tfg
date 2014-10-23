@@ -27,11 +27,18 @@
             <textarea name="historia" rows="5" form="saveEscudo" ></textarea>
           </td>
         </tr>
+        <tr>
+          <td></td>
+          <td>
+            <input type="checkbox" name="public" value='1'>Público<br>
+          </td>
+        </tr>
       </table>
+      <input type="text" id="srcSave" name="srcSave"/>    
      </form>
     </div>
     <div id="previsualization" class="col-md-6">
-      <img id="escudo"/>
+      <img id="escudo" src = ""/>
     </div>
   </div>
 </div>

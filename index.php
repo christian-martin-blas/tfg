@@ -236,6 +236,12 @@
       #decorativeImages {
         max-height: 600px;
       }
+      #escudo {
+        position: absolute;
+      }
+      #srcSave {
+        display: none;
+      }
 
   	</style>
 
@@ -269,16 +275,16 @@
               <h3>Imágenes Animales</h3>
               <div id="animales">
                 <div id="animales1" class="col-md-5">
-                  <img id="aguila" src="./img/animales/aguila.png" class="figures" onClick="addImage(this)"/>
+                  <img id="aguila" src="./img/decoraciones/animales/aguila.png" class="figures" onClick="addImage(this)"/>
                 </div>
                 <div id="animales2" class="col-md-5">
-                  <img id="cabrapie" src="./img/animales/cabrapie.png" class="figures" onClick="addImage(this)"/>
+                  <img id="cabrapie" src="./img/decoraciones/animales/cabrapie.png" class="figures" onClick="addImage(this)"/>
                 </div>
                 <div id="animales3" class="col-md-5">
-                  <img id="halcon" src="./img/animales/halcon.png" class="figures" onClick="addImage(this)"/>
+                  <img id="halcon" src="./img/decoraciones/animales/halcon.png" class="figures" onClick="addImage(this)"/>
                 </div>
                 <div id="animales4" class="col-md-5">
-                  <img id="leon" src="./img/animales/leon.png" class="figures" onClick="addImage(this)"/>
+                  <img id="leon" src="./img/decoraciones/animales/leon.png" class="figures" onClick="addImage(this)"/>
                 </div>
                 <?php
                   loadDecoraciones("animales", 5);
@@ -287,16 +293,16 @@
               <h3>Imágenes Artificiales</h3>
               <div id="artificiales">
                 <div id="artificiales1" class="col-md-5">
-                  <img id="baculo" src="./img/artificiales/baculo.png" class="figures" onClick="addImage(this)"/>
+                  <img id="baculo" src="./img/decoraciones/artificiales/baculo.png" class="figures" onClick="addImage(this)"/>
                 </div>
                 <div id="artificiales2" class="col-md-5">
-                  <img id="balanza" src="./img/artificiales/balanza.png" class="figures" onClick="addImage(this)"/>
+                  <img id="balanza" src="./img/decoraciones/artificiales/balanza.png" class="figures" onClick="addImage(this)"/>
                 </div>
                 <div id="artificiales3" class="col-md-5">
-                  <img id="castillo" src="./img/artificiales/castillo.png" class="figures" onClick="addImage(this)"/>
+                  <img id="castillo" src="./img/decoraciones/artificiales/castillo.png" class="figures" onClick="addImage(this)"/>
                 </div>
                 <div id="artificiales4" class="col-md-5">
-                  <img id="espada" src="./img/artificiales/espada.png" class="figures" onClick="addImage(this)"/>
+                  <img id="espada" src="./img/decoraciones/artificiales/espada.png" class="figures" onClick="addImage(this)"/>
                 </div>
                 <?php
                   loadDecoraciones("artificiales", 5);
@@ -531,6 +537,10 @@
         modal: true,
         buttons: {
           "Guardar escudo": function() {
+            //Guardamos el codigo base 64 de la imagen del escudo
+            var src = document.getElementById("escudo").src;
+            src = src.substring(22);
+            document.getElementById("srcSave").value = src;
             document.getElementById("saveEscudo").submit();
             $( this ).dialog( "close" );
           },
@@ -572,7 +582,8 @@
         var c = document.getElementById("mainCanvas");
         var mainCtx = c.getContext("2d");
         var src = c.toDataURL("image/png");
-        console.log(src);
+        document.getElementById("escudo").src = src;
+        $("#savePopUp").dialog("open");
       } 
     }
   	else {
