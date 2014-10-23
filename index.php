@@ -237,6 +237,24 @@
   </head>
   <body>
 
+    <?php
+      function loadDecoraciones($group, $index) {
+        $dir    = './img/admin/decoraciones/' . $group ;
+        $files = scandir($dir);
+        foreach ($files as &$file) {
+          if($file != '.' && $file != '..') {
+            $file_name = substr($file, 0, -4);
+            echo("<div id='" . $group . $index . "' class='col-md-5'>");
+            echo("<img id='" . $file_name . "' src='" . $dir . "/" . $file . "' class='figures' onClick='addImage(this)'/>");
+            echo("</div>");
+            $index = $index + 1;
+          }
+        }
+      }
+
+    ?>
+
+
     <div id="mainTool">
 
       <div id="leftMenu" class="col-md-3">
@@ -244,57 +262,80 @@
           <div id="accordion">
             <h3>Imágenes Animales</h3>
             <div id="animales">
-              <div id="animal1" class="col-md-5">
+              <div id="animales1" class="col-md-5">
                 <img id="aguila" src="./img/animales/aguila.png" class="figures" onClick="addImage(this)"/>
               </div>
-              <div id="animal2" class="col-md-5">
+              <div id="animales2" class="col-md-5">
                 <img id="cabrapie" src="./img/animales/cabrapie.png" class="figures" onClick="addImage(this)"/>
               </div>
-              <div id="animal3" class="col-md-5">
+              <div id="animales3" class="col-md-5">
                 <img id="halcon" src="./img/animales/halcon.png" class="figures" onClick="addImage(this)"/>
               </div>
-              <div id="animal4" class="col-md-5">
+              <div id="animales4" class="col-md-5">
                 <img id="leon" src="./img/animales/leon.png" class="figures" onClick="addImage(this)"/>
               </div>
-              
+              <?php
+                loadDecoraciones("animales", 5);
+              ?>
             </div>
             <h3>Imágenes Artificiales</h3>
             <div id="artificiales">
-              <div id="artificial1" class="col-md-5">
+              <div id="artificiales1" class="col-md-5">
                 <img id="baculo" src="./img/artificiales/baculo.png" class="figures" onClick="addImage(this)"/>
               </div>
-              <div id="artificial2" class="col-md-5">
+              <div id="artificiales2" class="col-md-5">
                 <img id="balanza" src="./img/artificiales/balanza.png" class="figures" onClick="addImage(this)"/>
               </div>
-              <div id="artificial3" class="col-md-5">
+              <div id="artificiales3" class="col-md-5">
                 <img id="castillo" src="./img/artificiales/castillo.png" class="figures" onClick="addImage(this)"/>
               </div>
-              <div id="artificial4" class="col-md-5">
+              <div id="artificiales4" class="col-md-5">
                 <img id="espada" src="./img/artificiales/espada.png" class="figures" onClick="addImage(this)"/>
               </div>
+              <?php
+                loadDecoraciones("artificiales", 5);
+              ?>
             </div>
             <h3>Imágenes Naturales</h3>
-            <div id="humanas">
+            <div id="naturales">
+              <?php
+                loadDecoraciones("naturales", 1);
+              ?>
             </div>
 
             <h3>Imágenes Vegetales</h3>
-            <div id="humanas">
+            <div id="vegetales">
+              <?php
+                loadDecoraciones("vegetales", 1);
+              ?>
             </div>
 
             <h3>Muebles</h3>
-            <div id="humanas">
+            <div id="muebles">
+              <?php
+                loadDecoraciones("muebles", 1);
+              ?>
             </div>
 
             <h3>Piezas</h3>
-            <div id="humanas">
+            <div id="piezas">
+              <?php
+                loadDecoraciones("piezas", 1);
+              ?>
             </div>
 
             <h3>Soportes</h3>
-            <div id="humanas">
+            <div id="soportes">
+              <?php
+                loadDecoraciones("soportes", 1);
+              ?>
             </div>
 
             <h3>Timbres</h3>
-            <div id="humanas">
+            <div id="timbres">
+              <?php
+                loadDecoraciones("timbres", 1);
+              ?>
             </div>
           </div>
 
