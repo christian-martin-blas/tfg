@@ -233,6 +233,9 @@
       #buttons {
         margin-top: 10px;
       }
+      #decorativeImages {
+        max-height: 600px;
+      }
 
   	</style>
 
@@ -261,86 +264,87 @@
 
       <div id="leftMenu" class="col-md-3">
         <div id="images">
-          <div id="accordion">
-            <h3>Imágenes Animales</h3>
-            <div id="animales">
-              <div id="animales1" class="col-md-5">
-                <img id="aguila" src="./img/animales/aguila.png" class="figures" onClick="addImage(this)"/>
+          <div id ="decorativeImages">
+            <div id="accordion">
+              <h3>Imágenes Animales</h3>
+              <div id="animales">
+                <div id="animales1" class="col-md-5">
+                  <img id="aguila" src="./img/animales/aguila.png" class="figures" onClick="addImage(this)"/>
+                </div>
+                <div id="animales2" class="col-md-5">
+                  <img id="cabrapie" src="./img/animales/cabrapie.png" class="figures" onClick="addImage(this)"/>
+                </div>
+                <div id="animales3" class="col-md-5">
+                  <img id="halcon" src="./img/animales/halcon.png" class="figures" onClick="addImage(this)"/>
+                </div>
+                <div id="animales4" class="col-md-5">
+                  <img id="leon" src="./img/animales/leon.png" class="figures" onClick="addImage(this)"/>
+                </div>
+                <?php
+                  loadDecoraciones("animales", 5);
+                ?>
               </div>
-              <div id="animales2" class="col-md-5">
-                <img id="cabrapie" src="./img/animales/cabrapie.png" class="figures" onClick="addImage(this)"/>
+              <h3>Imágenes Artificiales</h3>
+              <div id="artificiales">
+                <div id="artificiales1" class="col-md-5">
+                  <img id="baculo" src="./img/artificiales/baculo.png" class="figures" onClick="addImage(this)"/>
+                </div>
+                <div id="artificiales2" class="col-md-5">
+                  <img id="balanza" src="./img/artificiales/balanza.png" class="figures" onClick="addImage(this)"/>
+                </div>
+                <div id="artificiales3" class="col-md-5">
+                  <img id="castillo" src="./img/artificiales/castillo.png" class="figures" onClick="addImage(this)"/>
+                </div>
+                <div id="artificiales4" class="col-md-5">
+                  <img id="espada" src="./img/artificiales/espada.png" class="figures" onClick="addImage(this)"/>
+                </div>
+                <?php
+                  loadDecoraciones("artificiales", 5);
+                ?>
               </div>
-              <div id="animales3" class="col-md-5">
-                <img id="halcon" src="./img/animales/halcon.png" class="figures" onClick="addImage(this)"/>
+              <h3>Imágenes Naturales</h3>
+              <div id="naturales">
+                <?php
+                  loadDecoraciones("naturales", 1);
+                ?>
               </div>
-              <div id="animales4" class="col-md-5">
-                <img id="leon" src="./img/animales/leon.png" class="figures" onClick="addImage(this)"/>
-              </div>
-              <?php
-                loadDecoraciones("animales", 5);
-              ?>
-            </div>
-            <h3>Imágenes Artificiales</h3>
-            <div id="artificiales">
-              <div id="artificiales1" class="col-md-5">
-                <img id="baculo" src="./img/artificiales/baculo.png" class="figures" onClick="addImage(this)"/>
-              </div>
-              <div id="artificiales2" class="col-md-5">
-                <img id="balanza" src="./img/artificiales/balanza.png" class="figures" onClick="addImage(this)"/>
-              </div>
-              <div id="artificiales3" class="col-md-5">
-                <img id="castillo" src="./img/artificiales/castillo.png" class="figures" onClick="addImage(this)"/>
-              </div>
-              <div id="artificiales4" class="col-md-5">
-                <img id="espada" src="./img/artificiales/espada.png" class="figures" onClick="addImage(this)"/>
-              </div>
-              <?php
-                loadDecoraciones("artificiales", 5);
-              ?>
-            </div>
-            <h3>Imágenes Naturales</h3>
-            <div id="naturales">
-              <?php
-                loadDecoraciones("naturales", 1);
-              ?>
-            </div>
 
-            <h3>Imágenes Vegetales</h3>
-            <div id="vegetales">
-              <?php
-                loadDecoraciones("vegetales", 1);
-              ?>
-            </div>
+              <h3>Imágenes Vegetales</h3>
+              <div id="vegetales">
+                <?php
+                  loadDecoraciones("vegetales", 1);
+                ?>
+              </div>
 
-            <h3>Muebles</h3>
-            <div id="muebles">
-              <?php
-                loadDecoraciones("muebles", 1);
-              ?>
-            </div>
+              <h3>Muebles</h3>
+              <div id="muebles">
+                <?php
+                  loadDecoraciones("muebles", 1);
+                ?>
+              </div>
 
-            <h3>Piezas</h3>
-            <div id="piezas">
-              <?php
-                loadDecoraciones("piezas", 1);
-              ?>
-            </div>
+              <h3>Piezas</h3>
+              <div id="piezas">
+                <?php
+                  loadDecoraciones("piezas", 1);
+                ?>
+              </div>
 
-            <h3>Soportes</h3>
-            <div id="soportes">
-              <?php
-                loadDecoraciones("soportes", 1);
-              ?>
-            </div>
+              <h3>Soportes</h3>
+              <div id="soportes">
+                <?php
+                  loadDecoraciones("soportes", 1);
+                ?>
+              </div>
 
-            <h3>Timbres</h3>
-            <div id="timbres">
-              <?php
-                loadDecoraciones("timbres", 1);
-              ?>
+              <h3>Timbres</h3>
+              <div id="timbres">
+                <?php
+                  loadDecoraciones("timbres", 1);
+                ?>
+              </div>
             </div>
           </div>
-
           <div id="fileUploadDiv">
             <div id="uploadButtons">
               <h4 style="text-align: center">Cargar una imagen decorativa</h4>
@@ -582,7 +586,7 @@
 
   $(function() {
     $( "#accordion" ).accordion({
-
+      heightStyle: "fill" 
     });
   });
 
