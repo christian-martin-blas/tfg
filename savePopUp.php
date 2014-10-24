@@ -1,6 +1,7 @@
 <div id="dialog-form" title="Guardar escudo">
   <div id="saveContainer" class="container">
     <div id="formDiv" class="col-md-4">
+      <h5 style="color: #ffffff">Al guardar el escudo, no se podrán volver a modificar las imágenes que lo componen.</h5>
      <form id="saveEscudo" action="saveEscudo.php" method="POST">
       <table id="form">
         <tr>
