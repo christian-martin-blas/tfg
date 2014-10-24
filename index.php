@@ -381,17 +381,20 @@
           <button id="buttonPopUp" onclick="openPopUp('load')">Cargar Escudo</button>
         </div>
         <?php
-          /*if(isset($_GET['success']))
+          if(isset($_GET['success']))
           {
-            //echo("<h3 style='text-align: center'>Se han cargado las imágenes correctamente.</h3>");
-            echo ("<script type='text/javascript>alert('mostrar mi ventana popup');</script>");
+            echo '<script language="javascript">';
+            echo 'alert("Se ha guardado correctamente el escudo.")';
+            echo '</script>';
           }
           else if(isset($_GET['error'])) {
             $error = $_GET['error'];
             //Se ha subido una particion sin subir otra antes.
-            if($error == 1) echo("<h3 style='text-align: center'>Te has saltado el orden al subir las particiones.</h3>");
-            if($error == 2) echo("<h3 style='text-align: center'>Ha habido un fallo subiendo las imágenes.</h3>");
-          }*/
+            echo '<script language="javascript">';
+            if($error == 1) echo 'alert("No se ha podido conectar con la Base de datos.")';
+            if($error == 2) echo 'alert("No se ha podido guardar en la Base de datos.")';
+            echo '</script>';
+          }
         ?>
         <div id="workspace">
           <canvas id="mainCanvas" width="530" height="350">

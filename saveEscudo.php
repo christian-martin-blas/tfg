@@ -47,24 +47,21 @@
 	echo 'Conectado satisfactoriamente';
 	$bd_seleccionada = mysql_select_db('tfg', $enlace);
 	if (!$bd_seleccionada) {
-	    die ('No se puede usar foo : ' . mysql_error());
-	    $erroc_code = 2;
+	    die ('No se puede usar tfg : ' . mysql_error());
 	}
 
 	//Meter los valores con %s%
 	$insert = "INSERT INTO escudo VALUES ('%s',' %s', '%s', '%s', '%s', %b)";
 	$consulta = sprintf($insert, $userId, $nombre, $descripcion, $historia, $src, $public);
-	ChromePhp::log($consulta);
 	// Ejecutar la consulta
 	$resultado = mysql_query($consulta);
-	//ChromePhp::log(mysql_num_rows($resultado));
 	// Comprobar el resultado
 	// Lo siguiente muestra la consulta real enviada a MySQL, y el error ocurrido. Útil para depuración.
 	if (!$resultado) {
 	    $mensaje  = 'Consulta no válida: ' . mysql_error() . "\n";
 	    $mensaje .= 'Consulta completa: ' . $consulta;
 	    die($mensaje);
-	    $erroc_code = 3;
+	    $erroc_code = 2;
 	}
 
 	while ($fila = mysql_fetch_assoc($resultado)) {
