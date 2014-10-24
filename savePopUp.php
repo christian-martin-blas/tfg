@@ -8,7 +8,7 @@
              <b>Título:</b>
           </td>
           <td>
-            <input type="text" id="titulo" name="titulo"/>
+            <input type="text" id="titulo" name="titulo" required/>
           </td>
         </tr>
         <tr>
@@ -16,7 +16,7 @@
              <b>Descripción:</b>
           </td>
           <td>
-            <textarea name="descripcion" rows="5" form="saveEscudo" ></textarea>
+            <textarea id = "descripcion" name="descripcion" rows="5" form="saveEscudo" ></textarea>
           </td>
         </tr>
         <tr>
@@ -24,21 +24,22 @@
              <b>Historia:</b>
           </td>
           <td>
-            <textarea name="historia" rows="5" form="saveEscudo" ></textarea>
+            <textarea id = "historia" name="historia" rows="5" form="saveEscudo" ></textarea>
           </td>
         </tr>
         <tr>
           <td></td>
           <td>
-            <input type="checkbox" name="public" value='1'>Público<br>
+            <input id = "public" type="checkbox" name="public" value='1'>Público<br>
           </td>
         </tr>
       </table>
-      <input type="text" id="srcSave" name="srcSave"/>    
+      <input type="text" id="srcSave" name="srcSave"/>  
+      <input id="submitHidden" type="submit" value="Submit">  
      </form>
     </div>
     <div id="previsualization" class="col-md-6">
-      <img id="escudo" src = ""/>
+      <img id="escudo" src = "" onload="saveSrc()"/>
     </div>
   </div>
 </div>
@@ -47,6 +48,11 @@
 
 <script>
 
-
+  function saveSrc() {
+    //Guardamos el codigo base 64 de la imagen del escudo
+    var src = document.getElementById("escudo").src;
+    src = src.substring(22);
+    document.getElementById("srcSave").value = src;
+  }
 
 </script>

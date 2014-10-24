@@ -6,7 +6,6 @@
 <?php
 	include './ChromePhp.php';
 
-
 	//Recupero los valores a insertar
 	$userId = "prueba";
 	$nombre = $_POST['titulo'];
@@ -21,8 +20,13 @@
 		//Con esto eliminamos el fondo negro con el que se guardaba la imagen
 		imagealphablending($img, false);
 		imagesavealpha($img, true);
+		if(!file_exists("./img/users/" . $userId )) {
+			mkdir("./img/users/" . $userId, 0700);
+			mkdir("./img/users/" . $userId . "/public", 0700);
+			mkdir("./img/users/" . $userId . "/private", 0700);
+		}
 		if($public) $src = "./img/users/" . $userId . "/public/" . $nombre . ".png";
-		else $src = "./img/users/" . $userId . "/private" . $nombre . ".png";
+		else $src = "./img/users/" . $userId . "/private/" . $nombre . ".png";
 		imagepng($img, $src ,9);
 		imagedestroy($img);
 	}
@@ -48,11 +52,12 @@
 	}
 
 	//Meter los valores con %s%
-	$consulta = sprintf("INSERT INTO escudo VALUES (%s%, %s%, %s%, %s%, %s%, %b%)", $userId, $nombre, $descripcion, $historia, $src, $public);
-
+	$insert = "INSERT INTO escudo VALUES ('%s',' %s', '%s', '%s', '%s', %b)";
+	$consulta = sprintf($insert, $userId, $nombre, $descripcion, $historia, $src, $public);
+	ChromePhp::log($consulta);
 	// Ejecutar la consulta
 	$resultado = mysql_query($consulta);
-	ChromePhp::log(mysql_num_rows($resultado));
+	//ChromePhp::log(mysql_num_rows($resultado));
 	// Comprobar el resultado
 	// Lo siguiente muestra la consulta real enviada a MySQL, y el error ocurrido. Útil para depuración.
 	if (!$resultado) {
@@ -76,9 +81,9 @@
 
 
 	if($errorCode == 0) {
-		header('Location: /tfg/admin/adminToolUpload.php?success');
+		header('Location: /tfg/index.php?success');
 	}
-	else header('Location: /tfg/admin/adminToolUpload.php?error=' . $error_code);
+	else header('Location: /tfg/index.php?error=' . $error_code);
 	
 	exit;
 	

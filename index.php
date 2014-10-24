@@ -242,6 +242,9 @@
       #srcSave {
         display: none;
       }
+      #submitHidden {
+        display: none;
+      }
 
   	</style>
 
@@ -377,6 +380,19 @@
           <button id="buttonPopUp" onclick="openPopUp('save')">Guardar Escudo</button>
           <button id="buttonPopUp" onclick="openPopUp('load')">Cargar Escudo</button>
         </div>
+        <?php
+          /*if(isset($_GET['success']))
+          {
+            //echo("<h3 style='text-align: center'>Se han cargado las imágenes correctamente.</h3>");
+            echo ("<script type='text/javascript>alert('mostrar mi ventana popup');</script>");
+          }
+          else if(isset($_GET['error'])) {
+            $error = $_GET['error'];
+            //Se ha subido una particion sin subir otra antes.
+            if($error == 1) echo("<h3 style='text-align: center'>Te has saltado el orden al subir las particiones.</h3>");
+            if($error == 2) echo("<h3 style='text-align: center'>Ha habido un fallo subiendo las imágenes.</h3>");
+          }*/
+        ?>
         <div id="workspace">
           <canvas id="mainCanvas" width="530" height="350">
           </canvas>
@@ -537,18 +553,26 @@
         modal: true,
         buttons: {
           "Guardar escudo": function() {
-            //Guardamos el codigo base 64 de la imagen del escudo
-            var src = document.getElementById("escudo").src;
-            src = src.substring(22);
-            document.getElementById("srcSave").value = src;
-            document.getElementById("saveEscudo").submit();
-            $( this ).dialog( "close" );
+            var $myForm = $('#saveEscudo');
+            //Comprobamos si el formulario es valido
+            if (!$myForm[0].checkValidity()) {
+              $myForm.find(':submit').click()
+            }
+            else {
+              document.getElementById("saveEscudo").submit();
+              $( this ).dialog( "close" );
+            }
           },
           "Cancelar": function() {
+            //Borrar valores
             $( this ).dialog( "close" );
           }
         },
         close: function( event, ui ) {
+          $("#titulo").val("");
+          $("#descripcion").val("");
+          $("#historia").val("");
+          $("#public").prop('checked', false);
         }
       })
     
@@ -588,7 +612,9 @@
     }
   	else {
       if(popUp == "open") $("#popUp").dialog("open");
-      else if(popUp == "save") $("#savePopUp").dialog("open");
+      else if(popUp == "save") {
+        alert("No has creado ningún escudo aún.");
+      } 
       if(popUp == "load") $("#loadPopUp").dialog("open");
 
     }
