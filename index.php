@@ -616,7 +616,7 @@
           "Cargar escudo": function() {
             var c = document.getElementById("mainCanvas");
             var mainCtx = c.getContext("2d");   
-            mainCtx.drawImage(document.getElementById("escudoPrevisualization"), 150, 50);
+            mainCtx.drawImage(document.getElementById("escudoPrevisualization"), 0, 0);
             var src = c.toDataURL("image/png");       
             fabric.Image.fromURL(src, function(img) {
               mainCanvas.add(img.set({ left: 0, top: 0, selectable: false, hasControls: false, evented: false}));
