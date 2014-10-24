@@ -255,7 +255,6 @@ var part4Img = document.getElementById("part4");
 
 
   function getPixels(img)  {
-    console.log("Logger: " + img.id);
     canvas.width = img.width;
     canvas.height = img.height;
 
@@ -358,6 +357,7 @@ var part4Img = document.getElementById("part4");
     if(select.id == 'particion2' && !originalPixelsPart1) return;
     if(select.id == 'particion3' && !originalPixelsPart2) return;
     if(select.id == 'particion4' && !originalPixelsPart3) return;
+    if(select.id == 'particion5' && !originalPixelsPart4) return;
 
     var newColor = {
       R: hexToR(select.value),
@@ -476,7 +476,6 @@ var part4Img = document.getElementById("part4");
     base = item.id.substr(4, id.length);
 
     var particiones = "#particiones" + base;
-    console.log(particiones);
     $(particiones).css("display", "block");
   }
 

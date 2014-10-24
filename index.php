@@ -31,6 +31,10 @@
         background-color: grey;
         width: auto;
       }
+      #loadContainer {
+        background-color: grey;
+        width: auto;
+      }
   		.page-header {
   			text-align: center;
   		}
@@ -42,6 +46,11 @@
   			cursor: pointer;
         padding-bottom: 5px;
   		}
+      img.escudo {
+        width: 100%;
+        cursor: pointer;
+        padding-bottom: 5px;
+      }
       img {
         max-width: 100%;
         max-height: 100%;
@@ -52,6 +61,12 @@
   			width: 100%;
   			overflow-y: scroll;
   		}
+      #imagenesEscudos {
+        background-color: white;
+        height: 300px;
+        width: 100%;
+        overflow-y: scroll;
+      }
   		.particiones {
   			display: none;
   		}
@@ -244,6 +259,13 @@
       }
       #submitHidden {
         display: none;
+      }
+      div.divEscudo {
+        width: 100px;
+        float: left;
+      }
+      #escudoPrevisualization {
+        margin-left: 50px;
       }
 
   	</style>
@@ -442,6 +464,8 @@
 		</div>
     <div id="savePopUp" title="Guardar escudo">  
     </div>
+    <div id="loadPopUp" title="Cargar escudo">  
+    </div>
 
   </body>
 
@@ -470,9 +494,13 @@
   var reader;
   var progress = document.querySelector('.percent');
 
+  //Variable para saber que popUp abrir
+  var popUpOpener;
+
   $(function(){
     $ ("#popUp").load("popUp.php");
     $ ("#savePopUp").load("savePopUp.php");
+    $ ("#loadPopUp").load("loadPopUp.php");
   });
 
 
@@ -578,6 +606,32 @@
           $("#public").prop('checked', false);
         }
       })
+
+    $("#loadPopUp").dialog({
+        autoOpen: false,
+        height: "auto",
+        width: 1100,
+        modal: true,
+        buttons: {
+          "Cargar escudo": function() {
+            var c = document.getElementById("mainCanvas");
+            var mainCtx = c.getContext("2d");   
+            mainCtx.drawImage(document.getElementById("escudoPrevisualization"), 150, 50);
+            var src = c.toDataURL("image/png");       
+            fabric.Image.fromURL(src, function(img) {
+              mainCanvas.add(img.set({ left: 0, top: 0, selectable: false, hasControls: false, evented: false}));
+            });
+            $( this ).dialog( "close" );
+          },
+          "Cancelar": function() {
+            //Borrar valores
+            $( this ).dialog( "close" );
+          }
+        },
+        close: function( event, ui ) {
+          document.getElementById("escudoPrevisualization").src = "";
+        }
+      })
     
 
 
@@ -589,11 +643,12 @@
       modal: true,
       buttons: {
         "Aceptar": function() {
-           while(mainCanvas.item(0) != undefined) {
+          while(mainCanvas.item(0) != undefined) {
             mainCanvas.remove(mainCanvas.item(0));
           }
           $( this ).dialog( "close" );
-          $("#popUp").dialog("open");
+          if(popUpOpener == "open") $("#popUp").dialog("open");
+          else if(popUpOpener == "load") $("#loadPopUp").dialog("open");
         },
         "Cancelar": function() {
           $( this ).dialog( "close" );
@@ -604,7 +659,14 @@
 
   function openPopUp(popUp) {
     if(mainCanvas.item(0) != undefined) {
-      if(popUp == "open" || popUp == "load") $("#dialogConfirm").dialog("open");
+      if(popUp == "open") {
+        popUpOpener = "open";
+        $("#dialogConfirm").dialog("open");
+      }
+      else if(popUp == "load") {
+        popUpOpener = "load";
+        $("#dialogConfirm").dialog("open");
+      }
       else {
         var c = document.getElementById("mainCanvas");
         var mainCtx = c.getContext("2d");
@@ -618,7 +680,7 @@
       else if(popUp == "save") {
         alert("No has creado ningún escudo aún.");
       } 
-      if(popUp == "load") $("#loadPopUp").dialog("open");
+      else if(popUp == "load") $("#loadPopUp").dialog("open");
 
     }
   }

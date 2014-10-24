@@ -39,7 +39,7 @@
 	ChromePhp::log($public);*/
 
 	$error_code = 0;
-	$enlace =  mysql_connect('localhost', 'regularUser', '');
+	$enlace =  mysql_connect('localhost', 'root', 'root');
 	if (!$enlace) {
 	    die('No pudo conectarse: ' . mysql_error());
 	    $erroc_code = 1;
@@ -62,6 +62,13 @@
 	    $mensaje .= 'Consulta completa: ' . $consulta;
 	    die($mensaje);
 	    $erroc_code = 2;
+	}
+
+	while ($fila = mysql_fetch_assoc($resultado)) {
+	    echo $fila['userId'];
+	    echo $fila['nombre'];
+	    echo $fila['src'];
+	    echo $fila['public'];
 	}
 
 	// Liberar los recursos asociados con el conjunto de resultados
