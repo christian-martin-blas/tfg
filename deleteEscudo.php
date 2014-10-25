@@ -8,38 +8,14 @@
 
 	//Recupero los valores a insertar
 	$userId = "prueba";
-	$nombre = $_POST['titulo'];
+	$titulo = $_POST['titulo'];
 	$descripcion = $_POST['descripcion'];
 	$historia = $_POST['historia'];
 	$src = $_POST['srcSave'];
 	$public =  isset($_POST['public']) && $_POST['public']  ? "1" : "0";
 
-	$src = base64_decode($src);
-	$img = imagecreatefromstring($src);
-	if ($img !== false) {
-		//Con esto eliminamos el fondo negro con el que se guardaba la imagen
-		imagealphablending($img, false);
-		imagesavealpha($img, true);
-		if(!file_exists("./img/users/" . $userId )) {
-			mkdir("./img/users/" . $userId, 0700);
-			mkdir("./img/users/" . $userId . "/public", 0700);
-			mkdir("./img/users/" . $userId . "/private", 0700);
-		}
-		if($public) $src = "./img/users/" . $userId . "/public/" . $nombre . ".png";
-		else $src = "./img/users/" . $userId . "/private/" . $nombre . ".png";
-		imagepng($img, $src ,9);
-		imagedestroy($img);
-	}
-
-
-	/*ChromePhp::log($nombre);
-	ChromePhp::log($descripcion);
-	ChromePhp::log($historia);
-	ChromePhp::log($src);
-	ChromePhp::log($public);*/
-
 	$error_code = 0;
-	$enlace =  mysql_connect('localhost', 'root', 'root');
+	$enlace =  mysql_connect('localhost', 'regularUser', '');
 	if (!$enlace) {
 	    die('No pudo conectarse: ' . mysql_error());
 	    $erroc_code = 1;
@@ -51,8 +27,8 @@
 	}
 
 	//Meter los valores con %s%
-	$insert = "INSERT INTO escudo VALUES ('%s',' %s', '%s', '%s', '%s', %b)";
-	$consulta = sprintf($insert, $userId, $nombre, $descripcion, $historia, $src, $public);
+	$delete = "DELETE FROM escudo WHERE titulo = '%s' AND src = '%s' AND userId = '%s'";
+	$consulta = sprintf($delete, $userId, $titulo, $src);
 	// Ejecutar la consulta
 	$resultado = mysql_query($consulta);
 	// Comprobar el resultado

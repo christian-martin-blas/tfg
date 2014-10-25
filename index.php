@@ -415,6 +415,7 @@
             echo '<script language="javascript">';
             if($error == 1) echo 'alert("No se ha podido conectar con la Base de datos.")';
             if($error == 2) echo 'alert("No se ha podido guardar en la Base de datos.")';
+            if($error == 3) echo 'alert("Ya existe un escudo con ese nombre.")';
             echo '</script>';
           }
         ?>
