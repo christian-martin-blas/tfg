@@ -35,7 +35,7 @@
           </td>
         </tr>
       </table>
-      <input type="text" id="srcSave" name="srcSave"/>  
+      <input type="text" id="srcSave" name="srcSave">  
       <input id="submitHidden" type="submit" value="Submit">  
      </form>
     </div>

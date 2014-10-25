@@ -2,6 +2,8 @@
 <meta charset="utf-8"> 
 <html>
   <head>
+
+
   	  <script src="./lib/js/jquery-1.11.0.min.js"></script>
   	  <link rel="stylesheet" href="./lib/css/redmond/jquery-ui-1.10.4.custom.css">
   	  <link rel="stylesheet" type="text/css" href="./lib/css/bootstrap.css">
@@ -267,6 +269,9 @@
       #escudoPrevisualization {
         margin-left: 50px;
       }
+      #oldSrc {
+        display: none;
+      }
 
   	</style>
 
@@ -287,7 +292,22 @@
           }
         }
       }
+      function oldSrc() {
 
+        if(isset($_GET['error'])) {
+          $error = $_GET['error'];
+          if($error = 3) {
+            if(file_exists("./tempFile.txt")) {
+              $temp_file = fopen("./tempFile.txt", "r") or die("Unable to open file!");
+              $src = fread($temp_file,filesize("./tempFile.txt"));
+              echo("<input type='text' id='oldSrc' name='oldSrc' value='" . $src . "'/>");  
+              fclose($temp_file);
+              unlink("./tempFile.txt");
+              return $src;
+            }
+          }
+        }
+      }
     ?>
 
 
@@ -467,7 +487,6 @@
     </div>
     <div id="loadPopUp" title="Cargar escudo">  
     </div>
-
   </body>
 
   <div id="dialogConfirm" title="¿Deseas borrar el diseño actual?">
@@ -479,7 +498,9 @@
     </b>
 
   </div>
-
+    <?php
+      oldSrc();
+    ?>
   <script>
   //Variables para canvas
   var canvas = document.createElement("canvas");
@@ -499,6 +520,15 @@
   var popUpOpener;
 
   $(function(){
+    //Si al guardar un escudo ya existe, recuperamos en lo que estabamos trabajando
+    if(document.getElementById("oldSrc")) {
+      //var oldSrc = document.getElementById("oldSrc").value;
+      var oldSrc = "data:image/png;base64," + document.getElementById("oldSrc").value;
+      console.log(oldSrc);
+      fabric.Image.fromURL(oldSrc, function(img) {
+        mainCanvas.add(img.set({ left: 0, top: 0, selectable: false, hasControls: false, evented: false}));
+      });
+    }
     $ ("#popUp").load("popUp.php");
     $ ("#savePopUp").load("savePopUp.php");
     $ ("#loadPopUp").load("loadPopUp.php");
@@ -669,6 +699,7 @@
         $("#dialogConfirm").dialog("open");
       }
       else {
+        mainCanvas.deactivateAll().renderAll();
         var c = document.getElementById("mainCanvas");
         var mainCtx = c.getContext("2d");
         var src = c.toDataURL("image/png");

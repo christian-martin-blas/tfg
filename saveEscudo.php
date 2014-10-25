@@ -71,7 +71,12 @@
 		mysql_free_result($resultado);
 		mysql_close($enlace);
 	}
-	else $error_code = 3;
+	else {
+		$error_code = 3;
+		$temp_file = fopen("./tempFile.txt", "w") or die("Unable to open file!");
+		fwrite($temp_file, $src);
+		fclose($temp_file);
+	} 
 
 	if($error_code == 0) {
 		header('Location: /tfg/index.php?success');
