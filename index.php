@@ -419,8 +419,9 @@
         </ul>
         <div id="buttons">
           <button id="buttonPopUp" onclick="openPopUp('open')">Nuevo Escudo</button>
-          <button id="buttonPopUp" onclick="openPopUp('save')">Guardar Escudo</button>
-          <button id="buttonPopUp" onclick="openPopUp('load')">Cargar Escudo</button>
+          <button id="buttonPopUpSave" onclick="openPopUp('save')">Guardar Escudo</button>
+          <button id="buttonPopUpLoad" onclick="openPopUp('load')">Cargar Escudo</button>
+          <button id="buttonPopUpDownload" onclick="downloadImage()">Descargar Escudo</button>
         </div>
         <?php
           if(isset($_GET['success']))
@@ -911,6 +912,21 @@
   }
 
   document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+  function downloadImage() {
+    mainCanvas.deactivateAll().renderAll();
+    var c = document.getElementById("mainCanvas");
+    var mainCtx = c.getContext("2d");
+    var src = c.toDataURL("image/png");
+    var a = $("<a>")
+    .attr("href", src)
+    .attr("download", "Escudo.png")
+    .appendTo("body");
+
+    a[0].click();
+
+    a.remove();
+  }
 
   </script>
 
