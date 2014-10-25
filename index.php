@@ -920,19 +920,33 @@
   document.getElementById('files').addEventListener('change', handleFileSelect, false);
 
   function downloadImage() {
-    mainCanvas.deactivateAll().renderAll();
-    var c = document.getElementById("mainCanvas");
-    var mainCtx = c.getContext("2d");
-    var src = c.toDataURL("image/png");
+    if(mainCanvas.item(0) == undefined) notImagePopUp();
+    else{
+      mainCanvas.deactivateAll().renderAll();
+      var c = document.getElementById("mainCanvas");
+      var mainCtx = c.getContext("2d");
+      var src = c.toDataURL("image/png");
 
-    var a = $("<a>")
-    .attr("href", src)
-    .attr("download", "Escudo.png")
-    .appendTo("body");
+      var a = $("<a>")
+      .attr("href", src)
+      .attr("download", "Escudo.png")
+      .appendTo("body");
 
-    a[0].click();
+      a[0].click();
 
-    a.remove();
+      a.remove();
+    }
+  }
+
+  function notImagePopUp() {
+    $("<div title=\'Atención\'><b>No hay ninguna imagen para descargar.</b></div>").dialog({
+      modal: true,
+      buttons: {
+        Ok: function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
   }
 
   </script>
