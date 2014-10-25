@@ -53,7 +53,7 @@
 		}
 
 		//Meter los valores con %s%
-		$insert = "INSERT INTO escudo VALUES ('%s',' %s', '%s', '%s', '%s', %b)";
+		$insert = "INSERT INTO escudo VALUES ('%s','%s', '%s', '%s', '%s', %b)";
 		$consulta = sprintf($insert, $userId, $nombre, $descripcion, $historia, $src, $public);
 		// Ejecutar la consulta
 		$resultado = mysql_query($consulta);
@@ -73,13 +73,14 @@
 	}
 	else {
 		$error_code = 3;
-		$temp_file = fopen("./tempFile.txt", "w") or die("Unable to open file!");
-		fwrite($temp_file, $src);
-		fclose($temp_file);
 	} 
 
+	$temp_file = fopen("./tempFile.txt", "w") or die("Unable to open file!");
+	fwrite($temp_file, $_POST['srcSave']);
+	fclose($temp_file);
+
 	if($error_code == 0) {
-		header('Location: /tfg/index.php?success');
+		header('Location: /tfg/index.php?success=1');
 	}
 	else header('Location: /tfg/index.php?error=' . $error_code);
 	

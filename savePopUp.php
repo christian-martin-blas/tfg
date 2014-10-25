@@ -39,7 +39,7 @@
       <input id="submitHidden" type="submit" value="Submit">  
      </form>
     </div>
-    <div id="previsualization" class="col-md-6">
+    <div id="previsualizationSave" class="col-md-6">
       <img id="escudo" src = "" onload="saveSrc()"/>
     </div>
   </div>

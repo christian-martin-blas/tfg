@@ -8,11 +8,8 @@
 
 	//Recupero los valores a insertar
 	$userId = "prueba";
-	$titulo = $_POST['titulo'];
-	$descripcion = $_POST['descripcion'];
-	$historia = $_POST['historia'];
-	$src = $_POST['srcSave'];
-	$public =  isset($_POST['public']) && $_POST['public']  ? "1" : "0";
+	$titulo = $_POST['tituloDelete'];
+	$src = $_POST['srcDelete'];
 
 	$error_code = 0;
 	$enlace =  mysql_connect('localhost', 'regularUser', '');
@@ -28,7 +25,7 @@
 
 	//Meter los valores con %s%
 	$delete = "DELETE FROM escudo WHERE titulo = '%s' AND src = '%s' AND userId = '%s'";
-	$consulta = sprintf($delete, $userId, $titulo, $src);
+	$consulta = sprintf($delete, $titulo, $src, $userId);
 	// Ejecutar la consulta
 	$resultado = mysql_query($consulta);
 	// Comprobar el resultado
@@ -37,24 +34,18 @@
 	    $mensaje  = 'Consulta no válida: ' . mysql_error() . "\n";
 	    $mensaje .= 'Consulta completa: ' . $consulta;
 	    die($mensaje);
-	    $erroc_code = 2;
+	    $erroc_code = 4;
 	}
-
-	while ($fila = mysql_fetch_assoc($resultado)) {
-	    echo $fila['userId'];
-	    echo $fila['nombre'];
-	    echo $fila['src'];
-	    echo $fila['public'];
-	}
-
 	// Liberar los recursos asociados con el conjunto de resultados
 	// Esto se ejecutado automáticamente al finalizar el script.
-	mysql_free_result($resultado);
+	mysql_query("commit", $enlace);
 	mysql_close($enlace);
+
+	unlink($src);
 
 
 	if($errorCode == 0) {
-		header('Location: /tfg/index.php?success');
+		header('Location: /tfg/index.php?success=2');
 	}
 	else header('Location: /tfg/index.php?error=' . $error_code);
 	

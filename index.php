@@ -36,6 +36,7 @@
       #loadContainer {
         background-color: grey;
         width: auto;
+        height: 570px;
       }
   		.page-header {
   			text-align: center;
@@ -69,6 +70,12 @@
         width: 100%;
         overflow-y: scroll;
       }
+      #misEscudos {
+        background-color: white;
+        height: 150px;
+        width: 100%;
+        overflow-y: scroll;
+      }
   		.particiones {
   			display: none;
   		}
@@ -94,6 +101,19 @@
   			margin-top: 40px;
         margin-bottom: 40px;
   		}
+      #previsualizationSave {
+        background-color: white;
+        height: 350px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        margin-left: 80px;
+      }
+      #previsualizationLoad {
+        background-color: white;
+        height: 350px;
+        margin-top: 130px;
+        margin-left: 50px;
+      }
       #back {
         position: absolute;
         left: 50%;
@@ -272,6 +292,11 @@
       #oldSrc {
         display: none;
       }
+      #deleteButton {
+        margin-right: 35px;
+        margin-top: 20px;
+        float: right;
+      }
 
   	</style>
 
@@ -293,18 +318,14 @@
         }
       }
       function oldSrc() {
-
-        if(isset($_GET['error'])) {
-          $error = $_GET['error'];
-          if($error = 3) {
-            if(file_exists("./tempFile.txt")) {
-              $temp_file = fopen("./tempFile.txt", "r") or die("Unable to open file!");
-              $src = fread($temp_file,filesize("./tempFile.txt"));
-              echo("<input type='text' id='oldSrc' name='oldSrc' value='" . $src . "'/>");  
-              fclose($temp_file);
-              unlink("./tempFile.txt");
-              return $src;
-            }
+        if(isset($_GET['error']) || isset($_GET['success'])) {
+          if(file_exists("./tempFile.txt")) {
+            $temp_file = fopen("./tempFile.txt", "r") or die("Unable to open file!");
+            $src = fread($temp_file,filesize("./tempFile.txt"));
+            echo("<input type='text' id='oldSrc' name='oldSrc' value='" . $src . "'/>");  
+            fclose($temp_file);
+            unlink("./tempFile.txt");
+            return $src;
           }
         }
       }
@@ -426,8 +447,10 @@
         <?php
           if(isset($_GET['success']))
           {
+            $success = $_GET['success'];
             echo '<script language="javascript">';
-            echo 'alert("Se ha guardado correctamente el escudo.")';
+            if($success == 1) echo 'alert("Se ha guardado correctamente el escudo.")';
+            if($success == 2) echo 'alert("Se ha borrado correctamente el escudo.")';
             echo '</script>';
           }
           else if(isset($_GET['error'])) {
@@ -437,6 +460,7 @@
             if($error == 1) echo 'alert("No se ha podido conectar con la Base de datos.")';
             if($error == 2) echo 'alert("No se ha podido guardar en la Base de datos.")';
             if($error == 3) echo 'alert("Ya existe un escudo con ese nombre.")';
+            if($error == 3) echo 'alert("No se ha podido borrar el escudo de la Base de datos.")';
             echo '</script>';
           }
         ?>
@@ -641,7 +665,7 @@
 
     $("#loadPopUp").dialog({
         autoOpen: false,
-        height: "auto",
+        height: 700,
         width: 1100,
         modal: true,
         buttons: {
@@ -918,6 +942,7 @@
     var c = document.getElementById("mainCanvas");
     var mainCtx = c.getContext("2d");
     var src = c.toDataURL("image/png");
+
     var a = $("<a>")
     .attr("href", src)
     .attr("download", "Escudo.png")
