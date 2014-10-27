@@ -485,7 +485,7 @@
               </p>
               <p>
                 <label>
-                  <button type="button" onClick="mirrorImage()">Invertir imagen</button>
+                  <button type="button" onClick="mirrorImage()" >Invertir imagen</button>
                 </label>
               </p>
           </div>
