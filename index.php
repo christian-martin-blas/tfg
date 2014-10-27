@@ -165,8 +165,7 @@
       #workspace {
         width: 800px;
         height: 350px;
-        margin-top: 150px;
-        background-color: white;
+        background-color: #F7FAFC;
         display: inline-block;
       }
       #shield {
@@ -206,6 +205,7 @@
       }
       .canvas-container {
         float: left;
+        background-color: white;
       }
       .icons {
         height: 30px;
@@ -268,7 +268,7 @@
         margin-left: 250px;
       }
       #buttons {
-        margin-top: 10px;
+        margin-top: 150px;
       }
       #decorativeImages {
         max-height: 600px;
@@ -296,6 +296,12 @@
         margin-right: 35px;
         margin-top: 20px;
         float: right;
+      }
+      #mainTool {
+        height: 750px;
+      }
+      body {
+        background-color: #F7FAFC;
       }
 
   	</style>
@@ -438,11 +444,11 @@
           <li><a href="/tfg/admin/adminToolUploadDecorative.php">Cargar Decoraciones</a></li>
           <li><a href="/tfg/admin/adminToolDeleteDecorative.php">Eliminar Decoraciones</a></li>
         </ul>
-        <div id="buttons">
-          <button id="buttonPopUp" onclick="openPopUp('open')">Nuevo Escudo</button>
-          <button id="buttonPopUpSave" onclick="openPopUp('save')">Guardar Escudo</button>
-          <button id="buttonPopUpLoad" onclick="openPopUp('load')">Cargar Escudo</button>
-          <button id="buttonPopUpDownload" onclick="downloadImage()">Descargar Escudo</button>
+        <div id="buttons" class="btn-group">
+          <button id="buttonPopUp" onclick="openPopUp('open')" class="btn btn-default">Nuevo Escudo</button>
+          <button id="buttonPopUpSave" onclick="openPopUp('save')" class="btn btn-default">Guardar Escudo</button>
+          <button id="buttonPopUpLoad" onclick="openPopUp('load')" class="btn btn-default">Cargar Escudo</button>
+          <button id="buttonPopUpDownload" onclick="downloadImage()" class="btn btn-default">Descargar Escudo</button>
         </div>
         <?php
           include './jqueryAlerts.php';
@@ -717,7 +723,14 @@
   	else {
       if(popUp == "open") $("#popUp").dialog("open");
       else if(popUp == "save") {
-        alert("No has creado ningún escudo aún.");
+        $("<div title=\'Atención\'><b>No has creado ningún escudo aún.</b></div>").dialog({
+          modal: true,
+          buttons: {
+            Ok: function() {
+              $( this ).dialog( "close" );
+            }
+          }
+        });
       } 
       else if(popUp == "load") $("#loadPopUp").dialog("open");
 

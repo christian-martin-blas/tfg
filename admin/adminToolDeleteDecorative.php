@@ -20,6 +20,9 @@
       html {
         max-width: 1500px;
       }
+      body {
+        background-color: #F7FAFC;
+      }
       .page-header {
         text-align: center;
       }
@@ -82,7 +85,7 @@
         $files = scandir($dir);
         foreach ($files as &$file) {
           if($file != '.' && $file != '..') {
-            echo("<select id='" . $file . "' name='" . $file . "' onchange='showDecoracionImage(this)' style='display:none'>");
+            echo("<select id='" . $file . "' name='" . $file . "' onchange='showDecoracionImage(this)' style='display:none' class=\"form-control\">");
             echo("<option value=''></option>");
             $deep_dir = $dir . "/" . $file;
             $deep_files = scandir($deep_dir);
@@ -124,7 +127,7 @@
                 <b>Grupo de la decoración:</b>
               </td>
               <td>
-                <select id="decorativeGroup" name="decorativeGroup" onchange="showDecoracion(this)" required>
+                <select id="decorativeGroup" name="decorativeGroup" onchange="showDecoracion(this)" class="form-control" required>
                   <option value=""></option>
                   <option value="animales">Animales</option>
                   <option value="artificiales">Artificiales</option>
@@ -149,7 +152,7 @@
             </tr>
           </table>
           <div id="buttonSubmit">
-            <input type="submit" id="buttonUpload" value="Eliminar las imágenes"/>
+            <input type="submit" id="buttonUpload" value="Eliminar las imágenes" class="btn btn-default"/>
           </div>
           <input type="text" id="imgName" name="imgName"/>   
         </form>

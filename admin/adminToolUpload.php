@@ -23,6 +23,9 @@
       .page-header {
         text-align: center;
       }
+      body {
+        background-color: #F7FAFC;
+      }
       img {
         max-width: 100%;
         max-height: 100%;
@@ -164,7 +167,7 @@
               <li>El orden en que se añadan las particiones es importante.</li>
             </ul>
           </div>
-          <input type="radio" name="base" value="base" onclick="showTable(this)">Subiré base y particiones<br>
+          <input type="radio" name="base" value="base" onclick="showTable(this)" >Subiré base y particiones<br>
           <input type="radio" name="base" value="sinBase" onclick="showTable(this)">Subiré particiones
           <table id="sinBase">
             <tr>
@@ -172,7 +175,7 @@
                 <b>Nombre de la Base:</b>
               </td>
               <td>
-                <select id="nombreBaseSelect" name="nombreBaseSelect" onchange="showBase(this)">
+                <select id="nombreBaseSelect" name="nombreBaseSelect" onchange="showBase(this)" class="form-control">
                   <option value=""></option>
                   <option value="Aleman">Aleman</option>
                   <option value="Apuntado">Apuntado</option>
@@ -191,7 +194,7 @@
                 <b>Nombre de la partición:</b>
               </td>
               <td>
-                <input type="text" id="nombreParticionSelect" name="nombreParticionSelect"/>             
+                <input type="text" id="nombreParticionSelect" name="nombreParticionSelect" class="form-control"/>             
               </td>
             </tr>
             <tr>
@@ -199,7 +202,7 @@
                 <b>Partición 1:</b>
               </td>
               <td>
-                <input type="file" id="fileParticion1Select" name="fileParticion1Select" accept="image/png"/>
+                <input type="file" id="fileParticion1Select" name="fileParticion1Select" class="form-control" accept="image/png"/>
               </td>
             </tr>
             <tr>
@@ -207,7 +210,7 @@
                 <b>Partición 2:</b>
               </td>
               <td>
-                <input type="file" id="fileParticion2Select" name="fileParticion2Select" accept="image/png"/>
+                <input type="file" id="fileParticion2Select" name="fileParticion2Select" class="form-control" accept="image/png"/>
               </td>
             </tr>
             <tr>
@@ -215,7 +218,7 @@
                 <b>Partición 3:</b>
               </td>
               <td>
-                <input type="file" id="fileParticion3Select" name="fileParticion3Select" accept="image/png"/>
+                <input type="file" id="fileParticion3Select" name="fileParticion3Select" class="form-control" accept="image/png"/>
               </td>
             </tr>
             <tr>
@@ -223,7 +226,7 @@
                 <b>Partición 4:</b>
               </td>
               <td>
-                <input type="file" id="fileParticion4Select" name="fileParticion4Select" accept="image/png"/>
+                <input type="file" id="fileParticion4Select" name="fileParticion4Select" class="form-control" accept="image/png"/>
               </td>
             </tr>
           </table>
@@ -233,7 +236,7 @@
                 <b>Nombre de la Base:</b>
               </td>
               <td>
-                <input type="text" id="nombreBase" name="nombreBase" required/>
+                <input type="text" id="nombreBase" name="nombreBase" class="form-control" required/>
               </td>
             </tr>
             <tr>
@@ -241,7 +244,7 @@
                 <b>Base:</b>
               </td>
               <td>
-                <input type="file" id="fileBase" name="fileBase" accept="image/png" />
+                <input type="file" id="fileBase" name="fileBase" accept="image/png" class="form-control"/>
               </td>
             </tr>
             <tr>
@@ -249,7 +252,7 @@
                 <b>Nombre de la partición:</b>
               </td>
               <td>
-                <input type="text" id="nombreParticion" name="nombreParticion"/>
+                <input type="text" id="nombreParticion" name="nombreParticion" class="form-control"/>
               </td>
             </tr>
             <tr>
@@ -257,7 +260,7 @@
                 <b>Partición 1:</b>
               </td>
               <td>
-                <input type="file" id="fileParticion1" name="fileParticion1" accept="image/png"/>
+                <input type="file" id="fileParticion1" name="fileParticion1" accept="image/png" class="form-control"/>
               </td>
             </tr>
             <tr>
@@ -265,7 +268,7 @@
                 <b>Partición 2:</b>
               </td>
               <td>
-                <input type="file" id="fileParticion2" name="fileParticion2" accept="image/png"/>
+                <input type="file" id="fileParticion2" name="fileParticion2" accept="image/png" class="form-control"/>
               </td>
             </tr>
             <tr>
@@ -273,7 +276,7 @@
                 <b>Partición 3:</b>
               </td>
               <td>
-                <input type="file" id="fileParticion3" name="fileParticion3" accept="image/png"/>
+                <input type="file" id="fileParticion3" name="fileParticion3" accept="image/png" class="form-control"/>
               </td>
             </tr>
             <tr>
@@ -281,16 +284,16 @@
                 <b>Partición 4:</b>
               </td>
               <td>
-                <input type="file" id="fileParticion4" name="fileParticion4" accept="image/png"/>
+                <input type="file" id="fileParticion4" name="fileParticion4" accept="image/png" class="form-control"/>
               </td>
             </tr>
           </table>
           <div id="buttonSubmit">
-            <input type="submit" id="buttonUpload" value="Subir las imágenes"/>
+            <input type="submit" id="buttonUpload" value="Subir las imágenes" class="btn btn-default"/>
           </div>
           <input type="text" id="miniatura" name="miniatura"/>    
       </form>
-        <button id="borrarElementos" onclick="borrarElementos()">Borrar imágenes</button>
+        <button id="borrarElementos" onclick="borrarElementos()" class="btn btn-default">Borrar imágenes</button>
       </div>
 
       <div class="col-md-6">

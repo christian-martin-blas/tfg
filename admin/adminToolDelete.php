@@ -20,6 +20,9 @@
       html {
         max-width: 1500px;
       }
+      body {
+        background-color: #F7FAFC;
+      }
       .page-header {
         text-align: center;
       }
@@ -144,7 +147,7 @@
         $files = scandir($dir);
         foreach ($files as &$file) {
           if($file != '.' && $file != '..') {
-            echo("<select id='" . $file . "' name='" . $file . "' onchange='showParticion(this)' style='display:none'>");
+            echo("<select id='" . $file . "' name='" . $file . "' onchange='showParticion(this)' style='display:none' class=\"form-control\">");
             echo("<option value=''></option>");
             $deep_dir = $dir . "/" . $file;
             $deep_files = scandir($deep_dir);
@@ -182,7 +185,7 @@
                 <b>Nombre de la Base:</b>
               </td>
               <td>
-                <select id="nombreBase" name="nombreBase" onchange="showBase(this)" required>
+                <select id="nombreBase" name="nombreBase" onchange="showBase(this)" class="form-control" required>
                   <option value=""></option>
                   <option value="Aleman">Aleman</option>
                   <option value="Apuntado">Apuntado</option>
@@ -203,7 +206,7 @@
                 <b>Nombre de la Base:</b>
               </td>
               <td>
-                <select id="nombreBaseParticion" name="nombreBaseParticion" onchange="showBaseParticion(this)">
+                <select id="nombreBaseParticion" name="nombreBaseParticion" onchange="showBaseParticion(this)" class="form-control">
                   <option value=""></option>
                   <option value="Aleman">Aleman</option>
                   <option value="Apuntado">Apuntado</option>
@@ -229,7 +232,7 @@
             </tr>
           </table>
           <div id="buttonSubmit">
-            <input type="submit" id="buttonUpload" value="Eliminar las imágenes"/>
+            <input type="submit" id="buttonUpload" value="Eliminar las imágenes"  class="btn btn-default"/>
           </div>
           <input type="text" id="src" name="src"/>   
           <input type="text" id="imgName" name="imgName"/>   

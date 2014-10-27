@@ -18,6 +18,9 @@
       html {
         max-width: 1500px;
       }
+      body {
+        background-color: #F7FAFC;
+      }
       .page-header {
         text-align: center;
       }
@@ -97,7 +100,7 @@
                 <b>Grupo de la decoración:</b>
               </td>
               <td>
-                <select id="decorativeGroup" name="decorativeGroup" required>
+                <select id="decorativeGroup" name="decorativeGroup" class="form-control" required>
                   <option value=""></option>
                   <option value="animales">Animales</option>
                   <option value="artificiales">Artificiales</option>
@@ -115,7 +118,7 @@
                 <b>Nombre de la imágen:</b>
               </td>
               <td>
-                <input type="text" id="nameImage" name="nameImage" required/>             
+                <input type="text" id="nameImage" name="nameImage" class="form-control" required/>             
               </td>
             </tr>
             <tr>
@@ -123,15 +126,15 @@
                 <b>Imágen Decorativa:</b>
               </td>
               <td>
-                <input type="file" id="fileImage" name="fileImage" accept="image/png" required/>             
+                <input type="file" id="fileImage" name="fileImage" class="form-control" accept="image/png" required/>             
               </td>
             </tr>
           </table>
           <div id="buttonSubmit">
-            <input type="submit" id="buttonUpload" value="Subir las imágenes"/>
+            <input type="submit" id="buttonUpload" value="Subir las imágenes" class="btn btn-default"/>
           </div> 
       </form>
-        <button id="reiniciarValores" onclick="reiniciarValores()">Reiniciar valores</button>
+        <button id="reiniciarValores" onclick="reiniciarValores()" class="btn btn-default">Reiniciar valores</button>
       </div>
 
       <div class="col-md-6">
