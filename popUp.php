@@ -378,11 +378,6 @@ var part4Img = document.getElementById("part4");
       backImg.src = canvas.toDataURL("image/png");
     } 
     if(select.id == 'particion2') {
-     
-      currentPixelsPart1.data = originalPixelsPart1.data;
-      ctx.putImageData(currentPixelsPart1, 0, 0);
-      part1Img.src = canvas.toDataURL("image/png");
-      console.log(currentPixelsPart1);
       for(var I = 0, L = originalPixelsPart1.data.length; I < L; I += 4)
       {
         if(currentPixelsPart1.data[I + 3] > 0) // If it's not a transparent pixel
@@ -519,9 +514,8 @@ var part4Img = document.getElementById("part4");
       $("#colorParticion4").css("display", "none");
       $("#colorParticion5").css("display", "none");
       getPixels(backImg);
-      //$("#part1").on('load', function(){
-        getPixels(part1Img);
-      //});
+      var prueba = false;   
+      part1Img.onload=function(){getPixels(part1Img)};
     }
     else if(particion == 3) {
       var srcPart1 = src.substr(0, src.length - 5) + "1.png";
@@ -536,12 +530,8 @@ var part4Img = document.getElementById("part4");
       $("#colorParticion4").css("display", "none");
       $("#colorParticion5").css("display", "none");
       getPixels(backImg);
-      $("#part1").on('load', function(){
-        getPixels(part1Img);
-      });
-      $("#part2").on('load', function(){
-        getPixels(part2Img);
-      });
+      part1Img.onload=function(){getPixels(part1Img)};
+      part2Img.onload=function(){getPixels(part2Img)};
     }
     else if(particion == 4) {
       var srcPart1 = src.substr(0, src.length - 5) + "1.png";
@@ -559,15 +549,9 @@ var part4Img = document.getElementById("part4");
       $("#colorParticion4").css("display", "block");
       $("#colorParticion5").css("display", "none");
       getPixels(backImg);
-      //$("#part1").on('load', function(){
-        getPixels(part1Img);
-      //});
-      //$("#part2").on('load', function(){
-        getPixels(part2Img);
-      //});
-     // $("#part3").on('load', function(){
-        getPixels(part3Img);
-      //});
+      part1Img.onload=function(){getPixels(part1Img)};
+      part2Img.onload=function(){getPixels(part2Img)};
+      part3Img.onload=function(){getPixels(part3Img)};
     }
     else  {
       var srcPart1 = src.substr(0, src.length - 5) + "1.png";
@@ -588,18 +572,10 @@ var part4Img = document.getElementById("part4");
       $("#colorParticion4").css("display", "block");
       $("#colorParticion5").css("display", "block");
       getPixels(backImg);
-      $("#part1").on('load', function(){
-        getPixels(part1Img);
-      });
-      $("#part2").on('load', function(){
-        getPixels(part2Img);
-      });
-      $("#part3").on('load', function(){
-        getPixels(part3Img);
-      });
-       $("#part4").on('load', function(){
-        getPixels(part4Img);
-      });
+      part1Img.onload=function(){getPixels(part1Img)};
+      part2Img.onload=function(){getPixels(part2Img)};
+      part3Img.onload=function(){getPixels(part3Img)};
+      part4Img.onload=function(){getPixels(part4Img)};
     }    
   }
 
