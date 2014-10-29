@@ -82,12 +82,12 @@
 		}
 	}
 
-	/*if($errorCode == 0) {
-		header('Location: /tfg/admin/adminToolUpload.php?success');
+	if($errorCode == 0) {
+		header('Location: /editor/tfg/admin/adminToolUpload.php?success');
 	}
-	else header('Location: /tfg/admin/adminToolUpload.php?error=' . $errorCode);
+	else header('Location: /editor/tfg/admin/adminToolUpload.php?error=' . $errorCode);
 	
-	exit;*/
+	exit;
 
 
 	function uploadImage($target_path, $file, $name) {

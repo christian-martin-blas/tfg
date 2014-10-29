@@ -378,6 +378,11 @@ var part4Img = document.getElementById("part4");
       backImg.src = canvas.toDataURL("image/png");
     } 
     if(select.id == 'particion2') {
+     
+      currentPixelsPart1.data = originalPixelsPart1.data;
+      ctx.putImageData(currentPixelsPart1, 0, 0);
+      part1Img.src = canvas.toDataURL("image/png");
+      console.log(currentPixelsPart1);
       for(var I = 0, L = originalPixelsPart1.data.length; I < L; I += 4)
       {
         if(currentPixelsPart1.data[I + 3] > 0) // If it's not a transparent pixel
@@ -514,9 +519,9 @@ var part4Img = document.getElementById("part4");
       $("#colorParticion4").css("display", "none");
       $("#colorParticion5").css("display", "none");
       getPixels(backImg);
-      $("#part1").on('load', function(){
+      //$("#part1").on('load', function(){
         getPixels(part1Img);
-      });
+      //});
     }
     else if(particion == 3) {
       var srcPart1 = src.substr(0, src.length - 5) + "1.png";
@@ -524,6 +529,7 @@ var part4Img = document.getElementById("part4");
       var srcPart2 = src.substr(0, src.length - 5) + "2.png";
       srcPart2 = srcPart2.replace("miniaturas","particiones");
       $("#part1").attr("src", srcPart1);
+      $("#part2").attr("src", srcPart2);
       $("#colorParticion1").css("display", "block");
       $("#colorParticion2").css("display", "block");
       $("#colorParticion3").css("display", "block");
@@ -538,28 +544,30 @@ var part4Img = document.getElementById("part4");
       });
     }
     else if(particion == 4) {
-      var srcPart1 = src.substr(0, src.length - 4) + ".png";
+      var srcPart1 = src.substr(0, src.length - 5) + "1.png";
       srcPart1 = srcPart1.replace("miniaturas","particiones");
       var srcPart2 = src.substr(0, src.length - 5) + "2.png";
       srcPart2 = srcPart2.replace("miniaturas","particiones");
       var srcPart3 = src.substr(0, src.length - 5) + "3.png";
       srcPart3 = srcPart3.replace("miniaturas","particiones");
       $("#part1").attr("src", srcPart1);
+      $("#part2").attr("src", srcPart2);
+      $("#part3").attr("src", srcPart3);
       $("#colorParticion1").css("display", "block");
       $("#colorParticion2").css("display", "block");
       $("#colorParticion3").css("display", "block");
       $("#colorParticion4").css("display", "block");
       $("#colorParticion5").css("display", "none");
       getPixels(backImg);
-      $("#part1").on('load', function(){
+      //$("#part1").on('load', function(){
         getPixels(part1Img);
-      });
-      $("#part2").on('load', function(){
+      //});
+      //$("#part2").on('load', function(){
         getPixels(part2Img);
-      });
-      $("#part3").on('load', function(){
+      //});
+     // $("#part3").on('load', function(){
         getPixels(part3Img);
-      });
+      //});
     }
     else  {
       var srcPart1 = src.substr(0, src.length - 5) + "1.png";
@@ -573,6 +581,7 @@ var part4Img = document.getElementById("part4");
       $("#part1").attr("src", srcPart1);
       $("#part2").attr("src", srcPart2);
       $("#part3").attr("src", srcPart3);
+      $("#part4").attr("src", srcPart4);
       $("#colorParticion1").css("display", "block");
       $("#colorParticion2").css("display", "block");
       $("#colorParticion3").css("display", "block");
