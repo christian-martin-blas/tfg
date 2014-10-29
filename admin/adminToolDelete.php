@@ -242,13 +242,13 @@
 
       <div class="col-md-6">
         <ul class="nav nav-pills">
-          <li><a href="/tfg">Home</a></li>
-          <li><a href="/tfg/admin/adminToolUpload.php">Cargar Bases</a></li>
+          <li><a href="/editor/tfg">Home</a></li>
+          <li><a href="/editor/tfg/admin/adminToolUpload.php">Cargar Bases</a></li>
           <li class="active">
-            <a href="/tfg/admin/adminToolDelete.php">Eliminar Bases</a>
+            <a href="/editor/tfg/admin/adminToolDelete.php">Eliminar Bases</a>
           </li>
-          <li><a href="/tfg/admin/adminToolUploadDecorative.php">Cargar Decoraciones</a></li>
-          <li><a href="/tfg/admin/adminToolDeleteDecorative.php">Eliminar Decoraciones</a></li>
+          <li><a href="/editor/tfg/admin/adminToolUploadDecorative.php">Cargar Decoraciones</a></li>
+          <li><a href="/editor/tfg/admin/adminToolDeleteDecorative.php">Eliminar Decoraciones</a></li>
         </ul>
         <div id="previsualization">
           <img id="back">

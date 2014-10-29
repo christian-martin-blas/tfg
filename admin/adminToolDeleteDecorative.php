@@ -160,12 +160,12 @@
 
       <div class="col-md-6">
         <ul class="nav nav-pills">
-          <li><a href="/tfg">Home</a></li>
-          <li><a href="/tfg/admin/adminToolUpload.php">Cargar Bases</a></li>
-          <li><a href="/tfg/admin/adminToolDelete.php">Eliminar Bases</a></li>
-          <li><a href="/tfg/admin/adminToolUploadDecorative.php">Cargar Decoraciones</a></li>
+          <li><a href="/editor/tfg">Home</a></li>
+          <li><a href="/editor/tfg/admin/adminToolUpload.php">Cargar Bases</a></li>
+          <li><a href="/editor/tfg/admin/adminToolDelete.php">Eliminar Bases</a></li>
+          <li><a href="/editor/tfg/admin/adminToolUploadDecorative.php">Cargar Decoraciones</a></li>
           <li class="active">
-            <a href="/tfg/admin/adminToolDeleteDecorative.php">Eliminar Decoraciones</a>
+            <a href="/editor/tfg/admin/adminToolDeleteDecorative.php">Eliminar Decoraciones</a>
           </li>
         </ul>
         <div id="previsualization">
@@ -188,10 +188,12 @@
     if(item.value != "") {
       var src = "/tfg/img/admin/decoraciones/" + item.id + "/" + item.value + ".png";
       back.src = src;
-      var width = back.width;
-      var height = back.height;
-      $("#back").css("margin-left",-Math.abs(width/2));
-      $("#back").css("margin-top",-Math.abs(height/2));
+      $("#back").on('load', function(){
+        var width = back.width;
+        var height = back.height;
+        $("#back").css("margin-left",-Math.abs(width/2));
+        $("#back").css("margin-top",-Math.abs(height/2));
+      });
     }
   }
 

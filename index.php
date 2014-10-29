@@ -2,33 +2,37 @@
 <meta charset="utf-8"> 
 <html>
   <head>
+    <?php
+      include './ChromePhp.php';
+      require('../userManager.php');
+      ChromePhp::log(getUsername());
+    ?>
 
-
-  	  <script src="./lib/js/jquery-1.11.0.min.js"></script>
-  	  <link rel="stylesheet" href="./lib/css/redmond/jquery-ui-1.10.4.custom.css">
-  	  <link rel="stylesheet" type="text/css" href="./lib/css/bootstrap.css">
+      <script src="./lib/js/jquery-1.11.0.min.js"></script>
+      <link rel="stylesheet" href="./lib/css/redmond/jquery-ui-1.10.4.custom.css">
+      <link rel="stylesheet" type="text/css" href="./lib/css/bootstrap.css">
       <link rel="stylesheet" type="text/css" href="./lib/css/jquery.simplecolorpicker.css">
       <link rel="stylesheet" type="text/css" href="./lib/css/jquery.simplecolorpicker-glyphicons.css">
 
-  	  <script src="./lib/js/bootstrap.js"></script>
-  	  <script src="./lib/js/jquery-ui-1.10.4.custom.js"></script>
+      <script src="./lib/js/bootstrap.js"></script>
+      <script src="./lib/js/jquery-ui-1.10.4.custom.js"></script>
       <script src="./lib/js/jquery.simplecolorpicker.js"></script>
       <script src="./lib/js/fabric.js"></script>
       <script src="./lib/js/jquery.ui.widget.js"></script>
       <script src="./lib/js/jquery.iframe-transport.js"></script>
       <script src="./lib/js/jquery.fileupload.js"></script>
 
-  	  <style>
+      <style>
       td {
         padding: 6px;
       }
       html {
         max-width: 1500px;
       }
-  		#container {
-  			background-color: grey;
-  			width: 800px;
-  		}
+      #container {
+        background-color: grey;
+        width: 800px;
+      }
       #saveContainer {
         background-color: grey;
         width: auto;
@@ -38,17 +42,17 @@
         width: auto;
         height: 570px;
       }
-  		.page-header {
-  			text-align: center;
-  		}
-  		#designs {
-  			height: 100%;
-  		}
-  		img.design {
-  			width: 100%;
-  			cursor: pointer;
+      .page-header {
+        text-align: center;
+      }
+      #designs {
+        height: 100%;
+      }
+      img.design {
+        width: 100%;
+        cursor: pointer;
         padding-bottom: 5px;
-  		}
+      }
       img.escudo {
         width: 100%;
         cursor: pointer;
@@ -58,12 +62,12 @@
         max-width: 100%;
         max-height: 100%;
       }
-  		#imagenesFormas {
-  			background-color: white;
-  			height: 100px;
-  			width: 100%;
-  			overflow-y: scroll;
-  		}
+      #imagenesFormas {
+        background-color: white;
+        height: 100px;
+        width: 100%;
+        overflow-y: scroll;
+      }
       #imagenesEscudos {
         background-color: white;
         height: 300px;
@@ -76,31 +80,31 @@
         width: 100%;
         overflow-y: scroll;
       }
-  		.particiones {
-  			display: none;
-  		}
-  		#imagenesParticiones {
-  			background-color: white;
-  			height: 100px;
-  			width: 100%;
-  			overflow-y: scroll;
-  		}
-  		.colores {
-  			display: none;
-  		}
-  		#imagenesColores {
-  			background-color: white;
-  			height: 100px;
-  			width: 100%;
-  			overflow-y: scroll;
+      .particiones {
+        display: none;
+      }
+      #imagenesParticiones {
+        background-color: white;
+        height: 100px;
+        width: 100%;
+        overflow-y: scroll;
+      }
+      .colores {
+        display: none;
+      }
+      #imagenesColores {
+        background-color: white;
+        height: 100px;
+        width: 100%;
+        overflow-y: scroll;
         margin-bottom: 10px;
-  		}
-  		#previsualization {
-  			background-color: white;
-  			height: 350px;
-  			margin-top: 40px;
+      }
+      #previsualization {
+        background-color: white;
+        height: 350px;
+        margin-top: 40px;
         margin-bottom: 40px;
-  		}
+      }
       #previsualizationSave {
         background-color: white;
         height: 350px;
@@ -304,7 +308,7 @@
         background-color: #F7FAFC;
       }
 
-  	</style>
+    </style>
 
   </head>
   <body>
@@ -437,12 +441,12 @@
       <div class="col-md-7">
         <ul class="nav nav-pills">
           <li class="active">
-            <a href="/tfg">Home</a>
+            <a href="/editor/tfg">Home</a>
           </li>
-          <li><a href="/tfg/admin/adminToolUpload.php">Cargar Bases</a></li>
-          <li><a href="/tfg/admin/adminToolDelete.php">Eliminar Bases</a></li>
-          <li><a href="/tfg/admin/adminToolUploadDecorative.php">Cargar Decoraciones</a></li>
-          <li><a href="/tfg/admin/adminToolDeleteDecorative.php">Eliminar Decoraciones</a></li>
+          <li><a href="/editor/tfg/admin/adminToolUpload.php">Cargar Bases</a></li>
+          <li><a href="/editor/tfg/admin/adminToolDelete.php">Eliminar Bases</a></li>
+          <li><a href="/editor/tfg/admin/adminToolUploadDecorative.php">Cargar Decoraciones</a></li>
+          <li><a href="/editor/tfg/admin/adminToolDeleteDecorative.php">Eliminar Decoraciones</a></li>
         </ul>
         <div id="buttons" class="btn-group">
           <button id="buttonPopUp" onclick="openPopUp('open')" class="btn btn-default">Nuevo Escudo</button>
@@ -495,8 +499,8 @@
     </div>
 
 
-		<div id="popUp" title="Crear forma">	
-		</div>
+    <div id="popUp" title="Crear forma">  
+    </div>
     <div id="savePopUp" title="Guardar escudo">  
     </div>
     <div id="loadPopUp" title="Cargar escudo">  
@@ -548,13 +552,13 @@
     $ ("#loadPopUp").load("loadPopUp.php");
   });
 
-	$("#popUp").dialog({
-  		autoOpen: false,
-  		height: "auto",
-  		width: "auto",
-  		modal: true,
-  		buttons: {
-  			"Crear forma": function() {
+  $("#popUp").dialog({
+      autoOpen: false,
+      height: "auto",
+      width: "auto",
+      modal: true,
+      buttons: {
+        "Crear forma": function() {
           var c = document.getElementById("mainCanvas");
           var mainCtx = c.getContext("2d");          
           if(particion == 1 || particion == -1) {
@@ -594,11 +598,11 @@
             });
           }
           $( this ).dialog( "close" );
-  			},
-  			"Cancelar": function() {
-  				$( this ).dialog( "close" );
-  			}
-  		},
+        },
+        "Cancelar": function() {
+          $( this ).dialog( "close" );
+        }
+      },
       close: function( event, ui ) {
         $("#back").attr("src", "");
         $("#part1").attr("src", "");
@@ -618,7 +622,7 @@
         $("#colorParticion4").css("display", "none");
         $("#colorParticion5").css("display", "none");
       }
-  	})
+    })
 
 
     $("#savePopUp").dialog({
@@ -720,7 +724,7 @@
         $("#savePopUp").dialog("open");
       } 
     }
-  	else {
+    else {
       if(popUp == "open") $("#popUp").dialog("open");
       else if(popUp == "save") {
         $("<div title=\'Atención\'><b>No has creado ningún escudo aún.</b></div>").dialog({
