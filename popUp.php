@@ -7,7 +7,7 @@
     foreach ($files as &$file) {
       if($file != '.' && $file != '..') {
         $base_name = substr($file, 0, -4);
-        echo("<div id=" . "'base" . $base_name . "' class='col-md-5' onClick='displayParticiones(this)''>");
+        echo("<div id=" . "'base" . $base_name . "' class='divDesign' onClick='displayParticiones(this)''>");
         echo("<img src='" . $dir . "/" . $file . "' class='design'>");
         echo("</div>");
       }
@@ -28,7 +28,7 @@
         foreach ($deep_files as &$deep_file) {
           if($deep_file != '.' && $deep_file != '..') {
             $particion_name = substr($deep_file, 0, -4);
-            echo("<div id='particion" . $particion_name . "' class='col-md-5' onClick='displayColores(this)'>");
+            echo("<div id='particion" . $particion_name . "' class='divDesign' onClick='displayColores(this)'>");
             echo("<img src='" . $deep_dir  . "/" . $deep_file . "' class='design'>");
             echo("</div>");
           }
@@ -50,7 +50,7 @@
         foreach ($deep_files as $deep_file) {
           if($deep_file != '.' && $deep_file != '..') {
             $particion_name = substr($deep_file, 0, -4);
-            echo("<div id='particion" . $particion_name . "' class='col-md-5' onClick='displayColores(this)''>");
+            echo("<div id='particion" . $particion_name . "' class='divDesign' onClick='displayColores(this)''>");
             echo("<img src='" . $dir . "/" . $base . "/" . $deep_file . "' class='design'>");
             echo("</div>");
           }
@@ -67,22 +67,22 @@
         <div id="designs" class="col-md-3">
           <h4>Formas</h4>
           <div id="imagenesFormas">
-            <div id="baseApuntado" class="col-md-5" onClick="displayParticiones(this)">
+            <div id="baseApuntado" class="divDesign" onClick="displayParticiones(this)">
               <img src="./img/bases/Apuntado.png"  class="design">
             </div>
-            <div id="baseSemicircular" class="col-md-5" onClick="displayParticiones(this)">
+            <div id="baseSemicircular" class="divDesign" onClick="displayParticiones(this)">
               <img src="./img/bases/Semicircular.png" class="design">
             </div>
-            <div id="baseFrances" class="col-md-5" onClick="displayParticiones(this)">
+            <div id="baseFrances" class="divDesign" onClick="displayParticiones(this)">
               <img src="./img/bases/Frances.png" class="design">
             </div>
-            <div id="baseIngles" class="col-md-5" onClick="displayParticiones(this)">
+            <div id="baseIngles" class="divDesign" onClick="displayParticiones(this)">
               <img src="./img/bases/Ingles.png" class="design">
             </div>
-            <div id="baseAleman" class="col-md-5" onClick="displayParticiones(this)">
+            <div id="baseAleman" class="divDesign" onClick="displayParticiones(this)">
               <img src="./img/bases/Aleman.png" class="design">
             </div>
-            <div id="baseItaliano" class="col-md-5" onClick="displayParticiones(this)">
+            <div id="baseItaliano" class="divDesign" onClick="displayParticiones(this)">
               <img src="./img/bases/Italiano.png" class="design">
             </div>
             <?php
@@ -92,18 +92,22 @@
           <div id ="particionesApuntado" class="particiones">
             <h4>Particiones</h4>
             <div id="imagenesParticiones">
-              <div id="particionVacio" class="col-md-5" onClick="displayColores(this)">
+              <div id="particionVacio" class="divDesign" onClick="displayColores(this)">
                 <img src="./img/miniaturas/Apuntado/Vacio1.png" class="design">
               </div>
-              <div id="particionPartido" class="col-md-5" onClick="displayColores(this)">
+              <div id="particionPartido" class="divDesign" onClick="displayColores(this)">
                 <img src="./img/miniaturas/Apuntado/Partido2.png" class="design">
               </div>
-              <div id="particionCortado" class="col-md-5" onClick="displayColores(this)">
+              <div id="particionCortado" class="divDesign" onClick="displayColores(this)">
                 <img src="./img/miniaturas/Apuntado/Cortado2.png" class="design">
               </div>
-              <div id="particionTronchado" class="col-md-5" onClick="displayColores(this)">
+              <div id="particionTronchado" class="divDesign" onClick="displayColores(this)">
                 <img src="./img/miniaturas/Apuntado/Tronchado2.png" class="design">
               </div>
+              <div id="particionCuartelado" class="divDesign"  onClick="displayColores(this)">
+                <img src="./img/miniaturas/Apuntado/Cuartelado4.png" class="design">
+              </div>
+              
               <?php
                 addParticionesBaseCreada("Apuntado");
               ?>
@@ -112,13 +116,13 @@
           <div id ="particionesSemicircular" class="particiones">
             <h4>Particiones</h4>
             <div id="imagenesParticiones">
-              <div id="particionPartido" class="col-md-5" onClick="displayColores(this)">
+              <div id="particionPartido" class="divDesign" onClick="displayColores(this)">
                 <img src="./img/miniaturas/Semicircular/Partido2.png" class="design">
               </div>
-              <div id="particionCortado" class="col-md-5" onClick="displayColores(this)">
+              <div id="particionCortado" class="divDesign" onClick="displayColores(this)">
                 <img src="./img/miniaturas/Semicircular/Cortado2.png" class="design">
               </div>
-              <div id="particionTronchado" class="col-md-5" onClick="displayColores(this)">
+              <div id="particionTronchado" class="divDesign" onClick="displayColores(this)">
                 <img src="./img/miniaturas/Semicircular/Tronchado2.png" class="design">
               </div>
               <?php
