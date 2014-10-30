@@ -1,9 +1,12 @@
 <?php
   include './ChromePhp.php';  
 
+  require('../userManager.php');
+  $user_name = getUsername();
+
   function addMisEscudos() {
 
-    $userId = "prueba";
+    $userId = $GLOBALS['user_name'];
 
     $enlace =  mysql_connect('localhost', 'regularUser', '');
     if (!$enlace) {
@@ -43,7 +46,7 @@
   }
 
   function addEscudos() {
-    $userId = "prueba";
+    $userId = $GLOBALS['user_name'];
 
     $enlace =  mysql_connect('localhost', 'regularUser', '');
     if (!$enlace) {

@@ -23,10 +23,6 @@
       require('../userManager.php');
       include './jqueryAlerts.php';
       $user_name = getUsername();
-   
-      
-      
-      //ChromePhp::log(getUsername());
     ?>
 
       <style>
@@ -320,6 +316,9 @@
         margin-left: 18px;
         float: left;
       }
+      #homeNav {
+        display: none;
+      }
 
     </style>
 
@@ -332,7 +331,10 @@
       if(is_null($user_name))  {
         echo "<script>javascript:alert('No has hecho log in.'); window.location = '/editor'</script>";       
       }
-
+      else {
+        
+      }
+      
       function loadDecoraciones($group, $index) {
         $dir    = './img/admin/decoraciones/' . $group ;
         $files = scandir($dir);
@@ -458,7 +460,7 @@
       </div>
 
       <div class="col-md-7">
-        <ul class="nav nav-pills">
+        <ul id="homeNav" class="nav nav-pills">
           <li class="active">
             <a href="/editor/tfg">Home</a>
           </li>
@@ -534,6 +536,11 @@
   </div>
     <?php
       oldSrc();
+      $isAdmin = isAdmin();
+      if ($isAdmin)
+      {
+           echo "<script>javascript:$('#homeNav').css('display','block')</script>";   
+      }
     ?>
   <script>
   //Variables para canvas

@@ -6,8 +6,11 @@
 <?php
 	include './ChromePhp.php';
 
+	require('../userManager.php');
+  	$user_name = getUsername();
+
 	//Recupero los valores a insertar
-	$userId = "prueba";
+	$userId = $user_name;
 	$titulo = $_POST['tituloDelete'];
 	$src = $_POST['srcDelete'];
 

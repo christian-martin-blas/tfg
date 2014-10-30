@@ -4,10 +4,11 @@
 </head>
 <body>
 <?php
-	include './ChromePhp.php';
+	require('../userManager.php');
+  	$user_name = getUsername();
 
 	//Recupero los valores a insertar
-	$userId = "prueba";
+	$userId = $user_name;
 	$nombre = $_POST['titulo'];
 	$descripcion = $_POST['descripcion'];
 	$historia = $_POST['historia'];

@@ -56,18 +56,5 @@
 		                                                            }
 		                                                          }
 		                                                        });';
-	else if(isset($_GET['notLogged'])) {
-		echo '$("<div title=\'Atención\'><b>Tienes que loguearte antes.</b></div>").dialog({
-		                                                          modal: true,
-		                                                          buttons: {
-		                                                            Ok: function() {
-		                                                              $( this ).dialog( "close" );
-		                                                            }
-		                                                          }
-		                                                        });';
-		//echo 'window.location.href = "/editor"';
-
-	}
-		echo '</script>';
 	}
 ?>
