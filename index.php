@@ -2,11 +2,7 @@
 <meta charset="utf-8"> 
 <html>
   <head>
-    <?php
-      include './ChromePhp.php';
-      require('../userManager.php');
-      ChromePhp::log(getUsername());
-    ?>
+    
 
       <script src="./lib/js/jquery-1.11.0.min.js"></script>
       <link rel="stylesheet" href="./lib/css/redmond/jquery-ui-1.10.4.custom.css">
@@ -21,6 +17,17 @@
       <script src="./lib/js/jquery.ui.widget.js"></script>
       <script src="./lib/js/jquery.iframe-transport.js"></script>
       <script src="./lib/js/jquery.fileupload.js"></script>
+
+      <?php
+      include './ChromePhp.php';
+      require('../userManager.php');
+      include './jqueryAlerts.php';
+      $user_name = getUsername();
+   
+      
+      
+      //ChromePhp::log(getUsername());
+    ?>
 
       <style>
       td {
@@ -320,6 +327,12 @@
   <body>
 
     <?php
+
+      //Utilizado para que la gente haga login, redirige a la Home Page
+      if(is_null($user_name))  {
+        echo "<script>javascript:alert('No has hecho log in.'); window.location = '/editor'</script>";       
+      }
+
       function loadDecoraciones($group, $index) {
         $dir    = './img/admin/decoraciones/' . $group ;
         $files = scandir($dir);
@@ -460,9 +473,6 @@
           <button id="buttonPopUpLoad" onclick="openPopUp('load')" class="btn btn-default">Cargar Escudo</button>
           <button id="buttonPopUpDownload" onclick="downloadImage()" class="btn btn-default">Descargar Escudo</button>
         </div>
-        <?php
-          include './jqueryAlerts.php';
-        ?>
         <div id="workspace">
           <canvas id="mainCanvas" width="530" height="350">
           </canvas>

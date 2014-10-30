@@ -33,13 +33,6 @@
 			imagedestroy($img);
 		}
 
-
-		/*ChromePhp::log($nombre);
-		ChromePhp::log($descripcion);
-		ChromePhp::log($historia);
-		ChromePhp::log($src);
-		ChromePhp::log($public);*/
-
 		$error_code = 0;
 		$enlace =  mysql_connect('localhost', 'regularUser', '');
 		if (!$enlace) {

@@ -20,7 +20,7 @@
 		                                                        });';
 		echo '</script>';
 		}
-		else if(isset($_GET['error'])) {
+	else if(isset($_GET['error'])) {
 		$error = $_GET['error'];
 		//Se ha subido una particion sin subir otra antes.
 		echo '<script language="javascript">';
@@ -56,6 +56,18 @@
 		                                                            }
 		                                                          }
 		                                                        });';
+	else if(isset($_GET['notLogged'])) {
+		echo '$("<div title=\'Atención\'><b>Tienes que loguearte antes.</b></div>").dialog({
+		                                                          modal: true,
+		                                                          buttons: {
+		                                                            Ok: function() {
+		                                                              $( this ).dialog( "close" );
+		                                                            }
+		                                                          }
+		                                                        });';
+		//echo 'window.location.href = "/editor"';
+
+	}
 		echo '</script>';
 	}
 ?>
