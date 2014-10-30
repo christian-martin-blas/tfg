@@ -132,7 +132,8 @@ function displayMiEscudo(item) {
   var lastIndex = src.lastIndexOf("/");
   var titulo = src.substring(lastIndex + 1, src.length - 4);
   document.getElementById("tituloDelete").value = titulo;
-  document.getElementById("srcDelete").value = "." + src.substring(20);
+  var index = src.indexOf("/img");
+  document.getElementById("srcDelete").value = "." + src.substring(index);
 }
 
 

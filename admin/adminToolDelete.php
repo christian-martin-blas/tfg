@@ -99,6 +99,7 @@
         float: left;
         border: 5px solid #333333;
         position: relative;
+        background-color: #C2C1BD;
       }
       #base {
         display: none;

@@ -21,7 +21,6 @@
       <?php
       include './ChromePhp.php';
       require('../userManager.php');
-      include './jqueryAlerts.php';
       $user_name = getUsername();
     ?>
 
@@ -326,13 +325,9 @@
   <body>
 
     <?php
-
       //Utilizado para que la gente haga login, redirige a la Home Page
       if(is_null($user_name))  {
         echo "<script>javascript:alert('No has hecho log in.'); window.location = '/editor'</script>";       
-      }
-      else {
-        
       }
       
       function loadDecoraciones($group, $index) {
@@ -535,6 +530,7 @@
 
   </div>
     <?php
+      include './jqueryAlerts.php';
       oldSrc();
       $isAdmin = isAdmin();
       if ($isAdmin)
