@@ -48,9 +48,9 @@
 
 
 	if($errorCode == 0) {
-		header('Location: /tfg/index.php?success=2');
+		header('Location: /editor/tfg/index.php?success=2');
 	}
-	else header('Location: /tfg/index.php?error=' . $error_code);
+	else header('Location: /editor/tfg/index.php?error=' . $error_code);
 	
 	exit;
 	

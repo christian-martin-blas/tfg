@@ -186,7 +186,7 @@
 
   function showDecoracionImage(item) {
     if(item.value != "") {
-      var src = "/tfg/img/admin/decoraciones/" + item.id + "/" + item.value + ".png";
+      var src = "../img/admin/decoraciones/" + item.id + "/" + item.value + ".png";
       back.src = src;
       $("#back").on('load', function(){
         var width = back.width;

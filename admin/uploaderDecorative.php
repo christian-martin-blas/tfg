@@ -11,9 +11,9 @@
 	$errorCode = uploadImage($target_path . $_POST['decorativeGroup'], "fileImage", $image_name . ".png");
 
 	if($errorCode == 0) {
-		header('Location: /tfg/admin/adminToolUploadDecorative.php?success');
+		header('Location: /editor/tfg/admin/adminToolUploadDecorative.php?success');
 	}
-	else header('Location: /tfg/admin/adminToolUploadDecorative.php?error=' . $errorCode);
+	else header('Location: /editor/tfg/admin/adminToolUploadDecorative.php?error=' . $errorCode);
 	
 	exit;
 

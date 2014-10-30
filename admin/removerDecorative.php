@@ -9,7 +9,7 @@
 	$src = "../img/admin/decoraciones/" . $_POST['decorativeGroup'] . "/" . $_POST['imgName'] . ".png";
 	unlink($src);
 	
-	header('Location: /tfg/admin/adminToolDeleteDecorative.php?success');
+	header('Location: /editor/tfg/admin/adminToolDeleteDecorative.php?success');
 	exit;
 	
 ?>

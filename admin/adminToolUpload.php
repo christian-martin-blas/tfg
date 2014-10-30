@@ -314,13 +314,6 @@
       </div>
 
     </div>
-    <footer class="footer" role="contentinfo">
-    <div class="container">
-      <hr>
-      <p>
-        © 2014 Editor de escudos      </p>
-    </div>
-  </footer>
   </body>
 
 
@@ -445,8 +438,8 @@
   function showBase(item) {
     if(item.value != "") {
       if(item.value != "Aleman" && item.value != "Apuntado" && item.value != "Frances" && item.value != "Ingles" 
-        && item.value != "Italiano" && item.value != "Semicircular") var src = "/tfg/img/admin/bases/" + item.value + ".png";
-      else var src = "/tfg/img/bases/" + item.value + ".png";
+        && item.value != "Italiano" && item.value != "Semicircular") var src = "../img/admin/bases/" + item.value + ".png";
+      else var src = "../img/bases/" + item.value + ".png";
       back.src = src;
     }
     else back.src = "";

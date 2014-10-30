@@ -341,7 +341,7 @@
         foreach ($files as &$file) {
           if($file != '.' && $file != '..') {
             $file_name = substr($file, 0, -4);
-            echo("<div id='" . $group . $index . "' esign='col-md-5'>");
+            echo("<div id='" . $group . $index . "' class='col-md-5'>");
             echo("<img id='" . $file_name . "' src='" . $dir . "/" . $file . "' class='figures' onClick='addImage(this)'/>");
             echo("</div>");
             $index = $index + 1;

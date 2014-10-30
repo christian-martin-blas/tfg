@@ -13,7 +13,8 @@
 	if($bool_base != false) {
 		//Hay que borrar la base, la miniatura y sus particiones
 		if(strpos($_POST['src'],'admin') != false) {
-			$src = ".." . substr($_POST['src'],20);
+			$index = strrpos($_POST['src'],"/img");
+			$src = ".." . substr($_POST['src'], $index);
 			unlink($src);
 		}
 		$base_name = $_POST['imgName'];
@@ -24,7 +25,8 @@
 	}
 	else {
 		//Hay que eliminar la miniatura y sus particiones
-		$src = ".." . substr($_POST['src'],20);
+		$index = strrpos($_POST['src'],"/img");
+		$src = ".." . substr($_POST['src'], $index);
 		unlink($src);
 		$base_name = $_POST['imgNameBase'];
 		$particion_name = substr($_POST['imgName'], 0, -1);
@@ -38,7 +40,7 @@
 	
 	
 
-	header('Location: /tfg/admin/adminToolDelete.php?success');
+	header('Location: /editor/tfg/admin/adminToolDelete.php?success');
 	exit;
 
 	function removeFiles($dir) {

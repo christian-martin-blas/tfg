@@ -74,9 +74,9 @@
 	fclose($temp_file);
 
 	if($error_code == 0) {
-		header('Location: /tfg/index.php?success=1');
+		header('Location: /editor/tfg/index.php?success=1');
 	}
-	else header('Location: /tfg/index.php?error=' . $error_code);
+	else header('Location: /editor/tfg/index.php?error=' . $error_code);
 	
 	exit;
 	

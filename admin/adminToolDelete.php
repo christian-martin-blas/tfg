@@ -186,13 +186,6 @@
               </td>
               <td>
                 <select id="nombreBase" name="nombreBase" onchange="showBase(this)" class="form-control" required>
-                  <option value=""></option>
-                  <option value="Aleman">Aleman</option>
-                  <option value="Apuntado">Apuntado</option>
-                  <option value="Frances">Frances</option>
-                  <option value="Ingles">Inglés</option>
-                  <option value="Italiano">Italiano</option>
-                  <option value="Semicircular">Semicircular</option>
                   <?php
                     addOptions();
                   ?>
@@ -291,8 +284,8 @@
   function showBase(item) {
     if(item.value != "") {
       if(item.value != "Aleman" && item.value != "Apuntado" && item.value != "Frances" && item.value != "Ingles" 
-        && item.value != "Italiano" && item.value != "Semicircular") var src = "/tfg/img/admin/bases/" + item.value + ".png";
-      else var src = "/tfg/img/bases/" + item.value + ".png";
+        && item.value != "Italiano" && item.value != "Semicircular") var src = "../img/admin/bases/" + item.value + ".png";
+      else var src = "../img/bases/" + item.value + ".png";
       back.src = src;
     }
     else back.src = "";
@@ -301,8 +294,8 @@
   function showBaseParticion(item) {
     if(item.value != "") {
       if(item.value != "Aleman" && item.value != "Apuntado" && item.value != "Frances" && item.value != "Ingles" 
-        && item.value != "Italiano" && item.value != "Semicircular") var src = "/tfg/img/admin/bases/" + item.value + ".png";
-      else var src = "/tfg/img/bases/" + item.value + ".png";
+        && item.value != "Italiano" && item.value != "Semicircular") var src = "../img/admin/bases/" + item.value + ".png";
+      else var src = "../img/bases/" + item.value + ".png";
       back.src = src;
       $("#" + antSelect).css("display","none");
       if(antSelect != "") document.getElementById(antSelect).required = false;
@@ -315,7 +308,7 @@
 
   function showParticion(item) {
     if(item.value != "") {
-      var src = "/tfg/img/admin/miniaturas/" + item.id + "/" + item.value + ".png";
+      var src = "../img/admin/miniaturas/" + item.id + "/" + item.value + ".png";
       back.src = src;
     }
   }
