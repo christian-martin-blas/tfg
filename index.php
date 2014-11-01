@@ -32,15 +32,15 @@
         max-width: 1500px;
       }
       #container {
-        background-color: grey;
+        background-color: #D6EBF9;
         width: 800px;
       }
       #saveContainer {
-        background-color: grey;
+        background-color: #D6EBF9;
         width: auto;
       }
       #loadContainer {
-        background-color: grey;
+        background-color: #D6EBF9;
         width: auto;
         height: 570px;
       }
@@ -323,6 +323,9 @@
         width: 120px;
         float: left;
       }
+      .ui-dialog {
+            background: #D6EBF9 !important
+      }​
 
     </style>
 

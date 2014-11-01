@@ -7,6 +7,8 @@
 	include './ChromePhp.php';
 
 	require('../userManager.php');
+	require('./dbConnection.php');
+
   	$user_name = getUsername();
 
 	//Recupero los valores a insertar
@@ -15,16 +17,8 @@
 	$src = $_POST['srcDelete'];
 
 	$error_code = 0;
-	$enlace =  mysql_connect('localhost', 'regularUser', '');
-	if (!$enlace) {
-	    die('No pudo conectarse: ' . mysql_error());
-	    $erroc_code = 1;
-	}
-	echo 'Conectado satisfactoriamente';
-	$bd_seleccionada = mysql_select_db('tfg', $enlace);
-	if (!$bd_seleccionada) {
-	    die ('No se puede usar tfg : ' . mysql_error());
-	}
+	$enlace = dbConnect();
+	if($enlace == 1) $error_code = $enlace;
 
 	//Meter los valores con %s%
 	$delete = "DELETE FROM escudo WHERE titulo = '%s' AND src = '%s' AND userId = '%s'";
