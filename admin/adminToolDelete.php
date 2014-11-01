@@ -16,6 +16,8 @@
       <script src="../lib/js/jquery.iframe-transport.js"></script>
       <script src="../lib/js/jquery.fileupload.js"></script>
 
+      <?php include '../ChromePhp.php';?>
+
       <title>Eliminar bases y escudos</title>
 
       <style>
@@ -255,6 +257,7 @@
           <img id="part3">
           <img id="part4">
         </div>
+        <button onclick="guardarSrc()">Hola</button>
       </div>
 
     </div>
@@ -328,13 +331,13 @@
   function guardarSrc() {
     //Guardo las variables que necesito para saber que borrar
     $("#src").val(back.src);
-    if($("#nombreBase").val() != "") {
+    if($("#nombreBase").val() != "" && $("#nombreBase").val() != null) {
       $("#imgName").val($("#nombreBase").val());
     }
-    else if($("#nombreBaseParticion").val() != "") {
+    else if($("#nombreBaseParticion").val() != "" && $("#nombreBaseParticion").val() != null) {
       var nombreBase = $("#nombreBaseParticion").val();
-      $("#imgNameBase").val($("#nombreBaseParticion").val());
-      $("#imgName").val($("#" + nombreBase).val());
+      document.getElementById("imgNameBase").value = nombreBase;
+      document.getElementById("imgName").value = document.getElementById(nombreBase).value;
     }
   }
 

@@ -11,6 +11,7 @@
 
 	$bool_base = strpos($_POST['src'],'bases');
 	if($bool_base != false) {
+		ChromePhp::log($_POST['imgName']);
 		//Hay que borrar la base, la miniatura y sus particiones
 		if(strpos($_POST['src'],'admin') != false) {
 			$index = strrpos($_POST['src'],"/img");
@@ -29,6 +30,7 @@
 		$src = ".." . substr($_POST['src'], $index);
 		unlink($src);
 		$base_name = $_POST['imgNameBase'];
+		ChromePhp::log($_POST['imgNameBase']);
 		$particion_name = substr($_POST['imgName'], 0, -1);
 		$src = "../img/admin/particiones/" . $base_name . "/";
 		unlink($src . $particion_name . "1.png");
