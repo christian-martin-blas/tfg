@@ -14,6 +14,8 @@
       <script src="../lib/js/jquery.iframe-transport.js"></script>
       <script src="../lib/js/jquery.fileupload.js"></script>
 
+      <title>Cargar decoraciones</title>
+
       <style>
       html {
         max-width: 1500px;
@@ -138,8 +140,10 @@
       </div>
 
       <div class="col-md-6">
-        <ul class="nav nav-pills">
-          <li><a href="/editor/tfg">Home</a></li>
+        <ul class="nav nav-pills" style="width:900px">
+          <li><a href="/editor/">Home</a></li>
+          <li><a href="/editor/tfg/">Galería</a></li>
+          <li><a href="/editor/tfg/home.php">Editor</a></li>
           <li><a href="/editor/tfg/admin/adminToolUpload.php">Cargar Bases</a></li>
           <li><a href="/editor/tfg/admin/adminToolDelete.php">Eliminar Bases</a></li>
           <li class="active">

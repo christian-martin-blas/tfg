@@ -41,6 +41,7 @@
       <div id="previsualization" class="col-md-8">
         <img id="escudo">
       </div>
+      <button id="buttonPopUpDownload" onclick="downloadImage()" class="btn btn-default">Descargar Escudo</button>
     </div> 
   </div>
 </div>
@@ -48,6 +49,6 @@
 
 
 <script>
-  document.getElementById("tituloPopUp").value = document.getElementById("titulo");
+  
 
 </script>
