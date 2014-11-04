@@ -257,7 +257,6 @@
           <img id="part3">
           <img id="part4">
         </div>
-        <button onclick="guardarSrc()">Hola</button>
       </div>
 
     </div>

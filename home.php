@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <meta charset="utf-8"> 
 <html>
   <head>
@@ -19,10 +19,11 @@
       <script src="./lib/js/jquery.fileupload.js"></script>
 
       <title>Editor de escudos</title>
-      <?php
+    <?php
       include './ChromePhp.php';
       include('../userManager.php');
       $user_name = getUsername();
+      $isAdmin = isAdmin();
     ?>
 
       <style>
@@ -329,7 +330,7 @@
       }
       .ui-dialog {
             background: #D6EBF9 !important
-      }​
+      }?
 
     </style>
 
@@ -775,7 +776,6 @@
     <?php
       include './jqueryAlerts.php';
       oldSrc();
-      $isAdmin = isAdmin();
       if ($isAdmin)
       {
            echo "<script>javascript:$('#homeNavAdmin').css('display','block')</script>";   

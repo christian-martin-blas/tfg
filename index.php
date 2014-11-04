@@ -1,7 +1,13 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <meta charset="utf-8"> 
 <html>
 <head>
+    <?php
+      include('../userManager.php');
+      include './ChromePhp.php';
+      require('./dbConnection.php');
+      $isAdmin = isAdmin();
+    ?>
       <script src="./lib/js/jquery-1.11.0.min.js"></script>
       <link rel="stylesheet" href="./lib/css/redmond/jquery-ui-1.10.4.custom.css">
       <link rel="stylesheet" type="text/css" href="./lib/css/bootstrap.css">
@@ -13,13 +19,6 @@
       <script src="./lib/js/jquery.ui.widget.js"></script>
 
       <title>Galería de escudos</title>
-
-    <?php
-      include('../userManager.php');
-      include './ChromePhp.php';
-      require('./dbConnection.php');
-      $user_name = getUsername();
-    ?>
 
 <style>
       html {
@@ -76,7 +75,6 @@
         padding: 6px;
       }
       #homeNav {
-        display: none;
         margin-left: 400px;
       }
       #homeNavAdmin {
@@ -93,18 +91,26 @@
         float: right;
         margin-right: 115px;
       }
+      #autor {
+        display: none;
+      }
+      #historia {
+        display: none;
+      }
+      #descripcion {
+        display: none;
+      }
+      #titulo {
+        display: none;
+      }
       .ui-dialog {
             background:#C9DCEA !important;
-      }​
-
-      
-      
+      }?
+          
 </style>
-
-      <?php
-        if(is_null($user_name))  {
-          echo "<script>javascript:alert('No has hecho log in.'); window.location = '/editor'</script>";       
-        }
+</head>
+<body>
+  <?php
         function loadEscudos() {
               $enlace = dbConnect();
               if($enlace == 1) $error_code = $enlace;
@@ -129,10 +135,10 @@
                     $descripcion = $fila['descripcion'];
                     $src = $fila['src'];
                     echo("<div id='" . $titulo . " " . $userId . "' class='divEscudo' onclick='displayEscudo(this)'>");
-                    echo("<input type=\"text\" id=\"autor\" value=\"" . $userId . "\" style=\"display:none\"/>");
-                    echo("<input type=\"text\" id=\"descripcion\" value=\"" . $descripcion . "\" style=\"display:none\"/>");
-                    echo("<input type=\"text\" id=\"historia\" value=\"" . $historia . "\" style=\"display:none\"/>");
-                    echo("<input type=\"text\" id=\"titulo\" value=\"" . $titulo . "\" style=\"display:none\"/>");
+                    echo("<input type=\"text\" id=\"autor\" value=\"" . $userId . "\">");
+                    echo("<input type=\"text\" id=\"descripcion\" value=\"" . $descripcion . "\">");
+                    echo("<input type=\"text\" id=\"historia\" value=\"" . $historia . "\">");
+                    echo("<input type=\"text\" id=\"titulo\" value=\"" . $titulo . "\">");
                     echo("<img src='" . $src . "' class='escudo'>");
                     echo("<h4>" . $titulo . "</h4>");
                     echo("</div>");      
@@ -143,9 +149,6 @@
               mysql_close($enlace);
         }
       ?>
-
-</head>
-<body>
     <ul id="homeNav" class="nav nav-pills">
       <li><a href="/editor/">Home</a></li>
       <li class="active">
@@ -174,12 +177,11 @@
     </div>
 </body>
 <?php
-  $isAdmin = isAdmin();
   if ($isAdmin)
   {
+      echo "<script>javascript:$('#homeNav').css('display','none')</script>";   
        echo "<script>javascript:$('#homeNavAdmin').css('display','block')</script>";   
   }
-  else echo "<script>javascript:$('#homeNav').css('display','block')</script>";   
 ?>
 <script>
 $(function(){
