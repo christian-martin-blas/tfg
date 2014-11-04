@@ -6,6 +6,7 @@
       include('../userManager.php');
       include './ChromePhp.php';
       require('./dbConnection.php');
+      $user_name = getUsername();
       $isAdmin = isAdmin();
     ?>
       <script src="./lib/js/jquery-1.11.0.min.js"></script>
@@ -177,11 +178,11 @@
     </div>
 </body>
 <?php
-  if ($isAdmin)
+  /*if ($isAdmin)
   {
       echo "<script>javascript:$('#homeNav').css('display','none')</script>";   
        echo "<script>javascript:$('#homeNavAdmin').css('display','block')</script>";   
-  }
+  }*/
 ?>
 <script>
 $(function(){
