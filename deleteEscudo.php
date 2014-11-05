@@ -13,6 +13,7 @@
 
 	//Recupero los valores a insertar
 	$userId = $user_name;
+
 	$titulo = $_POST['tituloDelete'];
 	$src = $_POST['srcDelete'];
 

@@ -11,8 +11,8 @@
 	//Recupero los valores a insertar
 	$userId = $user_name;
 	$nombre = $_POST['titulo'];
-	$descripcion = $_POST['descripcion'];
-	$historia = $_POST['historia'];
+	$descripcion = utf8_decode($_POST['descripcion']);
+	$historia = utf8_decode($_POST['historia']);
 	$src = $_POST['srcSave'];
 	$public =  isset($_POST['public']) && $_POST['public']  ? "1" : "0";
 

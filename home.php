@@ -17,6 +17,7 @@
       <script src="./lib/js/jquery.ui.widget.js"></script>
       <script src="./lib/js/jquery.iframe-transport.js"></script>
       <script src="./lib/js/jquery.fileupload.js"></script>
+      <script src="./lib/js/utiles.js"></script>
 
       <title>Editor de escudos</title>
     <?php
@@ -897,6 +898,8 @@
           "Guardar escudo": function() {
             var $myForm = $('#saveEscudo');
             //Comprobamos si el formulario es valido
+            var titulo = document.getElementById("titulo").value;
+            document.getElementById("titulo").value = omitirAcentos(titulo);
             if (!$myForm[0].checkValidity()) {
               $myForm.find(':submit').click()
             }

@@ -5,14 +5,15 @@
 <body>
 <?php
 	include '../ChromePhp.php';
+	include '../lib/php/utiles.php';
 
 	//ChromePhp::log("hola");
 	$errorCode = validateForm();
 	$num_particion = 1;
 	if($errorCode == 0) {
 		$target_path = "../img/admin";
-		if($_POST['nombreParticion'] != "") $particion_name = str_replace(' ', '', $_POST['nombreParticion']);
-		else if($_POST['nombreParticionSelect'] != "") $particion_name = str_replace(' ', '', $_POST['nombreParticionSelect']);
+		if($_POST['nombreParticion'] != "") $particion_name = sanear_string(str_replace(' ', '', $_POST['nombreParticion']));
+		else if($_POST['nombreParticionSelect'] != "") $particion_name = sanear_string(str_replace(' ', '', $_POST['nombreParticionSelect']));
 		else {
 			//Caso en que se vaya a subir solo la base
 			$base_name = str_replace(' ', '', $_POST['nombreBase']);
@@ -20,7 +21,7 @@
 		}
 		if($_FILES['fileBase']['name'] != "") {
 		//Caso en que se sube una base y unas particiiones desde 0
-			if($_POST['nombreBase'] != "") $base_name = str_replace(' ', '', $_POST['nombreBase']);
+			if($_POST['nombreBase'] != "") $base_name = sanear_string(str_replace(' ', '', $_POST['nombreBase']));
 			uploadImage($target_path . "/bases", "fileBase", $base_name . ".png");
 			$path_particiones = "../img/admin/miniaturas/" . $base_name;
 			mkdir($path_particiones, 0700);

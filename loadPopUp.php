@@ -128,7 +128,7 @@ function displayEscudo(item) {
 function displayMiEscudo(item) {
   escudoImg.src = item.firstChild.src;
   $("#deleteButton").css("display","block");
-  var src = decodeURI(escudoImg.src);
+  var src = escudoImg.src;
   var lastIndex = src.lastIndexOf("/");
   var titulo = src.substring(lastIndex + 1, src.length - 4);
   document.getElementById("tituloDelete").value = titulo;

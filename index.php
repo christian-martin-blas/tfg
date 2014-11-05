@@ -132,8 +132,8 @@
               while ($fila = mysql_fetch_assoc($resultado)) {
                     $userId = $fila['userId'];
                     $titulo = $fila['titulo'];
-                    $historia = $fila['historia'];
-                    $descripcion = $fila['descripcion'];
+                    $historia = utf8_encode($fila['historia']);
+                    $descripcion = utf8_encode($fila['descripcion']);
                     $src = $fila['src'];
                     echo("<div id='" . $titulo . " " . $userId . "' class='divEscudo' onclick='displayEscudo(this)'>");
                     echo("<input type=\"text\" id=\"autor\" value=\"" . $userId . "\">");
@@ -178,11 +178,11 @@
     </div>
 </body>
 <?php
-  /*if ($isAdmin)
+  if ($isAdmin)
   {
       echo "<script>javascript:$('#homeNav').css('display','none')</script>";   
        echo "<script>javascript:$('#homeNavAdmin').css('display','block')</script>";   
-  }*/
+  }
 ?>
 <script>
 $(function(){

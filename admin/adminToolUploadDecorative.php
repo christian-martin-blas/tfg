@@ -120,7 +120,7 @@
                 <b>Nombre de la imágen:</b>
               </td>
               <td>
-                <input type="text" id="nameImage" name="nameImage" class="form-control" required/>             
+                <input type="text" id="nameImage" name="nameImage" class="form-control" onchange="regexValidator(this);" required/>             
               </td>
             </tr>
             <tr>
@@ -229,6 +229,17 @@
     $("#nameImage").val("");
     if($("#fileImage").val() != "") $("#fileImage").replaceWith($("#fileImage").val('').clone(true));
     addOnChangeToFiles();
+  }
+
+  function regexValidator(control) {
+    var val = $(control).val();
+    if(val == undefined || val == '') {
+
+        $(control).attr("class", "invalid");
+    } 
+    else { 
+    // Regex stuff goes in here
+    }
   }
   </script>
 

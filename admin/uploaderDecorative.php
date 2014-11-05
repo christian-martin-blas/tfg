@@ -5,9 +5,10 @@
 <body>
 <?php
 	include '../ChromePhp.php';
+	include '../lib/php/utiles.php';
 
 	$target_path = "../img/admin/decoraciones/";
-	if($_POST['nameImage'] != "") $image_name = str_replace(' ', '', $_POST['nameImage']);
+	if($_POST['nameImage'] != "") $image_name = sanear_string(str_replace(' ', '', $_POST['nameImage']));
 	$errorCode = uploadImage($target_path . $_POST['decorativeGroup'], "fileImage", $image_name . ".png");
 
 	if($errorCode == 0) {
