@@ -19,7 +19,7 @@
 
     //Meter los valores con %s%
     
-    $select="SELECT userId, titulo, src FROM escudo WHERE userId = '%s'";
+    $select="SELECT userId, titulo, src, public FROM escudo WHERE userId = '%s'";
     $select = sprintf($select, $userId);
     // Ejecutar la consulta
     $resultado = mysql_query($select);
@@ -34,9 +34,11 @@
     while ($fila = mysql_fetch_assoc($resultado)) {
       $userId = $fila['userId'];
       $titulo = $fila['titulo'];
+      $public = $fila['public'];
       $src = $fila['src'];
       echo("<div id='" . $titulo . "' class='divEscudo' onclick='displayMiEscudo(this)'>");
       echo("<img src='" . $src . "' class='escudo'>");
+      echo("<input value = '" . $public . "' type='text' style='display:none'>");
       echo("</div>");      
     }
     // Liberar los recursos asociados con el conjunto de resultados
@@ -105,15 +107,16 @@
     <div id="previsualizationLoad" class="col-md-8">
       <img id="escudoPrevisualization">
     </div>
-    <form id="manageMyEscudo" action="manageMyEscudo.php" method="POST">
-      <input id="publishButton" name = "publishButton" type="submit" value="Publicar el escudo" style="display:none;">  
-      <input id="unpublishButton" name = "unpublishButton" type="submit" value="Ocultar el escudo" style="display:none;">  
-      <input id="tituloMyManage" name="tituloMyManage" type="text" style="display:none;">
-    </form>
+    
     <form id="deleteEscudo" action="deleteEscudo.php" method="POST">
       <input id="deleteButton" type="submit" value="Borrar el escudo" style="display:none;">  
       <input id="tituloDelete" name="tituloDelete" type="text" style="display:none;">
       <input id="srcDelete" name="srcDelete" type="text" style="display:none;">
+    </form>
+    <form id="manageMyEscudo" action="manageMyEscudo.php" method="POST">
+      <input id="unpublishButton" name = "unpublishButton" type="submit" value="Ocultar el escudo" style="display:none;">
+      <input id="publishButton" name = "publishButton" type="submit" value="Publicar el escudo" style="display:none;">    
+      <input id="tituloMyManage" name="tituloMyManage" type="text" style="display:none;">
     </form>
   </div> 
 </div>
@@ -127,14 +130,22 @@ var escudoImg = document.getElementById("escudoPrevisualization");
 
 function displayEscudo(item) {
   $("#deleteButton").css("display","none");
+  $("#unpublishButton").css("display","none");
+  $("#publishButton").css("display","none");
   escudoImg.src = item.firstChild.src;
 }
 
 function displayMiEscudo(item) {
   escudoImg.src = item.firstChild.src;
   $("#deleteButton").css("display","block");
-  $("#unpublishButton").css("display","block");
-  $("#publishButton").css("display","block");
+  if(item.children[1].value == 1) {
+    $("#publishButton").css("display","none");
+    $("#unpublishButton").css("display","block");
+  } 
+  else {
+    $("#unpublishButton").css("display","none");
+    $("#publishButton").css("display","block");
+  }
   var src = escudoImg.src;
   var lastIndex = src.lastIndexOf("/");
   var titulo = src.substring(lastIndex + 1, src.length - 4);

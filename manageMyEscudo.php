@@ -22,7 +22,6 @@
 	//Meter los valores con %s%
 	$update = "UPDATE escudo SET public = %b WHERE titulo = '%s' AND userId = '%s'";
 	$consulta = sprintf($update, $public, $titulo, $userId);
-	ChromePhp::log($consulta);
 	// Ejecutar la consulta
 	$resultado = mysql_query($consulta);
 	// Comprobar el resultado
@@ -39,7 +38,8 @@
 	mysql_close($enlace);
 
 	if($errorCode == 0) {
-		header('Location: /editor/tfg/home.php?success=3');
+		if($public == 1) header('Location: /editor/tfg/home.php?success=3');
+		else header('Location: /editor/tfg/home.php?success=4');
 	}
 	else header('Location: /editor/tfg/home.php?error=' . $error_code);
 	

@@ -318,6 +318,16 @@
         margin-top: 20px;
         float: right;
       }
+      #publishButton {
+        margin-right: 35px;
+        margin-top: 20px;
+        float: right;
+      }
+      #unpublishButton {
+        margin-right: 35px;
+        margin-top: 20px;
+        float: right;
+      }
       #mainTool {
         height: 750px;
       }
@@ -964,7 +974,12 @@
           }
         },
         close: function( event, ui ) {
+          $("#deleteButton").css("display","none");
+          $("#unpublishButton").css("display","none");
+          $("#publishButton").css("display","none");
           document.getElementById("escudoPrevisualization").src = "";
+          document.getElementById("tituloDelete").value = "";
+          document.getElementById("tituloMyManage").value = "";
         }
       });
 

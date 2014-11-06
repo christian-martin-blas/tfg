@@ -26,6 +26,14 @@
 		                                                            }
 		                                                          }
 		                                                        });';
+		if($success == 4) echo '$("<div title=\'Información\'><b>El escudo se ha publicado.</b></div>").dialog({
+		                                                          modal: true,
+		                                                          buttons: {
+		                                                            Ok: function() {
+		                                                              $( this ).dialog( "close" );
+		                                                            }
+		                                                          }
+		                                                        });';
 		echo '</script>';
 		}
 	else if(isset($_GET['error'])) {
