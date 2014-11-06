@@ -5,20 +5,24 @@
 <body>
 <?php
 	include './ChromePhp.php';
-
 	require('./dbConnection.php');
+	require('../userManager.php');
 
+  	$userId = getUsername();
 	//Recupero los valores a insertar
-	$userId = $_POST['usernameManage'];
-	$titulo = $_POST['tituloManage'];
+	if(isset($_POST['publishButton'])) $public = 1;
+	else $public = 0;
+	$titulo = $_POST['tituloMyManage'];
+	$titulo = str_replace('%20', ' ', $titulo);
 
 	$error_code = 0;
 	$enlace = dbConnect();
 	if($enlace == 1) $error_code = $enlace;
 
 	//Meter los valores con %s%
-	$update = "UPDATE escudo SET public = 0 WHERE titulo = '%s' AND userId = '%s'";
-	$consulta = sprintf($update, $titulo, $userId);
+	$update = "UPDATE escudo SET public = %b WHERE titulo = '%s' AND userId = '%s'";
+	$consulta = sprintf($update, $public, $titulo, $userId);
+	ChromePhp::log($consulta);
 	// Ejecutar la consulta
 	$resultado = mysql_query($consulta);
 	// Comprobar el resultado

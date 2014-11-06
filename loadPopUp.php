@@ -105,6 +105,11 @@
     <div id="previsualizationLoad" class="col-md-8">
       <img id="escudoPrevisualization">
     </div>
+    <form id="manageMyEscudo" action="manageMyEscudo.php" method="POST">
+      <input id="publishButton" name = "publishButton" type="submit" value="Publicar el escudo" style="display:none;">  
+      <input id="unpublishButton" name = "unpublishButton" type="submit" value="Ocultar el escudo" style="display:none;">  
+      <input id="tituloMyManage" name="tituloMyManage" type="text" style="display:none;">
+    </form>
     <form id="deleteEscudo" action="deleteEscudo.php" method="POST">
       <input id="deleteButton" type="submit" value="Borrar el escudo" style="display:none;">  
       <input id="tituloDelete" name="tituloDelete" type="text" style="display:none;">
@@ -128,10 +133,13 @@ function displayEscudo(item) {
 function displayMiEscudo(item) {
   escudoImg.src = item.firstChild.src;
   $("#deleteButton").css("display","block");
+  $("#unpublishButton").css("display","block");
+  $("#publishButton").css("display","block");
   var src = escudoImg.src;
   var lastIndex = src.lastIndexOf("/");
   var titulo = src.substring(lastIndex + 1, src.length - 4);
   document.getElementById("tituloDelete").value = titulo;
+  document.getElementById("tituloMyManage").value = titulo;
   var index = src.indexOf("/img");
   document.getElementById("srcDelete").value = "." + src.substring(index);
 }

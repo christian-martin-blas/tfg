@@ -15,7 +15,9 @@
 	$userId = $user_name;
 
 	$titulo = $_POST['tituloDelete'];
+	$titulo = str_replace('%20', ' ', $titulo);
 	$src = $_POST['srcDelete'];
+	$src = str_replace('%20', ' ', $src);
 
 	$error_code = 0;
 	$enlace = dbConnect();
