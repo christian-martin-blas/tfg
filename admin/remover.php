@@ -6,9 +6,6 @@
 <?php
 	include '../ChromePhp.php';
 
-	/*ChromePhp::log($_POST['src']);
-	ChromePhp::log($_POST['imgName']);*/
-
 	$bool_base = strpos($_POST['src'],'bases');
 	if($bool_base != false) {
 		ChromePhp::log($_POST['imgName']);

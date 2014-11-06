@@ -7,6 +7,7 @@
 	require('../userManager.php');
 	require('./dbConnection.php');
   	$user_name = getUsername();
+  	$email = getEmail();
 
 	//Recupero los valores a insertar
 	$userId = $user_name;
@@ -40,8 +41,8 @@
 		if($enlace == 1) $error_code = $enlace;
 
 		//Meter los valores con %s%
-		$insert = "INSERT INTO escudo VALUES ('%s','%s', '%s', '%s', '%s', %b)";
-		$consulta = sprintf($insert, $userId, $nombre, $descripcion, $historia, $src, $public);
+		$insert = "INSERT INTO escudo VALUES ('%s','%s', '%s', '%s', '%s', %b, '%s')";
+		$consulta = sprintf($insert, $userId, $nombre, $descripcion, $historia, $src, $public, $email);
 		// Ejecutar la consulta
 		$resultado = mysql_query($consulta);
 		// Comprobar el resultado
@@ -50,7 +51,7 @@
 		    $mensaje  = 'Consulta no válida: ' . mysql_error() . "\n";
 		    $mensaje .= 'Consulta completa: ' . $consulta;
 		    die($mensaje);
-		    $erroc_code = 2;
+		    $error_code = 2;
 		}
 
 		// Liberar los recursos asociados con el conjunto de resultados

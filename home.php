@@ -47,6 +47,11 @@
         width: auto;
         height: 570px;
       }
+      #manageContainer {
+        background-color: #D6EBF9;
+        width: auto;
+        height: 570px;
+      }
       .page-header {
         text-align: center;
       }
@@ -118,6 +123,12 @@
         margin-left: 80px;
       }
       #previsualizationLoad {
+        background-color: white;
+        height: 350px;
+        margin-top: 130px;
+        margin-left: 50px;
+      }
+      #previsualizationManage {
         background-color: white;
         height: 350px;
         margin-top: 130px;
@@ -329,9 +340,15 @@
         width: 120px;
         float: left;
       }
+      #buttonPopUpManage {
+        display: none;
+      }
+      #manageEscudo {
+        margin-top: 50px;
+      }
       .ui-dialog {
             background: #D6EBF9 !important
-      }?
+      }
 
     </style>
 
@@ -714,6 +731,7 @@
           <button id="buttonPopUpSave" onclick="openPopUp('save')" class="btn btn-default">Guardar Escudo</button>
           <button id="buttonPopUpLoad" onclick="openPopUp('load')" class="btn btn-default">Cargar Escudo</button>
           <button id="buttonPopUpDownload" onclick="downloadImage()" class="btn btn-default">Descargar Escudo</button>
+          <button id="buttonPopUpManage" onclick="openPopUp('manage')" class="btn btn-default">Gestionar Escudos</button>
         </div>
         <div id="workspace">
           <canvas id="mainCanvas" width="530" height="350">
@@ -763,6 +781,8 @@
     </div>
     <div id="loadPopUp" title="Cargar escudo">  
     </div>
+    <div id="managePopUp" title="Gestionar escudos">  
+    </div>
   </body>
 
   <div id="dialogConfirm" title="¿Deseas borrar el diseño actual?">
@@ -779,7 +799,8 @@
       oldSrc();
       if ($isAdmin)
       {
-           echo "<script>javascript:$('#homeNavAdmin').css('display','block')</script>";   
+           echo "<script>javascript:$('#homeNavAdmin').css('display','block')</script>";
+           echo "<script>javascript:$('#buttonPopUpManage').css('display','block')</script>";      
       }
       else echo "<script>javascript:$('#homeNav').css('display','block')</script>";   
     ?>
@@ -806,7 +827,6 @@
     if(document.getElementById("oldSrc")) {
       //var oldSrc = document.getElementById("oldSrc").value;
       var oldSrc = "data:image/png;base64," + document.getElementById("oldSrc").value;
-      console.log(oldSrc);
       fabric.Image.fromURL(oldSrc, function(img) {
         mainCanvas.add(img.set({ left: 0, top: 0, selectable: false, hasControls: false, evented: false}));
       });
@@ -814,6 +834,7 @@
     $ ("#popUp").load("popUp.php");
     $ ("#savePopUp").load("savePopUp.php");
     $ ("#loadPopUp").load("loadPopUp.php");
+    $ ("#managePopUp").load("managePopUp.php");
   });
 
   $("#popUp").dialog({
@@ -886,7 +907,7 @@
         $("#colorParticion4").css("display", "none");
         $("#colorParticion5").css("display", "none");
       }
-    })
+    });
 
 
     $("#savePopUp").dialog({
@@ -919,7 +940,7 @@
           $("#historia").val("");
           $("#public").prop('checked', false);
         }
-      })
+      });
 
     $("#loadPopUp").dialog({
         autoOpen: false,
@@ -945,7 +966,29 @@
         close: function( event, ui ) {
           document.getElementById("escudoPrevisualization").src = "";
         }
-      })
+      });
+
+    $("#managePopUp").dialog({
+      autoOpen: false,
+      height: 700,
+      width: 1100,
+      modal: true,
+      buttons: {
+        "Ocultar escudo": function() {
+          document.getElementById("manageEscudo").submit();
+          $( this ).dialog( "close" );
+        },
+        "Cancelar": function() {
+          //Borrar valores
+          $( this ).dialog( "close" );
+        }
+      },
+      close: function( event, ui ) {
+        document.getElementById("escudoPrevisualizationManage").src = "";
+        document.getElementById("usernameManage").value = "";
+        document.getElementById("emailManage").value = "";
+      }
+    });
     
 
 
@@ -972,6 +1015,7 @@
 
 
   function openPopUp(popUp) {
+    
     if(mainCanvas.item(0) != undefined) {
       if(popUp == "open") {
         popUpOpener = "open";
@@ -981,6 +1025,7 @@
         popUpOpener = "load";
         $("#dialogConfirm").dialog("open");
       }
+      else if(popUp == "manage") $("#managePopUp").dialog("open");
       else {
         mainCanvas.deactivateAll().renderAll();
         var c = document.getElementById("mainCanvas");
@@ -1003,7 +1048,7 @@
         });
       } 
       else if(popUp == "load") $("#loadPopUp").dialog("open");
-
+      else if(popUp == "manage") $("#managePopUp").dialog("open");
     }
   }
 

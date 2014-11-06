@@ -6,24 +6,20 @@
 <?php
 	include './ChromePhp.php';
 
-	require('../userManager.php');
 	require('./dbConnection.php');
 
-  	$user_name = getUsername();
-
 	//Recupero los valores a insertar
-	$userId = $user_name;
-
-	$titulo = $_POST['tituloDelete'];
-	$src = $_POST['srcDelete'];
+	ChromePhp::log($_POST);
+	$userId = $_POST['usernameManage'];
+	$titulo = $_POST['tituloManage'];
 
 	$error_code = 0;
 	$enlace = dbConnect();
 	if($enlace == 1) $error_code = $enlace;
 
 	//Meter los valores con %s%
-	$delete = "DELETE FROM escudo WHERE titulo = '%s' AND src = '%s' AND userId = '%s'";
-	$consulta = sprintf($delete, $titulo, $src, $userId);
+	$update = "UPDATE escudo SET public = 0 WHERE titulo = '%s' AND userId = '%s'";
+	$consulta = sprintf($update, $titulo, $userId);
 	// Ejecutar la consulta
 	$resultado = mysql_query($consulta);
 	// Comprobar el resultado
@@ -32,18 +28,15 @@
 	    $mensaje  = 'Consulta no válida: ' . mysql_error() . "\n";
 	    $mensaje .= 'Consulta completa: ' . $consulta;
 	    die($mensaje);
-	    $error_code = 4;
+	    $error_code = 5;
 	}
 	// Liberar los recursos asociados con el conjunto de resultados
 	// Esto se ejecutado automáticamente al finalizar el script.
 	mysql_query("commit", $enlace);
 	mysql_close($enlace);
 
-	unlink($src);
-
-
 	if($errorCode == 0) {
-		header('Location: /editor/tfg/home.php?success=2');
+		header('Location: /editor/tfg/home.php?success=3');
 	}
 	else header('Location: /editor/tfg/home.php?error=' . $error_code);
 	

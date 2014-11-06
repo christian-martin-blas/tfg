@@ -18,6 +18,14 @@
 		                                                            }
 		                                                          }
 		                                                        });';
+		if($success == 3) echo '$("<div title=\'Información\'><b>El escudo ha dejado de ser público.</b></div>").dialog({
+		                                                          modal: true,
+		                                                          buttons: {
+		                                                            Ok: function() {
+		                                                              $( this ).dialog( "close" );
+		                                                            }
+		                                                          }
+		                                                        });';
 		echo '</script>';
 		}
 	else if(isset($_GET['error'])) {
@@ -49,6 +57,14 @@
 		                                                          }
 		                                                        });';
 		if($error == 4) echo '$("<div title=\'Atención\'><b>No se ha podido borrar el escudo de la Base de datos.</b></div>").dialog({
+		                                                          modal: true,
+		                                                          buttons: {
+		                                                            Ok: function() {
+		                                                              $( this ).dialog( "close" );
+		                                                            }
+		                                                          }
+		                                                        });';
+		if($error == 5) echo '$("<div title=\'Atención\'><b>No se ha podido ocultar el escudo.</b></div>").dialog({
 		                                                          modal: true,
 		                                                          buttons: {
 		                                                            Ok: function() {
