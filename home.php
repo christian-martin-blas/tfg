@@ -990,8 +990,10 @@
       modal: true,
       buttons: {
         "Ocultar escudo": function() {
-          document.getElementById("manageEscudo").submit();
-          $( this ).dialog( "close" );
+          if(document.getElementById("escudoPrevisualizationManage").src != "") {
+            document.getElementById("manageEscudo").submit();
+            $( this ).dialog( "close" );
+          }
         },
         "Cancelar": function() {
           //Borrar valores
@@ -1002,6 +1004,7 @@
         document.getElementById("escudoPrevisualizationManage").src = "";
         document.getElementById("usernameManage").value = "";
         document.getElementById("emailManage").value = "";
+        document.getElementById("tituloManage").value = "";
       }
     });
     
