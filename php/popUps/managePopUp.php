@@ -11,7 +11,7 @@
           addEscudosManage();
         ?>
       </div>
-      <form id="manageEscudo" action="unpublishEscudo.php" method="POST">
+      <form id="manageEscudo" action="./php/unpublishEscudo.php" method="POST">
         <table id="formManage">
           <tr>
             <td>

@@ -34,6 +34,7 @@
 		  $titulo = $fila['titulo'];
 		  $public = $fila['public'];
 		  $src = $fila['src'];
+
 		  echo("<div id='" . $titulo . "' class='divEscudo' onclick='displayMiEscudo(this)'>");
 		  echo("<img src='" . $src . "' class='escudo'>");
 		  echo("<input value = '" . $public . "' type='text' style='display:none'>");

@@ -62,7 +62,7 @@
 ?>
 <script>
 $(function(){
-    $ ("#popUpVisualization").load("popUpVisualization.php");
+    $ ("#popUpVisualization").load("./php/popUps/popUpVisualization.php");
   });
 
 $("#popUpVisualization").dialog({

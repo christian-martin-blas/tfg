@@ -17,7 +17,7 @@
 	$src = $_POST['srcSave'];
 	$public =  isset($_POST['public']) && $_POST['public']  ? "1" : "0";
 
-	if(!file_exists("./img/users/" . $userId . "/public/" . $nombre . ".png") && !file_exists("./img/users/" . $userId . "/private/" . $nombre . ".png")) {
+	if(!file_exists("../img/users/" . $userId . "/public/" . $nombre . ".png") && !file_exists("../img/users/" . $userId . "/private/" . $nombre . ".png")) {
 
 		$src = base64_decode($src);
 		$img = imagecreatefromstring($src);
@@ -26,9 +26,9 @@
 			imagealphablending($img, false);
 			imagesavealpha($img, true);
 			if(!file_exists("./img/users/" . $userId )) {
-				mkdir("./img/users/" . $userId, 0700);
-				mkdir("./img/users/" . $userId . "/public", 0700);
-				mkdir("./img/users/" . $userId . "/private", 0700);
+				mkdir("../img/users/" . $userId, 0700);
+				mkdir("../img/users/" . $userId . "/public", 0700);
+				mkdir("../img/users/" . $userId . "/private", 0700);
 			}
 			if($public) $src = "./img/users/" . $userId . "/public/" . $nombre . ".png";
 			else $src = "./img/users/" . $userId . "/private/" . $nombre . ".png";

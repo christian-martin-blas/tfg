@@ -2,7 +2,7 @@
   <div id="saveContainer" class="container">
     <div id="formDiv" class="col-md-4">
       <h5 style="color: black">Al guardar el escudo, no se podrán volver a modificar las imágenes que lo componen.</h5>
-     <form id="saveEscudo" action="saveEscudo.php" method="POST">
+     <form id="saveEscudo" action="./php/saveEscudo.php" method="POST">
       <table id="form">
         <tr>
           <td>

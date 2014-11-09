@@ -4,9 +4,9 @@
 </head>
 <body>
 <?php
-	include './ChromePhp.php';
+	include '../ChromePhp.php';
 	require('./dbConnection.php');
-	require('../userManager.php');
+	require('../../userManager.php');
 
   	$userId = getUsername();
 	//Recupero los valores a insertar
