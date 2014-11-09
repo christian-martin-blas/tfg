@@ -4,10 +4,9 @@
 </head>
 <body>
 <?php
-	include '../ChromePhp.php';
-
 	require('../../userManager.php');
 	require('./dbConnection.php');
+	require('./globalLinks.php');
 
   	$user_name = getUsername();
 
@@ -45,9 +44,9 @@
 
 
 	if($errorCode == 0) {
-		header('Location: /editor/tfg/home.php?success=2');
+		header('Location: ' . Home . '?success=2');
 	}
-	else header('Location: /editor/tfg/home.php?error=' . $error_code);
+	else header('Location: ' . Home . '?error=' . $error_code);
 	
 	exit;
 	

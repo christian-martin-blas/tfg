@@ -120,7 +120,7 @@
                 <b>Nombre de la imágen:</b>
               </td>
               <td>
-                <input type="text" id="nameImage" name="nameImage" class="form-control" onchange="regexValidator(this);" required/>             
+                <input type="text" id="nameImage" name="nameImage" class="form-control" required/>             
               </td>
             </tr>
             <tr>

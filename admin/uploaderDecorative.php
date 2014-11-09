@@ -5,16 +5,17 @@
 <body>
 <?php
 	include '../ChromePhp.php';
-	include '../lib/php/utiles.php';
+	include '../php/utiles.php';
+	include '../php/globalLinks.php';
 
 	$target_path = "../img/admin/decoraciones/";
 	if($_POST['nameImage'] != "") $image_name = sanear_string(str_replace(' ', '', $_POST['nameImage']));
 	$errorCode = uploadImage($target_path . $_POST['decorativeGroup'], "fileImage", $image_name . ".png");
 
 	if($errorCode == 0) {
-		header('Location: /editor/tfg/admin/adminToolUploadDecorative.php?success');
+		header('Location: ' . AdminToolUploadDecorative . '?success');
 	}
-	else header('Location: /editor/tfg/admin/adminToolUploadDecorative.php?error=' . $errorCode);
+	else header('Location: ' . AdminToolUploadDecorative . '?error=' . $errorCode);
 	
 	exit;
 

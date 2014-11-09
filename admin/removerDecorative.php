@@ -5,12 +5,13 @@
 <body>
 <?php
 	include '../ChromePhp.php';
+	include '../php/globalLinks.php';
 
 	if($_POST['isDefault'] == "true") $src = "../img/decoraciones/" . $_POST['decorativeGroup'] . "/" . $_POST['imgName'] . ".png";
 	else $src = "../img/admin/decoraciones/" . $_POST['decorativeGroup'] . "/" . $_POST['imgName'] . ".png";
 	unlink($src);
 	
-	header('Location: /editor/tfg/admin/adminToolDeleteDecorative.php?success');
+	header('Location: ' . AdminToolDeleteDecorative . '?success');
 	exit;
 	
 ?>

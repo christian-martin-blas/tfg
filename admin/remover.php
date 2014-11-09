@@ -5,6 +5,7 @@
 <body>
 <?php
 	include '../ChromePhp.php';
+	include '../php/globalLinks.php';
 
 	$bool_base = strpos($_POST['src'],'bases');
 	if($bool_base != false) {
@@ -39,7 +40,7 @@
 	
 	
 
-	header('Location: /editor/tfg/admin/adminToolDelete.php?success');
+	header('Location: ' . AdminToolDelete . '?success');
 	exit;
 
 	function removeFiles($dir) {

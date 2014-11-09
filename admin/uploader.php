@@ -4,8 +4,8 @@
 </head>
 <body>
 <?php
-	include '../ChromePhp.php';
-	include '../lib/php/utiles.php';
+	include '../php/utiles.php';
+	include '../php/globalLinks.php';
 
 	//ChromePhp::log("hola");
 	$errorCode = validateForm();
@@ -84,9 +84,9 @@
 	}
 
 	if($errorCode == 0) {
-		header('Location: /editor/tfg/admin/adminToolUpload.php?success');
+		header('Location: ' . AdminToolUpload . '?success');
 	}
-	else header('Location: /editor/tfg/admin/adminToolUpload.php?error=' . $errorCode);
+	else header('Location: ' . AdminToolUpload . 'error=' . $errorCode);
 	
 	exit;
 

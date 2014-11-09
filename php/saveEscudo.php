@@ -6,6 +6,7 @@
 <?php
 	require('../../userManager.php');
 	require('./dbConnection.php');
+	require('./globalLinks.php');
   	$user_name = getUsername();
   	$email = getEmail();
 
@@ -69,9 +70,9 @@
 		$error_code = 3;
 	} 
 	if($error_code == 0) {
-		header('Location: /editor/tfg/home.php?success=1');
+		header('Location: ' . Home . '?success=1');
 	}
-	else header('Location: /editor/tfg/home.php?error=' . $error_code);
+	else header('Location: ' . Home . '?error=' . $error_code);
 	
 	exit;
 	

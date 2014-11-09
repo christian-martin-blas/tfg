@@ -4,10 +4,9 @@
 </head>
 <body>
 <?php
-	include './ChromePhp.php';
-
 	require('./dbConnection.php');
-
+	require('./globalLinks.php');
+	
 	//Recupero los valores a insertar
 	$userId = $_POST['usernameManage'];
 	$titulo = $_POST['tituloManage'];
@@ -35,9 +34,9 @@
 	mysql_close($enlace);
 
 	if($errorCode == 0) {
-		header('Location: /editor/tfg/home.php?success=3');
+		header('Location: ' . Home . '?success=3');
 	}
-	else header('Location: /editor/tfg/home.php?error=' . $error_code);
+	else header('Location: ' . Home . '?error=' . $error_code);
 	
 	exit;
 	
