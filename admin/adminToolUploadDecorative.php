@@ -15,6 +15,9 @@
       <script src="../lib/js/jquery.fileupload.js"></script>
 
       <title>Cargar decoraciones</title>
+      <?php
+        include('../php/globalLinks.php');
+      ?>
 
       <style>
       html {
@@ -141,15 +144,15 @@
 
       <div class="col-md-6">
         <ul class="nav nav-pills" style="width:900px">
-          <li><a href="/editor/">Home</a></li>
-          <li><a href="/editor/tfg/">Galería</a></li>
-          <li><a href="/editor/tfg/home.php">Editor</a></li>
-          <li><a href="/editor/tfg/admin/adminToolUpload.php">Cargar Bases</a></li>
-          <li><a href="/editor/tfg/admin/adminToolDelete.php">Eliminar Bases</a></li>
+          <li><a href=<?php echo(Joomla);?>>Home</a></li>
+          <li><a href=<?php echo(Galeria);?>>Galería</a></li>
+          <li><a href=<?php echo(Home);?>>Editor</a></li>
+          <li><a href=<?php echo(AdminToolUpload);?>>Cargar Bases</a></li>
+          <li><a href=<?php echo(AdminToolDelete);?>>Eliminar Bases</a></li>
           <li class="active">
-            <a href="/editor/tfg/admin/adminToolUploadDecorative.php">Cargar Decoraciones</a>
+            <a href=<?php echo(AdminToolUploadDecorative);?>>Cargar Decoraciones</a>
           </li>
-          <li><a href="/editor/tfg/admin/adminToolDeleteDecorative.php">Eliminar Decoraciones</a></li>
+          <li><a href=<?php echo(AdminToolDeleteDecorative);?>>Eliminar Decoraciones</a></li>
         </ul>
         <div id="previsualization">
           <img id="back">

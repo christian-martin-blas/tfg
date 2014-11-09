@@ -38,10 +38,10 @@
 	mysql_close($enlace);
 
 	if($errorCode == 0) {
-		if($public == 1) header('Location: /editor/tfg/home.php?success=4');
-		else header('Location: /editor/tfg/home.php?success=3');
+		if($public == 1) header('Location: ' . Home . 'success=4');
+		else header('Location: ' . Home . 'success=3');
 	}
-	else header('Location: /editor/tfg/home.php?error=' . $error_code);
+	else header('Location: ' . Home . 'error=' . $error_code);
 	
 	exit;
 	
