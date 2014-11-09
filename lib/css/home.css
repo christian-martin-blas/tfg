@@ -1,0 +1,331 @@
+td {
+  padding: 6px;
+}
+html {
+  max-width: 1500px;
+}
+#container {
+  background-color: #D6EBF9;
+  width: 800px;
+}
+#saveContainer {
+  background-color: #D6EBF9;
+  width: auto;
+}
+#loadContainer {
+  background-color: #D6EBF9;
+  width: auto;
+  height: 570px;
+}
+#manageContainer {
+  background-color: #D6EBF9;
+  width: auto;
+  height: 570px;
+}
+.page-header {
+  text-align: center;
+}
+#designs {
+  height: 100%;
+}
+img.design {
+  width: 100%;
+  cursor: pointer;
+  padding-bottom: 5px;
+}
+img.escudo {
+  width: 100%;
+  cursor: pointer;
+  padding-bottom: 5px;
+}
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+#imagenesFormas {
+  background-color: white;
+  height: 100px;
+  width: 100%;
+  overflow-y: scroll;
+}
+#imagenesEscudos {
+  background-color: white;
+  height: 300px;
+  width: 100%;
+  overflow-y: scroll;
+}
+#misEscudos {
+  background-color: white;
+  height: 150px;
+  width: 100%;
+  overflow-y: scroll;
+}
+.particiones {
+  display: none;
+}
+#imagenesParticiones {
+  background-color: white;
+  height: 100px;
+  width: 100%;
+  overflow-y: scroll;
+}
+.colores {
+  display: none;
+}
+#imagenesColores {
+  background-color: white;
+  height: 100px;
+  width: 100%;
+  overflow-y: scroll;
+  margin-bottom: 10px;
+}
+#previsualization {
+  background-color: white;
+  height: 350px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+#previsualizationSave {
+  background-color: white;
+  height: 350px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-left: 80px;
+}
+#previsualizationLoad {
+  background-color: white;
+  height: 350px;
+  margin-top: 130px;
+  margin-left: 50px;
+}
+#previsualizationManage {
+  background-color: white;
+  height: 350px;
+  margin-top: 130px;
+  margin-left: 50px;
+}
+#back {
+  position: absolute;
+  left: 50%;
+  top: 50%; 
+  margin-left: -110px;
+  margin-top: -110px;
+}
+#part1 {
+  position: absolute;
+  left: 50%;
+  top: 50%; 
+  margin-left: -110px;
+  margin-top: -110px;
+}
+#part2 {
+  position: absolute;
+  left: 50%;
+  top: 50%; 
+  margin-left: -110px;
+  margin-top: -110px;
+}
+#part3 {
+  position: absolute;
+  left: 50%;
+  top: 50%; 
+  margin-left: -110px;
+  margin-top: -110px;
+}
+#colorParticion1 {
+  padding: 5px;
+  display: none;
+}
+#colorParticion2 {
+  padding: 5px;
+  display: none;
+}
+#colorParticion3 {
+  padding: 5px;
+  display: none;
+}
+#colorParticion4 {
+  padding: 5px;
+  display: none;
+}
+#colorParticion5 {
+  padding: 5px;
+  display: none;
+}
+#workspace {
+  width: 800px;
+  height: 350px;
+  background-color: #F7FAFC;
+  display: inline-block;
+}
+#shield {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+}
+#accordion {
+  padding: 10px;
+  margin-top: 100px;
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+}
+img.figures {
+  height: 75px;
+  padding: 5px;
+  cursor: pointer;
+  display:block;
+  margin:auto;
+}
+.controls { 
+  float: left;
+  background: #EAF5FE; 
+  padding-bottom: 15px; 
+  padding-left: 15px; 
+  padding-right: 15px; 
+  border-right: 5px solid #333333; 
+  border-top: 5px solid #333333; 
+  border-bottom: 5px solid #333333; 
+  height: 350px 
+}
+#mainCanvas {
+  border-style: solid;
+  border-width: 5px;
+}
+.canvas-container {
+  float: left;
+  background-color: white;
+}
+.icons {
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+.button {
+  float: left;
+  background: #77AEFF; 
+  margin-left: 2px;
+  margin-right: 2px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid;
+  border-left: 2px solid;
+  border-right: 2px solid;
+}
+#images {
+  background-color: #F2F9FF;
+}
+#fileUploadDiv {
+  border-style: groove;
+  width: 325px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+#progress_bar {
+  margin: 10px 0;
+  padding: 3px;
+  border: 1px solid #000;
+  font-size: 14px;
+  clear: both;
+  opacity: 0;
+  -moz-transition: opacity 1s linear;
+  -o-transition: opacity 1s linear;
+  -webkit-transition: opacity 1s linear;
+}
+#progress_bar.loading {
+  opacity: 1.0;
+}
+#progress_bar .percent {
+  background-color: #99ccff;
+  height: auto;
+  width: 0;
+}
+#files {
+  font-size: 13px;
+  margin: 5px;
+}
+#abortUpload {
+  font-size: 13px;
+  margin: 5px;
+  display: none;
+}
+#uploadButtons {
+  padding: 5px;
+}
+#formDiv {
+  margin-top: 40px;
+}
+#leftMenu {
+  margin-left: 250px;
+}
+#buttons {
+  margin-top: 150px;
+}
+#decorativeImages {
+  max-height: 600px;
+}
+#escudo {
+  position: absolute;
+}
+#srcSave {
+  display: none;
+}
+#submitHidden {
+  display: none;
+}
+div.divEscudo {
+  width: 100px;
+  float: left;
+}
+#escudoPrevisualization {
+  margin-left: 50px;
+}
+#oldSrc {
+  display: none;
+}
+#deleteButton {
+  margin-right: 35px;
+  margin-top: 20px;
+  float: right;
+}
+#publishButton {
+  margin-right: 35px;
+  margin-top: 20px;
+  float: right;
+}
+#unpublishButton {
+  margin-right: 35px;
+  margin-top: 20px;
+  float: right;
+}
+#mainTool {
+  height: 750px;
+}
+body {
+  background-color: #F7FAFC;
+}
+.divDesign {
+  width: 38px;
+  height: 42px;
+  margin-left: 18px;
+  float: left;
+}
+#homeNavAdmin {
+  display: none;
+}
+#homeNav {
+  display: none;
+}
+.divFigure {
+  width: 120px;
+  float: left;
+}
+#buttonPopUpManage {
+  display: none;
+}
+#manageEscudo {
+  margin-top: 50px;
+}
+.ui-dialog {
+      background: #D6EBF9 !important
+}
