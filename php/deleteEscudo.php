@@ -4,7 +4,7 @@
 </head>
 <body>
 <?php
-	include './ChromePhp.php';
+	include '../ChromePhp.php';
 
 	require('../../userManager.php');
 	require('./dbConnection.php');
@@ -41,7 +41,7 @@
 	mysql_query("commit", $enlace);
 	mysql_close($enlace);
 
-	unlink($src);
+	unlink("." . $src);
 
 
 	if($errorCode == 0) {

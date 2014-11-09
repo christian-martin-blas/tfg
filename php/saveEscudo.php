@@ -30,8 +30,14 @@
 				mkdir("../img/users/" . $userId . "/public", 0700);
 				mkdir("../img/users/" . $userId . "/private", 0700);
 			}
-			if($public) $src = "./img/users/" . $userId . "/public/" . $nombre . ".png";
-			else $src = "./img/users/" . $userId . "/private/" . $nombre . ".png";
+			if($public) {
+				$src_query = "./img/users/" . $userId . "/public/" . $nombre . ".png";
+				$src = "../img/users/" . $userId . "/public/" . $nombre . ".png";
+			} 
+			else {
+				$src_query = "./img/users/" . $userId . "/private/" . $nombre . ".png";
+				$src = "../img/users/" . $userId . "/private/" . $nombre . ".png";
+			} 
 			imagepng($img, $src ,9);
 			imagedestroy($img);
 		}
@@ -42,7 +48,7 @@
 
 		//Meter los valores con %s%
 		$insert = "INSERT INTO escudo VALUES ('%s','%s', '%s', '%s', '%s', %b, '%s')";
-		$consulta = sprintf($insert, $userId, $nombre, $descripcion, $historia, $src, $public, $email);
+		$consulta = sprintf($insert, $userId, $nombre, $descripcion, $historia, $src_query, $public, $email);
 		// Ejecutar la consulta
 		$resultado = mysql_query($consulta);
 		// Comprobar el resultado
@@ -62,11 +68,6 @@
 	else {
 		$error_code = 3;
 	} 
-
-	$temp_file = fopen("./tempFile.txt", "w") or die("Unable to open file!");
-	fwrite($temp_file, $_POST['srcSave']);
-	fclose($temp_file);
-
 	if($error_code == 0) {
 		header('Location: /editor/tfg/home.php?success=1');
 	}
