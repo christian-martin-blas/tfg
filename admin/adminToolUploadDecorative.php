@@ -230,17 +230,6 @@
     if($("#fileImage").val() != "") $("#fileImage").replaceWith($("#fileImage").val('').clone(true));
     addOnChangeToFiles();
   }
-
-  function regexValidator(control) {
-    var val = $(control).val();
-    if(val == undefined || val == '') {
-
-        $(control).attr("class", "invalid");
-    } 
-    else { 
-    // Regex stuff goes in here
-    }
-  }
   </script>
 
 </html>

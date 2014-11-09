@@ -4,7 +4,7 @@
 </head>
 <body>
 <?php
-	require('../userManager.php');
+	require('../../userManager.php');
 	require('./dbConnection.php');
   	$user_name = getUsername();
   	$email = getEmail();

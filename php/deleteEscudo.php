@@ -6,7 +6,7 @@
 <?php
 	include './ChromePhp.php';
 
-	require('../userManager.php');
+	require('../../userManager.php');
 	require('./dbConnection.php');
 
   	$user_name = getUsername();

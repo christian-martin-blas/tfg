@@ -7,7 +7,7 @@
       <link rel="stylesheet" type="text/css" href="./lib/css/bootstrap.css">
       <link rel="stylesheet" type="text/css" href="./lib/css/jquery.simplecolorpicker.css">
       <link rel="stylesheet" type="text/css" href="./lib/css/jquery.simplecolorpicker-glyphicons.css">
-      <link rel="stylesheet" type="text/css" href="./lib/css/home.css">
+      <link rel="stylesheet" type="text/css" href="./css/home.css">
 
       <script src="./lib/js/bootstrap.js"></script>
       <script src="./lib/js/jquery-ui-1.10.4.custom.js"></script>
@@ -16,9 +16,9 @@
       <script src="./lib/js/jquery.ui.widget.js"></script>
       <script src="./lib/js/jquery.iframe-transport.js"></script>
       <script src="./lib/js/jquery.fileupload.js"></script>
-      <script src="./lib/js/utiles.js"></script>
-      <script src="./lib/js/homeFunctions.js"></script>
-      <script src="./lib/js/canvasFunctions.js"></script>
+      <script src="./js/utiles.js"></script>
+      <script src="./js/homeFunctions.js"></script>
+      <script src="./js/canvasFunctions.js"></script>
 
       <title>Editor de escudos</title>
     <?php
@@ -32,36 +32,12 @@
   <body>
 
     <?php
+      include './php/loadingFunctions.php';
       //Utilizado para que la gente haga login, redirige a la Home Page
       if(is_null($user_name))  {
         echo "<script>javascript:alert('No has hecho log in.'); window.location = '/editor'</script>";       
       }
       
-      function loadDecoraciones($group) {
-        $index = 0;
-        $dir    = './img/decoraciones/' . $group ;
-        $files = scandir($dir);
-        foreach ($files as &$file) {
-          if($file != '.' && $file != '..') {
-            $file_name = substr($file, 0, -4);
-            echo("<div id='" . $group . $index . "' class='divFigure'>");
-            echo("<img id='" . $file_name . "' src='" . $dir . "/" . $file . "' class='figures' onClick='addImage(this)'/>");
-            echo("</div>");
-            $index = $index + 1;
-          }
-        }
-        $dir    = './img/admin/decoraciones/' . $group ;
-        $files = scandir($dir);
-        foreach ($files as &$file) {
-          if($file != '.' && $file != '..') {
-            $file_name = substr($file, 0, -4);
-            echo("<div id='" . $group . $index . "' class='divFigure'>");
-            echo("<img id='" . $file_name . "' src='" . $dir . "/" . $file . "' class='figures' onClick='addImage(this)'/>");
-            echo("</div>");
-            $index = $index + 1;
-          }
-        }
-      }
       function oldSrc() {
         if(isset($_GET['error']) || isset($_GET['success'])) {
           if(file_exists("./tempFile.txt")) {
@@ -237,7 +213,7 @@
 
   </div>
     <?php
-      include './lib/php/jqueryAlerts.php';
+      include './php/jqueryAlerts.php';
       oldSrc();
       if ($isAdmin)
       {
@@ -257,10 +233,6 @@
   fabric.Object.prototype.cornerColor= 'black';
   var workspace = document.getElementById("workspace");
 
-  //Variables para subir imagenes y para la barra de carga
-  var reader;
-  var progress = document.querySelector('.percent');
-
   //Variable para saber que popUp abrir
   var popUpOpener;
 
@@ -273,10 +245,10 @@
         mainCanvas.add(img.set({ left: 0, top: 0, selectable: false, hasControls: false, evented: false}));
       });
     }
-    $ ("#popUp").load("popUp.php");
-    $ ("#savePopUp").load("savePopUp.php");
-    $ ("#loadPopUp").load("loadPopUp.php");
-    $ ("#managePopUp").load("managePopUp.php");
+    $ ("#popUp").load("./php/popUps/popUp.php");
+    $ ("#savePopUp").load("./php/popUps/savePopUp.php");
+    $ ("#loadPopUp").load("./php/popUps/loadPopUp.php");
+    $ ("#managePopUp").load("./php/popUps/managePopUp.php");
   });
 
   $("#popUp").dialog({
@@ -462,9 +434,6 @@
         }
       }
     });
-
-
-  
 
   </script>
 
