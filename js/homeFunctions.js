@@ -8,9 +8,7 @@ fabric.Object.prototype.borderColor = 'black';
 fabric.Object.prototype.cornerColor= 'black';
 var workspace = document.getElementById("workspace");
 
-//Variables para subir imagenes y para la barra de carga
-var reader;
-var progress = document.querySelector('.percent');
+
 
 //Variable para saber que popUp abrir
 var popUpOpener;
@@ -98,8 +96,7 @@ function updateProgress(evt) {
   }
 }
 
-function handleFileSelect(evt) {
-
+function handleFileSelect(evt, item) {
   if(evt == undefined) var files = item.files;
   else var files = evt.target.files; 
   // Loop through the FileList and render image files as canvas image

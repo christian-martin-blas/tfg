@@ -234,6 +234,10 @@
   fabric.Object.prototype.cornerColor= 'black';
   var workspace = document.getElementById("workspace");
 
+  //Variables para subir imagenes y para la barra de carga
+  var reader;
+  var progress = document.querySelector('.percent');
+
   //Variable para saber que popUp abrir
   var popUpOpener;
 
@@ -435,6 +439,10 @@
         }
       }
     });
+
+    document.getElementById('files').addEventListener('change', function() {
+      handleFileSelect(window.event, this);
+    }, false);
 
   </script>
 
