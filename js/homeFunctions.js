@@ -100,7 +100,8 @@ function updateProgress(evt) {
 
 function handleFileSelect(evt) {
 
-  var files = evt.target.files; // FileList object
+  if(evt == undefined) var files = item.files;
+  else var files = evt.target.files; 
   // Loop through the FileList and render image files as canvas image
   for (var i = 0, f; f = files[i]; i++) {
 
