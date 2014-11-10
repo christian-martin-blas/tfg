@@ -82,11 +82,11 @@
               <option value="#FCDD09" >Oro(Amarillo)</option>
               <option value="#BFAF3F">Oro</option>
               <option value="#C2C1BD">Plata</option>
-              <option value="#008AF0">Azur</option>
+              <option value="#333399">Azur</option>
               <option value="#FF2611">Gules</option>
-              <option value="#07C143">Sinople</option>
+              <option value="#008000">Sinople</option>
               <option value="#000000">Sable</option>
-              <option value="#EF61C6">Púrpura</option>
+              <option value="#800080">Púrpura</option>
             </select>
           </div>
           <div id="colorParticion2">
@@ -96,11 +96,11 @@
               <option value="#FCDD09">Oro(Amarillo)</option>
               <option value="#BFAF3F">Oro</option>
               <option value="#C2C1BD">Plata</option>
-              <option value="#008AF0">Azur</option>
+              <option value="#333399">Azur</option>
               <option value="#FF2611">Gules</option>
-              <option value="#07C143">Sinople</option>
+              <option value="#008000">Sinople</option>
               <option value="#000000">Sable</option>
-              <option value="#EF61C6">Púrpura</option>
+              <option value="#800080">Púrpura</option>
             </select>
           </div>
           <div id="colorParticion3">
@@ -110,11 +110,11 @@
               <option value="#FCDD09">Oro(Amarillo)</option>
               <option value="#BFAF3F">Oro</option>
               <option value="#C2C1BD">Plata</option>
-              <option value="#008AF0">Azur</option>
+              <option value="#333399">Azur</option>
               <option value="#FF2611">Gules</option>
-              <option value="#07C143">Sinople</option>
+              <option value="#008000">Sinople</option>
               <option value="#000000">Sable</option>
-              <option value="#EF61C6">Púrpura</option>
+              <option value="#800080">Púrpura</option>
             </select>
           </div>
           <div id="colorParticion4">
@@ -124,11 +124,11 @@
               <option value="#FCDD09">Oro(Amarillo)</option>
               <option value="#BFAF3F">Oro</option>
               <option value="#C2C1BD">Plata</option>
-              <option value="#008AF0">Azur</option>
+              <option value="#333399">Azur</option>
               <option value="#FF2611">Gules</option>
-              <option value="#07C143">Sinople</option>
+              <option value="#008000">Sinople</option>
               <option value="#000000">Sable</option>
-              <option value="#EF61C6">Púrpura</option>
+              <option value="#800080">Púrpura</option>
             </select>
           </div>
           <div id="colorParticion5">
@@ -138,11 +138,11 @@
               <option value="#FCDD09">Oro(Amarillo)</option>
               <option value="#BFAF3F">Oro</option>
               <option value="#C2C1BD">Plata</option>
-              <option value="#008AF0">Azur</option>
+              <option value="#333399">Azur</option>
               <option value="#FF2611">Gules</option>
-              <option value="#07C143">Sinople</option>
+              <option value="#008000">Sinople</option>
               <option value="#000000">Sable</option>
-              <option value="#EF61C6">Púrpura</option>
+              <option value="#800080">Púrpura</option>
             </select>
           </div>
         </div>
@@ -166,11 +166,11 @@ var selector =  " <option value='#F5F5F5'>Plata(Blanco)</option> " +
                 " <option value='#FCDD09'>Oro(Amarillo)</option> " +
                 " <option value='#BFAF3F'>Oro</option> " +
                 " <option value='#C2C1BD'>Plata</option> " +
-                " <option value='#008AF0'>Azur</option> " +
+                " <option value='#333399'>Azur</option> " +
                 " <option value='#FF2611'>Gules</option> " +
-                " <option value='#07C143'>Sinople</option> " +
+                " <option value='#008000'>Sinople</option> " +
                 " <option value='#000000'>Sable</option> " + 
-                " <option value='#EF61C6'>Púrpura</option> ";
+                " <option value='#800080'>Púrpura</option> ";
 
 //Variable para recargar la base original
 var srcBack = null;
