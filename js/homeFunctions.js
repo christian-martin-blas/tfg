@@ -69,19 +69,15 @@ function abortRead() {
   reader.abort();
 }
 
-function errorHandler(evt) {
-  switch(evt.target.error.code) {
-    case evt.target.error.NOT_FOUND_ERR:
-      alert('File Not Found!');
-      break;
-    case evt.target.error.NOT_READABLE_ERR:
-      alert('File is not readable');
-      break;
-    case evt.target.error.ABORT_ERR:
-      break; // noop
-    default:
-      alert('An error occurred reading this file.');
-  };
+function errorHandler() {
+  $("<div title=\'Información\'><b>El archivo que has intentado subir no era una imagen.</b></div>").dialog({
+      modal: true,
+      buttons: {
+        Ok: function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
 }
 
 function updateProgress(evt) {
@@ -100,44 +96,46 @@ function handleFileSelect(evt, item) {
   if(evt == undefined) var files = item.files;
   else var files = evt.target.files; 
   // Loop through the FileList and render image files as canvas image
-  for (var i = 0, f; f = files[i]; i++) {
+  if(files[0].type.indexOf("image") == -1) errorHandler();
+  else {
+    for (var i = 0, f; f = files[i]; i++) {
 
-    // Only process image files.
-    if (!f.type.match('image.*')) {
-      continue;
-    }
-      
-    // Reset progress indicator on new file selection.
-    $("#abortUpload").css("display","block");
-    progress.style.width = '0%';
-    progress.textContent = '0%';
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+        
+      // Reset progress indicator on new file selection.
+      $("#abortUpload").css("display","block");
+      progress.style.width = '0%';
+      progress.textContent = '0%';
 
-    reader = new FileReader();
-    reader.onerror = errorHandler;
-    reader.onprogress = updateProgress;
-    reader.onabort = function(e) {
-      alert('File read cancelled');
-    };
-    reader.onloadstart = function(e) {
-      document.getElementById('progress_bar').className = 'loading';
-    };
-     // Closure to capture the file information.
-    reader.onload = (function(theFile) {
-      return function(e) {
-        // Render thumbnail.
-        var src = e.target.result;
-        fabric.Image.fromURL(src, function(img) {
-            mainCanvas.add(img.set({ left: 0, top: 0}));
-          });
-         progress.style.width = '100%';
-        progress.textContent = '100%';
-        setTimeout("document.getElementById('progress_bar').className='';", 2000);
-        setTimeout("$('#abortUpload').css('display','none')", 2000);
+      reader = new FileReader();
+      reader.onprogress = updateProgress;
+      reader.onabort = function(evt) {
+        alert('File read cancelled');
       };
-    })(f);
+      reader.onloadstart = function(evt) {
+        document.getElementById('progress_bar').className = 'loading';
+      };
+       // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var src = e.target.result;
+          fabric.Image.fromURL(src, function(img) {
+              mainCanvas.add(img.set({ left: 0, top: 0}));
+            });
+           progress.style.width = '100%';
+          progress.textContent = '100%';
+          setTimeout("document.getElementById('progress_bar').className='';", 2000);
+          setTimeout("$('#abortUpload').css('display','none')", 2000);
+        };
+      })(f);
 
-    // Read in the image file as a data URL.
-      reader.readAsDataURL(f);
+      // Read in the image file as a data URL.
+        reader.readAsDataURL(f);
+    }
   }
 }
 
