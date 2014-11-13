@@ -174,50 +174,49 @@
   //Añadimos el evento onChange para que cargue las previsualizaciones de las imagenes
   addOnChangeToFiles();
 
-  function errorHandler(evt) {
-    switch(evt.target.error.code) {
-      case evt.target.error.NOT_FOUND_ERR:
-        alert('Archivo no encontrado.');
-        break;
-      case evt.target.error.NOT_READABLE_ERR:
-        alert('El archivo no se puede leer.');
-        break;
-      case evt.target.error.ABORT_ERR:
-        break; // noop
-      default:
-        alert('Ha ocurrido un error mientras se leía el archivo.');
-    };
-  }
+  function errorHandler() {
+  $("<div title=\'Información\'><b>El archivo que has intentado subir no era una imagen.</b></div>").dialog({
+      modal: true,
+      buttons: {
+        Ok: function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+}
 
   function handleFileSelect(evt, item) {
     if(evt == undefined) var files = item.files;
     else var files = evt.target.files; 
     // Loop through the FileList and render image files as canvas image
-    for (var i = 0, f; f = files[i]; i++) {
+    if(files[0].type.indexOf("image") == -1) errorHandler();
+    else {
+      for (var i = 0, f; f = files[i]; i++) {
 
-      // Only process image files.
-      if (!f.type.match('image.*')) {
-        continue;
+        // Only process image files.
+        if (!f.type.match('image.*')) {
+          continue;
+        }
+
+        reader = new FileReader();
+        reader.onerror = errorHandler;
+         // Closure to capture the file information.
+        reader.onload = (function(theFile) {
+          return function(e) {
+            // Render thumbnail.
+            var src = e.target.result;
+            back.src = src;
+            //Sirve para centrar la imagen en el div.
+            var width = back.width;
+            var height = back.height;
+            $("#back").css("margin-left",-Math.abs(width/2));
+            $("#back").css("margin-top",-Math.abs(height/2));
+          };
+        })(f);
+
+        // Read in the image file as a data URL.
+          reader.readAsDataURL(f);
       }
-
-      reader = new FileReader();
-      reader.onerror = errorHandler;
-       // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          // Render thumbnail.
-          var src = e.target.result;
-          back.src = src;
-          //Sirve para centrar la imagen en el div.
-          var width = back.width;
-          var height = back.height;
-          $("#back").css("margin-left",-Math.abs(width/2));
-          $("#back").css("margin-top",-Math.abs(height/2));
-        };
-      })(f);
-
-      // Read in the image file as a data URL.
-        reader.readAsDataURL(f);
     }
   }
 

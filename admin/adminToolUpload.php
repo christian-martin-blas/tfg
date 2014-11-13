@@ -339,54 +339,53 @@
   //Añadimos el evento onChange para que cargue las previsualizaciones de las imagenes
   addOnChangeToFiles();
 
-  function errorHandler(evt) {
-    switch(evt.target.error.code) {
-      case evt.target.error.NOT_FOUND_ERR:
-        alert('Archivo no encontrado.');
-        break;
-      case evt.target.error.NOT_READABLE_ERR:
-        alert('El archivo no se puede leer.');
-        break;
-      case evt.target.error.ABORT_ERR:
-        break; // noop
-      default:
-        alert('Ha ocurrido un error mientras se leía el archivo.');
-    };
-  }
+  function errorHandler() {
+  $("<div title=\'Información\'><b>El archivo que has intentado subir no era una imagen.</b></div>").dialog({
+      modal: true,
+      buttons: {
+        Ok: function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+}
 
   function handleFileSelect(evt, item) {
     console.log(item.files);
     if(evt == undefined) var files = item.files;
     else var files = evt.target.files; 
     // Loop through the FileList and render image files as canvas image
-    for (var i = 0, f; f = files[i]; i++) {
+    if(files[0].type.indexOf("image") == -1) errorHandler();
+    else {
+      for (var i = 0, f; f = files[i]; i++) {
 
-      // Only process image files.
-      if (!f.type.match('image.*')) {
-        continue;
+        // Only process image files.
+        if (!f.type.match('image.*')) {
+          continue;
+        }
+
+        reader = new FileReader();
+        reader.onerror = errorHandler;
+         // Closure to capture the file information.
+        reader.onload = (function(theFile) {
+          return function(e) {
+            // Render thumbnail.
+            var src = e.target.result;
+            var name = item.name;
+            if(name == "fileBase") back.src = src;
+            else if(name == "fileParticion1" || name == "fileParticion1Select") {
+              part1.src = src;
+              if(name == "fileParticion1") document.getElementById("nombreParticion").required = true;
+            }
+            else if(name == "fileParticion2" || name == "fileParticion2Select") part2.src = src;
+            else if(name == "fileParticion3" || name == "fileParticion3Select") part3.src = src;
+            else if(name == "fileParticion4" || name == "fileParticion4Select") part4.src = src;
+          };
+        })(f);
+
+        // Read in the image file as a data URL.
+          reader.readAsDataURL(f);
       }
-
-      reader = new FileReader();
-      reader.onerror = errorHandler;
-       // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          // Render thumbnail.
-          var src = e.target.result;
-          var name = item.name;
-          if(name == "fileBase") back.src = src;
-          else if(name == "fileParticion1" || name == "fileParticion1Select") {
-            part1.src = src;
-            if(name == "fileParticion1") document.getElementById("nombreParticion").required = true;
-          }
-          else if(name == "fileParticion2" || name == "fileParticion2Select") part2.src = src;
-          else if(name == "fileParticion3" || name == "fileParticion3Select") part3.src = src;
-          else if(name == "fileParticion4" || name == "fileParticion4Select") part4.src = src;
-        };
-      })(f);
-
-      // Read in the image file as a data URL.
-        reader.readAsDataURL(f);
     }
   }
 
