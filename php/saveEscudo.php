@@ -18,7 +18,8 @@
 	$src = $_POST['srcSave'];
 	$public =  isset($_POST['public']) && $_POST['public']  ? "1" : "0";
 
-	if(!file_exists("../img/users/" . $userId . "/public/" . $nombre . ".png") && !file_exists("../img/users/" . $userId . "/private/" . $nombre . ".png")) {
+	//if(!file_exists("../img/users/" . $userId . "/public/" . $nombre . ".png") && !file_exists("../img/users/" . $userId . "/private/" . $nombre . ".png")) {
+	if(!file_exists("../img/users/" . $userId . "/" . $nombre . ".png")) {
 
 		$src = base64_decode($src);
 		$img = imagecreatefromstring($src);
@@ -28,17 +29,19 @@
 			imagesavealpha($img, true);
 			if(!file_exists("./img/users/" . $userId )) {
 				mkdir("../img/users/" . $userId, 0700);
-				mkdir("../img/users/" . $userId . "/public", 0700);
-				mkdir("../img/users/" . $userId . "/private", 0700);
+				//mkdir("../img/users/" . $userId . "/public", 0700);
+				//mkdir("../img/users/" . $userId . "/private", 0700);
 			}
-			if($public) {
+			/*if($public) {
 				$src_query = "./img/users/" . $userId . "/public/" . $nombre . ".png";
 				$src = "../img/users/" . $userId . "/public/" . $nombre . ".png";
 			} 
 			else {
 				$src_query = "./img/users/" . $userId . "/private/" . $nombre . ".png";
 				$src = "../img/users/" . $userId . "/private/" . $nombre . ".png";
-			} 
+			} */
+			$src_query = "./img/users/" . $userId . "/" . $nombre . ".png";
+			$src = "../img/users/" . $userId . "/" . $nombre . ".png";
 			imagepng($img, $src ,9);
 			imagedestroy($img);
 		}
