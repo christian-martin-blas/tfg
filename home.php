@@ -23,7 +23,7 @@
       <title>Editor de escudos</title>
     <?php
       include './ChromePhp.php';
-      include('../userManager.php');
+      require_once('../userManager.php');
       include('./php/globalLinks.php');
       $user_name = getUsername();
       $isAdmin = isAdmin();
@@ -224,6 +224,7 @@
       else echo "<script>javascript:$('#homeNav').css('display','block')</script>";   
     ?>
   <script>
+  console.log();
   //Variables para canvas
   var canvas = document.createElement("canvas");
   var ctx = canvas.getContext("2d");
@@ -240,6 +241,8 @@
 
   //Variable para saber que popUp abrir
   var popUpOpener;
+
+  if($(window).width() > 1500) $("#leftMenu").css("margin-left","250px");
 
   $(function(){
     //Si al guardar un escudo ya existe, recuperamos en lo que estabamos trabajando

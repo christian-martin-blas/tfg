@@ -125,9 +125,6 @@
       #miniatura {
         display: none;
       }
-      #leftMenu {
-        margin-left: 150px;
-      }
 
     </style>
 
@@ -336,6 +333,7 @@
   //Variables para subir imagenes
   var reader;
 
+  if($(window).width() > 1500) $("#leftMenu").css("margin-left","150px");
   //Añadimos el evento onChange para que cargue las previsualizaciones de las imagenes
   addOnChangeToFiles();
 

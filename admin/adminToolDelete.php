@@ -122,9 +122,6 @@
       #imgNameBase {
         display: none;
       }
-      #leftMenu {
-        margin-left: 150px;
-      }
 
     </style>
 
@@ -272,6 +269,7 @@
 
   var antSelect = "";
 
+  if($(window).width() > 1500) $("#leftMenu").css("margin-left","150px");
 
   function showTable(item) {
     if(item.value == "base") {

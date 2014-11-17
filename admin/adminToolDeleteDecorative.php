@@ -77,9 +77,6 @@
       #isDefault {
         display: none;
       }
-      #leftMenu {
-        margin-left: 150px;
-      }
 
     </style>
 
@@ -207,6 +204,8 @@
   var back = document.getElementById("back");
 
   var antSelect = "";
+
+  if($(window).width() > 1500) $("#leftMenu").css("margin-left","150px");
 
   function showDecoracionImage(item) {
     if(item.value != "") {
