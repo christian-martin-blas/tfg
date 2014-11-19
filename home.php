@@ -266,45 +266,47 @@
       modal: true,
       buttons: {
         "Crear forma": function() {
-          var c = document.getElementById("mainCanvas");
-          var mainCtx = c.getContext("2d");          
-          if(particion == 1 || particion == -1) {
-            mainCtx.drawImage(backImg, 150, 50);
-            var src = c.toDataURL("image/png");
-            fabric.Image.fromURL(src, function(img) {
-              mainCanvas.add(img.set({ left: 0, top: 0, selectable: false, hasControls: false, evented: false}));
-            });
+          if(document.getElementById("back").src != "") {
+            var c = document.getElementById("mainCanvas");
+            var mainCtx = c.getContext("2d");          
+            if(particion == 1 || particion == -1) {
+              mainCtx.drawImage(backImg, 150, 50);
+              var src = c.toDataURL("image/png");
+              fabric.Image.fromURL(src, function(img) {
+                mainCanvas.add(img.set({ left: 0, top: 0, selectable: false, hasControls: false, evented: false}));
+              });
+            }
+            else if(particion == 2) {
+              mainCtx.drawImage(backImg, 150, 50);
+              mainCtx.drawImage(part1Img, 150, 50);
+              var src = c.toDataURL("image/png");
+              fabric.Image.fromURL(src, function(img) {
+                mainCanvas.add(img.set({ left: 0, top: 0, selectable: false, hasControls: false, evented: false}));
+              });
+            }
+            else if(particion == 3) {
+              mainCtx.drawImage(backImg, 150, 50);
+              mainCtx.drawImage(part1Img, 150, 50);
+              mainCtx.drawImage(part2Img, 150, 50);
+              mainCtx.drawImage(part3Img, 150, 50);
+              var src = c.toDataURL("image/png");
+              fabric.Image.fromURL(src, function(img) {
+                mainCanvas.add(img.set({ left: 0, top: 0, selectable: false, hasControls: false, evented: false}));
+              });
+            }
+            else if(particion == 4) {
+              mainCtx.drawImage(backImg, 150, 50);
+              mainCtx.drawImage(part1Img, 150, 50);
+              mainCtx.drawImage(part2Img, 150, 50);
+              mainCtx.drawImage(part3Img, 150, 50);
+              mainCtx.drawImage(part4Img, 150, 50);
+              var src = c.toDataURL("image/png");
+              fabric.Image.fromURL(src, function(img) {
+                mainCanvas.add(img.set({ left: 0, top: 0, selectable: false, hasControls: false, evented: false}));
+              });
+            }
+            $( this ).dialog( "close" );
           }
-          else if(particion == 2) {
-            mainCtx.drawImage(backImg, 150, 50);
-            mainCtx.drawImage(part1Img, 150, 50);
-            var src = c.toDataURL("image/png");
-            fabric.Image.fromURL(src, function(img) {
-              mainCanvas.add(img.set({ left: 0, top: 0, selectable: false, hasControls: false, evented: false}));
-            });
-          }
-          else if(particion == 3) {
-            mainCtx.drawImage(backImg, 150, 50);
-            mainCtx.drawImage(part1Img, 150, 50);
-            mainCtx.drawImage(part2Img, 150, 50);
-            mainCtx.drawImage(part3Img, 150, 50);
-            var src = c.toDataURL("image/png");
-            fabric.Image.fromURL(src, function(img) {
-              mainCanvas.add(img.set({ left: 0, top: 0, selectable: false, hasControls: false, evented: false}));
-            });
-          }
-          else if(particion == 4) {
-            mainCtx.drawImage(backImg, 150, 50);
-            mainCtx.drawImage(part1Img, 150, 50);
-            mainCtx.drawImage(part2Img, 150, 50);
-            mainCtx.drawImage(part3Img, 150, 50);
-            mainCtx.drawImage(part4Img, 150, 50);
-            var src = c.toDataURL("image/png");
-            fabric.Image.fromURL(src, function(img) {
-              mainCanvas.add(img.set({ left: 0, top: 0, selectable: false, hasControls: false, evented: false}));
-            });
-          }
-          $( this ).dialog( "close" );
         },
         "Cancelar": function() {
           $( this ).dialog( "close" );
@@ -371,14 +373,16 @@
         modal: true,
         buttons: {
           "Cargar escudo": function() {
-            var c = document.getElementById("mainCanvas");
-            var mainCtx = c.getContext("2d");   
-            mainCtx.drawImage(document.getElementById("escudoPrevisualization"), 0, 0);
-            var src = c.toDataURL("image/png");       
-            fabric.Image.fromURL(src, function(img) {
-              mainCanvas.add(img.set({ left: 0, top: 0, selectable: false, hasControls: false, evented: false}));
-            });
-            $( this ).dialog( "close" );
+            if(document.getElementById("escudoPrevisualization").src != "") {
+              var c = document.getElementById("mainCanvas");
+              var mainCtx = c.getContext("2d");   
+              mainCtx.drawImage(document.getElementById("escudoPrevisualization"), 0, 0);
+              var src = c.toDataURL("image/png");       
+              fabric.Image.fromURL(src, function(img) {
+                mainCanvas.add(img.set({ left: 0, top: 0, selectable: false, hasControls: false, evented: false}));
+              });
+              $( this ).dialog( "close" );
+            }
           },
           "Cancelar": function() {
             //Borrar valores
