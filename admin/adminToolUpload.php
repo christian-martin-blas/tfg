@@ -161,6 +161,7 @@
               //Se ha subido una particion sin subir otra antes.
               if($error == 1) echo("<h3 style='text-align: center'>Te has saltado el orden al subir las particiones.</h3>");
               if($error == 2) echo("<h3 style='text-align: center'>Ha habido un fallo subiendo las imágenes.</h3>");
+              if($error == 3) echo("<h3 style='text-align: center'>Ya existe un escudo con ese nombre.</h3>");
             }
           ?>
           <div id="warning">

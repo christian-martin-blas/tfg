@@ -69,7 +69,7 @@
 			} 
 		}
 
-		if($_POST['miniatura'] != "") {
+		if($_POST['miniatura'] != "" && $errorCode == 0) {
 			$dataMiniatura = $_POST['miniatura'];
 			$dataMiniatura = base64_decode($dataMiniatura);
 			$img = imagecreatefromstring($dataMiniatura);
@@ -86,7 +86,7 @@
 	if($errorCode == 0) {
 		header('Location: ' . AdminToolUpload . '?success');
 	}
-	else header('Location: ' . AdminToolUpload . 'error=' . $errorCode);
+	else header('Location: ' . AdminToolUpload . '?error=' . $errorCode);
 	
 	exit;
 
