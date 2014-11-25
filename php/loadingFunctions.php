@@ -1,7 +1,5 @@
 <?php
-  	require_once('../userManager.php');
   	require('./php/dbConnection.php');
-  	$user_name = getUsername();
 
 	function loadDecoraciones($group) {
 		$index = 0;

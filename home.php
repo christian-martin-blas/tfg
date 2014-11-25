@@ -224,7 +224,6 @@
       else echo "<script>javascript:$('#homeNav').css('display','block')</script>";   
     ?>
   <script>
-  console.log();
   //Variables para canvas
   var canvas = document.createElement("canvas");
   var ctx = canvas.getContext("2d");

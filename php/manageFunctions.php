@@ -1,7 +1,5 @@
 <?php
-  require_once('../../../userManager.php');
   require('../dbConnection.php');
-  $user_name = getUsername();
 
   function addEscudosManage() {
     $enlace =  mysql_connect('localhost', 'regularUser', '');
