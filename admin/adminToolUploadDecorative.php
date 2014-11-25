@@ -5,6 +5,7 @@
       <script src="../lib/js/jquery-1.11.0.min.js"></script>
       <link rel="stylesheet" href="../lib/css/redmond/jquery-ui-1.10.4.custom.css">
       <link rel="stylesheet" type="text/css" href="../lib/css/bootstrap.css">
+      <link rel="stylesheet" type="text/css" href="../css/adminToolUploadDecorative.css">
 
       <script src="../lib/js/bootstrap.js"></script>
       <script src="../lib/js/jquery-ui-1.10.4.custom.js"></script>
@@ -18,48 +19,6 @@
       <?php
         include('../php/globalLinks.php');
       ?>
-
-      <style>
-      html {
-        max-width: 1500px;
-      }
-      body {
-        background-color: #F7FAFC;
-      }
-      .page-header {
-        text-align: center;
-      }
-      #back {
-        position: absolute;
-        left: 50%;
-        top: 50%; 
-      }
-      #uploadFiles {
-        margin-top: 300px;
-      }
-      td {
-        padding: 6px;
-      }
-      #buttonSubmit {
-        margin-left: 330px;
-        margin-top: 20px;
-      }
-      #previsualization {
-        background-color: #C2C1BD;
-        height: 500px;
-        width: 700px;
-        margin-top: 100px;
-        margin-left: 70px;
-        float: left;
-        border: 5px solid #333333;
-        position: relative;
-      }
-      #reiniciarValores {
-        margin: 8px;
-        float: right;
-      }
-
-    </style>
 
   </head>
   <body>
@@ -82,7 +41,7 @@
 
       <div id="leftMenu" class="col-md-4">
 
-        <form id="uploadFiles" enctype="multipart/form-data" action="uploaderDecorative.php" method="POST" onsubmit="saveSrc()">
+        <form id="uploadFiles" enctype="multipart/form-data" action="../php/uploaderDecorative.php" method="POST" onsubmit="saveSrc()">
           <?php
 
             if(isset($_GET['success']))

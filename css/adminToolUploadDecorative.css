@@ -1,0 +1,38 @@
+html {
+  max-width: 1500px;
+}
+body {
+  background-color: #F7FAFC;
+}
+.page-header {
+  text-align: center;
+}
+#back {
+  position: absolute;
+  left: 50%;
+  top: 50%; 
+}
+#uploadFiles {
+  margin-top: 300px;
+}
+td {
+  padding: 6px;
+}
+#buttonSubmit {
+  margin-left: 330px;
+  margin-top: 20px;
+}
+#previsualization {
+  background-color: #C2C1BD;
+  height: 500px;
+  width: 700px;
+  margin-top: 100px;
+  margin-left: 70px;
+  float: left;
+  border: 5px solid #333333;
+  position: relative;
+}
+#reiniciarValores {
+  margin: 8px;
+  float: right;
+}

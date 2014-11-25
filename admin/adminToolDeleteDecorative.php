@@ -7,6 +7,7 @@
       <link rel="stylesheet" type="text/css" href="../lib/css/bootstrap.css">
       <link rel="stylesheet" type="text/css" href="../lib/css/jquery.simplecolorpicker.css">
       <link rel="stylesheet" type="text/css" href="../lib/css/jquery.simplecolorpicker-glyphicons.css">
+      <link rel="stylesheet" type="text/css" href="../css/adminToolDeleteDecorative.css">
 
       <script src="../lib/js/bootstrap.js"></script>
       <script src="../lib/js/jquery-ui-1.10.4.custom.js"></script>
@@ -21,64 +22,6 @@
       ?>
 
       <title>Eliminar decoraciones</title>
-
-      <style>
-      html {
-        max-width: 1500px;
-      }
-      body {
-        background-color: #F7FAFC;
-      }
-      .page-header {
-        text-align: center;
-      }
-      img {
-        max-width: 100%;
-        max-height: 100%;
-      }
-      #back {
-        position: absolute;
-        left: 50%;
-        top: 50%; 
-      }
-      .button {
-        float: left;
-        background: #77AEFF; 
-        margin-left: 2px;
-        margin-right: 2px;
-        margin-bottom: 30px;
-        border-bottom: 2px solid;
-        border-left: 2px solid;
-        border-right: 2px solid;
-      }
-      #deleteFiles {
-        margin-top: 300px;
-      }
-      td {
-        padding: 6px;
-      }
-      #buttonSubmit {
-        margin-left: 330px;
-        margin-top: 20px;
-      }
-      #previsualization {
-        background-color: #C2C1BD;
-        height: 500px;
-        width: 700px;
-        margin-top: 100px;
-        margin-left: 70px;
-        float: left;
-        border: 5px solid #333333;
-        position: relative;
-      }
-      #imgName {
-        display: none;
-      }
-      #isDefault {
-        display: none;
-      }
-
-    </style>
 
   </head>
   <body>
@@ -125,7 +68,7 @@
 
       <div id="leftMenu" class="col-md-4">
 
-        <form id="deleteFiles" enctype="multipart/form-data" action="removerDecorative.php" method="POST" onsubmit="guardarSrc()">
+        <form id="deleteFiles" enctype="multipart/form-data" action="../php/removerDecorative.php" method="POST" onsubmit="guardarSrc()">
           <?php
 
             if(isset($_GET['success']))

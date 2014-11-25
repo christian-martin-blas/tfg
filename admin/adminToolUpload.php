@@ -7,6 +7,7 @@
       <link rel="stylesheet" type="text/css" href="../lib/css/bootstrap.css">
       <link rel="stylesheet" type="text/css" href="../lib/css/jquery.simplecolorpicker.css">
       <link rel="stylesheet" type="text/css" href="../lib/css/jquery.simplecolorpicker-glyphicons.css">
+      <link rel="stylesheet" type="text/css" href="../css/adminToolUpload.css">
 
       <script src="../lib/js/bootstrap.js"></script>
       <script src="../lib/js/jquery-ui-1.10.4.custom.js"></script>
@@ -20,113 +21,6 @@
       <?php
         include('../php/globalLinks.php');
       ?>
-
-      <style>
-      html {
-        max-width: 1500px;
-      }
-      .page-header {
-        text-align: center;
-      }
-      body {
-        background-color: #F7FAFC;
-      }
-      img {
-        max-width: 100%;
-        max-height: 100%;
-      }
-      #back {
-        position: absolute;
-        left: 50%;
-        top: 50%; 
-        margin-left: -110px;
-        margin-top: -110px;
-      }
-      #part1 {
-        position: absolute;
-        left: 50%;
-        top: 50%; 
-        margin-left: -110px;
-        margin-top: -110px;
-      }
-      #part2 {
-        position: absolute;
-        left: 50%;
-        top: 50%; 
-        margin-left: -110px;
-        margin-top: -110px;
-      }
-      #part3 {
-        position: absolute;
-        left: 50%;
-        top: 50%; 
-        margin-left: -110px;
-        margin-top: -110px;
-      }
-      #part4 {
-        position: absolute;
-        left: 50%;
-        top: 50%; 
-        margin-left: -110px;
-        margin-top: -110px;
-      }
-      .icons {
-        height: 30px;
-        width: 30px;
-        cursor: pointer;
-      }
-      .button {
-        float: left;
-        background: #77AEFF; 
-        margin-left: 2px;
-        margin-right: 2px;
-        margin-bottom: 30px;
-        border-bottom: 2px solid;
-        border-left: 2px solid;
-        border-right: 2px solid;
-      }
-
-      #uploadFiles {
-        margin-top: 120px;
-      }
-      td {
-        padding: 6px;
-      }
-      #buttonSubmit {
-        margin-left: 330px;
-        margin-top: 20px;
-      }
-      #previsualization {
-        background-color: #C2C1BD;
-        height: 350px;
-        width: 533px;
-        margin-top: 200px;
-        margin-left: 70px;
-        float: left;
-        border: 5px solid #333333;
-        position: relative;
-      }
-      #warning {
-        margin: 8px;
-        border: solid 2px;
-        background-color: #C9DDE0;
-        padding: 5px;
-      }
-      #base {
-        display: none;
-      }
-      #sinBase {
-        display: none;
-      }
-      #borrarElementos {
-        margin: 8px;
-        float: right;
-      }
-      #miniatura {
-        display: none;
-      }
-
-    </style>
 
   </head>
   <body>
@@ -149,7 +43,7 @@
 
       <div id="leftMenu" class="col-md-4">
 
-        <form id="uploadFiles" enctype="multipart/form-data" action="uploader.php" method="POST" onsubmit="generarMiniatura()">
+        <form id="uploadFiles" enctype="multipart/form-data" action="../php/uploader.php" method="POST" onsubmit="generarMiniatura()">
           <?php
 
             if(isset($_GET['success']))
