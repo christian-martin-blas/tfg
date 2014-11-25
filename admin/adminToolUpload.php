@@ -205,7 +205,7 @@
                 <b>Partición 1:</b>
               </td>
               <td>
-                <input type="file" id="fileParticion1Select" name="fileParticion1Select" class="form-control" accept="image/png"/>
+                <input type="file" id="fileParticion1Select" name="fileParticion1Select" class="form-control"/>
               </td>
             </tr>
             <tr>
@@ -213,7 +213,7 @@
                 <b>Partición 2:</b>
               </td>
               <td>
-                <input type="file" id="fileParticion2Select" name="fileParticion2Select" class="form-control" accept="image/png"/>
+                <input type="file" id="fileParticion2Select" name="fileParticion2Select" class="form-control"/>
               </td>
             </tr>
             <tr>
@@ -221,7 +221,7 @@
                 <b>Partición 3:</b>
               </td>
               <td>
-                <input type="file" id="fileParticion3Select" name="fileParticion3Select" class="form-control" accept="image/png"/>
+                <input type="file" id="fileParticion3Select" name="fileParticion3Select" class="form-control"/>
               </td>
             </tr>
             <tr>
@@ -229,7 +229,7 @@
                 <b>Partición 4:</b>
               </td>
               <td>
-                <input type="file" id="fileParticion4Select" name="fileParticion4Select" class="form-control" accept="image/png"/>
+                <input type="file" id="fileParticion4Select" name="fileParticion4Select" class="form-control"/>
               </td>
             </tr>
           </table>
@@ -247,7 +247,7 @@
                 <b>Base:</b>
               </td>
               <td>
-                <input type="file" id="fileBase" name="fileBase" accept="image/png" class="form-control"/>
+                <input type="file" id="fileBase" name="fileBase" class="form-control"/>
               </td>
             </tr>
             <tr>
@@ -263,7 +263,7 @@
                 <b>Partición 1:</b>
               </td>
               <td>
-                <input type="file" id="fileParticion1" name="fileParticion1" accept="image/png" class="form-control"/>
+                <input type="file" id="fileParticion1" name="fileParticion1" class="form-control"/>
               </td>
             </tr>
             <tr>
@@ -271,7 +271,7 @@
                 <b>Partición 2:</b>
               </td>
               <td>
-                <input type="file" id="fileParticion2" name="fileParticion2" accept="image/png" class="form-control"/>
+                <input type="file" id="fileParticion2" name="fileParticion2" class="form-control"/>
               </td>
             </tr>
             <tr>
@@ -279,7 +279,7 @@
                 <b>Partición 3:</b>
               </td>
               <td>
-                <input type="file" id="fileParticion3" name="fileParticion3" accept="image/png" class="form-control"/>
+                <input type="file" id="fileParticion3" name="fileParticion3" class="form-control"/>
               </td>
             </tr>
             <tr>
@@ -287,7 +287,7 @@
                 <b>Partición 4:</b>
               </td>
               <td>
-                <input type="file" id="fileParticion4" name="fileParticion4" accept="image/png" class="form-control"/>
+                <input type="file" id="fileParticion4" name="fileParticion4" class="form-control"/>
               </td>
             </tr>
           </table>
@@ -335,10 +335,10 @@
   var reader;
 
   if($(window).width() > 1500) $("#leftMenu").css("margin-left","150px");
-  //Añadimos el evento onChange para que cargue las previsualizaciones de las imagenes
+  
+  function errorHandler(item) {
+  $("#" + item.id).replaceWith($("#" + item.id).val('').clone(true));
   addOnChangeToFiles();
-
-  function errorHandler() {
   $("<div title=\'Información\'><b>El archivo que has intentado subir no era una imagen.</b></div>").dialog({
       modal: true,
       buttons: {
@@ -350,11 +350,10 @@
 }
 
   function handleFileSelect(evt, item) {
-    console.log(item.files);
     if(evt == undefined) var files = item.files;
     else var files = evt.target.files; 
     // Loop through the FileList and render image files as canvas image
-    if(files[0].type.indexOf("image") == -1) errorHandler();
+    if(files[0].type.indexOf("image") == -1) errorHandler(item);
     else {
       for (var i = 0, f; f = files[i]; i++) {
 
@@ -472,6 +471,7 @@
     $("#nombreParticion").val("");
     $("#nombreParticionSelect").val("");
     document.getElementById("nombreParticion").required = false;
+    //Añadimos el evento onChange para que cargue las previsualizaciones de las imagenes
     addOnChangeToFiles();
   }
 
