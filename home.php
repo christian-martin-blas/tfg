@@ -22,7 +22,6 @@
 
       <title>Editor de escudos</title>
     <?php
-      include './ChromePhp.php';
       require_once('../userManager.php');
       include('./php/globalLinks.php');
       $user_name = getUsername();
